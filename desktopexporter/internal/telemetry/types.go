@@ -12,17 +12,9 @@ type RecentTelemetrySummaries struct {
 }
 
 type TelemetrySummary struct {
-	HasRootSpan bool `json:"hasRootSpan"`
-
-	RootServiceName string    `json:"rootServiceName"`
-	RootName        string    `json:"rootName"`
-	RootStartTime   time.Time `json:"rootStartTime"`
-	RootEndTime     time.Time `json:"rootEndTime"`
-	ServiceName     string    `json:"serviceName"`
-
-	SpanCount uint32 `json:"spanCount"`
-	ID        string `json:"traceID"`
-	Type      string `json:"type"`
+	ServiceName string `json:"serviceName"`
+	Type        string `json:"type"`
+	ID          string `json:"ID"`
 }
 
 type TelemetryData struct {
