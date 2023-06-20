@@ -21,7 +21,7 @@ export type SpanWithUIData =
       metadata: SpanUIData;
     };
 
-export type TraceSummaryWithUIData =
+export type SummaryWithUIData =
   | {
       hasRootSpan: true;
       rootServiceName: string;
@@ -29,16 +29,19 @@ export type TraceSummaryWithUIData =
       rootDurationString: string;
       spanCount: number;
       traceID: string;
+      type: string;
     }
   | {
       hasRootSpan: false;
       spanCount: number;
       traceID: string;
+      type: string;
+      serviceName: string;
     };
 
-    export type SidebarData = {
-      numNewTraces: number;
-      summaries: TraceSummaryWithUIData[];
-    };
+export type SidebarData = {
+  numNewTraces: number;
+  summaries: SummaryWithUIData[];
+};
 
-    export type ModifierKey = "Alt" | "Control" | "Meta" | "Shift";
+export type ModifierKey = "Alt" | "Control" | "Meta" | "Shift";

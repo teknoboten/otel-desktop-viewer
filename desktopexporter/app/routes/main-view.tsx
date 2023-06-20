@@ -5,31 +5,33 @@ import { useLoaderData } from "react-router-dom";
 
 import { Sidebar } from "../components/sidebar-view/sidebar";
 import { EmptyStateView } from "../components/empty-state-view/empty-state-view";
-import { TraceSummaries, TraceSummary } from "../types/api-types";
-import { SidebarData, TraceSummaryWithUIData } from "../types/ui-types";
+import { Summaries, Summary } from "../types/api-types";
+import { SidebarData, SummaryWithUIData } from "../types/ui-types";
 import { getDurationNs, getDurationString } from "../utils/duration";
 
 export async function mainLoader() {
-  const response = await fetch("/api/traces");
-  const traceSummaries = await response.json();
-  return traceSummaries;
+  const response = await fetch("/api/telemetry");
+  const summaries = await response.json();
+  return summaries;
 }
 
 export default function MainView() {
-  let { traceSummaries } = useLoaderData() as TraceSummaries;
-  let [isFullWidth, setFullWidth] = useBoolean(traceSummaries.length > 0);
+  let { summaries } = useLoaderData() as Summaries;
+
+  let [isFullWidth, setFullWidth] = useBoolean(summaries.length > 0);
 
   // initialize the sidebar summaries at mount time
-  let [sidebarData, setSidebarData] = useState(initSidebarData(traceSummaries));
+  let [sidebarData, setSidebarData] = useState(initSidebarData(summaries));
 
   // check every second to see if we have new data
   // and upsate sidebar summaries accordingly
   useEffect(() => {
     async function checkForNewData() {
-      let response = await fetch("/api/traces");
+      let response = await fetch("/api/telemetry");
       if (response.ok) {
-        let { traceSummaries } = (await response.json()) as TraceSummaries;
-        let newSidebarData = updateSidebarData(sidebarData, traceSummaries);
+        let { summaries } = (await response.json()) as Summaries;
+
+        let newSidebarData = updateSidebarData(sidebarData, summaries);
         setSidebarData(newSidebarData);
       }
     }
@@ -40,13 +42,13 @@ export default function MainView() {
   }, []);
 
   // Handle empty state
-  if (!traceSummaries.length) {
+  if (!summaries.length) {
     return (
       <Flex height="100vh">
         <Sidebar
           isFullWidth={isFullWidth}
           toggleSidebarWidth={setFullWidth.toggle}
-          traceSummaries={[]}
+          summaries={[]}
           numNewTraces={0}
         />
         <EmptyStateView />
@@ -59,7 +61,7 @@ export default function MainView() {
       <Sidebar
         isFullWidth={isFullWidth}
         toggleSidebarWidth={setFullWidth.toggle}
-        traceSummaries={sidebarData.summaries}
+        summaries={sidebarData.summaries}
         numNewTraces={sidebarData.numNewTraces}
       />
       <Outlet />
@@ -67,10 +69,10 @@ export default function MainView() {
   );
 }
 
-function initSidebarData(traceSummaries: TraceSummary[]): SidebarData {
+function initSidebarData(summaries: Summary[]): SidebarData {
   return {
-    summaries: traceSummaries.map((traceSummary) =>
-      generateTraceSummaryWithUIData(traceSummary),
+    summaries: summaries.map((summary) =>
+      generateTraceSummaryWithUIData(summary),
     ),
     numNewTraces: 0,
   };
@@ -78,7 +80,7 @@ function initSidebarData(traceSummaries: TraceSummary[]): SidebarData {
 
 function updateSidebarData(
   sidebarData: SidebarData,
-  traceSummaries: TraceSummary[],
+  summaries: Summary[],
 ): SidebarData {
   let mergedData: SidebarData = {
     numNewTraces: 0,
@@ -86,7 +88,7 @@ function updateSidebarData(
   };
 
   // Check for new and stale traces
-  for (let summary of traceSummaries) {
+  for (let summary of summaries) {
     let traceID = summary.traceID;
     let sidebarSummaryIndex = mergedData.summaries.findIndex(
       (s) => s.traceID === traceID,
@@ -109,9 +111,7 @@ function updateSidebarData(
   // Check for deleted/expired traces
   for (let [i, summary] of mergedData.summaries.entries()) {
     let traceID = summary.traceID;
-    let counterpartIndex = traceSummaries.findIndex(
-      (s) => s.traceID === traceID,
-    );
+    let counterpartIndex = summaries.findIndex((s) => s.traceID === traceID);
     if (counterpartIndex === -1) {
       // If a summary present in the sidebar is not present in the list of incoming traces
       // it is expired and must be removed
@@ -121,28 +121,26 @@ function updateSidebarData(
   return mergedData;
 }
 
-function generateTraceSummaryWithUIData(
-  traceSummary: TraceSummary,
-): TraceSummaryWithUIData {
-  if (traceSummary.hasRootSpan) {
-    let duration = getDurationNs(
-      traceSummary.rootStartTime,
-      traceSummary.rootEndTime,
-    );
-
+function generateTraceSummaryWithUIData(summary: Summary): SummaryWithUIData {
+  if (summary.hasRootSpan) {
+    let duration = getDurationNs(summary.rootStartTime, summary.rootEndTime);
     let durationString = getDurationString(duration);
+
     return {
       hasRootSpan: true,
-      rootServiceName: traceSummary.rootServiceName,
-      rootName: traceSummary.rootName,
+      rootServiceName: summary.rootServiceName,
+      rootName: summary.rootName,
       rootDurationString: durationString,
-      spanCount: traceSummary.spanCount,
-      traceID: traceSummary.traceID,
+      spanCount: summary.spanCount,
+      traceID: summary.traceID,
+      type: summary.type,
     };
   }
   return {
     hasRootSpan: false,
-    spanCount: traceSummary.spanCount,
-    traceID: traceSummary.traceID,
+    spanCount: summary.spanCount,
+    traceID: summary.traceID,
+    type: summary.type,
+    serviceName: summary.serviceName,
   };
 }
