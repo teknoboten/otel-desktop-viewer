@@ -13,15 +13,15 @@ func (t *TelemetryData) GetSummary() TelemetrySummary {
 
 		if err == WarningMissingRootSpan {
 			return TelemetrySummary{
-				HasRootSpan:     false,
-				RootServiceName: "",
-				RootName:        "",
+				// HasRootSpan:     false,
+				// RootServiceName: "",
+				// RootName:        "",
 				RootStartTime:   time.Time{},
 				RootEndTime:     time.Time{},
 				SpanCount:       uint32(len(t.Trace.Spans)),
 				ID:              traceSummary.TraceID,
 				Type:            t.Type,
-				ServiceName:     "",
+				// ServiceName:     "",
 			}
 		}
 
@@ -39,12 +39,12 @@ func (t *TelemetryData) GetSummary() TelemetrySummary {
 
 	return TelemetrySummary{
 		HasRootSpan:     false,
-		RootServiceName: "", //maybe we can omit these?
-		RootName:        "",
+		// RootServiceName: "", //maybe we can omit these?
+		// RootName:        "",
 		RootStartTime:   time.Time{},
 		RootEndTime:     time.Time{},
-		ServiceName:     "",
-		SpanCount:       0,
+		// ServiceName:     "",
+		// SpanCount:       0,
 		ID:              t.ID,
 		Type:            t.Type,
 	}

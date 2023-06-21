@@ -8,8 +8,20 @@ export type TraceSummary = {
   traceID: string;
 };
 
-export type TraceSummaries = {
-  traceSummaries: TraceSummary[];
+export type Summary = {
+  hasRootSpan: boolean;
+  rootServiceName: string;
+  rootName: string;
+  rootStartTime: string;
+  rootEndTime: string;
+  spanCount: number;
+  traceID: string;
+  type: string;
+  serviceName: string;
+};
+
+export type Summaries = {
+  summaries: Summary[];
 };
 
 export type TraceData = {

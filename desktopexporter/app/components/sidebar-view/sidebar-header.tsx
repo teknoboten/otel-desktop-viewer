@@ -16,7 +16,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { clearTraceData } from "./trace-list";
+import { clearTraceData } from "./telemetry-list";
 
 type SidebarHeaderProps = {
   isFullWidth: boolean;

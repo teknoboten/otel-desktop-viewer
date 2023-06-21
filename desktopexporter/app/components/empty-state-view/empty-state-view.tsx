@@ -18,10 +18,11 @@ import {
   useInterval,
 } from "@chakra-ui/react";
 
-import { TraceSummaries } from "../../types/api-types";
+import { Summaries } from "../../types/api-types";
 
 async function loadSampleData() {
   let response = await fetch("/api/sampleData");
+  await console.log(response);
   if (!response.ok) {
     throw new Error("HTTP status " + response.status);
   } else {
@@ -59,15 +60,15 @@ function SampleDataButton() {
 }
 
 async function pollTraceCount() {
-  let response = await fetch("/api/traces");
+  let response = await fetch("/api/telemetry");
   if (!response.ok) {
     throw new Error("HTTP status " + response.status);
   } else {
-    let { traceSummaries } = (await response.json()) as TraceSummaries;
-    if (traceSummaries.length > 0) {
-     setTimeout(() => {
-       window.location.reload();
-     }, 500);
+    let { summaries } = (await response.json()) as Summaries;
+    if (summaries.length > 0) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     }
   }
 }
@@ -78,7 +79,8 @@ export function EmptyStateView() {
     "whiteAlpha.700",
     "blackAlpha.500",
   );
-  useInterval(pollTraceCount, 500);
+  // useInterval(pollTraceCount, 500);
+  useInterval(pollTraceCount, 10000);
 
   return (
     <Flex

@@ -5,8 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
 
 import MainView, { mainLoader } from "./routes/main-view";
-import TraceView, { traceLoader } from "./routes/trace-view";
 import ErrorPage from "./error-page";
+import TelemetryView, { telemetryLoader } from "./routes/telemetry-view";
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -22,9 +22,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "traces/:traceID",
-        element: <TraceView />,
-        loader: traceLoader,
+        path: "telemetry/:traceID",
+        element: <TelemetryView />,
+        loader: telemetryLoader,
       },
     ],
   },
