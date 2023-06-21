@@ -29,6 +29,40 @@ export type TraceData = {
   spans: SpanData[];
 };
 
+export type TelemetryData = {
+  ID: string;
+  type: string;
+  metric: MetricData;
+  log: LogData;
+  trace: TraceData;
+  traceID: string;
+};
+
+export type LogData = {
+  traceID: string;
+  spanID: string;
+
+  body: string;
+  timestamp: string;
+  observedTimestamp: string;
+
+  attributes: { [key: string]: number | string | boolean | null };
+  resource: ResourceData;
+  scope: ScopeData;
+
+  droppedAttributeCount: number;
+  severityNumber: number;
+  severityText: string;
+};
+
+export type MetricData = {
+  name: string;
+  description: string;
+  unit: string;
+  resource: ResourceData;
+  scope: ScopeData;
+};
+
 export type SpanData = {
   traceID: string;
   traceState: string;

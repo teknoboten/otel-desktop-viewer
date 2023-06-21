@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Grid, GridItem } from "@chakra-ui/react";
 
-import { TraceData } from "../types/api-types";
+import {
+  TraceData,
+  TelemetryData,
+  LogData,
+  MetricData,
+  SpanData,
+} from "../types/api-types";
 import { SpanDataStatus, SpanWithUIData } from "../types/ui-types";
 
 import { Header } from "../components/header-view/header";
@@ -18,41 +24,63 @@ export async function telemetryLoader({ params }: any) {
 }
 
 export default function TelemetryView() {
-  let traceData = useLoaderData() as TraceData;
-  // let traceTimeAttributes = calculateTraceTiming(traceData.spans);
-  // let spanTree: RootTreeItem[] = arrayToTree(traceData.spans);
-  // let orderedSpans = orderSpans(spanTree);
+  let telemetryData = useLoaderData() as TelemetryData;
+  let traceData = telemetryData.trace as TraceData;
+  let logData = telemetryData.log as LogData;
+  let metricData = telemetryData.metric as MetricData;
+  let isTrace = telemetryData.type === "trace" ? true : false;
+  let selectedSpan: SpanData;
+  let spanTree: RootTreeItem[] = [];
+  let orderedSpans: SpanWithUIData[] = [];
 
-  // let [selectedSpanID, setSelectedSpanID] = React.useState<string>(() => {
-  //   if (
-  //     !orderedSpans.length ||
-  //     (orderedSpans[0].status === SpanDataStatus.missing &&
-  //       orderedSpans.length < 2)
-  //   ) {
-  //     throw new Error("Number of spans cannot be zero");
-  //   }
+  let traceTimeAttributes = {
+    traceStartTimeNS: 0,
+    traceDurationNS: 0,
+  };
 
-  //   if (orderedSpans[0].status === SpanDataStatus.missing) {
-  //     return orderedSpans[1].metadata.spanID;
-  //   }
+  if (isTrace) {
+    traceTimeAttributes = calculateTraceTiming(traceData.spans);
+    spanTree = arrayToTree(traceData.spans);
+    orderedSpans = orderSpans(spanTree);
+  }
 
-  //   return orderedSpans[0].metadata.spanID;
-  // });
+  let [selectedSpanID, setSelectedSpanID] = React.useState<string>(() => {
+    if (!isTrace) {
+      return "";
+    }
+    if (
+      !orderedSpans.length ||
+      (orderedSpans[0].status === SpanDataStatus.missing &&
+        orderedSpans.length < 2)
+    ) {
+      throw new Error("Number of spans cannot be zero");
+    }
 
-  // // if we get a new trace because the route changed, reset the selected span
-  // React.useEffect(() => {
-  //   setSelectedSpanID(
-  //     orderedSpans[0].status === SpanDataStatus.present
-  //       ? orderedSpans[0].metadata.spanID
-  //       : orderedSpans[1].metadata.spanID,
-  //   );
-  // }, [traceData]);
+    if (orderedSpans[0].status === SpanDataStatus.missing) {
+      return orderedSpans[1].metadata.spanID;
+    }
 
-  // let selectedSpan = traceData.spans.find(
-  //   (span: { spanID: string }) => span.spanID === selectedSpanID,
-  // );
+    return orderedSpans[0].metadata.spanID;
+  });
 
-  return (
+  // if we get a new trace because the route changed, reset the selected span
+  React.useEffect(() => {
+    if (isTrace) {
+      setSelectedSpanID(
+        orderedSpans[0].status === SpanDataStatus.present
+          ? orderedSpans[0].metadata.spanID
+          : orderedSpans[1].metadata.spanID,
+      );
+    }
+  }, [traceData]);
+
+  if (isTrace) {
+    selectedSpan = traceData.spans.find(
+      (span: { spanID: string }) => span.spanID === selectedSpanID,
+    );
+  }
+
+  return isTrace ? (
     <Grid
       templateAreas={`"header detail"
                        "main detail"`}
@@ -69,15 +97,43 @@ export default function TelemetryView() {
         area={"main"}
         marginLeft="20px"
       >
-        {/* <WaterfallView
+        <WaterfallView
           orderedSpans={orderedSpans}
           traceTimeAttributes={traceTimeAttributes}
           selectedSpanID={selectedSpanID}
           setSelectedSpanID={setSelectedSpanID}
-        /> */}
+        />
       </GridItem>
       <GridItem area={"detail"}>
-        {/* <DetailView span={selectedSpan} /> */}
+        <DetailView span={selectedSpan} />
+      </GridItem>
+    </Grid>
+  ) : (
+    <Grid
+      templateAreas={`"header detail"
+                 "main detail"`}
+      gridTemplateColumns={"1fr 350px"}
+      gridTemplateRows={"100px 1fr"}
+      gap={"0"}
+      height={"100vh"}
+      width={"100vw"}
+    >
+      <GridItem area={"header"}>
+        <Header traceID={traceData.traceID} />
+      </GridItem>
+      <GridItem
+        area={"main"}
+        marginLeft="20px"
+      >
+        {/* <WaterfallView
+    orderedSpans={orderedSpans}
+    traceTimeAttributes={traceTimeAttributes}
+    selectedSpanID={selectedSpanID}
+    setSelectedSpanID={setSelectedSpanID}
+  /> */}
+      </GridItem>
+      <GridItem area={"detail"}>
+        {/* <DetailView span={selectedSpan} /> */}i am log / metric
       </GridItem>
     </Grid>
   );

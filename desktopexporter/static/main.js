@@ -112,38 +112,38 @@
             ReactSharedInternals.ReactDebugCurrentFrame = ReactDebugCurrentFrame;
             ReactSharedInternals.ReactCurrentActQueue = ReactCurrentActQueue;
           }
-          function warn(format) {
+          function warn3(format2) {
             {
               {
                 for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
                   args[_key - 1] = arguments[_key];
                 }
-                printWarning("warn", format, args);
+                printWarning("warn", format2, args);
               }
             }
           }
-          function error(format) {
+          function error(format2) {
             {
               {
                 for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
                   args[_key2 - 1] = arguments[_key2];
                 }
-                printWarning("error", format, args);
+                printWarning("error", format2, args);
               }
             }
           }
-          function printWarning(level, format, args) {
+          function printWarning(level, format2, args) {
             {
               var ReactDebugCurrentFrame2 = ReactSharedInternals.ReactDebugCurrentFrame;
               var stack = ReactDebugCurrentFrame2.getStackAddendum();
               if (stack !== "") {
-                format += "%s";
+                format2 += "%s";
                 args = args.concat([stack]);
               }
               var argsWithFormat = args.map(function(item) {
                 return String(item);
               });
-              argsWithFormat.unshift("Warning: " + format);
+              argsWithFormat.unshift("Warning: " + format2);
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
@@ -203,7 +203,7 @@
             var defineDeprecationWarning = function(methodName, info) {
               Object.defineProperty(Component3.prototype, methodName, {
                 get: function() {
-                  warn("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
+                  warn3("%s(...) is deprecated in plain JavaScript React classes. %s", info[0], info[1]);
                   return void 0;
                 }
               });
@@ -448,7 +448,7 @@
             }
             return element;
           };
-          function createElement10(type, config3, children) {
+          function createElement11(type, config3, children) {
             var propName;
             var props = {};
             var key = null;
@@ -516,7 +516,7 @@
             var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
             return newElement;
           }
-          function cloneElement5(element, config3, children) {
+          function cloneElement6(element, config3, children) {
             if (element === null || element === void 0) {
               throw new Error("React.cloneElement(...): The argument must be a React element, but you passed " + element + ".");
             }
@@ -564,7 +564,7 @@
             }
             return ReactElement(element.type, key, ref, self2, source, owner, props);
           }
-          function isValidElement6(object) {
+          function isValidElement7(object) {
             return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
           }
           var SEPARATOR = ".";
@@ -629,7 +629,7 @@
                   return c2;
                 });
               } else if (mappedChild != null) {
-                if (isValidElement6(mappedChild)) {
+                if (isValidElement7(mappedChild)) {
                   {
                     if (mappedChild.key && (!_child || _child.key !== mappedChild.key)) {
                       checkKeyStringCoercion(mappedChild.key);
@@ -661,7 +661,7 @@
                 {
                   if (iteratorFn === iterableChildren.entries) {
                     if (!didWarnAboutMaps) {
-                      warn("Using Maps as children is not supported. Use an array of keyed ReactElements instead.");
+                      warn3("Using Maps as children is not supported. Use an array of keyed ReactElements instead.");
                     }
                     didWarnAboutMaps = true;
                   }
@@ -710,7 +710,7 @@
             }) || [];
           }
           function onlyChild(children) {
-            if (!isValidElement6(children)) {
+            if (!isValidElement7(children)) {
               throw new Error("React.Children.only expected to receive a single React element child.");
             }
             return children;
@@ -790,7 +790,7 @@
                   },
                   set: function(displayName) {
                     if (!hasWarnedAboutDisplayNameOnConsumer) {
-                      warn("Setting `displayName` on Context.Consumer has no effect. You should set it directly on the context with Context.displayName = '%s'.", displayName);
+                      warn3("Setting `displayName` on Context.Consumer has no effect. You should set it directly on the context with Context.displayName = '%s'.", displayName);
                       hasWarnedAboutDisplayNameOnConsumer = true;
                     }
                   }
@@ -892,7 +892,7 @@
             }
             return lazyType;
           }
-          function forwardRef4(render) {
+          function forwardRef7(render) {
             {
               if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
                 error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
@@ -1001,7 +1001,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState19(initialState2) {
+          function useState24(initialState2) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState2);
           }
@@ -1009,11 +1009,11 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef19(initialValue) {
+          function useRef29(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect29(create, deps) {
+          function useEffect40(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1021,15 +1021,15 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useInsertionEffect(create, deps);
           }
-          function useLayoutEffect8(create, deps) {
+          function useLayoutEffect9(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback11(callback, deps) {
+          function useCallback16(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo16(create, deps) {
+          function useMemo19(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1051,7 +1051,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useDeferredValue(value);
           }
-          function useId5() {
+          function useId9() {
             var dispatcher = resolveDispatcher();
             return dispatcher.useId();
           }
@@ -1158,12 +1158,12 @@
             var PossiblyWeakMap = typeof WeakMap === "function" ? WeakMap : Map;
             componentFrameCache = new PossiblyWeakMap();
           }
-          function describeNativeComponentFrame(fn, construct) {
-            if (!fn || reentry) {
+          function describeNativeComponentFrame(fn2, construct) {
+            if (!fn2 || reentry) {
               return "";
             }
             {
-              var frame3 = componentFrameCache.get(fn);
+              var frame3 = componentFrameCache.get(fn2);
               if (frame3 !== void 0) {
                 return frame3;
               }
@@ -1194,14 +1194,14 @@
                   } catch (x) {
                     control = x;
                   }
-                  Reflect.construct(fn, [], Fake);
+                  Reflect.construct(fn2, [], Fake);
                 } else {
                   try {
                     Fake.call();
                   } catch (x) {
                     control = x;
                   }
-                  fn.call(Fake.prototype);
+                  fn2.call(Fake.prototype);
                 }
               } else {
                 try {
@@ -1209,7 +1209,7 @@
                 } catch (x) {
                   control = x;
                 }
-                fn();
+                fn2();
               }
             } catch (sample) {
               if (sample && control && typeof sample.stack === "string") {
@@ -1228,12 +1228,12 @@
                         c2--;
                         if (c2 < 0 || sampleLines[s] !== controlLines[c2]) {
                           var _frame = "\n" + sampleLines[s].replace(" at new ", " at ");
-                          if (fn.displayName && _frame.includes("<anonymous>")) {
-                            _frame = _frame.replace("<anonymous>", fn.displayName);
+                          if (fn2.displayName && _frame.includes("<anonymous>")) {
+                            _frame = _frame.replace("<anonymous>", fn2.displayName);
                           }
                           {
-                            if (typeof fn === "function") {
-                              componentFrameCache.set(fn, _frame);
+                            if (typeof fn2 === "function") {
+                              componentFrameCache.set(fn2, _frame);
                             }
                           }
                           return _frame;
@@ -1252,18 +1252,18 @@
               }
               Error.prepareStackTrace = previousPrepareStackTrace;
             }
-            var name = fn ? fn.displayName || fn.name : "";
+            var name = fn2 ? fn2.displayName || fn2.name : "";
             var syntheticFrame = name ? describeBuiltInComponentFrame(name) : "";
             {
-              if (typeof fn === "function") {
-                componentFrameCache.set(fn, syntheticFrame);
+              if (typeof fn2 === "function") {
+                componentFrameCache.set(fn2, syntheticFrame);
               }
             }
             return syntheticFrame;
           }
-          function describeFunctionComponentFrame(fn, source, ownerFn) {
+          function describeFunctionComponentFrame(fn2, source, ownerFn) {
             {
-              return describeNativeComponentFrame(fn, false);
+              return describeNativeComponentFrame(fn2, false);
             }
           }
           function shouldConstruct(Component4) {
@@ -1427,11 +1427,11 @@
             if (isArray(node)) {
               for (var i = 0; i < node.length; i++) {
                 var child = node[i];
-                if (isValidElement6(child)) {
+                if (isValidElement7(child)) {
                   validateExplicitKey(child, parentType);
                 }
               }
-            } else if (isValidElement6(node)) {
+            } else if (isValidElement7(node)) {
               if (node._store) {
                 node._store.validated = true;
               }
@@ -1442,7 +1442,7 @@
                   var iterator = iteratorFn.call(node);
                   var step;
                   while (!(step = iterator.next()).done) {
-                    if (isValidElement6(step.value)) {
+                    if (isValidElement7(step.value)) {
                       validateExplicitKey(step.value, parentType);
                     }
                   }
@@ -1524,7 +1524,7 @@
                 error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
               }
             }
-            var element = createElement10.apply(this, arguments);
+            var element = createElement11.apply(this, arguments);
             if (element == null) {
               return element;
             }
@@ -1547,12 +1547,12 @@
             {
               if (!didWarnAboutDeprecatedCreateFactory) {
                 didWarnAboutDeprecatedCreateFactory = true;
-                warn("React.createFactory() is deprecated and will be removed in a future major release. Consider using JSX or use React.createElement() directly instead.");
+                warn3("React.createFactory() is deprecated and will be removed in a future major release. Consider using JSX or use React.createElement() directly instead.");
               }
               Object.defineProperty(validatedFactory, "type", {
                 enumerable: false,
                 get: function() {
-                  warn("Factory.type is deprecated. Access the class directly before passing it to createFactory.");
+                  warn3("Factory.type is deprecated. Access the class directly before passing it to createFactory.");
                   Object.defineProperty(this, "type", {
                     value: type
                   });
@@ -1563,7 +1563,7 @@
             return validatedFactory;
           }
           function cloneElementWithValidation(element, props, children) {
-            var newElement = cloneElement5.apply(this, arguments);
+            var newElement = cloneElement6.apply(this, arguments);
             for (var i = 2; i < arguments.length; i++) {
               validateChildKeys(arguments[i], newElement.type);
             }
@@ -1585,7 +1585,7 @@
                 if (prevTransition === null && currentTransition._updatedFibers) {
                   var updatedFibersCount = currentTransition._updatedFibers.size;
                   if (updatedFibersCount > 10) {
-                    warn("Detected a large number of updates inside startTransition. If this is due to a subscription please re-write it to use React provided hooks. Otherwise concurrent mode guarantees are off the table.");
+                    warn3("Detected a large number of updates inside startTransition. If this is due to a subscription please re-write it to use React provided hooks. Otherwise concurrent mode guarantees are off the table.");
                   }
                   currentTransition._updatedFibers.clear();
                 }
@@ -1763,14 +1763,14 @@
           var createElement$1 = createElementWithValidation;
           var cloneElement$1 = cloneElementWithValidation;
           var createFactory = createFactoryWithValidation;
-          var Children7 = {
+          var Children8 = {
             map: mapChildren,
             forEach: forEachChildren,
             count: countChildren,
             toArray,
             only: onlyChild
           };
-          exports.Children = Children7;
+          exports.Children = Children8;
           exports.Component = Component3;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.Profiler = REACT_PROFILER_TYPE;
@@ -1783,25 +1783,25 @@
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
           exports.createRef = createRef;
-          exports.forwardRef = forwardRef4;
-          exports.isValidElement = isValidElement6;
+          exports.forwardRef = forwardRef7;
+          exports.isValidElement = isValidElement7;
           exports.lazy = lazy;
           exports.memo = memo2;
           exports.startTransition = startTransition2;
           exports.unstable_act = act;
-          exports.useCallback = useCallback11;
+          exports.useCallback = useCallback16;
           exports.useContext = useContext16;
           exports.useDebugValue = useDebugValue2;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect29;
-          exports.useId = useId5;
+          exports.useEffect = useEffect40;
+          exports.useId = useId9;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect2;
-          exports.useLayoutEffect = useLayoutEffect8;
-          exports.useMemo = useMemo16;
+          exports.useLayoutEffect = useLayoutEffect9;
+          exports.useMemo = useMemo19;
           exports.useReducer = useReducer;
-          exports.useRef = useRef19;
-          exports.useState = useState19;
+          exports.useRef = useRef29;
+          exports.useState = useState24;
           exports.useSyncExternalStore = useSyncExternalStore3;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -1878,21 +1878,21 @@
             var halfLength = length >>> 1;
             while (index < halfLength) {
               var leftIndex = (index + 1) * 2 - 1;
-              var left = heap[leftIndex];
+              var left2 = heap[leftIndex];
               var rightIndex = leftIndex + 1;
-              var right = heap[rightIndex];
-              if (compare(left, node) < 0) {
-                if (rightIndex < length && compare(right, left) < 0) {
-                  heap[index] = right;
+              var right2 = heap[rightIndex];
+              if (compare(left2, node) < 0) {
+                if (rightIndex < length && compare(right2, left2) < 0) {
+                  heap[index] = right2;
                   heap[rightIndex] = node;
                   index = rightIndex;
                 } else {
-                  heap[index] = left;
+                  heap[index] = left2;
                   heap[leftIndex] = node;
                   index = leftIndex;
                 }
-              } else if (rightIndex < length && compare(right, node) < 0) {
-                heap[index] = right;
+              } else if (rightIndex < length && compare(right2, node) < 0) {
+                heap[index] = right2;
                 heap[rightIndex] = node;
                 index = rightIndex;
               } else {
@@ -2297,47 +2297,47 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React34 = require_react();
+          var React51 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React34.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React51.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
               suppressWarning = newSuppressWarning;
             }
           }
-          function warn(format) {
+          function warn3(format2) {
             {
               if (!suppressWarning) {
                 for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
                   args[_key - 1] = arguments[_key];
                 }
-                printWarning("warn", format, args);
+                printWarning("warn", format2, args);
               }
             }
           }
-          function error(format) {
+          function error(format2) {
             {
               if (!suppressWarning) {
                 for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
                   args[_key2 - 1] = arguments[_key2];
                 }
-                printWarning("error", format, args);
+                printWarning("error", format2, args);
               }
             }
           }
-          function printWarning(level, format, args) {
+          function printWarning(level, format2, args) {
             {
               var ReactDebugCurrentFrame2 = ReactSharedInternals.ReactDebugCurrentFrame;
               var stack = ReactDebugCurrentFrame2.getStackAddendum();
               if (stack !== "") {
-                format += "%s";
+                format2 += "%s";
                 args = args.concat([stack]);
               }
               var argsWithFormat = args.map(function(item) {
                 return String(item);
               });
-              argsWithFormat.unshift("Warning: " + format);
+              argsWithFormat.unshift("Warning: " + format2);
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
@@ -3142,12 +3142,12 @@
             var PossiblyWeakMap = typeof WeakMap === "function" ? WeakMap : Map;
             componentFrameCache = new PossiblyWeakMap();
           }
-          function describeNativeComponentFrame(fn, construct) {
-            if (!fn || reentry) {
+          function describeNativeComponentFrame(fn2, construct) {
+            if (!fn2 || reentry) {
               return "";
             }
             {
-              var frame3 = componentFrameCache.get(fn);
+              var frame3 = componentFrameCache.get(fn2);
               if (frame3 !== void 0) {
                 return frame3;
               }
@@ -3178,14 +3178,14 @@
                   } catch (x) {
                     control = x;
                   }
-                  Reflect.construct(fn, [], Fake);
+                  Reflect.construct(fn2, [], Fake);
                 } else {
                   try {
                     Fake.call();
                   } catch (x) {
                     control = x;
                   }
-                  fn.call(Fake.prototype);
+                  fn2.call(Fake.prototype);
                 }
               } else {
                 try {
@@ -3193,7 +3193,7 @@
                 } catch (x) {
                   control = x;
                 }
-                fn();
+                fn2();
               }
             } catch (sample) {
               if (sample && control && typeof sample.stack === "string") {
@@ -3212,12 +3212,12 @@
                         c2--;
                         if (c2 < 0 || sampleLines[s] !== controlLines[c2]) {
                           var _frame = "\n" + sampleLines[s].replace(" at new ", " at ");
-                          if (fn.displayName && _frame.includes("<anonymous>")) {
-                            _frame = _frame.replace("<anonymous>", fn.displayName);
+                          if (fn2.displayName && _frame.includes("<anonymous>")) {
+                            _frame = _frame.replace("<anonymous>", fn2.displayName);
                           }
                           {
-                            if (typeof fn === "function") {
-                              componentFrameCache.set(fn, _frame);
+                            if (typeof fn2 === "function") {
+                              componentFrameCache.set(fn2, _frame);
                             }
                           }
                           return _frame;
@@ -3236,11 +3236,11 @@
               }
               Error.prepareStackTrace = previousPrepareStackTrace;
             }
-            var name = fn ? fn.displayName || fn.name : "";
+            var name = fn2 ? fn2.displayName || fn2.name : "";
             var syntheticFrame = name ? describeBuiltInComponentFrame(name) : "";
             {
-              if (typeof fn === "function") {
-                componentFrameCache.set(fn, syntheticFrame);
+              if (typeof fn2 === "function") {
+                componentFrameCache.set(fn2, syntheticFrame);
               }
             }
             return syntheticFrame;
@@ -3250,9 +3250,9 @@
               return describeNativeComponentFrame(ctor, true);
             }
           }
-          function describeFunctionComponentFrame(fn, source, ownerFn) {
+          function describeFunctionComponentFrame(fn2, source, ownerFn) {
             {
-              return describeNativeComponentFrame(fn, false);
+              return describeNativeComponentFrame(fn2, false);
             }
           }
           function shouldConstruct(Component3) {
@@ -3820,7 +3820,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React34.Children.forEach(props.children, function(child) {
+                  React51.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -5278,8 +5278,8 @@
               }
             }
           }
-          var batchedUpdatesImpl = function(fn, bookkeeping) {
-            return fn(bookkeeping);
+          var batchedUpdatesImpl = function(fn2, bookkeeping) {
+            return fn2(bookkeeping);
           };
           var flushSyncImpl = function() {
           };
@@ -5291,13 +5291,13 @@
               restoreStateIfNeeded();
             }
           }
-          function batchedUpdates(fn, a2, b2) {
+          function batchedUpdates(fn2, a2, b2) {
             if (isInsideEventHandler) {
-              return fn(a2, b2);
+              return fn2(a2, b2);
             }
             isInsideEventHandler = true;
             try {
-              return batchedUpdatesImpl(fn, a2, b2);
+              return batchedUpdatesImpl(fn2, a2, b2);
             } finally {
               isInsideEventHandler = false;
               finishEventHandler();
@@ -6592,11 +6592,11 @@
           function setCurrentUpdatePriority(newPriority) {
             currentUpdatePriority = newPriority;
           }
-          function runWithPriority(priority, fn) {
+          function runWithPriority(priority, fn2) {
             var previousPriority = currentUpdatePriority;
             try {
               currentUpdatePriority = priority;
-              return fn();
+              return fn2();
             } finally {
               currentUpdatePriority = previousPriority;
             }
@@ -6628,27 +6628,27 @@
             return currentState.isDehydrated;
           }
           var _attemptSynchronousHydration;
-          function setAttemptSynchronousHydration(fn) {
-            _attemptSynchronousHydration = fn;
+          function setAttemptSynchronousHydration(fn2) {
+            _attemptSynchronousHydration = fn2;
           }
           function attemptSynchronousHydration(fiber) {
             _attemptSynchronousHydration(fiber);
           }
           var attemptContinuousHydration;
-          function setAttemptContinuousHydration(fn) {
-            attemptContinuousHydration = fn;
+          function setAttemptContinuousHydration(fn2) {
+            attemptContinuousHydration = fn2;
           }
           var attemptHydrationAtCurrentPriority;
-          function setAttemptHydrationAtCurrentPriority(fn) {
-            attemptHydrationAtCurrentPriority = fn;
+          function setAttemptHydrationAtCurrentPriority(fn2) {
+            attemptHydrationAtCurrentPriority = fn2;
           }
           var getCurrentUpdatePriority$1;
-          function setGetCurrentUpdatePriority(fn) {
-            getCurrentUpdatePriority$1 = fn;
+          function setGetCurrentUpdatePriority(fn2) {
+            getCurrentUpdatePriority$1 = fn2;
           }
           var attemptHydrationAtPriority;
-          function setAttemptHydrationAtPriority(fn) {
-            attemptHydrationAtPriority = fn;
+          function setAttemptHydrationAtPriority(fn2) {
+            attemptHydrationAtPriority = fn2;
           }
           var hasScheduledReplayAttempt = false;
           var queuedDiscreteEvents = [];
@@ -7144,16 +7144,16 @@
             target.addEventListener(eventType, listener, true);
             return listener;
           }
-          function addEventCaptureListenerWithPassiveFlag(target, eventType, listener, passive) {
+          function addEventCaptureListenerWithPassiveFlag(target, eventType, listener, passive2) {
             target.addEventListener(eventType, listener, {
               capture: true,
-              passive
+              passive: passive2
             });
             return listener;
           }
-          function addEventBubbleListenerWithPassiveFlag(target, eventType, listener, passive) {
+          function addEventBubbleListenerWithPassiveFlag(target, eventType, listener, passive2) {
             target.addEventListener(eventType, listener, {
-              passive
+              passive: passive2
             });
             return listener;
           }
@@ -7174,25 +7174,25 @@
             if (fallbackText) {
               return fallbackText;
             }
-            var start;
+            var start2;
             var startValue = startText;
             var startLength = startValue.length;
-            var end;
+            var end2;
             var endValue = getText();
             var endLength = endValue.length;
-            for (start = 0; start < startLength; start++) {
-              if (startValue[start] !== endValue[start]) {
+            for (start2 = 0; start2 < startLength; start2++) {
+              if (startValue[start2] !== endValue[start2]) {
                 break;
               }
             }
-            var minEnd = startLength - start;
-            for (end = 1; end <= minEnd; end++) {
-              if (startValue[startLength - end] !== endValue[endLength - end]) {
+            var minEnd = startLength - start2;
+            for (end2 = 1; end2 <= minEnd; end2++) {
+              if (startValue[startLength - end2] !== endValue[endLength - end2]) {
                 break;
               }
             }
-            var sliceTail = end > 1 ? 1 - end : void 0;
-            fallbackText = endValue.slice(start, sliceTail);
+            var sliceTail = end2 > 1 ? 1 - end2 : void 0;
+            fallbackText = endValue.slice(start2, sliceTail);
             return fallbackText;
           }
           function getText() {
@@ -7992,17 +7992,17 @@
               node = node.parentNode;
             }
           }
-          function getNodeForCharacterOffset(root2, offset) {
+          function getNodeForCharacterOffset(root2, offset2) {
             var node = getLeafNode(root2);
             var nodeStart = 0;
             var nodeEnd = 0;
             while (node) {
               if (node.nodeType === TEXT_NODE) {
                 nodeEnd = nodeStart + node.textContent.length;
-                if (nodeStart <= offset && nodeEnd >= offset) {
+                if (nodeStart <= offset2 && nodeEnd >= offset2) {
                   return {
                     node,
-                    offset: offset - nodeStart
+                    offset: offset2 - nodeStart
                   };
                 }
                 nodeStart = nodeEnd;
@@ -8028,8 +8028,8 @@
           }
           function getModernOffsetsFromPoints(outerNode, anchorNode, anchorOffset, focusNode, focusOffset) {
             var length = 0;
-            var start = -1;
-            var end = -1;
+            var start2 = -1;
+            var end2 = -1;
             var indexWithinAnchor = 0;
             var indexWithinFocus = 0;
             var node = outerNode;
@@ -8039,10 +8039,10 @@
                 var next = null;
                 while (true) {
                   if (node === anchorNode && (anchorOffset === 0 || node.nodeType === TEXT_NODE)) {
-                    start = length + anchorOffset;
+                    start2 = length + anchorOffset;
                   }
                   if (node === focusNode && (focusOffset === 0 || node.nodeType === TEXT_NODE)) {
-                    end = length + focusOffset;
+                    end2 = length + focusOffset;
                   }
                   if (node.nodeType === TEXT_NODE) {
                     length += node.nodeValue.length;
@@ -8058,10 +8058,10 @@
                     break outer;
                   }
                   if (parentNode === anchorNode && ++indexWithinAnchor === anchorOffset) {
-                    start = length;
+                    start2 = length;
                   }
                   if (parentNode === focusNode && ++indexWithinFocus === focusOffset) {
-                    end = length;
+                    end2 = length;
                   }
                   if ((next = node.nextSibling) !== null) {
                     break;
@@ -8071,12 +8071,12 @@
                 }
                 node = next;
               }
-            if (start === -1 || end === -1) {
+            if (start2 === -1 || end2 === -1) {
               return null;
             }
             return {
-              start,
-              end
+              start: start2,
+              end: end2
             };
           }
           function setOffsets(node, offsets) {
@@ -8087,15 +8087,15 @@
             }
             var selection = win2.getSelection();
             var length = node.textContent.length;
-            var start = Math.min(offsets.start, length);
-            var end = offsets.end === void 0 ? start : Math.min(offsets.end, length);
-            if (!selection.extend && start > end) {
-              var temp = end;
-              end = start;
-              start = temp;
+            var start2 = Math.min(offsets.start, length);
+            var end2 = offsets.end === void 0 ? start2 : Math.min(offsets.end, length);
+            if (!selection.extend && start2 > end2) {
+              var temp = end2;
+              end2 = start2;
+              start2 = temp;
             }
-            var startMarker = getNodeForCharacterOffset(node, start);
-            var endMarker = getNodeForCharacterOffset(node, end);
+            var startMarker = getNodeForCharacterOffset(node, start2);
+            var endMarker = getNodeForCharacterOffset(node, end2);
             if (startMarker && endMarker) {
               if (selection.rangeCount === 1 && selection.anchorNode === startMarker.node && selection.anchorOffset === startMarker.offset && selection.focusNode === endMarker.node && selection.focusOffset === endMarker.offset) {
                 return;
@@ -8103,7 +8103,7 @@
               var range = doc2.createRange();
               range.setStart(startMarker.node, startMarker.offset);
               selection.removeAllRanges();
-              if (start > end) {
+              if (start2 > end2) {
                 selection.addRange(range);
                 selection.extend(endMarker.node, endMarker.offset);
               } else {
@@ -8211,14 +8211,14 @@
             };
           }
           function setSelection(input, offsets) {
-            var start = offsets.start;
-            var end = offsets.end;
-            if (end === void 0) {
-              end = start;
+            var start2 = offsets.start;
+            var end2 = offsets.end;
+            if (end2 === void 0) {
+              end2 = start2;
             }
             if ("selectionStart" in input) {
-              input.selectionStart = start;
-              input.selectionEnd = Math.min(end, input.value.length);
+              input.selectionStart = start2;
+              input.selectionEnd = Math.min(end2, input.value.length);
             } else {
               setOffsets(input, offsets);
             }
@@ -8953,7 +8953,7 @@
               }
             }
           }
-          function createElement10(type, props, rootContainerElement, parentNamespace) {
+          function createElement11(type, props, rootContainerElement, parentNamespace) {
             var isCustomComponentTag;
             var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
             var domElement;
@@ -9805,7 +9805,7 @@
               }
               parentNamespace = hostContextDev.namespace;
             }
-            var domElement = createElement10(type, props, rootContainerInstance, parentNamespace);
+            var domElement = createElement11(type, props, rootContainerInstance, parentNamespace);
             precacheFiberNode(internalInstanceHandle, domElement);
             updateFiberProps(domElement, props);
             return domElement;
@@ -11244,15 +11244,15 @@
               }
               if (componentWillMountUniqueNames.size > 0) {
                 var _sortedNames3 = setToSortedString(componentWillMountUniqueNames);
-                warn("componentWillMount has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move code with side effects to componentDidMount, and set initial state in the constructor.\n* Rename componentWillMount to UNSAFE_componentWillMount to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames3);
+                warn3("componentWillMount has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move code with side effects to componentDidMount, and set initial state in the constructor.\n* Rename componentWillMount to UNSAFE_componentWillMount to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames3);
               }
               if (componentWillReceivePropsUniqueNames.size > 0) {
                 var _sortedNames4 = setToSortedString(componentWillReceivePropsUniqueNames);
-                warn("componentWillReceiveProps has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames4);
+                warn3("componentWillReceiveProps has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* If you're updating state whenever props change, refactor your code to use memoization techniques or move it to static getDerivedStateFromProps. Learn more at: https://reactjs.org/link/derived-state\n* Rename componentWillReceiveProps to UNSAFE_componentWillReceiveProps to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames4);
               }
               if (componentWillUpdateUniqueNames.size > 0) {
                 var _sortedNames5 = setToSortedString(componentWillUpdateUniqueNames);
-                warn("componentWillUpdate has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* Rename componentWillUpdate to UNSAFE_componentWillUpdate to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames5);
+                warn3("componentWillUpdate has been renamed, and is not recommended for use. See https://reactjs.org/link/unsafe-component-lifecycles for details.\n\n* Move data fetching code or side effects to componentDidUpdate.\n* Rename componentWillUpdate to UNSAFE_componentWillUpdate to suppress this warning in non-strict mode. In React 18.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run `npx react-codemod rename-unsafe-lifecycles` in your project source folder.\n\nPlease update the following components: %s", _sortedNames5);
               }
             };
             var pendingLegacyContextWarning = /* @__PURE__ */ new Map();
@@ -11971,17 +11971,17 @@
             finishedQueue.effects = null;
             if (effects !== null) {
               for (var i = 0; i < effects.length; i++) {
-                var effect2 = effects[i];
-                var callback = effect2.callback;
+                var effect5 = effects[i];
+                var callback = effect5.callback;
                 if (callback !== null) {
-                  effect2.callback = null;
+                  effect5.callback = null;
                   callCallback(callback, instance);
                 }
               }
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React34.Component().refs;
+          var emptyRefsObject = new React51.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -14049,7 +14049,7 @@
             return rerenderReducer(basicStateReducer);
           }
           function pushEffect(tag, create, destroy, deps) {
-            var effect2 = {
+            var effect5 = {
               tag,
               create,
               destroy,
@@ -14060,19 +14060,19 @@
             if (componentUpdateQueue === null) {
               componentUpdateQueue = createFunctionComponentUpdateQueue();
               currentlyRenderingFiber$1.updateQueue = componentUpdateQueue;
-              componentUpdateQueue.lastEffect = effect2.next = effect2;
+              componentUpdateQueue.lastEffect = effect5.next = effect5;
             } else {
               var lastEffect = componentUpdateQueue.lastEffect;
               if (lastEffect === null) {
-                componentUpdateQueue.lastEffect = effect2.next = effect2;
+                componentUpdateQueue.lastEffect = effect5.next = effect5;
               } else {
                 var firstEffect = lastEffect.next;
-                lastEffect.next = effect2;
-                effect2.next = firstEffect;
-                componentUpdateQueue.lastEffect = effect2;
+                lastEffect.next = effect5;
+                effect5.next = firstEffect;
+                componentUpdateQueue.lastEffect = effect5;
               }
             }
-            return effect2;
+            return effect5;
           }
           function mountRef(initialValue) {
             var hook = mountWorkInProgressHook();
@@ -14295,7 +14295,7 @@
                 if (prevTransition === null && currentTransition._updatedFibers) {
                   var updatedFibersCount = currentTransition._updatedFibers.size;
                   if (updatedFibersCount > 10) {
-                    warn("Detected a large number of updates inside startTransition. If this is due to a subscription please re-write it to use React provided hooks. Otherwise concurrent mode guarantees are off the table.");
+                    warn3("Detected a large number of updates inside startTransition. If this is due to a subscription please re-write it to use React provided hooks. Otherwise concurrent mode guarantees are off the table.");
                   }
                   currentTransition._updatedFibers.clear();
                 }
@@ -14304,22 +14304,22 @@
           }
           function mountTransition() {
             var _mountState = mountState(false), isPending = _mountState[0], setPending = _mountState[1];
-            var start = startTransition2.bind(null, setPending);
+            var start2 = startTransition2.bind(null, setPending);
             var hook = mountWorkInProgressHook();
-            hook.memoizedState = start;
-            return [isPending, start];
+            hook.memoizedState = start2;
+            return [isPending, start2];
           }
           function updateTransition() {
             var _updateState = updateState(), isPending = _updateState[0];
             var hook = updateWorkInProgressHook();
-            var start = hook.memoizedState;
-            return [isPending, start];
+            var start2 = hook.memoizedState;
+            return [isPending, start2];
           }
           function rerenderTransition() {
             var _rerenderState = rerenderState(), isPending = _rerenderState[0];
             var hook = updateWorkInProgressHook();
-            var start = hook.memoizedState;
-            return [isPending, start];
+            var start2 = hook.memoizedState;
+            return [isPending, start2];
           }
           var isUpdatingOpaqueValueInRenderPhase = false;
           function getIsUpdatingOpaqueValueInRenderPhaseInDEV() {
@@ -18197,11 +18197,11 @@
             var lastEffect = updateQueue !== null ? updateQueue.lastEffect : null;
             if (lastEffect !== null) {
               var firstEffect = lastEffect.next;
-              var effect2 = firstEffect;
+              var effect5 = firstEffect;
               do {
-                if ((effect2.tag & flags) === flags) {
-                  var destroy = effect2.destroy;
-                  effect2.destroy = void 0;
+                if ((effect5.tag & flags) === flags) {
+                  var destroy = effect5.destroy;
+                  effect5.destroy = void 0;
                   if (destroy !== void 0) {
                     {
                       if ((flags & Passive$1) !== NoFlags$1) {
@@ -18230,8 +18230,8 @@
                     }
                   }
                 }
-                effect2 = effect2.next;
-              } while (effect2 !== firstEffect);
+                effect5 = effect5.next;
+              } while (effect5 !== firstEffect);
             }
           }
           function commitHookEffectListMount(flags, finishedWork) {
@@ -18239,9 +18239,9 @@
             var lastEffect = updateQueue !== null ? updateQueue.lastEffect : null;
             if (lastEffect !== null) {
               var firstEffect = lastEffect.next;
-              var effect2 = firstEffect;
+              var effect5 = firstEffect;
               do {
-                if ((effect2.tag & flags) === flags) {
+                if ((effect5.tag & flags) === flags) {
                   {
                     if ((flags & Passive$1) !== NoFlags$1) {
                       markComponentPassiveEffectMountStarted(finishedWork);
@@ -18249,13 +18249,13 @@
                       markComponentLayoutEffectMountStarted(finishedWork);
                     }
                   }
-                  var create = effect2.create;
+                  var create = effect5.create;
                   {
                     if ((flags & Insertion) !== NoFlags$1) {
                       setIsRunningInsertionEffect(true);
                     }
                   }
-                  effect2.destroy = create();
+                  effect5.destroy = create();
                   {
                     if ((flags & Insertion) !== NoFlags$1) {
                       setIsRunningInsertionEffect(false);
@@ -18269,12 +18269,12 @@
                     }
                   }
                   {
-                    var destroy = effect2.destroy;
+                    var destroy = effect5.destroy;
                     if (destroy !== void 0 && typeof destroy !== "function") {
                       var hookName = void 0;
-                      if ((effect2.tag & Layout) !== NoFlags) {
+                      if ((effect5.tag & Layout) !== NoFlags) {
                         hookName = "useLayoutEffect";
-                      } else if ((effect2.tag & Insertion) !== NoFlags) {
+                      } else if ((effect5.tag & Insertion) !== NoFlags) {
                         hookName = "useInsertionEffect";
                       } else {
                         hookName = "useEffect";
@@ -18291,8 +18291,8 @@
                     }
                   }
                 }
-                effect2 = effect2.next;
-              } while (effect2 !== firstEffect);
+                effect5 = effect5.next;
+              } while (effect5 !== firstEffect);
             }
           }
           function commitPassiveEffectDurations(finishedRoot, finishedWork) {
@@ -18897,9 +18897,9 @@
                     var lastEffect = updateQueue.lastEffect;
                     if (lastEffect !== null) {
                       var firstEffect = lastEffect.next;
-                      var effect2 = firstEffect;
+                      var effect5 = firstEffect;
                       do {
-                        var _effect = effect2, destroy = _effect.destroy, tag = _effect.tag;
+                        var _effect = effect5, destroy = _effect.destroy, tag = _effect.tag;
                         if (destroy !== void 0) {
                           if ((tag & Insertion) !== NoFlags$1) {
                             safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy);
@@ -18919,8 +18919,8 @@
                             }
                           }
                         }
-                        effect2 = effect2.next;
-                      } while (effect2 !== firstEffect);
+                        effect5 = effect5.next;
+                      } while (effect5 !== firstEffect);
                     }
                   }
                 }
@@ -20222,11 +20222,11 @@
               }
             }
           }
-          function batchedUpdates$1(fn, a2) {
+          function batchedUpdates$1(fn2, a2) {
             var prevExecutionContext = executionContext;
             executionContext |= BatchedContext;
             try {
-              return fn(a2);
+              return fn2(a2);
             } finally {
               executionContext = prevExecutionContext;
               if (executionContext === NoContext && !ReactCurrentActQueue$1.isBatchingLegacy) {
@@ -20235,13 +20235,13 @@
               }
             }
           }
-          function discreteUpdates(fn, a2, b2, c2, d) {
+          function discreteUpdates(fn2, a2, b2, c2, d) {
             var previousPriority = getCurrentUpdatePriority();
             var prevTransition = ReactCurrentBatchConfig$3.transition;
             try {
               ReactCurrentBatchConfig$3.transition = null;
               setCurrentUpdatePriority(DiscreteEventPriority);
-              return fn(a2, b2, c2, d);
+              return fn2(a2, b2, c2, d);
             } finally {
               setCurrentUpdatePriority(previousPriority);
               ReactCurrentBatchConfig$3.transition = prevTransition;
@@ -20250,7 +20250,7 @@
               }
             }
           }
-          function flushSync3(fn) {
+          function flushSync3(fn2) {
             if (rootWithPendingPassiveEffects !== null && rootWithPendingPassiveEffects.tag === LegacyRoot && (executionContext & (RenderContext | CommitContext)) === NoContext) {
               flushPassiveEffects();
             }
@@ -20261,8 +20261,8 @@
             try {
               ReactCurrentBatchConfig$3.transition = null;
               setCurrentUpdatePriority(DiscreteEventPriority);
-              if (fn) {
-                return fn();
+              if (fn2) {
+                return fn2();
               } else {
                 return void 0;
               }
@@ -22233,12 +22233,12 @@
             };
             var copyWithRename = function(obj, oldPath, newPath) {
               if (oldPath.length !== newPath.length) {
-                warn("copyWithRename() expects paths of the same length");
+                warn3("copyWithRename() expects paths of the same length");
                 return;
               } else {
                 for (var i = 0; i < newPath.length - 1; i++) {
                   if (oldPath[i] !== newPath[i]) {
-                    warn("copyWithRename() expects paths to be the same except for the deepest key");
+                    warn3("copyWithRename() expects paths to be the same except for the deepest key");
                     return;
                   }
                 }
@@ -22453,7 +22453,7 @@
             if (options2 !== null && options2 !== void 0) {
               {
                 if (options2.hydrate) {
-                  warn("hydrate through createRoot is deprecated. Use ReactDOMClient.hydrateRoot(container, <App />) instead.");
+                  warn3("hydrate through createRoot is deprecated. Use ReactDOMClient.hydrateRoot(container, <App />) instead.");
                 } else {
                   if (typeof options2 === "object" && options2 !== null && options2.$$typeof === REACT_ELEMENT_TYPE) {
                     error("You passed a JSX element to createRoot. You probably meant to call root.render instead. Example usage:\n\n  let root = createRoot(domContainer);\n  root.render(<App />);");
@@ -22809,13 +22809,13 @@
             }
             return hydrateRoot(container3, initialChildren, options2);
           }
-          function flushSync$1(fn) {
+          function flushSync$1(fn2) {
             {
               if (isAlreadyRendering()) {
                 error("flushSync was called from inside a lifecycle method. React cannot flush when React is already rendering. Consider moving this call to a scheduler task or micro task.");
               }
             }
-            return flushSync3(fn);
+            return flushSync3(fn2);
           }
           var foundDevTools = injectIntoDevTools({
             findFiberByHostInstance: getClosestInstanceFromNode,
@@ -23342,8 +23342,8 @@
         }
         assignMergeValue(object, key, newValue);
       }
-      function baseRest(func, start) {
-        return setToString(overRest(func, start, identity), func + "");
+      function baseRest(func, start2) {
+        return setToString(overRest(func, start2, identity), func + "");
       }
       var baseSetToString = !defineProperty ? identity : function(func, string) {
         return defineProperty(func, "toString", {
@@ -23492,19 +23492,19 @@
       function objectToString(value) {
         return nativeObjectToString.call(value);
       }
-      function overRest(func, start, transform2) {
-        start = nativeMax(start === void 0 ? func.length - 1 : start, 0);
+      function overRest(func, start2, transform2) {
+        start2 = nativeMax(start2 === void 0 ? func.length - 1 : start2, 0);
         return function() {
-          var args = arguments, index = -1, length = nativeMax(args.length - start, 0), array = Array(length);
+          var args = arguments, index = -1, length = nativeMax(args.length - start2, 0), array = Array(length);
           while (++index < length) {
-            array[index] = args[start + index];
+            array[index] = args[start2 + index];
           }
           index = -1;
-          var otherArgs = Array(start + 1);
-          while (++index < start) {
+          var otherArgs = Array(start2 + 1);
+          while (++index < start2) {
             otherArgs[index] = args[index];
           }
-          otherArgs[start] = transform2(array);
+          otherArgs[start2] = transform2(array);
           return apply(func, this, otherArgs);
         };
       }
@@ -24407,11 +24407,11 @@
     "node_modules/@emotion/memoize/dist/emotion-memoize.cjs.dev.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      function memoize3(fn) {
+      function memoize3(fn2) {
         var cache = /* @__PURE__ */ Object.create(null);
         return function(arg) {
           if (cache[arg] === void 0)
-            cache[arg] = fn(arg);
+            cache[arg] = fn2(arg);
           return cache[arg];
         };
       }
@@ -25006,7 +25006,7 @@
           function isContextProvider(object) {
             return typeOf(object) === REACT_PROVIDER_TYPE;
           }
-          function isElement(object) {
+          function isElement3(object) {
             return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
           }
           function isForwardRef(object) {
@@ -25050,7 +25050,7 @@
           exports.isConcurrentMode = isConcurrentMode;
           exports.isContextConsumer = isContextConsumer;
           exports.isContextProvider = isContextProvider;
-          exports.isElement = isElement;
+          exports.isElement = isElement3;
           exports.isForwardRef = isForwardRef;
           exports.isFragment = isFragment;
           exports.isLazy = isLazy;
@@ -25638,7 +25638,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     "node_modules/@emotion/use-insertion-effect-with-fallbacks/dist/emotion-use-insertion-effect-with-fallbacks.cjs.dev.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      var React34 = require_react();
+      var React51 = require_react();
       function _interopNamespace(e) {
         if (e && e.__esModule)
           return e;
@@ -25659,14 +25659,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         n["default"] = e;
         return Object.freeze(n);
       }
-      var React__namespace = /* @__PURE__ */ _interopNamespace(React34);
+      var React__namespace = /* @__PURE__ */ _interopNamespace(React51);
       var isBrowser4 = typeof document !== "undefined";
       var syncFallback = function syncFallback2(create) {
         return create();
       };
       var useInsertionEffect2 = React__namespace["useInsertionEffect"] ? React__namespace["useInsertionEffect"] : false;
       var useInsertionEffectAlwaysWithSyncFallback = !isBrowser4 ? syncFallback : useInsertionEffect2 || syncFallback;
-      var useInsertionEffectWithLayoutFallback = useInsertionEffect2 || React34.useLayoutEffect;
+      var useInsertionEffectWithLayoutFallback = useInsertionEffect2 || React51.useLayoutEffect;
       exports.useInsertionEffectAlwaysWithSyncFallback = useInsertionEffectAlwaysWithSyncFallback;
       exports.useInsertionEffectWithLayoutFallback = useInsertionEffectWithLayoutFallback;
     }
@@ -25688,7 +25688,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var require_emotion_element_b63ca7c6_cjs_dev = __commonJS({
     "node_modules/@emotion/react/dist/emotion-element-b63ca7c6.cjs.dev.js"(exports) {
       "use strict";
-      var React34 = require_react();
+      var React51 = require_react();
       var createCache = require_emotion_cache_cjs();
       var _extends5 = require_extends();
       var weakMemoize = require_emotion_weak_memoize_cjs();
@@ -25703,7 +25703,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       var weakMemoize__default = /* @__PURE__ */ _interopDefault(weakMemoize);
       var isBrowser4 = typeof document !== "undefined";
       var hasOwnProperty = {}.hasOwnProperty;
-      var EmotionCacheContext = /* @__PURE__ */ React34.createContext(
+      var EmotionCacheContext = /* @__PURE__ */ React51.createContext(
         typeof HTMLElement !== "undefined" ? /* @__PURE__ */ createCache__default["default"]({
           key: "css"
         }) : null
@@ -25713,23 +25713,23 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }
       var CacheProvider = EmotionCacheContext.Provider;
       var __unsafe_useEmotionCache = function useEmotionCache() {
-        return React34.useContext(EmotionCacheContext);
+        return React51.useContext(EmotionCacheContext);
       };
       exports.withEmotionCache = function withEmotionCache(func) {
-        return /* @__PURE__ */ React34.forwardRef(function(props, ref) {
-          var cache = React34.useContext(EmotionCacheContext);
+        return /* @__PURE__ */ React51.forwardRef(function(props, ref) {
+          var cache = React51.useContext(EmotionCacheContext);
           return func(props, cache, ref);
         });
       };
       if (!isBrowser4) {
         exports.withEmotionCache = function withEmotionCache(func) {
           return function(props) {
-            var cache = React34.useContext(EmotionCacheContext);
+            var cache = React51.useContext(EmotionCacheContext);
             if (cache === null) {
               cache = createCache__default["default"]({
                 key: "css"
               });
-              return /* @__PURE__ */ React34.createElement(EmotionCacheContext.Provider, {
+              return /* @__PURE__ */ React51.createElement(EmotionCacheContext.Provider, {
                 value: cache
               }, func(props, cache));
             } else {
@@ -25738,12 +25738,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           };
         };
       }
-      var ThemeContext2 = /* @__PURE__ */ React34.createContext({});
+      var ThemeContext2 = /* @__PURE__ */ React51.createContext({});
       if (true) {
         ThemeContext2.displayName = "EmotionThemeContext";
       }
       var useTheme2 = function useTheme3() {
-        return React34.useContext(ThemeContext2);
+        return React51.useContext(ThemeContext2);
       };
       var getTheme2 = function getTheme3(outerTheme, theme3) {
         if (typeof theme3 === "function") {
@@ -25764,24 +25764,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         });
       });
       var ThemeProvider2 = function ThemeProvider3(props) {
-        var theme3 = React34.useContext(ThemeContext2);
+        var theme3 = React51.useContext(ThemeContext2);
         if (props.theme !== theme3) {
           theme3 = createCacheWithTheme(theme3)(props.theme);
         }
-        return /* @__PURE__ */ React34.createElement(ThemeContext2.Provider, {
+        return /* @__PURE__ */ React51.createElement(ThemeContext2.Provider, {
           value: theme3
         }, props.children);
       };
       function withTheme(Component3) {
         var componentName = Component3.displayName || Component3.name || "Component";
         var render = function render2(props, ref) {
-          var theme3 = React34.useContext(ThemeContext2);
-          return /* @__PURE__ */ React34.createElement(Component3, _extends5({
+          var theme3 = React51.useContext(ThemeContext2);
+          return /* @__PURE__ */ React51.createElement(Component3, _extends5({
             theme: theme3,
             ref
           }, props));
         };
-        var WithTheme = /* @__PURE__ */ React34.forwardRef(render);
+        var WithTheme = /* @__PURE__ */ React51.forwardRef(render);
         WithTheme.displayName = "WithTheme(" + componentName + ")";
         return _isolatedHnrs_dist_emotionReact_isolatedHnrs["default"](WithTheme, Component3);
       }
@@ -25851,7 +25851,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             serializedNames += " " + next.name;
             next = next.next;
           }
-          return /* @__PURE__ */ React34.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
+          return /* @__PURE__ */ React51.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
             __html: rules
           }, _ref2.nonce = cache.sheet.nonce, _ref2));
         }
@@ -25870,7 +25870,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         } else if (props.className != null) {
           className = props.className + " ";
         }
-        var serialized = serialize.serializeStyles(registeredStyles, void 0, React34.useContext(ThemeContext2));
+        var serialized = serialize.serializeStyles(registeredStyles, void 0, React51.useContext(ThemeContext2));
         if (serialized.name.indexOf("-") === -1) {
           var labelFromStack = props[labelPropName];
           if (labelFromStack) {
@@ -25886,11 +25886,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         }
         newProps.ref = ref;
         newProps.className = className;
-        return /* @__PURE__ */ React34.createElement(React34.Fragment, null, /* @__PURE__ */ React34.createElement(Insertion, {
+        return /* @__PURE__ */ React51.createElement(React51.Fragment, null, /* @__PURE__ */ React51.createElement(Insertion, {
           cache,
           serialized,
           isStringTag: typeof WrappedComponent === "string"
-        }), /* @__PURE__ */ React34.createElement(WrappedComponent, newProps));
+        }), /* @__PURE__ */ React51.createElement(WrappedComponent, newProps));
       });
       if (true) {
         Emotion.displayName = "EmotionCssPropInternal";
@@ -25913,7 +25913,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     "node_modules/@emotion/react/dist/emotion-react.cjs.dev.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      var React34 = require_react();
+      var React51 = require_react();
       require_emotion_cache_cjs();
       var emotionElement = require_emotion_element_b63ca7c6_cjs_dev();
       require_extends();
@@ -26048,7 +26048,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       var jsx = function jsx2(type, props) {
         var args = arguments;
         if (props == null || !emotionElement.hasOwnProperty.call(props, "css")) {
-          return React34.createElement.apply(void 0, args);
+          return React51.createElement.apply(void 0, args);
         }
         var argsLength = args.length;
         var createElementArgArray = new Array(argsLength);
@@ -26057,7 +26057,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         for (var i = 2; i < argsLength; i++) {
           createElementArgArray[i] = args[i];
         }
-        return React34.createElement.apply(null, createElementArgArray);
+        return React51.createElement.apply(null, createElementArgArray);
       };
       var warnedAboutCssPropForGlobal = false;
       var Global3 = /* @__PURE__ */ emotionElement.withEmotionCache(function(props, cache) {
@@ -26066,7 +26066,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           warnedAboutCssPropForGlobal = true;
         }
         var styles2 = props.styles;
-        var serialized = serialize.serializeStyles([styles2], void 0, React34.useContext(emotionElement.ThemeContext));
+        var serialized = serialize.serializeStyles([styles2], void 0, React51.useContext(emotionElement.ThemeContext));
         if (!emotionElement.isBrowser) {
           var _ref;
           var serializedNames = serialized.name;
@@ -26085,11 +26085,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           if (shouldCache) {
             return null;
           }
-          return /* @__PURE__ */ React34.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + "-global " + serializedNames, _ref.dangerouslySetInnerHTML = {
+          return /* @__PURE__ */ React51.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + "-global " + serializedNames, _ref.dangerouslySetInnerHTML = {
             __html: rules
           }, _ref.nonce = cache.sheet.nonce, _ref));
         }
-        var sheetRef = React34.useRef();
+        var sheetRef = React51.useRef();
         useInsertionEffectWithFallbacks.useInsertionEffectWithLayoutFallback(function() {
           var key = cache.key + "-global";
           var sheet = new cache.sheet.constructor({
@@ -26217,7 +26217,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         });
         if (!emotionElement.isBrowser && rules.length !== 0) {
           var _ref2;
-          return /* @__PURE__ */ React34.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedArr.map(function(serialized) {
+          return /* @__PURE__ */ React51.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedArr.map(function(serialized) {
             return serialized.name;
           }).join(" "), _ref2.dangerouslySetInnerHTML = {
             __html: rules
@@ -26240,7 +26240,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           utils.registerStyles(cache, serialized, false);
           return cache.key + "-" + serialized.name;
         };
-        var cx6 = function cx7() {
+        var cx9 = function cx10() {
           if (hasRendered && true) {
             throw new Error("cx can only be used during render");
           }
@@ -26251,12 +26251,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         };
         var content = {
           css: css3,
-          cx: cx6,
-          theme: React34.useContext(emotionElement.ThemeContext)
+          cx: cx9,
+          theme: React51.useContext(emotionElement.ThemeContext)
         };
         var ele = props.children(content);
         hasRendered = true;
-        return /* @__PURE__ */ React34.createElement(React34.Fragment, null, /* @__PURE__ */ React34.createElement(Insertion, {
+        return /* @__PURE__ */ React51.createElement(React51.Fragment, null, /* @__PURE__ */ React51.createElement(Insertion, {
           cache,
           serializedArr
         }), ele);
@@ -26351,7 +26351,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       var _extends5 = require_extends();
-      var React34 = require_react();
+      var React51 = require_react();
       var isPropValid = require_emotion_is_prop_valid_cjs();
       var react = require_emotion_react_cjs();
       var utils = require_emotion_utils_cjs();
@@ -26400,7 +26400,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             serializedNames += " " + next.name;
             next = next.next;
           }
-          return /* @__PURE__ */ React34.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
+          return /* @__PURE__ */ React51.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
             __html: rules
           }, _ref2.nonce = cache.sheet.nonce, _ref2));
         }
@@ -26455,7 +26455,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
               for (var key in props) {
                 mergedProps[key] = props[key];
               }
-              mergedProps.theme = React34.useContext(react.ThemeContext);
+              mergedProps.theme = React51.useContext(react.ThemeContext);
             }
             if (typeof props.className === "string") {
               className = utils.getRegisteredStyles(cache.registered, classInterpolations, props.className);
@@ -26478,11 +26478,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             }
             newProps.className = className;
             newProps.ref = ref;
-            return /* @__PURE__ */ React34.createElement(React34.Fragment, null, /* @__PURE__ */ React34.createElement(Insertion, {
+            return /* @__PURE__ */ React51.createElement(React51.Fragment, null, /* @__PURE__ */ React51.createElement(Insertion, {
               cache,
               serialized,
               isStringTag: typeof FinalTag === "string"
-            }), /* @__PURE__ */ React34.createElement(FinalTag, newProps));
+            }), /* @__PURE__ */ React51.createElement(FinalTag, newProps));
           });
           Styled.displayName = identifierName !== void 0 ? identifierName : "Styled(" + (typeof baseTag === "string" ? baseTag : baseTag.displayName || baseTag.name || "Component") + ")";
           Styled.defaultProps = tag.defaultProps;
@@ -26779,11 +26779,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     "node_modules/framer-motion/node_modules/@emotion/memoize/dist/memoize.browser.cjs.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      function memoize3(fn) {
+      function memoize3(fn2) {
         var cache = {};
         return function(arg) {
           if (cache[arg] === void 0)
-            cache[arg] = fn(arg);
+            cache[arg] = fn2(arg);
           return cache[arg];
         };
       }
@@ -26814,8 +26814,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var require_tslib = __commonJS({
     "node_modules/popmotion/node_modules/tslib/tslib.js"(exports, module) {
       var __extends2;
-      var __assign2;
-      var __rest2;
+      var __assign3;
+      var __rest3;
       var __decorate2;
       var __param2;
       var __metadata2;
@@ -26878,7 +26878,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           }
           d.prototype = b2 === null ? Object.create(b2) : (__.prototype = b2.prototype, new __());
         };
-        __assign2 = Object.assign || function(t2) {
+        __assign3 = Object.assign || function(t2) {
           for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s)
@@ -26887,7 +26887,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           }
           return t2;
         };
-        __rest2 = function(s, e) {
+        __rest3 = function(s, e) {
           var t2 = {};
           for (var p in s)
             if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -27222,8 +27222,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           return typeof state2 === "function" ? receiver === state2 : state2.has(receiver);
         };
         exporter("__extends", __extends2);
-        exporter("__assign", __assign2);
-        exporter("__rest", __rest2);
+        exporter("__assign", __assign3);
+        exporter("__rest", __rest3);
         exporter("__decorate", __decorate2);
         exporter("__param", __param2);
         exporter("__metadata", __metadata2);
@@ -27298,7 +27298,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         "default": "Text"
       };
       var defaultMessage = "Copy to clipboard: #{key}, Enter";
-      function format(message) {
+      function format2(message) {
         var copyKey = (/mac os x/i.test(navigator.userAgent) ? "\u2318" : "Ctrl") + "+C";
         return message.replace(/#{\s*key\s*}/g, copyKey);
       }
@@ -27331,8 +27331,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
                 debug && console.warn("unable to use e.clipboardData");
                 debug && console.warn("trying IE specific stuff");
                 window.clipboardData.clearData();
-                var format2 = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"];
-                window.clipboardData.setData(format2, text);
+                var format3 = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"];
+                window.clipboardData.setData(format3, text);
               } else {
                 e.clipboardData.clearData();
                 e.clipboardData.setData(options.format, text);
@@ -27361,7 +27361,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           } catch (err2) {
             debug && console.error("unable to copy using clipboardData: ", err2);
             debug && console.error("falling back to prompt");
-            message = format("message" in options ? options.message : defaultMessage);
+            message = format2("message" in options ? options.message : defaultMessage);
             window.prompt(message, text);
           }
         } finally {
@@ -27532,10 +27532,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             var y = 1970 + (year - 1970) % 400;
             ts.year = year - y;
             return y;
-          }).replace(/(?:Z|([+\-]\d{2}):?(\d{2}))$/, function(match, hour, min) {
+          }).replace(/(?:Z|([+\-]\d{2}):?(\d{2}))$/, function(match, hour, min2) {
             if (hour < 0)
-              min *= -1;
-            time = (+hour * 60 + +min) * 6e4;
+              min2 *= -1;
+            time = (+hour * 60 + +min2) * 6e4;
             return "";
           }).replace(/\.\d+$/, function(match) {
             ts.nano = +(match + ZERO9).substr(1, 9);
@@ -27564,10 +27564,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           low = +low || 0;
           var slot = trunc(high / SEC_SLOT) + trunc(low / SEC_SLOT);
           var second = high % SEC_SLOT + low % SEC_SLOT;
-          var offset = trunc(second / SEC_SLOT);
-          if (offset) {
-            slot += offset;
-            second -= offset * SEC_SLOT;
+          var offset2 = trunc(second / SEC_SLOT);
+          if (offset2) {
+            slot += offset2;
+            second -= offset2 * SEC_SLOT;
           }
           return new Timestamp3(second * 1e3, 0, slot * YEAR_SLOT);
         }
@@ -27582,7 +27582,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         function toJSON() {
           return this.toString().replace(/0{1,6}Z$/, "Z");
         }
-        function toString(format) {
+        function toString(format2) {
           var ts = this;
           var dt = ts.toDate();
           var map = {
@@ -27598,9 +27598,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             e,
             m
           };
-          return strftime(format || FMT_JSON);
-          function strftime(format2) {
-            return format2.replace(/%./g, function(match) {
+          return strftime(format2 || FMT_JSON);
+          function strftime(format3) {
+            return format3.replace(/%./g, function(match) {
               var m2 = match[1];
               var c2 = FMT_STRING[m2];
               var f = map[m2];
@@ -27654,11 +27654,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         }
         function buildWriteInt64(pos0, pos1, pos2, pos3, posH, posL) {
           return writeInt64;
-          function writeInt64(buffer, offset) {
+          function writeInt64(buffer, offset2) {
             var ts = normalize3(this);
             if (!buffer)
               buffer = new Array(8);
-            checkRange(buffer, offset |= 0);
+            checkRange(buffer, offset2 |= 0);
             var second = Math.floor(ts.time / 1e3);
             var day = ts.year * (DAY_SLOT * SEC_DAY / YEAR_SLOT);
             var high = trunc(day / BIT32) + trunc(second / BIT32);
@@ -27668,34 +27668,34 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
               high += slot;
               low -= slot * BIT32;
             }
-            writeUint32(buffer, offset + posH, high);
-            writeUint32(buffer, offset + posL, low);
+            writeUint32(buffer, offset2 + posH, high);
+            writeUint32(buffer, offset2 + posL, low);
             return buffer;
           }
-          function writeUint32(buffer, offset, value) {
-            buffer[offset + pos0] = value >> 24 & 255;
-            buffer[offset + pos1] = value >> 16 & 255;
-            buffer[offset + pos2] = value >> 8 & 255;
-            buffer[offset + pos3] = value & 255;
+          function writeUint32(buffer, offset2, value) {
+            buffer[offset2 + pos0] = value >> 24 & 255;
+            buffer[offset2 + pos1] = value >> 16 & 255;
+            buffer[offset2 + pos2] = value >> 8 & 255;
+            buffer[offset2 + pos3] = value & 255;
           }
         }
         function buildFromInt64(pos0, pos1, pos2, pos3, posH, posL) {
           return fromInt64;
-          function fromInt64(buffer, offset) {
-            checkRange(buffer, offset |= 0);
-            var high = readUint32(buffer, offset + posH);
-            var low = readUint32(buffer, offset + posL);
+          function fromInt64(buffer, offset2) {
+            checkRange(buffer, offset2 |= 0);
+            var high = readUint32(buffer, offset2 + posH);
+            var low = readUint32(buffer, offset2 + posL);
             return fromTime(low, high);
           }
-          function readUint32(buffer, offset) {
-            return buffer[offset + pos0] * BIT24 + (buffer[offset + pos1] << 16 | buffer[offset + pos2] << 8 | buffer[offset + pos3]);
+          function readUint32(buffer, offset2) {
+            return buffer[offset2 + pos0] * BIT24 + (buffer[offset2 + pos1] << 16 | buffer[offset2 + pos2] << 8 | buffer[offset2 + pos3]);
           }
         }
-        function checkRange(buffer, offset) {
+        function checkRange(buffer, offset2) {
           var last = buffer && buffer.length;
           if (last == null)
             throw new TypeError("Invalid Buffer");
-          if (last < offset + 8)
+          if (last < offset2 + 8)
             throw new RangeError("Out of range");
         }
         function Math_trunc(x) {
@@ -27716,11 +27716,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
 
   // app/main.tsx
-  var import_react131 = __toESM(require_react());
+  var import_react178 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // node_modules/@chakra-ui/react/dist/index.esm.js
-  var import_react112 = __toESM(require_react());
+  var import_react137 = __toESM(require_react());
+
+  // node_modules/@chakra-ui/accordion/dist/index.esm.js
+  var import_react62 = __toESM(require_react());
 
   // node_modules/@chakra-ui/system/dist/index.esm.js
   var import_react7 = __toESM(require_react());
@@ -27772,10 +27775,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         const dark = utils.query().matches ?? fallback === "dark";
         return dark ? "dark" : "light";
       },
-      addListener(fn) {
+      addListener(fn2) {
         const mql = utils.query();
         const listener = (e) => {
-          fn(e.matches ? "dark" : "light");
+          fn2(e.matches ? "dark" : "light");
         };
         if (typeof mql.addListener === "function")
           mql.addListener(listener);
@@ -27956,33 +27959,33 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var isFunction = (value) => typeof value === "function";
   var isImportant = (value) => /!(important)?$/.test(value);
   var withoutImportant = (value) => typeof value === "string" ? value.replace(/!(important)?$/, "").trim() : value;
-  var tokenToCSSVar = (scale2, value) => (theme3) => {
+  var tokenToCSSVar = (scale3, value) => (theme3) => {
     const valueStr = String(value);
     const important = isImportant(valueStr);
     const valueWithoutImportant = withoutImportant(valueStr);
-    const key = scale2 ? `${scale2}.${valueWithoutImportant}` : valueWithoutImportant;
+    const key = scale3 ? `${scale3}.${valueWithoutImportant}` : valueWithoutImportant;
     let transformed = isObject(theme3.__cssMap) && key in theme3.__cssMap ? theme3.__cssMap[key].varRef : value;
     transformed = withoutImportant(transformed);
     return important ? `${transformed} !important` : transformed;
   };
   function createTransform(options) {
-    const { scale: scale2, transform: transform2, compose } = options;
-    const fn = (value, theme3) => {
-      const _value = tokenToCSSVar(scale2, value)(theme3);
+    const { scale: scale3, transform: transform2, compose } = options;
+    const fn2 = (value, theme3) => {
+      const _value = tokenToCSSVar(scale3, value)(theme3);
       let result = (transform2 == null ? void 0 : transform2(_value, theme3)) ?? _value;
       if (compose) {
         result = compose(result, theme3);
       }
       return result;
     };
-    return fn;
+    return fn2;
   }
   var pipe = (...fns) => (v) => fns.reduce((a2, b2) => b2(a2), v);
-  function toConfig(scale2, transform2) {
+  function toConfig(scale3, transform2) {
     return (property) => {
-      const result = { property, scale: scale2 };
+      const result = { property, scale: scale3 };
       result.transform = createTransform({
-        scale: scale2,
+        scale: scale3,
         transform: transform2
       });
       return result;
@@ -27990,12 +27993,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   var getRtl = ({ rtl, ltr }) => (theme3) => theme3.direction === "rtl" ? rtl : ltr;
   function logical(options) {
-    const { property, scale: scale2, transform: transform2 } = options;
+    const { property, scale: scale3, transform: transform2 } = options;
     return {
-      scale: scale2,
+      scale: scale3,
       property: getRtl(property),
-      transform: scale2 ? createTransform({
-        scale: scale2,
+      transform: scale3 ? createTransform({
+        scale: scale3,
         compose: transform2
       }) : transform2
     };
@@ -28245,12 +28248,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     degreeT(property) {
       return { property, transform: transformFunctions.degree };
     },
-    prop(property, scale2, transform2) {
+    prop(property, scale3, transform2) {
       return {
         property,
-        scale: scale2,
-        ...scale2 && {
-          transform: createTransform({ scale: scale2, transform: transform2 })
+        scale: scale3,
+        ...scale3 && {
+          transform: createTransform({ scale: scale3, transform: transform2 })
         }
       };
     },
@@ -28578,11 +28581,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
     return obj === void 0 ? fallback : obj;
   }
-  var memoize = (fn) => {
+  var memoize = (fn2) => {
     const cache = /* @__PURE__ */ new WeakMap();
     const memoizedFn = (obj, path, fallback, index) => {
       if (typeof obj === "undefined") {
-        return fn(obj, path, fallback);
+        return fn2(obj, path, fallback);
       }
       if (!cache.has(obj)) {
         cache.set(obj, /* @__PURE__ */ new Map());
@@ -28591,7 +28594,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (map.has(path)) {
         return map.get(path);
       }
-      const value = fn(obj, path, fallback, index);
+      const value = fn2(obj, path, fallback, index);
       map.set(path, value);
       return value;
     };
@@ -28911,12 +28914,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const factor = value.endsWith("px") ? -1 : -0.0625;
     return typeof value === "number" ? `${value + factor}` : value.replace(/(\d+\.?\d*)/u, (m) => `${parseFloat(m) + factor}`);
   }
-  function toMediaQueryString(min, max) {
+  function toMediaQueryString(min2, max2) {
     const query = ["@media screen"];
-    if (min)
-      query.push("and", `(min-width: ${px(min)})`);
-    if (max)
-      query.push("and", `(max-width: ${px(max)})`);
+    if (min2)
+      query.push("and", `(min-width: ${px(min2)})`);
+    if (max2)
+      query.push("and", `(max-width: ${px(max2)})`);
     return query.join(" ");
   }
   function analyzeBreakpoints(breakpoints4) {
@@ -28990,9 +28993,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     expanded: (str, post) => `${str}:read-only ${post}, ${str}[aria-expanded=true] ${post}, ${str}[data-expanded] ${post}`,
     placeholderShown: (str, post) => `${str}:placeholder-shown ${post}`
   };
-  var toGroup = (fn) => merge((v) => fn(v, "&"), "[role=group]", "[data-group]", ".group");
-  var toPeer = (fn) => merge((v) => fn(v, "~ &"), "[data-peer]", ".peer");
-  var merge = (fn, ...selectors) => selectors.map(fn).join(", ");
+  var toGroup = (fn2) => merge((v) => fn2(v, "&"), "[role=group]", "[data-group]", ".group");
+  var toPeer = (fn2) => merge((v) => fn2(v, "~ &"), "[data-peer]", ".peer");
+  var merge = (fn2, ...selectors) => selectors.map(fn2).join(", ");
   var pseudoSelectors = {
     _hover: "&:hover, &[data-hover]",
     _active: "&:active, &[data-active]",
@@ -29058,43 +29061,43 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return cssVar(String(token).replace(/\./g, "-"), void 0, prefix);
   }
   function createThemeVars(flatTokens, options) {
-    let cssVars = {};
+    let cssVars2 = {};
     const cssMap = {};
     for (const [token, tokenValue] of Object.entries(flatTokens)) {
       const { isSemantic, value } = tokenValue;
-      const { variable, reference } = tokenToCssVar(token, options == null ? void 0 : options.cssVarPrefix);
+      const { variable, reference: reference2 } = tokenToCssVar(token, options == null ? void 0 : options.cssVarPrefix);
       if (!isSemantic) {
         if (token.startsWith("space")) {
           const keys2 = token.split(".");
           const [firstKey, ...referenceKeys] = keys2;
           const negativeLookupKey = `${firstKey}.-${referenceKeys.join(".")}`;
           const negativeValue = calc.negate(value);
-          const negatedReference = calc.negate(reference);
+          const negatedReference = calc.negate(reference2);
           cssMap[negativeLookupKey] = {
             value: negativeValue,
             var: variable,
             varRef: negatedReference
           };
         }
-        cssVars[variable] = value;
+        cssVars2[variable] = value;
         cssMap[token] = {
           value,
           var: variable,
-          varRef: reference
+          varRef: reference2
         };
         continue;
       }
       const lookupToken = (maybeToken) => {
-        const scale2 = String(token).split(".")[0];
-        const withScale = [scale2, maybeToken].join(".");
+        const scale3 = String(token).split(".")[0];
+        const withScale = [scale3, maybeToken].join(".");
         const resolvedTokenValue = flatTokens[withScale];
         if (!resolvedTokenValue)
           return maybeToken;
-        const { reference: reference2 } = tokenToCssVar(withScale, options == null ? void 0 : options.cssVarPrefix);
-        return reference2;
+        const { reference: reference22 } = tokenToCssVar(withScale, options == null ? void 0 : options.cssVarPrefix);
+        return reference22;
       };
       const normalizedValue = isObject(value) ? value : { default: value };
-      cssVars = (0, import_lodash.default)(cssVars, Object.entries(normalizedValue).reduce((acc, [conditionAlias, conditionValue]) => {
+      cssVars2 = (0, import_lodash.default)(cssVars2, Object.entries(normalizedValue).reduce((acc, [conditionAlias, conditionValue]) => {
         var _a8;
         const maybeReference = lookupToken(conditionValue);
         if (conditionAlias === "default") {
@@ -29106,13 +29109,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         return acc;
       }, {}));
       cssMap[token] = {
-        value: reference,
+        value: reference2,
         var: variable,
-        varRef: reference
+        varRef: reference2
       };
     }
     return {
-      cssVars,
+      cssVars: cssVars2,
       cssMap
     };
   }
@@ -29203,7 +29206,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const cssVarPrefix = (_a8 = theme3.config) == null ? void 0 : _a8.cssVarPrefix;
     const {
       cssMap,
-      cssVars
+      cssVars: cssVars2
     } = createThemeVars(flatTokens, { cssVarPrefix });
     const defaultCssVars = {
       "--chakra-ring-inset": "var(--chakra-empty,/*!*/ /*!*/)",
@@ -29216,7 +29219,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       "--chakra-space-y-reverse": "0"
     };
     Object.assign(theme3, {
-      __cssVars: { ...defaultCssVars, ...cssVars },
+      __cssVars: { ...defaultCssVars, ...cssVars2 },
       __cssMap: cssMap,
       __breakpoints: analyzeBreakpoints(theme3.breakpoints)
     });
@@ -29441,6 +29444,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       return (0, import_lodash4.default)({}, runIfFn(config3.baseStyle ?? {}, props), recipe(config3, "sizes", size3, props), recipe(config3, "variants", variant, props));
     };
   }
+  function getCSSVar(theme3, scale3, value) {
+    var _a8, _b3;
+    return ((_b3 = (_a8 = theme3.__cssMap) == null ? void 0 : _a8[`${scale3}.${value}`]) == null ? void 0 : _b3.varRef) ?? value;
+  }
   function omitThemingProps(props) {
     return omit(props, ["styleConfig", "size", "variant", "colorScheme"]);
   }
@@ -29478,11 +29485,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
     return obj === void 0 ? fallback : obj;
   }
-  var memoize2 = (fn) => {
+  var memoize2 = (fn2) => {
     const cache = /* @__PURE__ */ new WeakMap();
     const memoizedFn = (obj, path, fallback, index) => {
       if (typeof obj === "undefined") {
-        return fn(obj, path, fallback);
+        return fn2(obj, path, fallback);
       }
       if (!cache.has(obj)) {
         cache.set(obj, /* @__PURE__ */ new Map());
@@ -29491,18 +29498,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (map.has(path)) {
         return map.get(path);
       }
-      const value = fn(obj, path, fallback, index);
+      const value = fn2(obj, path, fallback, index);
       map.set(path, value);
       return value;
     };
     return memoizedFn;
   };
   var memoizedGet2 = memoize2(get2);
-  function objectFilter(object, fn) {
+  function objectFilter(object, fn2) {
     const result = {};
     Object.keys(object).forEach((key) => {
       const value = object[key];
-      const shouldPass = fn(value, key, object);
+      const shouldPass = fn2(value, key, object);
       if (shouldPass) {
         result[key] = value;
       }
@@ -29536,8 +29543,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   function callAllHandlers(...fns) {
     return function func(event) {
-      fns.some((fn) => {
-        fn == null ? void 0 : fn(event);
+      fns.some((fn2) => {
+        fn2 == null ? void 0 : fn2(event);
         return event == null ? void 0 : event.defaultPrevented;
       });
     };
@@ -29677,22 +29684,22 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var cardAnatomy = anatomy("card").parts("container", "header", "body", "footer");
 
   // node_modules/@ctrl/tinycolor/dist/module/util.js
-  function bound01(n, max) {
+  function bound01(n, max2) {
     if (isOnePointZero(n)) {
       n = "100%";
     }
     var isPercent = isPercentage(n);
-    n = max === 360 ? n : Math.min(max, Math.max(0, parseFloat(n)));
+    n = max2 === 360 ? n : Math.min(max2, Math.max(0, parseFloat(n)));
     if (isPercent) {
-      n = parseInt(String(n * max), 10) / 100;
+      n = parseInt(String(n * max2), 10) / 100;
     }
-    if (Math.abs(n - max) < 1e-6) {
+    if (Math.abs(n - max2) < 1e-6) {
       return 1;
     }
-    if (max === 360) {
-      n = (n < 0 ? n % max + max : n % max) / parseFloat(String(max));
+    if (max2 === 360) {
+      n = (n < 0 ? n % max2 + max2 : n % max2) / parseFloat(String(max2));
     } else {
-      n = n % max / parseFloat(String(max));
+      n = n % max2 / parseFloat(String(max2));
     }
     return n;
   }
@@ -29734,18 +29741,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     r = bound01(r, 255);
     g = bound01(g, 255);
     b2 = bound01(b2, 255);
-    var max = Math.max(r, g, b2);
-    var min = Math.min(r, g, b2);
+    var max2 = Math.max(r, g, b2);
+    var min2 = Math.min(r, g, b2);
     var h = 0;
     var s = 0;
-    var l = (max + min) / 2;
-    if (max === min) {
+    var l = (max2 + min2) / 2;
+    if (max2 === min2) {
       s = 0;
       h = 0;
     } else {
-      var d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      switch (max) {
+      var d = max2 - min2;
+      s = l > 0.5 ? d / (2 - max2 - min2) : d / (max2 + min2);
+      switch (max2) {
         case r:
           h = (g - b2) / d + (g < b2 ? 6 : 0);
           break;
@@ -29804,16 +29811,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     r = bound01(r, 255);
     g = bound01(g, 255);
     b2 = bound01(b2, 255);
-    var max = Math.max(r, g, b2);
-    var min = Math.min(r, g, b2);
+    var max2 = Math.max(r, g, b2);
+    var min2 = Math.min(r, g, b2);
     var h = 0;
-    var v = max;
-    var d = max - min;
-    var s = max === 0 ? 0 : d / max;
-    if (max === min) {
+    var v = max2;
+    var d = max2 - min2;
+    var s = max2 === 0 ? 0 : d / max2;
+    if (max2 === min2) {
       h = 0;
     } else {
-      switch (max) {
+      switch (max2) {
         case r:
           h = (g - b2) / d + (g < b2 ? 6 : 0);
           break;
@@ -30045,7 +30052,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     var v = null;
     var l = null;
     var ok = false;
-    var format = false;
+    var format2 = false;
     if (typeof color3 === "string") {
       color3 = stringInputToObject(color3);
     }
@@ -30053,19 +30060,19 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (isValidCSSUnit(color3.r) && isValidCSSUnit(color3.g) && isValidCSSUnit(color3.b)) {
         rgb = rgbToRgb(color3.r, color3.g, color3.b);
         ok = true;
-        format = String(color3.r).substr(-1) === "%" ? "prgb" : "rgb";
+        format2 = String(color3.r).substr(-1) === "%" ? "prgb" : "rgb";
       } else if (isValidCSSUnit(color3.h) && isValidCSSUnit(color3.s) && isValidCSSUnit(color3.v)) {
         s = convertToPercentage(color3.s);
         v = convertToPercentage(color3.v);
         rgb = hsvToRgb(color3.h, s, v);
         ok = true;
-        format = "hsv";
+        format2 = "hsv";
       } else if (isValidCSSUnit(color3.h) && isValidCSSUnit(color3.s) && isValidCSSUnit(color3.l)) {
         s = convertToPercentage(color3.s);
         l = convertToPercentage(color3.l);
         rgb = hslToRgb(color3.h, s, l);
         ok = true;
-        format = "hsl";
+        format2 = "hsl";
       }
       if (Object.prototype.hasOwnProperty.call(color3, "a")) {
         a2 = color3.a;
@@ -30074,7 +30081,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     a2 = boundAlpha(a2);
     return {
       ok,
-      format: color3.format || format,
+      format: color3.format || format2,
       r: Math.min(255, Math.max(rgb.r, 0)),
       g: Math.min(255, Math.max(rgb.g, 0)),
       b: Math.min(255, Math.max(rgb.b, 0)),
@@ -30352,43 +30359,43 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }
       return false;
     };
-    TinyColor2.prototype.toString = function(format) {
-      var formatSet = Boolean(format);
-      format = format !== null && format !== void 0 ? format : this.format;
+    TinyColor2.prototype.toString = function(format2) {
+      var formatSet = Boolean(format2);
+      format2 = format2 !== null && format2 !== void 0 ? format2 : this.format;
       var formattedString = false;
       var hasAlpha = this.a < 1 && this.a >= 0;
-      var needsAlphaFormat = !formatSet && hasAlpha && (format.startsWith("hex") || format === "name");
+      var needsAlphaFormat = !formatSet && hasAlpha && (format2.startsWith("hex") || format2 === "name");
       if (needsAlphaFormat) {
-        if (format === "name" && this.a === 0) {
+        if (format2 === "name" && this.a === 0) {
           return this.toName();
         }
         return this.toRgbString();
       }
-      if (format === "rgb") {
+      if (format2 === "rgb") {
         formattedString = this.toRgbString();
       }
-      if (format === "prgb") {
+      if (format2 === "prgb") {
         formattedString = this.toPercentageRgbString();
       }
-      if (format === "hex" || format === "hex6") {
+      if (format2 === "hex" || format2 === "hex6") {
         formattedString = this.toHexString();
       }
-      if (format === "hex3") {
+      if (format2 === "hex3") {
         formattedString = this.toHexString(true);
       }
-      if (format === "hex4") {
+      if (format2 === "hex4") {
         formattedString = this.toHex8String(true);
       }
-      if (format === "hex8") {
+      if (format2 === "hex8") {
         formattedString = this.toHex8String();
       }
-      if (format === "name") {
+      if (format2 === "name") {
         formattedString = this.toName();
       }
-      if (format === "hsl") {
+      if (format2 === "hsl") {
         formattedString = this.toHslString();
       }
-      if (format === "hsv") {
+      if (format2 === "hsv") {
         formattedString = this.toHsvString();
       }
       return formattedString || this.toHexString();
@@ -30693,11 +30700,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     if (seed === void 0) {
       return Math.floor(range[0] + Math.random() * (range[1] + 1 - range[0]));
     }
-    var max = range[1] || 1;
-    var min = range[0] || 0;
+    var max2 = range[1] || 1;
+    var min2 = range[0] || 0;
     seed = (seed * 9301 + 49297) % 233280;
     var rnd = seed / 233280;
-    return Math.floor(min + rnd * (max - min));
+    return Math.floor(min2 + rnd * (max2 - min2));
   }
   function defineColor(bound) {
     var sMin = bound.lowerBounds[0][0];
@@ -30876,16 +30883,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return fallback;
   }
   function randomColorFromString(str) {
-    let hash = 0;
+    let hash3 = 0;
     if (str.length === 0)
-      return hash.toString();
+      return hash3.toString();
     for (let i = 0; i < str.length; i += 1) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-      hash = hash & hash;
+      hash3 = str.charCodeAt(i) + ((hash3 << 5) - hash3);
+      hash3 = hash3 & hash3;
     }
     let color3 = "#";
     for (let j = 0; j < 3; j += 1) {
-      const value = hash >> j * 8 & 255;
+      const value = hash3 >> j * 8 & 255;
       color3 += `00${value.toString(16)}`.substr(-2);
     }
     return color3;
@@ -34305,16 +34312,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     };
     return getValue(value) ?? getValue(fallback) ?? fallback;
   }
-  function getToken(scale2, token, fallback) {
+  function getToken(scale3, token, fallback) {
     const _token = Array.isArray(token) ? token : [token];
     const _fallback = Array.isArray(fallback) ? fallback : [fallback];
     return (theme3) => {
       const fallbackArr = _fallback.filter(Boolean);
       const result = _token.map((token2, index) => {
-        if (scale2 === "breakpoints") {
+        if (scale3 === "breakpoints") {
           return getBreakpointValue(theme3, token2, fallbackArr[index] ?? token2);
         }
-        const path = `${scale2}.${token2}`;
+        const path = `${scale3}.${token2}`;
         return getTokenValue(theme3, path, fallbackArr[index] ?? token2);
       });
       return Array.isArray(token) ? result : result[0];
@@ -34491,27 +34498,213 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return (0, import_react17.useMemo)(() => mergeRefs(...refs), refs);
   }
 
-  // node_modules/@chakra-ui/icon/dist/index.esm.js
+  // node_modules/@chakra-ui/descendant/dist/index.esm.js
   var import_react18 = __toESM(require_react());
+  var import_react19 = __toESM(require_react());
+  function sortNodes(nodes) {
+    return nodes.sort((a2, b2) => {
+      const compare = a2.compareDocumentPosition(b2);
+      if (compare & Node.DOCUMENT_POSITION_FOLLOWING || compare & Node.DOCUMENT_POSITION_CONTAINED_BY) {
+        return -1;
+      }
+      if (compare & Node.DOCUMENT_POSITION_PRECEDING || compare & Node.DOCUMENT_POSITION_CONTAINS) {
+        return 1;
+      }
+      if (compare & Node.DOCUMENT_POSITION_DISCONNECTED || compare & Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC) {
+        throw Error("Cannot sort the given nodes.");
+      } else {
+        return 0;
+      }
+    });
+  }
+  var isElement = (el) => typeof el == "object" && "nodeType" in el && el.nodeType === Node.ELEMENT_NODE;
+  function getNextIndex2(current, max2, loop) {
+    let next = current + 1;
+    if (loop && next >= max2)
+      next = 0;
+    return next;
+  }
+  function getPrevIndex(current, max2, loop) {
+    let next = current - 1;
+    if (loop && next < 0)
+      next = max2;
+    return next;
+  }
+  var useSafeLayoutEffect2 = typeof window !== "undefined" ? import_react19.useLayoutEffect : import_react19.useEffect;
+  var cast = (value) => value;
+  var DescendantsManager = class {
+    descendants = /* @__PURE__ */ new Map();
+    register = (nodeOrOptions) => {
+      if (nodeOrOptions == null)
+        return;
+      if (isElement(nodeOrOptions)) {
+        return this.registerNode(nodeOrOptions);
+      }
+      return (node) => {
+        this.registerNode(node, nodeOrOptions);
+      };
+    };
+    unregister = (node) => {
+      this.descendants.delete(node);
+      const sorted = sortNodes(Array.from(this.descendants.keys()));
+      this.assignIndex(sorted);
+    };
+    destroy = () => {
+      this.descendants.clear();
+    };
+    assignIndex = (descendants) => {
+      this.descendants.forEach((descendant) => {
+        const index = descendants.indexOf(descendant.node);
+        descendant.index = index;
+        descendant.node.dataset["index"] = descendant.index.toString();
+      });
+    };
+    count = () => this.descendants.size;
+    enabledCount = () => this.enabledValues().length;
+    values = () => {
+      const values = Array.from(this.descendants.values());
+      return values.sort((a2, b2) => a2.index - b2.index);
+    };
+    enabledValues = () => {
+      return this.values().filter((descendant) => !descendant.disabled);
+    };
+    item = (index) => {
+      if (this.count() === 0)
+        return void 0;
+      return this.values()[index];
+    };
+    enabledItem = (index) => {
+      if (this.enabledCount() === 0)
+        return void 0;
+      return this.enabledValues()[index];
+    };
+    first = () => this.item(0);
+    firstEnabled = () => this.enabledItem(0);
+    last = () => this.item(this.descendants.size - 1);
+    lastEnabled = () => {
+      const lastIndex = this.enabledValues().length - 1;
+      return this.enabledItem(lastIndex);
+    };
+    indexOf = (node) => {
+      var _a8;
+      if (!node)
+        return -1;
+      return ((_a8 = this.descendants.get(node)) == null ? void 0 : _a8.index) ?? -1;
+    };
+    enabledIndexOf = (node) => {
+      if (node == null)
+        return -1;
+      return this.enabledValues().findIndex((i) => i.node.isSameNode(node));
+    };
+    next = (index, loop = true) => {
+      const next = getNextIndex2(index, this.count(), loop);
+      return this.item(next);
+    };
+    nextEnabled = (index, loop = true) => {
+      const item = this.item(index);
+      if (!item)
+        return;
+      const enabledIndex = this.enabledIndexOf(item.node);
+      const nextEnabledIndex = getNextIndex2(enabledIndex, this.enabledCount(), loop);
+      return this.enabledItem(nextEnabledIndex);
+    };
+    prev = (index, loop = true) => {
+      const prev = getPrevIndex(index, this.count() - 1, loop);
+      return this.item(prev);
+    };
+    prevEnabled = (index, loop = true) => {
+      const item = this.item(index);
+      if (!item)
+        return;
+      const enabledIndex = this.enabledIndexOf(item.node);
+      const prevEnabledIndex = getPrevIndex(enabledIndex, this.enabledCount() - 1, loop);
+      return this.enabledItem(prevEnabledIndex);
+    };
+    registerNode = (node, options) => {
+      if (!node || this.descendants.has(node))
+        return;
+      const keys2 = Array.from(this.descendants.keys()).concat(node);
+      const sorted = sortNodes(keys2);
+      if (options == null ? void 0 : options.disabled) {
+        options.disabled = !!options.disabled;
+      }
+      const descendant = { node, index: -1, ...options };
+      this.descendants.set(node, descendant);
+      this.assignIndex(sorted);
+    };
+  };
+  function useDescendants() {
+    const descendants = (0, import_react18.useRef)(new DescendantsManager());
+    useSafeLayoutEffect2(() => {
+      return () => descendants.current.destroy();
+    });
+    return descendants.current;
+  }
+  var [DescendantsContextProvider, useDescendantsContext] = createContext3({
+    name: "DescendantsProvider",
+    errorMessage: "useDescendantsContext must be used within DescendantsProvider"
+  });
+  function useDescendant(options) {
+    const descendants = useDescendantsContext();
+    const [index, setIndex] = (0, import_react18.useState)(-1);
+    const ref = (0, import_react18.useRef)(null);
+    useSafeLayoutEffect2(() => {
+      return () => {
+        if (!ref.current)
+          return;
+        descendants.unregister(ref.current);
+      };
+    }, []);
+    useSafeLayoutEffect2(() => {
+      if (!ref.current)
+        return;
+      const dataIndex = Number(ref.current.dataset["index"]);
+      if (index != dataIndex && !Number.isNaN(dataIndex)) {
+        setIndex(dataIndex);
+      }
+    });
+    const refCallback = options ? cast(descendants.register(options)) : cast(descendants.register);
+    return {
+      descendants,
+      index,
+      enabledIndex: descendants.enabledIndexOf(ref.current),
+      register: mergeRefs(refCallback, ref)
+    };
+  }
+  function createDescendantContext() {
+    const ContextProvider = cast(DescendantsContextProvider);
+    const _useDescendantsContext = () => cast(useDescendantsContext());
+    const _useDescendant = (options) => useDescendant(options);
+    const _useDescendants = () => useDescendants();
+    return [
+      ContextProvider,
+      _useDescendantsContext,
+      _useDescendants,
+      _useDescendant
+    ];
+  }
+
+  // node_modules/@chakra-ui/icon/dist/index.esm.js
+  var import_react20 = __toESM(require_react());
 
   // node_modules/@chakra-ui/shared-utils/dist/index.esm.js
   var cx = (...classNames2) => classNames2.filter(Boolean).join(" ");
 
   // node_modules/@chakra-ui/icon/dist/index.esm.js
-  var import_react19 = __toESM(require_react());
+  var import_react21 = __toESM(require_react());
   var fallbackIcon = {
-    path: /* @__PURE__ */ import_react18.default.createElement("g", {
+    path: /* @__PURE__ */ import_react20.default.createElement("g", {
       stroke: "currentColor",
       strokeWidth: "1.5"
-    }, /* @__PURE__ */ import_react18.default.createElement("path", {
+    }, /* @__PURE__ */ import_react20.default.createElement("path", {
       strokeLinecap: "round",
       fill: "none",
       d: "M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
-    }), /* @__PURE__ */ import_react18.default.createElement("path", {
+    }), /* @__PURE__ */ import_react20.default.createElement("path", {
       fill: "currentColor",
       strokeLinecap: "round",
       d: "M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
-    }), /* @__PURE__ */ import_react18.default.createElement("circle", {
+    }), /* @__PURE__ */ import_react20.default.createElement("circle", {
       fill: "none",
       strokeMiterlimit: "10",
       cx: "12",
@@ -34549,14 +34742,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     };
     const _viewBox = viewBox ?? fallbackIcon.viewBox;
     if (element && typeof element !== "string") {
-      return /* @__PURE__ */ import_react18.default.createElement(chakra.svg, {
+      return /* @__PURE__ */ import_react20.default.createElement(chakra.svg, {
         as: element,
         ...shared,
         ...rest
       });
     }
     const _path = children ?? fallbackIcon.path;
-    return /* @__PURE__ */ import_react18.default.createElement(chakra.svg, {
+    return /* @__PURE__ */ import_react20.default.createElement(chakra.svg, {
       verticalAlign: "middle",
       viewBox: _viewBox,
       ...shared,
@@ -34571,13 +34764,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       displayName,
       defaultProps: defaultProps2 = {}
     } = options;
-    const path = import_react19.Children.toArray(options.path);
-    const Comp = forwardRef((props, ref) => /* @__PURE__ */ import_react18.default.createElement(Icon, {
+    const path = import_react21.Children.toArray(options.path);
+    const Comp = forwardRef((props, ref) => /* @__PURE__ */ import_react20.default.createElement(Icon, {
       ref,
       viewBox,
       ...defaultProps2,
       ...props
-    }, path.length ? path : /* @__PURE__ */ import_react18.default.createElement("path", {
+    }, path.length ? path : /* @__PURE__ */ import_react20.default.createElement("path", {
       fill: "currentColor",
       d: pathDefinition
     })));
@@ -34585,65 +34778,102 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return Comp;
   }
 
+  // node_modules/@chakra-ui/react-use-controllable-state/dist/index.esm.js
+  var import_react23 = __toESM(require_react());
+
   // node_modules/@chakra-ui/react-use-callback-ref/dist/index.esm.js
-  var import_react20 = __toESM(require_react());
+  var import_react22 = __toESM(require_react());
   function useCallbackRef(callback, deps = []) {
-    const callbackRef = (0, import_react20.useRef)(callback);
-    (0, import_react20.useEffect)(() => {
+    const callbackRef = (0, import_react22.useRef)(callback);
+    (0, import_react22.useEffect)(() => {
       callbackRef.current = callback;
     });
-    return (0, import_react20.useCallback)((...args) => {
+    return (0, import_react22.useCallback)((...args) => {
       var _a8;
       return (_a8 = callbackRef.current) == null ? void 0 : _a8.call(callbackRef, ...args);
     }, deps);
   }
 
+  // node_modules/@chakra-ui/react-use-controllable-state/dist/index.esm.js
+  function useControllableState(props) {
+    const {
+      value: valueProp,
+      defaultValue,
+      onChange,
+      shouldUpdate = (prev, next) => prev !== next
+    } = props;
+    const onChangeProp = useCallbackRef(onChange);
+    const shouldUpdateProp = useCallbackRef(shouldUpdate);
+    const [uncontrolledState, setUncontrolledState] = (0, import_react23.useState)(defaultValue);
+    const controlled = valueProp !== void 0;
+    const value = controlled ? valueProp : uncontrolledState;
+    const setValue = useCallbackRef((next) => {
+      const setter = next;
+      const nextValue = typeof next === "function" ? setter(value) : next;
+      if (!shouldUpdateProp(value, nextValue)) {
+        return;
+      }
+      if (!controlled) {
+        setUncontrolledState(nextValue);
+      }
+      onChangeProp(nextValue);
+    }, [controlled, onChangeProp, value, shouldUpdateProp]);
+    return [value, setValue];
+  }
+
+  // node_modules/@chakra-ui/accordion/dist/index.esm.js
+  var import_react63 = __toESM(require_react());
+  var import_react64 = __toESM(require_react());
+
+  // node_modules/@chakra-ui/transition/dist/index.esm.js
+  var import_react56 = __toESM(require_react());
+
   // node_modules/framer-motion/dist/es/motion/index.mjs
   var React4 = __toESM(require_react(), 1);
-  var import_react33 = __toESM(require_react(), 1);
+  var import_react36 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs
-  var import_react21 = __toESM(require_react(), 1);
-  var MotionConfigContext = (0, import_react21.createContext)({
+  var import_react24 = __toESM(require_react(), 1);
+  var MotionConfigContext = (0, import_react24.createContext)({
     transformPagePoint: (p) => p,
     isStatic: false,
     reducedMotion: "never"
   });
 
   // node_modules/framer-motion/dist/es/context/MotionContext/index.mjs
-  var import_react22 = __toESM(require_react(), 1);
-  var MotionContext = (0, import_react22.createContext)({});
+  var import_react25 = __toESM(require_react(), 1);
+  var MotionContext = (0, import_react25.createContext)({});
   function useVisualElementContext() {
-    return (0, import_react22.useContext)(MotionContext).visualElement;
+    return (0, import_react25.useContext)(MotionContext).visualElement;
   }
 
   // node_modules/framer-motion/dist/es/motion/utils/use-visual-element.mjs
-  var import_react26 = __toESM(require_react(), 1);
+  var import_react29 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/context/PresenceContext.mjs
-  var import_react23 = __toESM(require_react(), 1);
-  var PresenceContext = (0, import_react23.createContext)(null);
+  var import_react26 = __toESM(require_react(), 1);
+  var PresenceContext = (0, import_react26.createContext)(null);
 
   // node_modules/framer-motion/dist/es/utils/use-isomorphic-effect.mjs
-  var import_react24 = __toESM(require_react(), 1);
+  var import_react27 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/utils/is-browser.mjs
   var isBrowser2 = typeof document !== "undefined";
 
   // node_modules/framer-motion/dist/es/utils/use-isomorphic-effect.mjs
-  var useIsomorphicLayoutEffect = isBrowser2 ? import_react24.useLayoutEffect : import_react24.useEffect;
+  var useIsomorphicLayoutEffect = isBrowser2 ? import_react27.useLayoutEffect : import_react27.useEffect;
 
   // node_modules/framer-motion/dist/es/context/LazyContext.mjs
-  var import_react25 = __toESM(require_react(), 1);
-  var LazyContext = (0, import_react25.createContext)({ strict: false });
+  var import_react28 = __toESM(require_react(), 1);
+  var LazyContext = (0, import_react28.createContext)({ strict: false });
 
   // node_modules/framer-motion/dist/es/motion/utils/use-visual-element.mjs
   function useVisualElement(Component3, visualState, props, createVisualElement) {
     const parent = useVisualElementContext();
-    const lazyContext = (0, import_react26.useContext)(LazyContext);
-    const presenceContext = (0, import_react26.useContext)(PresenceContext);
-    const reducedMotionConfig = (0, import_react26.useContext)(MotionConfigContext).reducedMotion;
-    const visualElementRef = (0, import_react26.useRef)();
+    const lazyContext = (0, import_react29.useContext)(LazyContext);
+    const presenceContext = (0, import_react29.useContext)(PresenceContext);
+    const reducedMotionConfig = (0, import_react29.useContext)(MotionConfigContext).reducedMotion;
+    const visualElementRef = (0, import_react29.useRef)();
     createVisualElement = createVisualElement || lazyContext.renderer;
     if (!visualElementRef.current && createVisualElement) {
       visualElementRef.current = createVisualElement(Component3, {
@@ -34659,7 +34889,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     useIsomorphicLayoutEffect(() => {
       visualElement && visualElement.render();
     });
-    (0, import_react26.useEffect)(() => {
+    (0, import_react29.useEffect)(() => {
       if (visualElement && visualElement.animationState) {
         visualElement.animationState.animateChanges();
       }
@@ -34669,7 +34899,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/motion/utils/use-motion-ref.mjs
-  var import_react27 = __toESM(require_react(), 1);
+  var import_react30 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/utils/is-ref-object.mjs
   function isRefObject(ref) {
@@ -34678,7 +34908,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 
   // node_modules/framer-motion/dist/es/motion/utils/use-motion-ref.mjs
   function useMotionRef(visualState, visualElement, externalRef) {
-    return (0, import_react27.useCallback)(
+    return (0, import_react30.useCallback)(
       (instance) => {
         instance && visualState.mount && visualState.mount(instance);
         if (visualElement) {
@@ -34697,7 +34927,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/context/MotionContext/create.mjs
-  var import_react28 = __toESM(require_react(), 1);
+  var import_react31 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/render/utils/is-variant-label.mjs
   function isVariantLabel(v) {
@@ -34741,8 +34971,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 
   // node_modules/framer-motion/dist/es/context/MotionContext/create.mjs
   function useCreateMotionContext(props) {
-    const { initial, animate: animate3 } = getCurrentTreeVariants(props, (0, import_react28.useContext)(MotionContext));
-    return (0, import_react28.useMemo)(() => ({ initial, animate: animate3 }), [variantLabelsAsDependency(initial), variantLabelsAsDependency(animate3)]);
+    const { initial, animate: animate3 } = getCurrentTreeVariants(props, (0, import_react31.useContext)(MotionContext));
+    return (0, import_react31.useMemo)(() => ({ initial, animate: animate3 }), [variantLabelsAsDependency(initial), variantLabelsAsDependency(animate3)]);
   }
   function variantLabelsAsDependency(prop) {
     return Array.isArray(prop) ? prop.join(" ") : prop;
@@ -34794,9 +35024,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/utils/use-constant.mjs
-  var import_react29 = __toESM(require_react(), 1);
+  var import_react32 = __toESM(require_react(), 1);
   function useConstant(init) {
-    const ref = (0, import_react29.useRef)(null);
+    const ref = (0, import_react32.useRef)(null);
     if (ref.current === null) {
       ref.current = init();
     }
@@ -34820,12 +35050,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs
-  var import_react30 = __toESM(require_react(), 1);
-  var LayoutGroupContext = (0, import_react30.createContext)({});
+  var import_react33 = __toESM(require_react(), 1);
+  var LayoutGroupContext = (0, import_react33.createContext)({});
 
   // node_modules/framer-motion/dist/es/motion/utils/VisualElementHandler.mjs
-  var import_react31 = __toESM(require_react(), 1);
-  var VisualElementHandler = class extends import_react31.default.Component {
+  var import_react34 = __toESM(require_react(), 1);
+  var VisualElementHandler = class extends import_react34.default.Component {
     getSnapshotBeforeUpdate() {
       const { visualElement, props } = this.props;
       if (visualElement)
@@ -34840,8 +35070,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs
-  var import_react32 = __toESM(require_react(), 1);
-  var SwitchLayoutGroupContext = (0, import_react32.createContext)({});
+  var import_react35 = __toESM(require_react(), 1);
+  var SwitchLayoutGroupContext = (0, import_react35.createContext)({});
 
   // node_modules/framer-motion/dist/es/motion/utils/symbol.mjs
   var motionComponentSymbol = Symbol.for("motionComponentSymbol");
@@ -34851,7 +35081,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     preloadedFeatures && loadFeatures(preloadedFeatures);
     function MotionComponent(props, externalRef) {
       const configAndProps = {
-        ...(0, import_react33.useContext)(MotionConfigContext),
+        ...(0, import_react36.useContext)(MotionConfigContext),
         ...props,
         layoutId: useLayoutId(props)
       };
@@ -34862,8 +35092,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       const visualState = useVisualState(props, isStatic);
       if (!isStatic && isBrowser2) {
         context.visualElement = useVisualElement(Component3, visualState, configAndProps, createVisualElement);
-        const lazyStrictMode = (0, import_react33.useContext)(LazyContext).strict;
-        const initialLayoutGroupConfig = (0, import_react33.useContext)(SwitchLayoutGroupContext);
+        const lazyStrictMode = (0, import_react36.useContext)(LazyContext).strict;
+        const initialLayoutGroupConfig = (0, import_react36.useContext)(SwitchLayoutGroupContext);
         if (context.visualElement) {
           features = context.visualElement.loadFeatures(
             configAndProps,
@@ -34882,12 +35112,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         React4.createElement(MotionContext.Provider, { value: context }, useRender(Component3, props, projectionId, useMotionRef(visualState, context.visualElement, externalRef), visualState, isStatic, context.visualElement))
       );
     }
-    const ForwardRefComponent = (0, import_react33.forwardRef)(MotionComponent);
+    const ForwardRefComponent = (0, import_react36.forwardRef)(MotionComponent);
     ForwardRefComponent[motionComponentSymbol] = Component3;
     return ForwardRefComponent;
   }
   function useLayoutId({ layoutId }) {
-    const layoutGroupId = (0, import_react33.useContext)(LayoutGroupContext).id;
+    const layoutGroupId = (0, import_react36.useContext)(LayoutGroupContext).id;
     return layoutGroupId && layoutId !== void 0 ? layoutGroupId + "-" + layoutId : layoutId;
   }
 
@@ -34949,10 +35179,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/render/dom/use-render.mjs
-  var import_react36 = __toESM(require_react(), 1);
+  var import_react39 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/render/html/use-props.mjs
-  var import_react34 = __toESM(require_react(), 1);
+  var import_react37 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/projection/styles/scale-correction.mjs
   var scaleCorrectors = {};
@@ -35027,7 +35257,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/style-value-types/dist/es/utils.mjs
-  var clamp = (min, max) => (v) => Math.max(Math.min(v, max), min);
+  var clamp = (min2, max2) => (v) => Math.max(Math.min(v, max2), min2);
   var sanitize = (v) => v % 1 ? Number(v.toFixed(5)) : v;
   var floatRegex = /(-)?([\d]*\.?[\d])+/g;
   var colorRegex = /(#[0-9a-f]{6}|#[0-9a-f]{3}|#(?:[0-9a-f]{2}){2,4}|(rgb|hsl)a?\((-?[\d\.]+%?[,\s]+){2}(-?[\d\.]+%?)\s*[\,\/]?\s*[\d\.]*%?\))/gi;
@@ -35281,7 +35511,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 
   // node_modules/framer-motion/dist/es/render/html/utils/build-styles.mjs
   function buildHTMLStyles(state2, latestValues, options, transformTemplate2) {
-    const { style, vars, transform: transform2, transformKeys: transformKeys2, transformOrigin } = state2;
+    const { style, vars, transform: transform2, transformKeys: transformKeys2, transformOrigin: transformOrigin2 } = state2;
     transformKeys2.length = 0;
     let hasTransform2 = false;
     let hasTransformOrigin = false;
@@ -35304,7 +35534,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           transformIsNone = false;
       } else if (key.startsWith("origin")) {
         hasTransformOrigin = true;
-        transformOrigin[key] = valueAsType;
+        transformOrigin2[key] = valueAsType;
       } else {
         style[key] = valueAsType;
       }
@@ -35317,7 +35547,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }
     }
     if (hasTransformOrigin) {
-      const { originX = "50%", originY = "50%", originZ = 0 } = transformOrigin;
+      const { originX = "50%", originY = "50%", originZ = 0 } = transformOrigin2;
       style.transformOrigin = `${originX} ${originY} ${originZ}`;
     }
   }
@@ -35340,7 +35570,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
   }
   function useInitialMotionValues({ transformTemplate: transformTemplate2 }, visualState, isStatic) {
-    return (0, import_react34.useMemo)(() => {
+    return (0, import_react37.useMemo)(() => {
       const state2 = createHtmlRenderState();
       buildHTMLStyles(state2, visualState, { enableHardwareAcceleration: !isStatic }, transformTemplate2);
       return Object.assign({}, state2.vars, state2.style);
@@ -35456,11 +35686,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/render/svg/use-props.mjs
-  var import_react35 = __toESM(require_react(), 1);
+  var import_react38 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/render/svg/utils/transform-origin.mjs
-  function calcOrigin(origin, offset, size3) {
-    return typeof origin === "string" ? origin : px2.transform(offset + size3 * origin);
+  function calcOrigin(origin, offset2, size3) {
+    return typeof origin === "string" ? origin : px2.transform(offset2 + size3 * origin);
   }
   function calcSVGTransformOrigin(dimensions, originX, originY) {
     const pxOriginX = calcOrigin(originX, dimensions.x, dimensions.width);
@@ -35477,10 +35707,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     offset: "strokeDashoffset",
     array: "strokeDasharray"
   };
-  function buildSVGPath(attrs, length, spacing2 = 1, offset = 0, useDashCase = true) {
+  function buildSVGPath(attrs, length, spacing2 = 1, offset2 = 0, useDashCase = true) {
     attrs.pathLength = 1;
     const keys2 = useDashCase ? dashKeys : camelKeys;
-    attrs[keys2.offset] = px2.transform(-offset);
+    attrs[keys2.offset] = px2.transform(-offset2);
     const pathLength = px2.transform(length);
     const pathSpacing = px2.transform(spacing2);
     attrs[keys2.array] = `${pathLength} ${pathSpacing}`;
@@ -35526,7 +35756,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 
   // node_modules/framer-motion/dist/es/render/svg/use-props.mjs
   function useSVGProps(props, visualState) {
-    const visualProps = (0, import_react35.useMemo)(() => {
+    const visualProps = (0, import_react38.useMemo)(() => {
       const state2 = createSvgRenderState();
       buildSVGAttrs(state2, visualState, { enableHardwareAcceleration: false }, props.transformTemplate);
       return {
@@ -35556,7 +35786,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (projectionId) {
         elementProps["data-projection-id"] = projectionId;
       }
-      return (0, import_react36.createElement)(Component3, elementProps);
+      return (0, import_react39.createElement)(Component3, elementProps);
     };
     return useRender;
   }
@@ -35629,7 +35859,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/motion/utils/use-visual-state.mjs
-  var import_react37 = __toESM(require_react(), 1);
+  var import_react40 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/render/utils/resolve-variants.mjs
   function resolveVariantFromProps(props, definition, custom, currentValues = {}, currentVelocity = {}) {
@@ -35676,8 +35906,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return state2;
   }
   var makeUseVisualState = (config3) => (props, isStatic) => {
-    const context = (0, import_react37.useContext)(MotionContext);
-    const presenceContext = (0, import_react37.useContext)(PresenceContext);
+    const context = (0, import_react40.useContext)(MotionContext);
+    const presenceContext = (0, import_react40.useContext)(PresenceContext);
     const make = () => makeState(config3, props, context, presenceContext);
     return isStatic ? make() : useConstant(make);
   };
@@ -35779,13 +36009,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   })(AnimationType || (AnimationType = {}));
 
   // node_modules/framer-motion/dist/es/events/use-dom-event.mjs
-  var import_react38 = __toESM(require_react(), 1);
+  var import_react41 = __toESM(require_react(), 1);
   function addDomEvent(target, eventName, handler, options = { passive: true }) {
     target.addEventListener(eventName, handler, options);
     return () => target.removeEventListener(eventName, handler);
   }
   function useDomEvent(ref, eventName, handler, options) {
-    (0, import_react38.useEffect)(() => {
+    (0, import_react41.useEffect)(() => {
       const element = ref.current;
       if (handler && element) {
         return addDomEvent(element, eventName, handler, options);
@@ -35956,7 +36186,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/gestures/use-tap-gesture.mjs
-  var import_react40 = __toESM(require_react(), 1);
+  var import_react43 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/gestures/utils/is-node-or-child.mjs
   var isNodeOrChild = (parent, child) => {
@@ -35970,9 +36200,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/framer-motion/dist/es/utils/use-unmount-effect.mjs
-  var import_react39 = __toESM(require_react(), 1);
+  var import_react42 = __toESM(require_react(), 1);
   function useUnmountEffect(callback) {
-    return (0, import_react39.useEffect)(() => () => callback(), []);
+    return (0, import_react42.useEffect)(() => () => callback(), []);
   }
 
   // node_modules/popmotion/node_modules/tslib/modules/index.js
@@ -36024,7 +36254,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/popmotion/dist/es/utils/clamp.mjs
-  var clamp2 = (min, max, v) => Math.min(Math.max(v, min), max);
+  var clamp2 = (min2, max2, v) => Math.min(Math.max(v, min2), max2);
 
   // node_modules/popmotion/dist/es/animations/utils/find-spring.mjs
   var safeMin = 1e-3;
@@ -36453,13 +36683,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const numValues = values.length;
     return values.map((_value, i) => i !== 0 ? i / (numValues - 1) : 0);
   }
-  function convertOffsetToTimes(offset, duration) {
-    return offset.map((o) => o * duration);
+  function convertOffsetToTimes(offset2, duration) {
+    return offset2.map((o) => o * duration);
   }
-  function keyframes2({ from = 0, to = 1, ease, offset, duration = 300 }) {
+  function keyframes2({ from = 0, to = 1, ease, offset: offset2, duration = 300 }) {
     const state2 = { done: false, value: from };
     const values = Array.isArray(to) ? to : [from, to];
-    const times = convertOffsetToTimes(offset && offset.length === values.length ? offset : defaultOffset(values), duration);
+    const times = convertOffsetToTimes(offset2 && offset2.length === values.length ? offset2 : defaultOffset(values), duration);
     function createInterpolator() {
       return interpolate(times, values, {
         ease: Array.isArray(ease) ? ease : defaultEasing(values, ease)
@@ -36734,17 +36964,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/popmotion/dist/es/animations/inertia.mjs
-  function inertia({ from = 0, velocity = 0, min, max, power = 0.8, timeConstant = 750, bounceStiffness = 500, bounceDamping = 10, restDelta = 1, modifyTarget, driver, onUpdate, onComplete, onStop }) {
+  function inertia({ from = 0, velocity = 0, min: min2, max: max2, power = 0.8, timeConstant = 750, bounceStiffness = 500, bounceDamping = 10, restDelta = 1, modifyTarget, driver, onUpdate, onComplete, onStop }) {
     let currentAnimation;
     function isOutOfBounds(v) {
-      return min !== void 0 && v < min || max !== void 0 && v > max;
+      return min2 !== void 0 && v < min2 || max2 !== void 0 && v > max2;
     }
     function boundaryNearest(v) {
-      if (min === void 0)
-        return max;
-      if (max === void 0)
-        return min;
-      return Math.abs(min - v) < Math.abs(max - v) ? min : max;
+      if (min2 === void 0)
+        return max2;
+      if (max2 === void 0)
+        return min2;
+      return Math.abs(min2 - v) < Math.abs(max2 - v) ? min2 : max2;
     }
     function startAnimation2(options) {
       currentAnimation === null || currentAnimation === void 0 ? void 0 : currentAnimation.stop();
@@ -36769,7 +36999,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (typeof modifyTarget !== "undefined")
         target = modifyTarget(target);
       const boundary = boundaryNearest(target);
-      const heading = boundary === min ? -1 : 1;
+      const heading = boundary === min2 ? -1 : 1;
       let prev;
       let current;
       const checkBoundary = (v) => {
@@ -36885,8 +37115,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   // node_modules/framer-motion/dist/es/gestures/use-tap-gesture.mjs
   function useTapGesture({ onTap, onTapStart, onTapCancel, whileTap, visualElement }) {
     const hasPressListeners = onTap || onTapStart || onTapCancel || whileTap;
-    const isPressing = (0, import_react40.useRef)(false);
-    const cancelPointerEndListeners = (0, import_react40.useRef)(null);
+    const isPressing = (0, import_react43.useRef)(false);
+    const cancelPointerEndListeners = (0, import_react43.useRef)(null);
     const eventOptions = {
       passive: !(onTapStart || onTap || onTapCancel || onPointerDown)
     };
@@ -36928,7 +37158,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var env = typeof process === "undefined" || process.env === void 0 ? defaultEnvironment : "development";
 
   // node_modules/framer-motion/dist/es/motion/features/viewport/use-viewport.mjs
-  var import_react41 = __toESM(require_react(), 1);
+  var import_react44 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/utils/warn-once.mjs
   var warned = /* @__PURE__ */ new Set();
@@ -36974,23 +37204,23 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/motion/features/viewport/use-viewport.mjs
-  function useViewport({ visualElement, whileInView, onViewportEnter, onViewportLeave, viewport = {} }) {
-    const state2 = (0, import_react41.useRef)({
+  function useViewport({ visualElement, whileInView, onViewportEnter, onViewportLeave, viewport: viewport2 = {} }) {
+    const state2 = (0, import_react44.useRef)({
       hasEnteredView: false,
       isInView: false
     });
     let shouldObserve = Boolean(whileInView || onViewportEnter || onViewportLeave);
-    if (viewport.once && state2.current.hasEnteredView)
+    if (viewport2.once && state2.current.hasEnteredView)
       shouldObserve = false;
     const useObserver = typeof IntersectionObserver === "undefined" ? useMissingIntersectionObserver : useIntersectionObserver;
-    useObserver(shouldObserve, state2.current, visualElement, viewport);
+    useObserver(shouldObserve, state2.current, visualElement, viewport2);
   }
   var thresholdNames = {
     some: 0,
     all: 1
   };
   function useIntersectionObserver(shouldObserve, state2, visualElement, { root, margin: rootMargin, amount = "some", once }) {
-    (0, import_react41.useEffect)(() => {
+    (0, import_react44.useEffect)(() => {
       if (!shouldObserve || !visualElement.current)
         return;
       const options = {
@@ -37019,7 +37249,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }, [shouldObserve, root, rootMargin, amount]);
   }
   function useMissingIntersectionObserver(shouldObserve, state2, visualElement, { fallback = true }) {
-    (0, import_react41.useEffect)(() => {
+    (0, import_react44.useEffect)(() => {
       if (!shouldObserve || !fallback)
         return;
       if (env !== "production") {
@@ -37051,22 +37281,22 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/framer-motion/dist/es/motion/features/animations.mjs
-  var import_react43 = __toESM(require_react(), 1);
+  var import_react46 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/components/AnimatePresence/use-presence.mjs
-  var import_react42 = __toESM(require_react(), 1);
+  var import_react45 = __toESM(require_react(), 1);
   function usePresence() {
-    const context = (0, import_react42.useContext)(PresenceContext);
+    const context = (0, import_react45.useContext)(PresenceContext);
     if (context === null)
       return [true, null];
     const { isPresent: isPresent2, onExitComplete, register } = context;
-    const id3 = (0, import_react42.useId)();
-    (0, import_react42.useEffect)(() => register(id3), []);
+    const id3 = (0, import_react45.useId)();
+    (0, import_react45.useEffect)(() => register(id3), []);
     const safeToRemove = () => onExitComplete && onExitComplete(id3);
     return !isPresent2 && onExitComplete ? [false, safeToRemove] : [true];
   }
   function useIsPresent() {
-    return isPresent((0, import_react42.useContext)(PresenceContext));
+    return isPresent((0, import_react45.useContext)(PresenceContext));
   }
   function isPresent(context) {
     return context === null ? true : context.isPresent;
@@ -37336,9 +37566,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 
   // node_modules/framer-motion/dist/es/utils/delay.mjs
   function delay(callback, timeout) {
-    const start = performance.now();
+    const start2 = performance.now();
     const checkElapsed = ({ timestamp }) => {
-      const elapsed = timestamp - start;
+      const elapsed = timestamp - start2;
       if (elapsed >= timeout) {
         cancelSync3.read(checkElapsed);
         callback(elapsed - timeout);
@@ -37353,7 +37583,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return !!Object.keys(transition3).length;
   }
   var legacyRepeatWarning = false;
-  function convertTransitionToAnimationOptions({ ease, times, yoyo, flip, loop, ...transition3 }) {
+  function convertTransitionToAnimationOptions({ ease, times, yoyo, flip: flip2, loop, ...transition3 }) {
     const options = { ...transition3 };
     if (times)
       options["offset"] = times;
@@ -37366,17 +37596,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
     if (transition3.type === "tween")
       options.type = "keyframes";
-    if (yoyo || loop || flip) {
+    if (yoyo || loop || flip2) {
       warning(!legacyRepeatWarning, "yoyo, loop and flip have been removed from the API. Replace with repeat and repeatType options.");
       legacyRepeatWarning = true;
       if (yoyo) {
         options.repeatType = "reverse";
       } else if (loop) {
         options.repeatType = "loop";
-      } else if (flip) {
+      } else if (flip2) {
         options.repeatType = "mirror";
       }
-      options.repeat = loop || yoyo || flip || transition3.repeat;
+      options.repeat = loop || yoyo || flip2 || transition3.repeat;
     }
     if (transition3.type !== "spring")
       options.type = "keyframes";
@@ -37423,7 +37653,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
     const isOriginAnimatable = isAnimatable(key, origin);
     warning(isOriginAnimatable === isTargetAnimatable, `You are trying to animate ${key} from "${origin}" to "${target}". ${origin} is not an animatable value - to enable this animation set ${origin} to a value animatable to ${target} via the \`style\` property.`);
-    function start() {
+    function start2() {
       const options = {
         from: origin,
         to: target,
@@ -37452,7 +37682,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       return { stop: () => {
       } };
     }
-    return !isOriginAnimatable || !isTargetAnimatable || valueTransition.type === false ? set : start;
+    return !isOriginAnimatable || !isTargetAnimatable || valueTransition.type === false ? set : start2;
   }
   function isZero(value) {
     return value === 0 || typeof value === "string" && parseFloat(value) === 0 && value.indexOf(" ") === -1;
@@ -37471,12 +37701,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       let controls;
       const animation = getAnimation(key, value, target, transition3, onComplete);
       const delayBy = getDelayFromTransition(transition3, key);
-      const start = () => controls = animation();
+      const start2 = () => controls = animation();
       let cancelDelay;
       if (delayBy) {
-        cancelDelay = delay(start, secondsToMilliseconds(delayBy));
+        cancelDelay = delay(start2, secondsToMilliseconds(delayBy));
       } else {
-        start();
+        start2();
       }
       return () => {
         cancelDelay && cancelDelay();
@@ -38003,14 +38233,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     animation: makeRenderlessComponent(({ visualElement, animate: animate3 }) => {
       visualElement.animationState || (visualElement.animationState = createAnimationState(visualElement));
       if (isAnimationControls(animate3)) {
-        (0, import_react43.useEffect)(() => animate3.subscribe(visualElement), [animate3]);
+        (0, import_react46.useEffect)(() => animate3.subscribe(visualElement), [animate3]);
       }
     }),
     exit: makeRenderlessComponent((props) => {
       const { custom, visualElement } = props;
       const [isPresent2, safeToRemove] = usePresence();
-      const presenceContext = (0, import_react43.useContext)(PresenceContext);
-      (0, import_react43.useEffect)(() => {
+      const presenceContext = (0, import_react46.useContext)(PresenceContext);
+      (0, import_react46.useEffect)(() => {
         visualElement.isPresent = isPresent2;
         const animation = visualElement.animationState && visualElement.animationState.setActive(AnimationType.Exit, !isPresent2, {
           custom: presenceContext && presenceContext.custom || custom
@@ -38023,7 +38253,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/framer-motion/dist/es/gestures/drag/use-drag.mjs
-  var import_react44 = __toESM(require_react(), 1);
+  var import_react47 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/gestures/PanSession.mjs
   var PanSession = class {
@@ -38182,33 +38412,33 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/gestures/drag/utils/constraints.mjs
-  function applyConstraints(point, { min, max }, elastic) {
-    if (min !== void 0 && point < min) {
-      point = elastic ? mix(min, point, elastic.min) : Math.max(point, min);
-    } else if (max !== void 0 && point > max) {
-      point = elastic ? mix(max, point, elastic.max) : Math.min(point, max);
+  function applyConstraints(point, { min: min2, max: max2 }, elastic) {
+    if (min2 !== void 0 && point < min2) {
+      point = elastic ? mix(min2, point, elastic.min) : Math.max(point, min2);
+    } else if (max2 !== void 0 && point > max2) {
+      point = elastic ? mix(max2, point, elastic.max) : Math.min(point, max2);
     }
     return point;
   }
-  function calcRelativeAxisConstraints(axis, min, max) {
+  function calcRelativeAxisConstraints(axis, min2, max2) {
     return {
-      min: min !== void 0 ? axis.min + min : void 0,
-      max: max !== void 0 ? axis.max + max - (axis.max - axis.min) : void 0
+      min: min2 !== void 0 ? axis.min + min2 : void 0,
+      max: max2 !== void 0 ? axis.max + max2 - (axis.max - axis.min) : void 0
     };
   }
-  function calcRelativeConstraints(layoutBox, { top, left, bottom, right }) {
+  function calcRelativeConstraints(layoutBox, { top: top2, left: left2, bottom: bottom2, right: right2 }) {
     return {
-      x: calcRelativeAxisConstraints(layoutBox.x, left, right),
-      y: calcRelativeAxisConstraints(layoutBox.y, top, bottom)
+      x: calcRelativeAxisConstraints(layoutBox.x, left2, right2),
+      y: calcRelativeAxisConstraints(layoutBox.y, top2, bottom2)
     };
   }
   function calcViewportAxisConstraints(layoutAxis, constraintsAxis) {
-    let min = constraintsAxis.min - layoutAxis.min;
-    let max = constraintsAxis.max - layoutAxis.max;
+    let min2 = constraintsAxis.min - layoutAxis.min;
+    let max2 = constraintsAxis.max - layoutAxis.max;
     if (constraintsAxis.max - constraintsAxis.min < layoutAxis.max - layoutAxis.min) {
-      [min, max] = [max, min];
+      [min2, max2] = [max2, min2];
     }
-    return { min, max };
+    return { min: min2, max: max2 };
   }
   function calcViewportConstraints(layoutBox, constraintsBox) {
     return {
@@ -38283,10 +38513,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/projection/geometry/conversion.mjs
-  function convertBoundingBoxToBox({ top, left, right, bottom }) {
+  function convertBoundingBoxToBox({ top: top2, left: left2, right: right2, bottom: bottom2 }) {
     return {
-      x: { min: left, max: right },
-      y: { min: top, max: bottom }
+      x: { min: left2, max: right2 },
+      y: { min: top2, max: bottom2 }
     };
   }
   function convertBoxToBoundingBox({ x, y }) {
@@ -38306,11 +38536,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/projection/utils/has-transform.mjs
-  function isIdentityScale(scale2) {
-    return scale2 === void 0 || scale2 === 1;
+  function isIdentityScale(scale3) {
+    return scale3 === void 0 || scale3 === 1;
   }
-  function hasScale({ scale: scale2, scaleX, scaleY }) {
-    return !isIdentityScale(scale2) || !isIdentityScale(scaleX) || !isIdentityScale(scaleY);
+  function hasScale({ scale: scale3, scaleX, scaleY }) {
+    return !isIdentityScale(scale3) || !isIdentityScale(scaleX) || !isIdentityScale(scaleY);
   }
   function hasTransform(values) {
     return hasScale(values) || has2DTranslate(values) || values.z || values.rotate || values.rotateX || values.rotateY;
@@ -38323,20 +38553,20 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/projection/geometry/delta-apply.mjs
-  function scalePoint(point, scale2, originPoint) {
+  function scalePoint(point, scale3, originPoint) {
     const distanceFromOrigin = point - originPoint;
-    const scaled = scale2 * distanceFromOrigin;
+    const scaled = scale3 * distanceFromOrigin;
     return originPoint + scaled;
   }
-  function applyPointDelta(point, translate, scale2, originPoint, boxScale) {
+  function applyPointDelta(point, translate, scale3, originPoint, boxScale) {
     if (boxScale !== void 0) {
       point = scalePoint(point, boxScale, originPoint);
     }
-    return scalePoint(point, scale2, originPoint) + translate;
+    return scalePoint(point, scale3, originPoint) + translate;
   }
-  function applyAxisDelta(axis, translate = 0, scale2 = 1, originPoint, boxScale) {
-    axis.min = applyPointDelta(axis.min, translate, scale2, originPoint, boxScale);
-    axis.max = applyPointDelta(axis.max, translate, scale2, originPoint, boxScale);
+  function applyAxisDelta(axis, translate = 0, scale3 = 1, originPoint, boxScale) {
+    axis.min = applyPointDelta(axis.min, translate, scale3, originPoint, boxScale);
+    axis.max = applyPointDelta(axis.max, translate, scale3, originPoint, boxScale);
   }
   function applyBoxDelta(box, { x, y }) {
     applyAxisDelta(box.x, x.translate, x.scale, x.originPoint);
@@ -38375,10 +38605,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     axis.min = axis.min + distance2;
     axis.max = axis.max + distance2;
   }
-  function transformAxis(axis, transforms, [key, scaleKey, originKey]) {
-    const axisOrigin = transforms[originKey] !== void 0 ? transforms[originKey] : 0.5;
+  function transformAxis(axis, transforms2, [key, scaleKey, originKey]) {
+    const axisOrigin = transforms2[originKey] !== void 0 ? transforms2[originKey] : 0.5;
     const originPoint = mix(axis.min, axis.max, axisOrigin);
-    applyAxisDelta(axis, transforms[key], transforms[scaleKey], originPoint, transforms.scale);
+    applyAxisDelta(axis, transforms2[key], transforms2[scaleKey], originPoint, transforms2.scale);
   }
   var xKeys = ["x", "scaleX", "originX"];
   var yKeys = ["y", "scaleY", "originY"];
@@ -38459,16 +38689,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         const { dragPropagation, dragDirectionLock, onDirectionLock, onDrag } = this.getProps();
         if (!dragPropagation && !this.openGlobalLock)
           return;
-        const { offset } = info;
+        const { offset: offset2 } = info;
         if (dragDirectionLock && this.currentDirection === null) {
-          this.currentDirection = getCurrentDirection(offset);
+          this.currentDirection = getCurrentDirection(offset2);
           if (this.currentDirection !== null) {
             onDirectionLock === null || onDirectionLock === void 0 ? void 0 : onDirectionLock(this.currentDirection);
           }
           return;
         }
-        this.updateAxis("x", info.point, offset);
-        this.updateAxis("y", info.point, offset);
+        this.updateAxis("x", info.point, offset2);
+        this.updateAxis("y", info.point, offset2);
         this.visualElement.render();
         onDrag === null || onDrag === void 0 ? void 0 : onDrag(event, info);
       };
@@ -38505,12 +38735,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }
       (_b3 = this.visualElement.animationState) === null || _b3 === void 0 ? void 0 : _b3.setActive(AnimationType.Drag, false);
     }
-    updateAxis(axis, _point, offset) {
+    updateAxis(axis, _point, offset2) {
       const { drag: drag2 } = this.getProps();
-      if (!offset || !shouldDrag(axis, drag2, this.currentDirection))
+      if (!offset2 || !shouldDrag(axis, drag2, this.currentDirection))
         return;
       const axisValue = this.getAxisMotionValue(axis);
-      let next = this.originPoint[axis] + offset[axis];
+      let next = this.originPoint[axis] + offset2[axis];
       if (this.constraints && this.constraints[axis]) {
         next = applyConstraints(next, this.constraints[axis], this.elastic[axis]);
       }
@@ -38609,8 +38839,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         const { projection } = this.visualElement;
         const axisValue = this.getAxisMotionValue(axis);
         if (projection && projection.layout) {
-          const { min, max } = projection.layout.layoutBox[axis];
-          axisValue.set(point[axis] - mix(min, max, 0.5));
+          const { min: min2, max: max2 } = projection.layout.layoutBox[axis];
+          axisValue.set(point[axis] - mix(min2, max2, 0.5));
         }
       });
     }
@@ -38640,8 +38870,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         if (!shouldDrag(axis, drag2, null))
           return;
         const axisValue = this.getAxisMotionValue(axis);
-        const { min, max } = this.constraints[axis];
-        axisValue.set(mix(min, max, boxProgress[axis]));
+        const { min: min2, max: max2 } = this.constraints[axis];
+        axisValue.set(mix(min2, max2, boxProgress[axis]));
       });
     }
     addListeners() {
@@ -38704,11 +38934,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   function shouldDrag(direction2, drag2, currentDirection) {
     return (drag2 === true || drag2 === direction2) && (currentDirection === null || currentDirection === direction2);
   }
-  function getCurrentDirection(offset, lockThreshold = 10) {
+  function getCurrentDirection(offset2, lockThreshold = 10) {
     let direction2 = null;
-    if (Math.abs(offset.y) > lockThreshold) {
+    if (Math.abs(offset2.y) > lockThreshold) {
       direction2 = "y";
-    } else if (Math.abs(offset.x) > lockThreshold) {
+    } else if (Math.abs(offset2.x) > lockThreshold) {
       direction2 = "x";
     }
     return direction2;
@@ -38718,16 +38948,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   function useDrag(props) {
     const { dragControls: groupDragControls, visualElement } = props;
     const dragControls = useConstant(() => new VisualElementDragControls(visualElement));
-    (0, import_react44.useEffect)(() => groupDragControls && groupDragControls.subscribe(dragControls), [dragControls, groupDragControls]);
-    (0, import_react44.useEffect)(() => dragControls.addListeners(), [dragControls]);
+    (0, import_react47.useEffect)(() => groupDragControls && groupDragControls.subscribe(dragControls), [dragControls, groupDragControls]);
+    (0, import_react47.useEffect)(() => dragControls.addListeners(), [dragControls]);
   }
 
   // node_modules/framer-motion/dist/es/gestures/use-pan-gesture.mjs
-  var import_react45 = __toESM(require_react(), 1);
+  var import_react48 = __toESM(require_react(), 1);
   function usePanGesture({ onPan, onPanStart, onPanEnd, onPanSessionStart, visualElement }) {
     const hasPanEvents = onPan || onPanStart || onPanEnd || onPanSessionStart;
-    const panSession = (0, import_react45.useRef)(null);
-    const { transformPagePoint } = (0, import_react45.useContext)(MotionConfigContext);
+    const panSession = (0, import_react48.useRef)(null);
+    const { transformPagePoint } = (0, import_react48.useContext)(MotionConfigContext);
     const handlers = {
       onSessionStart: onPanSessionStart,
       onStart: onPanStart,
@@ -38737,7 +38967,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         onPanEnd && onPanEnd(event, info);
       }
     };
-    (0, import_react45.useEffect)(() => {
+    (0, import_react48.useEffect)(() => {
       if (panSession.current !== null) {
         panSession.current.updateHandlers(handlers);
       }
@@ -38877,10 +39107,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var positionalValues = {
     width: ({ x }, { paddingLeft = "0", paddingRight = "0" }) => x.max - x.min - parseFloat(paddingLeft) - parseFloat(paddingRight),
     height: ({ y }, { paddingTop = "0", paddingBottom = "0" }) => y.max - y.min - parseFloat(paddingTop) - parseFloat(paddingBottom),
-    top: (_bbox, { top }) => parseFloat(top),
-    left: (_bbox, { left }) => parseFloat(left),
-    bottom: ({ y }, { top }) => parseFloat(top) + (y.max - y.min),
-    right: ({ x }, { left }) => parseFloat(left) + (x.max - x.min),
+    top: (_bbox, { top: top2 }) => parseFloat(top2),
+    left: (_bbox, { left: left2 }) => parseFloat(left2),
+    bottom: ({ y }, { top: top2 }) => parseFloat(top2) + (y.max - y.min),
+    right: ({ x }, { left: left2 }) => parseFloat(left2) + (x.max - x.min),
     x: getTranslateFromMatrix(4, 13),
     y: getTranslateFromMatrix(5, 14)
   };
@@ -38994,7 +39224,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/framer-motion/dist/es/render/VisualElement.mjs
-  var import_react46 = __toESM(require_react(), 1);
+  var import_react49 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/utils/reduced-motion/state.mjs
   var prefersReducedMotion = { current: null };
@@ -39175,7 +39405,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         const name = featureNames[i];
         const { isEnabled, Component: Component3 } = featureDefinitions[name];
         if (isEnabled(renderedProps) && Component3) {
-          features.push((0, import_react46.createElement)(Component3, {
+          features.push((0, import_react49.createElement)(Component3, {
             key: name,
             ...renderedProps,
             visualElement: this
@@ -39437,7 +39667,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/framer-motion/dist/es/motion/features/layout/MeasureLayout.mjs
-  var import_react47 = __toESM(require_react(), 1);
+  var import_react50 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/projection/styles/scale-border-radius.mjs
   function pixelsToPercent(pixels, axis) {
@@ -39479,16 +39709,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (shadow.length > 5)
         return original;
       const template = complex.createTransformer(latest);
-      const offset = typeof shadow[0] !== "number" ? 1 : 0;
+      const offset2 = typeof shadow[0] !== "number" ? 1 : 0;
       const xScale = projectionDelta.x.scale * treeScale.x;
       const yScale = projectionDelta.y.scale * treeScale.y;
-      shadow[0 + offset] /= xScale;
-      shadow[1 + offset] /= yScale;
+      shadow[0 + offset2] /= xScale;
+      shadow[1 + offset2] /= yScale;
       const averageScale = mix(xScale, yScale, 0.5);
-      if (typeof shadow[2 + offset] === "number")
-        shadow[2 + offset] /= averageScale;
-      if (typeof shadow[3 + offset] === "number")
-        shadow[3 + offset] /= averageScale;
+      if (typeof shadow[2 + offset2] === "number")
+        shadow[2 + offset2] /= averageScale;
+      if (typeof shadow[3 + offset2] === "number")
+        shadow[3 + offset2] /= averageScale;
       let output = template(shadow);
       if (containsCSSVariables) {
         let i = 0;
@@ -39503,7 +39733,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
 
   // node_modules/framer-motion/dist/es/motion/features/layout/MeasureLayout.mjs
-  var MeasureLayoutWithContext = class extends import_react47.default.Component {
+  var MeasureLayoutWithContext = class extends import_react50.default.Component {
     componentDidMount() {
       const { visualElement, layoutGroup, switchLayoutGroup, layoutId } = this.props;
       const { projection } = visualElement;
@@ -39580,8 +39810,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
   function MeasureLayout(props) {
     const [isPresent2, safeToRemove] = usePresence();
-    const layoutGroup = (0, import_react47.useContext)(LayoutGroupContext);
-    return import_react47.default.createElement(MeasureLayoutWithContext, { ...props, layoutGroup, switchLayoutGroup: (0, import_react47.useContext)(SwitchLayoutGroupContext), isPresent: isPresent2, safeToRemove });
+    const layoutGroup = (0, import_react50.useContext)(LayoutGroupContext);
+    return import_react50.default.createElement(MeasureLayoutWithContext, { ...props, layoutGroup, switchLayoutGroup: (0, import_react50.useContext)(SwitchLayoutGroupContext), isPresent: isPresent2, safeToRemove });
   }
   var defaultScaleCorrectors = {
     borderRadius: {
@@ -39660,13 +39890,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   var easeCrossfadeIn = compress(0, 0.5, circOut);
   var easeCrossfadeOut = compress(0.5, 0.95, linear);
-  function compress(min, max, easing) {
+  function compress(min2, max2, easing) {
     return (p) => {
-      if (p < min)
+      if (p < min2)
         return 0;
-      if (p > max)
+      if (p > max2)
         return 1;
-      return easing(progress(min, max, p));
+      return easing(progress(min2, max2, p));
     };
   }
 
@@ -39681,15 +39911,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/framer-motion/dist/es/projection/geometry/delta-remove.mjs
-  function removePointDelta(point, translate, scale2, originPoint, boxScale) {
+  function removePointDelta(point, translate, scale3, originPoint, boxScale) {
     point -= translate;
-    point = scalePoint(point, 1 / scale2, originPoint);
+    point = scalePoint(point, 1 / scale3, originPoint);
     if (boxScale !== void 0) {
       point = scalePoint(point, 1 / boxScale, originPoint);
     }
     return point;
   }
-  function removeAxisDelta(axis, translate = 0, scale2 = 1, origin = 0.5, boxScale, originAxis = axis, sourceAxis = axis) {
+  function removeAxisDelta(axis, translate = 0, scale3 = 1, origin = 0.5, boxScale, originAxis = axis, sourceAxis = axis) {
     if (percent.test(translate)) {
       translate = parseFloat(translate);
       const relativeProgress = mix(sourceAxis.min, sourceAxis.max, translate / 100);
@@ -39700,17 +39930,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let originPoint = mix(originAxis.min, originAxis.max, origin);
     if (axis === originAxis)
       originPoint -= translate;
-    axis.min = removePointDelta(axis.min, translate, scale2, originPoint, boxScale);
-    axis.max = removePointDelta(axis.max, translate, scale2, originPoint, boxScale);
+    axis.min = removePointDelta(axis.min, translate, scale3, originPoint, boxScale);
+    axis.max = removePointDelta(axis.max, translate, scale3, originPoint, boxScale);
   }
-  function removeAxisTransforms(axis, transforms, [key, scaleKey, originKey], origin, sourceAxis) {
-    removeAxisDelta(axis, transforms[key], transforms[scaleKey], transforms[originKey], transforms.scale, origin, sourceAxis);
+  function removeAxisTransforms(axis, transforms2, [key, scaleKey, originKey], origin, sourceAxis) {
+    removeAxisDelta(axis, transforms2[key], transforms2[scaleKey], transforms2[originKey], transforms2.scale, origin, sourceAxis);
   }
   var xKeys2 = ["x", "scaleX", "originX"];
   var yKeys2 = ["y", "scaleY", "originY"];
-  function removeBoxTransforms(box, transforms, originBox, sourceBox) {
-    removeAxisTransforms(box.x, transforms, xKeys2, originBox === null || originBox === void 0 ? void 0 : originBox.x, sourceBox === null || sourceBox === void 0 ? void 0 : sourceBox.x);
-    removeAxisTransforms(box.y, transforms, yKeys2, originBox === null || originBox === void 0 ? void 0 : originBox.y, sourceBox === null || sourceBox === void 0 ? void 0 : sourceBox.y);
+  function removeBoxTransforms(box, transforms2, originBox, sourceBox) {
+    removeAxisTransforms(box.x, transforms2, xKeys2, originBox === null || originBox === void 0 ? void 0 : originBox.x, sourceBox === null || sourceBox === void 0 ? void 0 : sourceBox.x);
+    removeAxisTransforms(box.y, transforms2, yKeys2, originBox === null || originBox === void 0 ? void 0 : originBox.y, sourceBox === null || sourceBox === void 0 ? void 0 : sourceBox.y);
   }
 
   // node_modules/framer-motion/dist/es/projection/geometry/utils.mjs
@@ -39726,8 +39956,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   function aspectRatio(box) {
     return calcLength(box.x) / calcLength(box.y);
   }
-  function isCloseTo(a2, b2, max = 0.1) {
-    return distance(a2, b2) <= max;
+  function isCloseTo(a2, b2, max2 = 0.1) {
+    return distance(a2, b2) <= max2;
   }
 
   // node_modules/framer-motion/dist/es/projection/shared/stack.mjs
@@ -40821,15 +41051,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 
   // node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs
   var React7 = __toESM(require_react(), 1);
-  var import_react52 = __toESM(require_react(), 1);
+  var import_react55 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/utils/use-force-update.mjs
-  var import_react49 = __toESM(require_react(), 1);
+  var import_react52 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/utils/use-is-mounted.mjs
-  var import_react48 = __toESM(require_react(), 1);
+  var import_react51 = __toESM(require_react(), 1);
   function useIsMounted() {
-    const isMounted = (0, import_react48.useRef)(false);
+    const isMounted = (0, import_react51.useRef)(false);
     useIsomorphicLayoutEffect(() => {
       isMounted.current = true;
       return () => {
@@ -40842,21 +41072,21 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   // node_modules/framer-motion/dist/es/utils/use-force-update.mjs
   function useForceUpdate() {
     const isMounted = useIsMounted();
-    const [forcedRenderCount, setForcedRenderCount] = (0, import_react49.useState)(0);
-    const forceRender = (0, import_react49.useCallback)(() => {
+    const [forcedRenderCount, setForcedRenderCount] = (0, import_react52.useState)(0);
+    const forceRender = (0, import_react52.useCallback)(() => {
       isMounted.current && setForcedRenderCount(forcedRenderCount + 1);
     }, [forcedRenderCount]);
-    const deferredForceRender = (0, import_react49.useCallback)(() => es_default3.postRender(forceRender), [forceRender]);
+    const deferredForceRender = (0, import_react52.useCallback)(() => es_default3.postRender(forceRender), [forceRender]);
     return [deferredForceRender, forcedRenderCount];
   }
 
   // node_modules/framer-motion/dist/es/components/AnimatePresence/PresenceChild.mjs
   var React6 = __toESM(require_react(), 1);
-  var import_react51 = __toESM(require_react(), 1);
+  var import_react54 = __toESM(require_react(), 1);
 
   // node_modules/framer-motion/dist/es/components/AnimatePresence/PopChild.mjs
   var React5 = __toESM(require_react(), 1);
-  var import_react50 = __toESM(require_react(), 1);
+  var import_react53 = __toESM(require_react(), 1);
   var PopChildMeasure = class extends React5.Component {
     getSnapshotBeforeUpdate(prevProps) {
       const element = this.props.childRef.current;
@@ -40876,16 +41106,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
   };
   function PopChild({ children, isPresent: isPresent2 }) {
-    const id3 = (0, import_react50.useId)();
-    const ref = (0, import_react50.useRef)(null);
-    const size3 = (0, import_react50.useRef)({
+    const id3 = (0, import_react53.useId)();
+    const ref = (0, import_react53.useRef)(null);
+    const size3 = (0, import_react53.useRef)({
       width: 0,
       height: 0,
       top: 0,
       left: 0
     });
-    (0, import_react50.useInsertionEffect)(() => {
-      const { width, height, top, left } = size3.current;
+    (0, import_react53.useInsertionEffect)(() => {
+      const { width, height, top: top2, left: left2 } = size3.current;
       if (isPresent2 || !ref.current || !width || !height)
         return;
       ref.current.dataset.motionPopId = id3;
@@ -40897,8 +41127,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             position: absolute !important;
             width: ${width}px !important;
             height: ${height}px !important;
-            top: ${top}px !important;
-            left: ${left}px !important;
+            top: ${top2}px !important;
+            left: ${left2}px !important;
           }
         `);
       }
@@ -40912,8 +41142,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   // node_modules/framer-motion/dist/es/components/AnimatePresence/PresenceChild.mjs
   var PresenceChild = ({ children, initial, isPresent: isPresent2, onExitComplete, custom, presenceAffectsLayout, mode: mode2 }) => {
     const presenceChildren = useConstant(newChildrenMap);
-    const id3 = (0, import_react51.useId)();
-    const context = (0, import_react51.useMemo)(
+    const id3 = (0, import_react54.useId)();
+    const context = (0, import_react54.useMemo)(
       () => ({
         id: id3,
         initial,
@@ -40934,7 +41164,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }),
       presenceAffectsLayout ? void 0 : [isPresent2]
     );
-    (0, import_react51.useMemo)(() => {
+    (0, import_react54.useMemo)(() => {
       presenceChildren.forEach((_, key) => presenceChildren.set(key, false));
     }, [isPresent2]);
     React6.useEffect(() => {
@@ -40959,8 +41189,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   function onlyElements(children) {
     const filtered = [];
-    import_react52.Children.forEach(children, (child) => {
-      if ((0, import_react52.isValidElement)(child))
+    import_react55.Children.forEach(children, (child) => {
+      if ((0, import_react55.isValidElement)(child))
         filtered.push(child);
     });
     return filtered;
@@ -40971,16 +41201,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       warnOnce(false, "Replace exitBeforeEnter with mode='wait'");
     }
     let [forceRender] = useForceUpdate();
-    const forceRenderLayoutGroup = (0, import_react52.useContext)(LayoutGroupContext).forceRender;
+    const forceRenderLayoutGroup = (0, import_react55.useContext)(LayoutGroupContext).forceRender;
     if (forceRenderLayoutGroup)
       forceRender = forceRenderLayoutGroup;
     const isMounted = useIsMounted();
     const filteredChildren = onlyElements(children);
     let childrenToRender = filteredChildren;
     const exiting = /* @__PURE__ */ new Set();
-    const presentChildren = (0, import_react52.useRef)(childrenToRender);
-    const allChildren = (0, import_react52.useRef)(/* @__PURE__ */ new Map()).current;
-    const isInitialRender = (0, import_react52.useRef)(true);
+    const presentChildren = (0, import_react55.useRef)(childrenToRender);
+    const allChildren = (0, import_react55.useRef)(/* @__PURE__ */ new Map()).current;
+    const isInitialRender = (0, import_react55.useRef)(true);
     useIsomorphicLayoutEffect(() => {
       isInitialRender.current = false;
       updateChildLookup(filteredChildren, allChildren);
@@ -41036,15 +41266,761 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     if (env !== "production" && mode2 === "wait" && childrenToRender.length > 1) {
       console.warn(`You're attempting to animate multiple children within AnimatePresence, but its mode is set to "wait". This will lead to odd visual behaviour.`);
     }
-    return React7.createElement(React7.Fragment, null, exiting.size ? childrenToRender : childrenToRender.map((child) => (0, import_react52.cloneElement)(child)));
+    return React7.createElement(React7.Fragment, null, exiting.size ? childrenToRender : childrenToRender.map((child) => (0, import_react55.cloneElement)(child)));
   };
 
+  // node_modules/@chakra-ui/transition/dist/index.esm.js
+  var import_react57 = __toESM(require_react());
+  var import_react58 = __toESM(require_react());
+  var import_react59 = __toESM(require_react());
+  var import_react60 = __toESM(require_react());
+  var import_react61 = __toESM(require_react());
+  var cx2 = (...classNames2) => classNames2.filter(Boolean).join(" ");
+  function isDev() {
+    return true;
+  }
+  var warn = (options) => {
+    const { condition, message } = options;
+    if (condition && isDev()) {
+      console.warn(message);
+    }
+  };
+  var TRANSITION_EASINGS = {
+    ease: [0.25, 0.1, 0.25, 1],
+    easeIn: [0.4, 0, 1, 1],
+    easeOut: [0, 0, 0.2, 1],
+    easeInOut: [0.4, 0, 0.2, 1]
+  };
+  var TRANSITION_VARIANTS = {
+    scale: {
+      enter: { scale: 1 },
+      exit: { scale: 0.95 }
+    },
+    fade: {
+      enter: { opacity: 1 },
+      exit: { opacity: 0 }
+    },
+    pushLeft: {
+      enter: { x: "100%" },
+      exit: { x: "-30%" }
+    },
+    pushRight: {
+      enter: { x: "-100%" },
+      exit: { x: "30%" }
+    },
+    pushUp: {
+      enter: { y: "100%" },
+      exit: { y: "-30%" }
+    },
+    pushDown: {
+      enter: { y: "-100%" },
+      exit: { y: "30%" }
+    },
+    slideLeft: {
+      position: { left: 0, top: 0, bottom: 0, width: "100%" },
+      enter: { x: 0, y: 0 },
+      exit: { x: "-100%", y: 0 }
+    },
+    slideRight: {
+      position: { right: 0, top: 0, bottom: 0, width: "100%" },
+      enter: { x: 0, y: 0 },
+      exit: { x: "100%", y: 0 }
+    },
+    slideUp: {
+      position: { top: 0, left: 0, right: 0, maxWidth: "100vw" },
+      enter: { x: 0, y: 0 },
+      exit: { x: 0, y: "-100%" }
+    },
+    slideDown: {
+      position: { bottom: 0, left: 0, right: 0, maxWidth: "100vw" },
+      enter: { x: 0, y: 0 },
+      exit: { x: 0, y: "100%" }
+    }
+  };
+  function getSlideTransition(options) {
+    const side = (options == null ? void 0 : options.direction) ?? "right";
+    switch (side) {
+      case "right":
+        return TRANSITION_VARIANTS.slideRight;
+      case "left":
+        return TRANSITION_VARIANTS.slideLeft;
+      case "bottom":
+        return TRANSITION_VARIANTS.slideDown;
+      case "top":
+        return TRANSITION_VARIANTS.slideUp;
+      default:
+        return TRANSITION_VARIANTS.slideRight;
+    }
+  }
+  var TRANSITION_DEFAULTS = {
+    enter: {
+      duration: 0.2,
+      ease: TRANSITION_EASINGS.easeOut
+    },
+    exit: {
+      duration: 0.1,
+      ease: TRANSITION_EASINGS.easeIn
+    }
+  };
+  var withDelay = {
+    enter: (transition3, delay2) => ({
+      ...transition3,
+      delay: typeof delay2 === "number" ? delay2 : delay2 == null ? void 0 : delay2["enter"]
+    }),
+    exit: (transition3, delay2) => ({
+      ...transition3,
+      delay: typeof delay2 === "number" ? delay2 : delay2 == null ? void 0 : delay2["exit"]
+    })
+  };
+  var isNumeric = (value) => value != null && parseInt(value.toString(), 10) > 0;
+  var defaultTransitions2 = {
+    exit: {
+      height: { duration: 0.2, ease: TRANSITION_EASINGS.ease },
+      opacity: { duration: 0.3, ease: TRANSITION_EASINGS.ease }
+    },
+    enter: {
+      height: { duration: 0.3, ease: TRANSITION_EASINGS.ease },
+      opacity: { duration: 0.4, ease: TRANSITION_EASINGS.ease }
+    }
+  };
+  var variants13 = {
+    exit: ({
+      animateOpacity,
+      startingHeight,
+      transition: transition3,
+      transitionEnd,
+      delay: delay2
+    }) => ({
+      ...animateOpacity && { opacity: isNumeric(startingHeight) ? 1 : 0 },
+      height: startingHeight,
+      transitionEnd: transitionEnd == null ? void 0 : transitionEnd.exit,
+      transition: (transition3 == null ? void 0 : transition3.exit) ?? withDelay.exit(defaultTransitions2.exit, delay2)
+    }),
+    enter: ({
+      animateOpacity,
+      endingHeight,
+      transition: transition3,
+      transitionEnd,
+      delay: delay2
+    }) => ({
+      ...animateOpacity && { opacity: 1 },
+      height: endingHeight,
+      transitionEnd: transitionEnd == null ? void 0 : transitionEnd.enter,
+      transition: (transition3 == null ? void 0 : transition3.enter) ?? withDelay.enter(defaultTransitions2.enter, delay2)
+    })
+  };
+  var Collapse = (0, import_react57.forwardRef)((props, ref) => {
+    const {
+      in: isOpen,
+      unmountOnExit,
+      animateOpacity = true,
+      startingHeight = 0,
+      endingHeight = "auto",
+      style,
+      className,
+      transition: transition3,
+      transitionEnd,
+      ...rest
+    } = props;
+    const [mounted, setMounted] = (0, import_react57.useState)(false);
+    (0, import_react57.useEffect)(() => {
+      const timeout = setTimeout(() => {
+        setMounted(true);
+      });
+      return () => clearTimeout(timeout);
+    }, []);
+    warn({
+      condition: Boolean(startingHeight > 0 && unmountOnExit),
+      message: `startingHeight and unmountOnExit are mutually exclusive. You can't use them together`
+    });
+    const hasStartingHeight = parseFloat(startingHeight.toString()) > 0;
+    const custom = {
+      startingHeight,
+      endingHeight,
+      animateOpacity,
+      transition: !mounted ? { enter: { duration: 0 } } : transition3,
+      transitionEnd: {
+        enter: transitionEnd == null ? void 0 : transitionEnd.enter,
+        exit: unmountOnExit ? transitionEnd == null ? void 0 : transitionEnd.exit : {
+          ...transitionEnd == null ? void 0 : transitionEnd.exit,
+          display: hasStartingHeight ? "block" : "none"
+        }
+      }
+    };
+    const show = unmountOnExit ? isOpen : true;
+    const animate3 = isOpen || unmountOnExit ? "enter" : "exit";
+    return /* @__PURE__ */ import_react56.default.createElement(AnimatePresence, {
+      initial: false,
+      custom
+    }, show && /* @__PURE__ */ import_react56.default.createElement(motion.div, {
+      ref,
+      ...rest,
+      className: cx2("chakra-collapse", className),
+      style: {
+        overflow: "hidden",
+        display: "block",
+        ...style
+      },
+      custom,
+      variants: variants13,
+      initial: unmountOnExit ? "exit" : false,
+      animate: animate3,
+      exit: "exit"
+    }));
+  });
+  Collapse.displayName = "Collapse";
+  var variants22 = {
+    enter: ({ transition: transition3, transitionEnd, delay: delay2 } = {}) => ({
+      opacity: 1,
+      transition: (transition3 == null ? void 0 : transition3.enter) ?? withDelay.enter(TRANSITION_DEFAULTS.enter, delay2),
+      transitionEnd: transitionEnd == null ? void 0 : transitionEnd.enter
+    }),
+    exit: ({ transition: transition3, transitionEnd, delay: delay2 } = {}) => ({
+      opacity: 0,
+      transition: (transition3 == null ? void 0 : transition3.exit) ?? withDelay.exit(TRANSITION_DEFAULTS.exit, delay2),
+      transitionEnd: transitionEnd == null ? void 0 : transitionEnd.exit
+    })
+  };
+  var fadeConfig = {
+    initial: "exit",
+    animate: "enter",
+    exit: "exit",
+    variants: variants22
+  };
+  var Fade = (0, import_react58.forwardRef)(function Fade2(props, ref) {
+    const {
+      unmountOnExit,
+      in: isOpen,
+      className,
+      transition: transition3,
+      transitionEnd,
+      delay: delay2,
+      ...rest
+    } = props;
+    const animate3 = isOpen || unmountOnExit ? "enter" : "exit";
+    const show = unmountOnExit ? isOpen && unmountOnExit : true;
+    const custom = { transition: transition3, transitionEnd, delay: delay2 };
+    return /* @__PURE__ */ import_react56.default.createElement(AnimatePresence, {
+      custom
+    }, show && /* @__PURE__ */ import_react56.default.createElement(motion.div, {
+      ref,
+      className: cx2("chakra-fade", className),
+      custom,
+      ...fadeConfig,
+      animate: animate3,
+      ...rest
+    }));
+  });
+  Fade.displayName = "Fade";
+  var variants32 = {
+    exit: ({ reverse, initialScale, transition: transition3, transitionEnd, delay: delay2 }) => ({
+      opacity: 0,
+      ...reverse ? { scale: initialScale, transitionEnd: transitionEnd == null ? void 0 : transitionEnd.exit } : { transitionEnd: { scale: initialScale, ...transitionEnd == null ? void 0 : transitionEnd.exit } },
+      transition: (transition3 == null ? void 0 : transition3.exit) ?? withDelay.exit(TRANSITION_DEFAULTS.exit, delay2)
+    }),
+    enter: ({ transitionEnd, transition: transition3, delay: delay2 }) => ({
+      opacity: 1,
+      scale: 1,
+      transition: (transition3 == null ? void 0 : transition3.enter) ?? withDelay.enter(TRANSITION_DEFAULTS.enter, delay2),
+      transitionEnd: transitionEnd == null ? void 0 : transitionEnd.enter
+    })
+  };
+  var scaleFadeConfig = {
+    initial: "exit",
+    animate: "enter",
+    exit: "exit",
+    variants: variants32
+  };
+  var ScaleFade = (0, import_react59.forwardRef)(function ScaleFade2(props, ref) {
+    const {
+      unmountOnExit,
+      in: isOpen,
+      reverse = true,
+      initialScale = 0.95,
+      className,
+      transition: transition3,
+      transitionEnd,
+      delay: delay2,
+      ...rest
+    } = props;
+    const show = unmountOnExit ? isOpen && unmountOnExit : true;
+    const animate3 = isOpen || unmountOnExit ? "enter" : "exit";
+    const custom = { initialScale, reverse, transition: transition3, transitionEnd, delay: delay2 };
+    return /* @__PURE__ */ import_react56.default.createElement(AnimatePresence, {
+      custom
+    }, show && /* @__PURE__ */ import_react56.default.createElement(motion.div, {
+      ref,
+      className: cx2("chakra-offset-slide", className),
+      ...scaleFadeConfig,
+      animate: animate3,
+      custom,
+      ...rest
+    }));
+  });
+  ScaleFade.displayName = "ScaleFade";
+  var defaultTransition = {
+    exit: {
+      duration: 0.15,
+      ease: TRANSITION_EASINGS.easeInOut
+    },
+    enter: {
+      type: "spring",
+      damping: 25,
+      stiffness: 180
+    }
+  };
+  var variants42 = {
+    exit: ({ direction: direction2, transition: transition3, transitionEnd, delay: delay2 }) => {
+      const { exit: exitStyles } = getSlideTransition({ direction: direction2 });
+      return {
+        ...exitStyles,
+        transition: (transition3 == null ? void 0 : transition3.exit) ?? withDelay.exit(defaultTransition.exit, delay2),
+        transitionEnd: transitionEnd == null ? void 0 : transitionEnd.exit
+      };
+    },
+    enter: ({ direction: direction2, transitionEnd, transition: transition3, delay: delay2 }) => {
+      const { enter: enterStyles } = getSlideTransition({ direction: direction2 });
+      return {
+        ...enterStyles,
+        transition: (transition3 == null ? void 0 : transition3.enter) ?? withDelay.enter(defaultTransition.enter, delay2),
+        transitionEnd: transitionEnd == null ? void 0 : transitionEnd.enter
+      };
+    }
+  };
+  var Slide = (0, import_react60.forwardRef)(function Slide2(props, ref) {
+    const {
+      direction: direction2 = "right",
+      style,
+      unmountOnExit,
+      in: isOpen,
+      className,
+      transition: transition3,
+      transitionEnd,
+      delay: delay2,
+      motionProps,
+      ...rest
+    } = props;
+    const transitionStyles = getSlideTransition({ direction: direction2 });
+    const computedStyle = Object.assign({ position: "fixed" }, transitionStyles.position, style);
+    const show = unmountOnExit ? isOpen && unmountOnExit : true;
+    const animate3 = isOpen || unmountOnExit ? "enter" : "exit";
+    const custom = { transitionEnd, transition: transition3, direction: direction2, delay: delay2 };
+    return /* @__PURE__ */ import_react56.default.createElement(AnimatePresence, {
+      custom
+    }, show && /* @__PURE__ */ import_react56.default.createElement(motion.div, {
+      ...rest,
+      ref,
+      initial: "exit",
+      className: cx2("chakra-slide", className),
+      animate: animate3,
+      exit: "exit",
+      custom,
+      variants: variants42,
+      style: computedStyle,
+      ...motionProps
+    }));
+  });
+  Slide.displayName = "Slide";
+  var variants52 = {
+    initial: ({ offsetX, offsetY, transition: transition3, transitionEnd, delay: delay2 }) => ({
+      opacity: 0,
+      x: offsetX,
+      y: offsetY,
+      transition: (transition3 == null ? void 0 : transition3.exit) ?? withDelay.exit(TRANSITION_DEFAULTS.exit, delay2),
+      transitionEnd: transitionEnd == null ? void 0 : transitionEnd.exit
+    }),
+    enter: ({ transition: transition3, transitionEnd, delay: delay2 }) => ({
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: (transition3 == null ? void 0 : transition3.enter) ?? withDelay.enter(TRANSITION_DEFAULTS.enter, delay2),
+      transitionEnd: transitionEnd == null ? void 0 : transitionEnd.enter
+    }),
+    exit: ({ offsetY, offsetX, transition: transition3, transitionEnd, reverse, delay: delay2 }) => {
+      const offset2 = { x: offsetX, y: offsetY };
+      return {
+        opacity: 0,
+        transition: (transition3 == null ? void 0 : transition3.exit) ?? withDelay.exit(TRANSITION_DEFAULTS.exit, delay2),
+        ...reverse ? { ...offset2, transitionEnd: transitionEnd == null ? void 0 : transitionEnd.exit } : { transitionEnd: { ...offset2, ...transitionEnd == null ? void 0 : transitionEnd.exit } }
+      };
+    }
+  };
+  var slideFadeConfig = {
+    initial: "initial",
+    animate: "enter",
+    exit: "exit",
+    variants: variants52
+  };
+  var SlideFade = (0, import_react61.forwardRef)(function SlideFade2(props, ref) {
+    const {
+      unmountOnExit,
+      in: isOpen,
+      reverse = true,
+      className,
+      offsetX = 0,
+      offsetY = 8,
+      transition: transition3,
+      transitionEnd,
+      delay: delay2,
+      ...rest
+    } = props;
+    const show = unmountOnExit ? isOpen && unmountOnExit : true;
+    const animate3 = isOpen || unmountOnExit ? "enter" : "exit";
+    const custom = {
+      offsetX,
+      offsetY,
+      reverse,
+      transition: transition3,
+      transitionEnd,
+      delay: delay2
+    };
+    return /* @__PURE__ */ import_react56.default.createElement(AnimatePresence, {
+      custom
+    }, show && /* @__PURE__ */ import_react56.default.createElement(motion.div, {
+      ref,
+      className: cx2("chakra-offset-slide", className),
+      custom,
+      ...slideFadeConfig,
+      animate: animate3,
+      ...rest
+    }));
+  });
+  SlideFade.displayName = "SlideFade";
+
+  // node_modules/@chakra-ui/accordion/dist/index.esm.js
+  var import_react65 = __toESM(require_react());
+  var cx3 = (...classNames2) => classNames2.filter(Boolean).join(" ");
+  function isDev2() {
+    return true;
+  }
+  var warn2 = (options) => {
+    const { condition, message } = options;
+    if (condition && isDev2()) {
+      console.warn(message);
+    }
+  };
+  function callAllHandlers2(...fns) {
+    return function func(event) {
+      fns.some((fn2) => {
+        fn2 == null ? void 0 : fn2(event);
+        return event == null ? void 0 : event.defaultPrevented;
+      });
+    };
+  }
+  var [AccordionStylesProvider, useAccordionStyles] = createContext3({
+    name: "AccordionStylesContext",
+    hookName: "useAccordionStyles",
+    providerName: "<Accordion />"
+  });
+  var [AccordionItemProvider, useAccordionItemContext] = createContext3({
+    name: "AccordionItemContext",
+    hookName: "useAccordionItemContext",
+    providerName: "<AccordionItem />"
+  });
+  var [
+    AccordionDescendantsProvider,
+    useAccordionDescendantsContext,
+    useAccordionDescendants,
+    useAccordionDescendant
+  ] = createDescendantContext();
+  var AccordionButton = forwardRef(function AccordionButton2(props, ref) {
+    const { getButtonProps } = useAccordionItemContext();
+    const buttonProps = getButtonProps(props, ref);
+    const styles2 = useAccordionStyles();
+    const buttonStyles = {
+      display: "flex",
+      alignItems: "center",
+      width: "100%",
+      outline: 0,
+      ...styles2.button
+    };
+    return /* @__PURE__ */ import_react62.default.createElement(chakra.button, {
+      ...buttonProps,
+      className: cx3("chakra-accordion__button", props.className),
+      __css: buttonStyles
+    });
+  });
+  AccordionButton.displayName = "AccordionButton";
+  function useAccordion(props) {
+    const {
+      onChange,
+      defaultIndex,
+      index: indexProp,
+      allowMultiple,
+      allowToggle,
+      ...htmlProps
+    } = props;
+    allowMultipleWarning(props);
+    allowMultipleAndAllowToggleWarning(props);
+    const descendants = useAccordionDescendants();
+    const [focusedIndex, setFocusedIndex] = (0, import_react63.useState)(-1);
+    (0, import_react63.useEffect)(() => {
+      return () => {
+        setFocusedIndex(-1);
+      };
+    }, []);
+    const [index, setIndex] = useControllableState({
+      value: indexProp,
+      defaultValue() {
+        if (allowMultiple)
+          return defaultIndex ?? [];
+        return defaultIndex ?? -1;
+      },
+      onChange
+    });
+    const getAccordionItemProps = (idx) => {
+      let isOpen = false;
+      if (idx !== null) {
+        isOpen = Array.isArray(index) ? index.includes(idx) : index === idx;
+      }
+      const onChange2 = (isOpen2) => {
+        if (idx === null)
+          return;
+        if (allowMultiple && Array.isArray(index)) {
+          const nextState = isOpen2 ? index.concat(idx) : index.filter((i) => i !== idx);
+          setIndex(nextState);
+        } else if (isOpen2) {
+          setIndex(idx);
+        } else if (allowToggle) {
+          setIndex(-1);
+        }
+      };
+      return { isOpen, onChange: onChange2 };
+    };
+    return {
+      index,
+      setIndex,
+      htmlProps,
+      getAccordionItemProps,
+      focusedIndex,
+      setFocusedIndex,
+      descendants
+    };
+  }
+  var [AccordionProvider, useAccordionContext] = createContext3({
+    name: "AccordionContext",
+    hookName: "useAccordionContext",
+    providerName: "Accordion"
+  });
+  function useAccordionItem(props) {
+    const { isDisabled, isFocusable, id: id3, ...htmlProps } = props;
+    const { getAccordionItemProps, setFocusedIndex } = useAccordionContext();
+    const buttonRef = (0, import_react63.useRef)(null);
+    const reactId = (0, import_react63.useId)();
+    const uid = id3 ?? reactId;
+    const buttonId = `accordion-button-${uid}`;
+    const panelId = `accordion-panel-${uid}`;
+    focusableNotDisabledWarning(props);
+    const { register, index, descendants } = useAccordionDescendant({
+      disabled: isDisabled && !isFocusable
+    });
+    const { isOpen, onChange } = getAccordionItemProps(index === -1 ? null : index);
+    warnIfOpenAndDisabled({ isOpen, isDisabled });
+    const onOpen = () => {
+      onChange == null ? void 0 : onChange(true);
+    };
+    const onClose = () => {
+      onChange == null ? void 0 : onChange(false);
+    };
+    const onClick = (0, import_react63.useCallback)(() => {
+      onChange == null ? void 0 : onChange(!isOpen);
+      setFocusedIndex(index);
+    }, [index, setFocusedIndex, isOpen, onChange]);
+    const onKeyDown = (0, import_react63.useCallback)((event) => {
+      const keyMap = {
+        ArrowDown: () => {
+          const next = descendants.nextEnabled(index);
+          next == null ? void 0 : next.node.focus();
+        },
+        ArrowUp: () => {
+          const prev = descendants.prevEnabled(index);
+          prev == null ? void 0 : prev.node.focus();
+        },
+        Home: () => {
+          const first = descendants.firstEnabled();
+          first == null ? void 0 : first.node.focus();
+        },
+        End: () => {
+          const last = descendants.lastEnabled();
+          last == null ? void 0 : last.node.focus();
+        }
+      };
+      const action = keyMap[event.key];
+      if (action) {
+        event.preventDefault();
+        action(event);
+      }
+    }, [descendants, index]);
+    const onFocus = (0, import_react63.useCallback)(() => {
+      setFocusedIndex(index);
+    }, [setFocusedIndex, index]);
+    const getButtonProps = (0, import_react63.useCallback)(function getButtonProps2(props2 = {}, ref = null) {
+      return {
+        ...props2,
+        type: "button",
+        ref: mergeRefs(register, buttonRef, ref),
+        id: buttonId,
+        disabled: !!isDisabled,
+        "aria-expanded": !!isOpen,
+        "aria-controls": panelId,
+        onClick: callAllHandlers2(props2.onClick, onClick),
+        onFocus: callAllHandlers2(props2.onFocus, onFocus),
+        onKeyDown: callAllHandlers2(props2.onKeyDown, onKeyDown)
+      };
+    }, [
+      buttonId,
+      isDisabled,
+      isOpen,
+      onClick,
+      onFocus,
+      onKeyDown,
+      panelId,
+      register
+    ]);
+    const getPanelProps = (0, import_react63.useCallback)(function getPanelProps2(props2 = {}, ref = null) {
+      return {
+        ...props2,
+        ref,
+        role: "region",
+        id: panelId,
+        "aria-labelledby": buttonId,
+        hidden: !isOpen
+      };
+    }, [buttonId, isOpen, panelId]);
+    return {
+      isOpen,
+      isDisabled,
+      isFocusable,
+      onOpen,
+      onClose,
+      getButtonProps,
+      getPanelProps,
+      htmlProps
+    };
+  }
+  function allowMultipleWarning(props) {
+    const index = props.index || props.defaultIndex;
+    const condition = index != null && !Array.isArray(index) && props.allowMultiple;
+    warn2({
+      condition: !!condition,
+      message: `If 'allowMultiple' is passed, then 'index' or 'defaultIndex' must be an array. You passed: ${typeof index},`
+    });
+  }
+  function allowMultipleAndAllowToggleWarning(props) {
+    warn2({
+      condition: !!(props.allowMultiple && props.allowToggle),
+      message: `If 'allowMultiple' is passed, 'allowToggle' will be ignored. Either remove 'allowToggle' or 'allowMultiple' depending on whether you want multiple accordions visible or not`
+    });
+  }
+  function focusableNotDisabledWarning(props) {
+    warn2({
+      condition: !!(props.isFocusable && !props.isDisabled),
+      message: `Using only 'isFocusable', this prop is reserved for situations where you pass 'isDisabled' but you still want the element to receive focus (A11y). Either remove it or pass 'isDisabled' as well.
+    `
+    });
+  }
+  function warnIfOpenAndDisabled(props) {
+    warn2({
+      condition: props.isOpen && !!props.isDisabled,
+      message: "Cannot open a disabled accordion item"
+    });
+  }
+  function AccordionIcon(props) {
+    const { isOpen, isDisabled } = useAccordionItemContext();
+    const { reduceMotion } = useAccordionContext();
+    const _className = cx3("chakra-accordion__icon", props.className);
+    const styles2 = useAccordionStyles();
+    const iconStyles = {
+      opacity: isDisabled ? 0.4 : 1,
+      transform: isOpen ? "rotate(-180deg)" : void 0,
+      transition: reduceMotion ? void 0 : "transform 0.2s",
+      transformOrigin: "center",
+      ...styles2.icon
+    };
+    return /* @__PURE__ */ import_react62.default.createElement(Icon, {
+      viewBox: "0 0 24 24",
+      "aria-hidden": true,
+      className: _className,
+      __css: iconStyles,
+      ...props
+    }, /* @__PURE__ */ import_react62.default.createElement("path", {
+      fill: "currentColor",
+      d: "M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+    }));
+  }
+  AccordionIcon.displayName = "AccordionIcon";
+  var AccordionItem = forwardRef(function AccordionItem2(props, ref) {
+    const { children, className } = props;
+    const { htmlProps, ...context } = useAccordionItem(props);
+    const styles2 = useAccordionStyles();
+    const containerStyles = {
+      ...styles2.container,
+      overflowAnchor: "none"
+    };
+    const ctx = (0, import_react64.useMemo)(() => context, [context]);
+    return /* @__PURE__ */ import_react62.default.createElement(AccordionItemProvider, {
+      value: ctx
+    }, /* @__PURE__ */ import_react62.default.createElement(chakra.div, {
+      ref,
+      ...htmlProps,
+      className: cx3("chakra-accordion__item", className),
+      __css: containerStyles
+    }, typeof children === "function" ? children({
+      isExpanded: !!context.isOpen,
+      isDisabled: !!context.isDisabled
+    }) : children));
+  });
+  AccordionItem.displayName = "AccordionItem";
+  var AccordionPanel = forwardRef(function AccordionPanel2(props, ref) {
+    const { className, motionProps, ...rest } = props;
+    const { reduceMotion } = useAccordionContext();
+    const { getPanelProps, isOpen } = useAccordionItemContext();
+    const panelProps = getPanelProps(rest, ref);
+    const _className = cx3("chakra-accordion__panel", className);
+    const styles2 = useAccordionStyles();
+    if (!reduceMotion) {
+      delete panelProps.hidden;
+    }
+    const child = /* @__PURE__ */ import_react62.default.createElement(chakra.div, {
+      ...panelProps,
+      __css: styles2.panel,
+      className: _className
+    });
+    if (!reduceMotion) {
+      return /* @__PURE__ */ import_react62.default.createElement(Collapse, {
+        in: isOpen,
+        ...motionProps
+      }, child);
+    }
+    return child;
+  });
+  AccordionPanel.displayName = "AccordionPanel";
+  var Accordion = forwardRef(function Accordion2({ children, reduceMotion, ...props }, ref) {
+    const styles2 = useMultiStyleConfig("Accordion", props);
+    const ownProps = omitThemingProps(props);
+    const { htmlProps, descendants, ...context } = useAccordion(ownProps);
+    const ctx = (0, import_react65.useMemo)(() => ({ ...context, reduceMotion: !!reduceMotion }), [context, reduceMotion]);
+    return /* @__PURE__ */ import_react62.default.createElement(AccordionDescendantsProvider, {
+      value: descendants
+    }, /* @__PURE__ */ import_react62.default.createElement(AccordionProvider, {
+      value: ctx
+    }, /* @__PURE__ */ import_react62.default.createElement(AccordionStylesProvider, {
+      value: styles2
+    }, /* @__PURE__ */ import_react62.default.createElement(chakra.div, {
+      ref,
+      ...htmlProps,
+      className: cx3("chakra-accordion", props.className),
+      __css: styles2.root
+    }, children))));
+  });
+  Accordion.displayName = "Accordion";
+
   // node_modules/@chakra-ui/alert/dist/index.esm.js
-  var import_react54 = __toESM(require_react());
+  var import_react67 = __toESM(require_react());
 
   // node_modules/@chakra-ui/spinner/dist/index.esm.js
-  var import_react53 = __toESM(require_react());
-  var cx2 = (...classNames2) => classNames2.filter(Boolean).join(" ");
+  var import_react66 = __toESM(require_react());
+  var cx4 = (...classNames2) => classNames2.filter(Boolean).join(" ");
   var spin = (0, import_react8.keyframes)({
     "0%": {
       transform: "rotate(0deg)"
@@ -41063,7 +42039,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       className,
       ...rest
     } = omitThemingProps(props);
-    const _className = cx2("chakra-spinner", className);
+    const _className = cx4("chakra-spinner", className);
     const spinnerStyles = {
       display: "inline-block",
       borderColor: "currentColor",
@@ -41075,42 +42051,42 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       animation: `${spin} ${speed} linear infinite`,
       ...styles2
     };
-    return /* @__PURE__ */ import_react53.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react66.default.createElement(chakra.div, {
       ref,
       __css: spinnerStyles,
       className: _className,
       ...rest
-    }, label && /* @__PURE__ */ import_react53.default.createElement(chakra.span, {
+    }, label && /* @__PURE__ */ import_react66.default.createElement(chakra.span, {
       srOnly: true
     }, label));
   });
   Spinner.displayName = "Spinner";
 
   // node_modules/@chakra-ui/alert/dist/index.esm.js
-  var cx3 = (...classNames2) => classNames2.filter(Boolean).join(" ");
+  var cx5 = (...classNames2) => classNames2.filter(Boolean).join(" ");
   function CheckIcon(props) {
-    return /* @__PURE__ */ import_react54.default.createElement(Icon, {
+    return /* @__PURE__ */ import_react67.default.createElement(Icon, {
       viewBox: "0 0 24 24",
       ...props
-    }, /* @__PURE__ */ import_react54.default.createElement("path", {
+    }, /* @__PURE__ */ import_react67.default.createElement("path", {
       fill: "currentColor",
       d: "M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"
     }));
   }
   function InfoIcon(props) {
-    return /* @__PURE__ */ import_react54.default.createElement(Icon, {
+    return /* @__PURE__ */ import_react67.default.createElement(Icon, {
       viewBox: "0 0 24 24",
       ...props
-    }, /* @__PURE__ */ import_react54.default.createElement("path", {
+    }, /* @__PURE__ */ import_react67.default.createElement("path", {
       fill: "currentColor",
       d: "M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
     }));
   }
   function WarningIcon(props) {
-    return /* @__PURE__ */ import_react54.default.createElement(Icon, {
+    return /* @__PURE__ */ import_react67.default.createElement(Icon, {
       viewBox: "0 0 24 24",
       ...props
-    }, /* @__PURE__ */ import_react54.default.createElement("path", {
+    }, /* @__PURE__ */ import_react67.default.createElement("path", {
       fill: "currentColor",
       d: "M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z"
     }));
@@ -41150,15 +42126,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       overflow: "hidden",
       ...styles2.container
     };
-    return /* @__PURE__ */ import_react54.default.createElement(AlertProvider, {
+    return /* @__PURE__ */ import_react67.default.createElement(AlertProvider, {
       value: { status }
-    }, /* @__PURE__ */ import_react54.default.createElement(AlertStylesProvider, {
+    }, /* @__PURE__ */ import_react67.default.createElement(AlertStylesProvider, {
       value: styles2
-    }, /* @__PURE__ */ import_react54.default.createElement(chakra.div, {
+    }, /* @__PURE__ */ import_react67.default.createElement(chakra.div, {
       role: addRole ? "alert" : void 0,
       ref,
       ...rest,
-      className: cx3("chakra-alert", props.className),
+      className: cx5("chakra-alert", props.className),
       __css: alertStyles
     })));
   });
@@ -41169,10 +42145,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       display: "inline",
       ...styles2.description
     };
-    return /* @__PURE__ */ import_react54.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react67.default.createElement(chakra.div, {
       ref,
       ...props,
-      className: cx3("chakra-alert__desc", props.className),
+      className: cx5("chakra-alert__desc", props.className),
       __css: descriptionStyles
     });
   });
@@ -41182,12 +42158,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const BaseIcon = getStatusIcon(status);
     const styles2 = useAlertStyles();
     const css2 = status === "loading" ? styles2.spinner : styles2.icon;
-    return /* @__PURE__ */ import_react54.default.createElement(chakra.span, {
+    return /* @__PURE__ */ import_react67.default.createElement(chakra.span, {
       display: "inherit",
       ...props,
-      className: cx3("chakra-alert__icon", props.className),
+      className: cx5("chakra-alert__icon", props.className),
       __css: css2
-    }, props.children || /* @__PURE__ */ import_react54.default.createElement(BaseIcon, {
+    }, props.children || /* @__PURE__ */ import_react67.default.createElement(BaseIcon, {
       h: "100%",
       w: "100%"
     }));
@@ -41195,18 +42171,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   AlertIcon.displayName = "AlertIcon";
   var AlertTitle = forwardRef(function AlertTitle2(props, ref) {
     const styles2 = useAlertStyles();
-    return /* @__PURE__ */ import_react54.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react67.default.createElement(chakra.div, {
       ref,
       ...props,
-      className: cx3("chakra-alert__title", props.className),
+      className: cx5("chakra-alert__title", props.className),
       __css: styles2.title
     });
   });
   AlertTitle.displayName = "AlertTitle";
 
   // node_modules/@chakra-ui/image/dist/index.esm.js
-  var import_react55 = __toESM(require_react());
-  var import_react56 = __toESM(require_react());
+  var import_react68 = __toESM(require_react());
+  var import_react69 = __toESM(require_react());
   function omit3(object, keysToOmit = []) {
     const clone = Object.assign({}, object);
     for (const key of keysToOmit) {
@@ -41226,12 +42202,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       sizes: sizes24,
       ignoreFallback
     } = props;
-    const [status, setStatus] = (0, import_react56.useState)("pending");
-    (0, import_react56.useEffect)(() => {
+    const [status, setStatus] = (0, import_react69.useState)("pending");
+    (0, import_react69.useEffect)(() => {
       setStatus(src ? "loading" : "pending");
     }, [src]);
-    const imageRef = (0, import_react56.useRef)();
-    const load = (0, import_react56.useCallback)(() => {
+    const imageRef = (0, import_react69.useRef)();
+    const load = (0, import_react69.useCallback)(() => {
       if (!src)
         return;
       flush();
@@ -41279,7 +42255,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var shouldShowFallbackImage = (status, fallbackStrategy) => status !== "loaded" && fallbackStrategy === "beforeLoadOrError" || status === "failed" && fallbackStrategy === "onError";
   var NativeImage = forwardRef(function NativeImage2(props, ref) {
     const { htmlWidth, htmlHeight, alt, ...rest } = props;
-    return /* @__PURE__ */ import_react55.default.createElement("img", {
+    return /* @__PURE__ */ import_react68.default.createElement("img", {
       width: htmlWidth,
       height: htmlHeight,
       ref,
@@ -41319,14 +42295,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     if (showFallbackImage) {
       if (fallback)
         return fallback;
-      return /* @__PURE__ */ import_react55.default.createElement(chakra.img, {
+      return /* @__PURE__ */ import_react68.default.createElement(chakra.img, {
         as: NativeImage,
         className: "chakra-image__placeholder",
         src: fallbackSrc,
         ...shared
       });
     }
-    return /* @__PURE__ */ import_react55.default.createElement(chakra.img, {
+    return /* @__PURE__ */ import_react68.default.createElement(chakra.img, {
       as: NativeImage,
       src,
       srcSet,
@@ -41338,7 +42314,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     });
   });
   Image2.displayName = "Image";
-  var Img = forwardRef((props, ref) => /* @__PURE__ */ import_react55.default.createElement(chakra.img, {
+  var Img = forwardRef((props, ref) => /* @__PURE__ */ import_react68.default.createElement(chakra.img, {
     ref,
     as: NativeImage,
     className: "chakra-image",
@@ -41346,20 +42322,20 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }));
 
   // node_modules/@chakra-ui/react-children-utils/dist/index.esm.js
-  var import_react57 = __toESM(require_react());
+  var import_react70 = __toESM(require_react());
   function getValidChildren(children) {
-    return import_react57.Children.toArray(children).filter((child) => (0, import_react57.isValidElement)(child));
+    return import_react70.Children.toArray(children).filter((child) => (0, import_react70.isValidElement)(child));
   }
 
   // node_modules/@chakra-ui/button/dist/index.esm.js
-  var import_react58 = __toESM(require_react());
-  var import_react59 = __toESM(require_react());
-  var import_react60 = __toESM(require_react());
-  var import_react61 = __toESM(require_react());
-  var import_react62 = __toESM(require_react());
-  var import_react63 = __toESM(require_react());
-  var import_react64 = __toESM(require_react());
-  var cx4 = (...classNames2) => classNames2.filter(Boolean).join(" ");
+  var import_react71 = __toESM(require_react());
+  var import_react72 = __toESM(require_react());
+  var import_react73 = __toESM(require_react());
+  var import_react74 = __toESM(require_react());
+  var import_react75 = __toESM(require_react());
+  var import_react76 = __toESM(require_react());
+  var import_react77 = __toESM(require_react());
+  var cx6 = (...classNames2) => classNames2.filter(Boolean).join(" ");
   var dataAttr = (condition) => condition ? "" : void 0;
   var [ButtonGroupProvider, useButtonGroup] = createContext3({
     strict: false,
@@ -41367,12 +42343,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   function ButtonIcon(props) {
     const { children, className, ...rest } = props;
-    const _children = (0, import_react60.isValidElement)(children) ? (0, import_react60.cloneElement)(children, {
+    const _children = (0, import_react73.isValidElement)(children) ? (0, import_react73.cloneElement)(children, {
       "aria-hidden": true,
       focusable: false
     }) : children;
-    const _className = cx4("chakra-button__icon", className);
-    return /* @__PURE__ */ import_react58.default.createElement(chakra.span, {
+    const _className = cx6("chakra-button__icon", className);
+    return /* @__PURE__ */ import_react71.default.createElement(chakra.span, {
       display: "inline-flex",
       alignSelf: "center",
       flexShrink: 0,
@@ -41386,7 +42362,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       label,
       placement,
       spacing: spacing2 = "0.5rem",
-      children = /* @__PURE__ */ import_react58.default.createElement(Spinner, {
+      children = /* @__PURE__ */ import_react71.default.createElement(Spinner, {
         color: "currentColor",
         width: "1em",
         height: "1em"
@@ -41395,9 +42371,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       __css,
       ...rest
     } = props;
-    const _className = cx4("chakra-button__spinner", className);
+    const _className = cx6("chakra-button__spinner", className);
     const marginProp = placement === "start" ? "marginEnd" : "marginStart";
-    const spinnerStyles = (0, import_react61.useMemo)(() => ({
+    const spinnerStyles = (0, import_react74.useMemo)(() => ({
       display: "flex",
       alignItems: "center",
       position: label ? "relative" : "absolute",
@@ -41406,7 +42382,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       lineHeight: "normal",
       ...__css
     }), [__css, label, marginProp, spacing2]);
-    return /* @__PURE__ */ import_react58.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react71.default.createElement(chakra.div, {
       className: _className,
       ...rest,
       __css: spinnerStyles
@@ -41414,8 +42390,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   ButtonSpinner.displayName = "ButtonSpinner";
   function useButtonType(value) {
-    const [isButton, setIsButton] = (0, import_react62.useState)(!value);
-    const refCallback = (0, import_react62.useCallback)((node) => {
+    const [isButton, setIsButton] = (0, import_react75.useState)(!value);
+    const refCallback = (0, import_react75.useCallback)((node) => {
       if (!node)
         return;
       setIsButton(node.tagName === "BUTTON");
@@ -41442,7 +42418,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       as,
       ...rest
     } = omitThemingProps(props);
-    const buttonStyles = (0, import_react59.useMemo)(() => {
+    const buttonStyles = (0, import_react72.useMemo)(() => {
       const _focus = { ...styles2 == null ? void 0 : styles2["_focus"], zIndex: 1 };
       return {
         display: "inline-flex",
@@ -41460,7 +42436,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }, [styles2, group]);
     const { ref: _ref, type: defaultType } = useButtonType(as);
     const contentProps = { rightIcon, leftIcon, iconSpacing: iconSpacing2, children };
-    return /* @__PURE__ */ import_react58.default.createElement(chakra.button, {
+    return /* @__PURE__ */ import_react71.default.createElement(chakra.button, {
       disabled: isDisabled || isLoading,
       ref: useMergeRefs(ref, _ref),
       as,
@@ -41468,20 +42444,20 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       "data-active": dataAttr(isActive),
       "data-loading": dataAttr(isLoading),
       __css: buttonStyles,
-      className: cx4("chakra-button", className),
+      className: cx6("chakra-button", className),
       ...rest
-    }, isLoading && spinnerPlacement === "start" && /* @__PURE__ */ import_react58.default.createElement(ButtonSpinner, {
+    }, isLoading && spinnerPlacement === "start" && /* @__PURE__ */ import_react71.default.createElement(ButtonSpinner, {
       className: "chakra-button__spinner--start",
       label: loadingText,
       placement: "start",
       spacing: iconSpacing2
-    }, spinner), isLoading ? loadingText || /* @__PURE__ */ import_react58.default.createElement(chakra.span, {
+    }, spinner), isLoading ? loadingText || /* @__PURE__ */ import_react71.default.createElement(chakra.span, {
       opacity: 0
-    }, /* @__PURE__ */ import_react58.default.createElement(ButtonContent, {
+    }, /* @__PURE__ */ import_react71.default.createElement(ButtonContent, {
       ...contentProps
-    })) : /* @__PURE__ */ import_react58.default.createElement(ButtonContent, {
+    })) : /* @__PURE__ */ import_react71.default.createElement(ButtonContent, {
       ...contentProps
-    }), isLoading && spinnerPlacement === "end" && /* @__PURE__ */ import_react58.default.createElement(ButtonSpinner, {
+    }), isLoading && spinnerPlacement === "end" && /* @__PURE__ */ import_react71.default.createElement(ButtonSpinner, {
       className: "chakra-button__spinner--end",
       label: loadingText,
       placement: "end",
@@ -41491,9 +42467,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   Button.displayName = "Button";
   function ButtonContent(props) {
     const { leftIcon, rightIcon, children, iconSpacing: iconSpacing2 } = props;
-    return /* @__PURE__ */ import_react58.default.createElement(import_react58.default.Fragment, null, leftIcon && /* @__PURE__ */ import_react58.default.createElement(ButtonIcon, {
+    return /* @__PURE__ */ import_react71.default.createElement(import_react71.default.Fragment, null, leftIcon && /* @__PURE__ */ import_react71.default.createElement(ButtonIcon, {
       marginEnd: iconSpacing2
-    }, leftIcon), children, rightIcon && /* @__PURE__ */ import_react58.default.createElement(ButtonIcon, {
+    }, leftIcon), children, rightIcon && /* @__PURE__ */ import_react71.default.createElement(ButtonIcon, {
       marginStart: iconSpacing2
     }, rightIcon));
   }
@@ -41508,8 +42484,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       isDisabled,
       ...rest
     } = props;
-    const _className = cx4("chakra-button__group", className);
-    const context = (0, import_react63.useMemo)(() => ({ size: size3, colorScheme, variant, isDisabled }), [size3, colorScheme, variant, isDisabled]);
+    const _className = cx6("chakra-button__group", className);
+    const context = (0, import_react76.useMemo)(() => ({ size: size3, colorScheme, variant, isDisabled }), [size3, colorScheme, variant, isDisabled]);
     let groupStyles = {
       display: "inline-flex"
     };
@@ -41526,9 +42502,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         "& > *:not(style) ~ *:not(style)": { marginStart: spacing2 }
       };
     }
-    return /* @__PURE__ */ import_react58.default.createElement(ButtonGroupProvider, {
+    return /* @__PURE__ */ import_react71.default.createElement(ButtonGroupProvider, {
       value: context
-    }, /* @__PURE__ */ import_react58.default.createElement(chakra.div, {
+    }, /* @__PURE__ */ import_react71.default.createElement(chakra.div, {
       ref,
       role: "group",
       __css: groupStyles,
@@ -41541,11 +42517,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var IconButton = forwardRef((props, ref) => {
     const { icon, children, isRound, "aria-label": ariaLabel, ...rest } = props;
     const element = icon || children;
-    const _children = (0, import_react64.isValidElement)(element) ? (0, import_react64.cloneElement)(element, {
+    const _children = (0, import_react77.isValidElement)(element) ? (0, import_react77.cloneElement)(element, {
       "aria-hidden": true,
       focusable: false
     }) : null;
-    return /* @__PURE__ */ import_react58.default.createElement(Button, {
+    return /* @__PURE__ */ import_react71.default.createElement(Button, {
       padding: "0",
       borderRadius: isRound ? "full" : void 0,
       ref,
@@ -41556,8 +42532,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   IconButton.displayName = "IconButton";
 
   // node_modules/@chakra-ui/card/dist/index.esm.js
-  var import_react65 = __toESM(require_react());
-  var cx5 = (...classNames2) => classNames2.filter(Boolean).join(" ");
+  var import_react78 = __toESM(require_react());
+  var cx7 = (...classNames2) => classNames2.filter(Boolean).join(" ");
   var [CardStylesProvider, useCardStyles] = createContext3({
     name: "CardStylesContext",
     hookName: "useCardStyles",
@@ -41573,9 +42549,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       ...rest
     } = omitThemingProps(props);
     const styles2 = useMultiStyleConfig("Card", props);
-    return /* @__PURE__ */ import_react65.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react78.default.createElement(chakra.div, {
       ref,
-      className: cx5("chakra-card", className),
+      className: cx7("chakra-card", className),
       __css: {
         display: "flex",
         flexDirection: direction2,
@@ -41587,16 +42563,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         ...styles2.container
       },
       ...rest
-    }, /* @__PURE__ */ import_react65.default.createElement(CardStylesProvider, {
+    }, /* @__PURE__ */ import_react78.default.createElement(CardStylesProvider, {
       value: styles2
     }, children));
   });
   var CardHeader = forwardRef(function CardHeader2(props, ref) {
     const { className, ...rest } = props;
     const styles2 = useCardStyles();
-    return /* @__PURE__ */ import_react65.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react78.default.createElement(chakra.div, {
       ref,
-      className: cx5("chakra-card__header", className),
+      className: cx7("chakra-card__header", className),
       __css: styles2.header,
       ...rest
     });
@@ -41604,9 +42580,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var CardBody = forwardRef(function CardBody2(props, ref) {
     const { className, ...rest } = props;
     const styles2 = useCardStyles();
-    return /* @__PURE__ */ import_react65.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react78.default.createElement(chakra.div, {
       ref,
-      className: cx5("chakra-card__body", className),
+      className: cx7("chakra-card__body", className),
       __css: styles2.body,
       ...rest
     });
@@ -41614,9 +42590,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var CardFooter = forwardRef(function CardFooter2(props, ref) {
     const { className, justify, ...rest } = props;
     const styles2 = useCardStyles();
-    return /* @__PURE__ */ import_react65.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react78.default.createElement(chakra.div, {
       ref,
-      className: cx5("chakra-card__footer", className),
+      className: cx7("chakra-card__footer", className),
       __css: {
         ...styles2.footer,
         display: "flex",
@@ -41627,11 +42603,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
 
   // node_modules/@chakra-ui/react-use-update-effect/dist/index.esm.js
-  var import_react66 = __toESM(require_react());
+  var import_react79 = __toESM(require_react());
   function useUpdateEffect(callback, deps) {
-    const renderCycleRef = (0, import_react66.useRef)(false);
-    const effectCycleRef = (0, import_react66.useRef)(false);
-    (0, import_react66.useEffect)(() => {
+    const renderCycleRef = (0, import_react79.useRef)(false);
+    const effectCycleRef = (0, import_react79.useRef)(false);
+    (0, import_react79.useEffect)(() => {
       const mounted = renderCycleRef.current;
       const run = mounted && effectCycleRef.current;
       if (run) {
@@ -41639,7 +42615,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }
       effectCycleRef.current = true;
     }, deps);
-    (0, import_react66.useEffect)(() => {
+    (0, import_react79.useEffect)(() => {
       renderCycleRef.current = true;
       return () => {
         renderCycleRef.current = false;
@@ -41648,13 +42624,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/@chakra-ui/close-button/dist/index.esm.js
-  var import_react67 = __toESM(require_react());
+  var import_react80 = __toESM(require_react());
   function CloseIcon(props) {
-    return /* @__PURE__ */ import_react67.default.createElement(Icon, {
+    return /* @__PURE__ */ import_react80.default.createElement(Icon, {
       focusable: "false",
       "aria-hidden": true,
       ...props
-    }, /* @__PURE__ */ import_react67.default.createElement("path", {
+    }, /* @__PURE__ */ import_react80.default.createElement("path", {
       fill: "currentColor",
       d: "M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
     }));
@@ -41669,7 +42645,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       justifyContent: "center",
       flexShrink: 0
     };
-    return /* @__PURE__ */ import_react67.default.createElement(chakra.button, {
+    return /* @__PURE__ */ import_react80.default.createElement(chakra.button, {
       type: "button",
       "aria-label": "Close",
       ref,
@@ -41680,7 +42656,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         ...__css
       },
       ...rest
-    }, children || /* @__PURE__ */ import_react67.default.createElement(CloseIcon, {
+    }, children || /* @__PURE__ */ import_react80.default.createElement(CloseIcon, {
       width: "1em",
       height: "1em"
     }));
@@ -41688,8 +42664,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   CloseButton.displayName = "CloseButton";
 
   // node_modules/@chakra-ui/css-reset/dist/index.esm.js
-  var import_react68 = __toESM(require_react());
-  var import_react69 = __toESM(require_emotion_react_cjs());
+  var import_react81 = __toESM(require_react());
+  var import_react82 = __toESM(require_emotion_react_cjs());
   var vhPolyfill = `
   :root {
     --chakra-vh: 100vh;
@@ -41713,10 +42689,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
   }
 `;
-  var CSSPolyfill = () => /* @__PURE__ */ import_react68.default.createElement(import_react69.Global, {
+  var CSSPolyfill = () => /* @__PURE__ */ import_react81.default.createElement(import_react82.Global, {
     styles: vhPolyfill
   });
-  var CSSReset = () => /* @__PURE__ */ import_react68.default.createElement(import_react69.Global, {
+  var CSSReset = () => /* @__PURE__ */ import_react81.default.createElement(import_react82.Global, {
     styles: `
       html {
         line-height: 1.5;
@@ -41998,48 +42974,67 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     `
   });
 
-  // node_modules/@chakra-ui/hooks/dist/index.esm.js
-  var import_react70 = __toESM(require_react());
-  var import_react71 = __toESM(require_react());
-  var import_react72 = __toESM(require_react());
-  var import_react73 = __toESM(require_react());
-  var import_react74 = __toESM(require_react());
-  var import_react75 = __toESM(require_react());
-  var import_copy_to_clipboard = __toESM(require_copy_to_clipboard());
-  var import_react76 = __toESM(require_react());
-  var import_react77 = __toESM(require_react());
-  var import_react78 = __toESM(require_react());
-  var import_react79 = __toESM(require_react());
-  var import_react80 = __toESM(require_react());
-  var import_react81 = __toESM(require_react());
-  var import_react82 = __toESM(require_react());
+  // node_modules/@chakra-ui/react-use-event-listener/dist/index.esm.js
   var import_react83 = __toESM(require_react());
+  function useEventListener(target, event, handler, options) {
+    const listener = useCallbackRef(handler);
+    (0, import_react83.useEffect)(() => {
+      const node = typeof target === "function" ? target() : target ?? document;
+      if (!handler || !node)
+        return;
+      node.addEventListener(event, listener, options);
+      return () => {
+        node.removeEventListener(event, listener, options);
+      };
+    }, [event, target, options, listener, handler]);
+    return () => {
+      const node = typeof target === "function" ? target() : target ?? document;
+      node == null ? void 0 : node.removeEventListener(event, listener, options);
+    };
+  }
+
+  // node_modules/@chakra-ui/hooks/dist/index.esm.js
   var import_react84 = __toESM(require_react());
   var import_react85 = __toESM(require_react());
   var import_react86 = __toESM(require_react());
   var import_react87 = __toESM(require_react());
   var import_react88 = __toESM(require_react());
   var import_react89 = __toESM(require_react());
+  var import_copy_to_clipboard = __toESM(require_copy_to_clipboard());
   var import_react90 = __toESM(require_react());
   var import_react91 = __toESM(require_react());
   var import_react92 = __toESM(require_react());
   var import_react93 = __toESM(require_react());
   var import_react94 = __toESM(require_react());
   var import_react95 = __toESM(require_react());
-  var useSafeLayoutEffect2 = isBrowser ? import_react73.useLayoutEffect : import_react73.useEffect;
-  function useCallbackRef2(fn, deps = []) {
-    const ref = (0, import_react72.useRef)(fn);
-    useSafeLayoutEffect2(() => {
-      ref.current = fn;
+  var import_react96 = __toESM(require_react());
+  var import_react97 = __toESM(require_react());
+  var import_react98 = __toESM(require_react());
+  var import_react99 = __toESM(require_react());
+  var import_react100 = __toESM(require_react());
+  var import_react101 = __toESM(require_react());
+  var import_react102 = __toESM(require_react());
+  var import_react103 = __toESM(require_react());
+  var import_react104 = __toESM(require_react());
+  var import_react105 = __toESM(require_react());
+  var import_react106 = __toESM(require_react());
+  var import_react107 = __toESM(require_react());
+  var import_react108 = __toESM(require_react());
+  var import_react109 = __toESM(require_react());
+  var useSafeLayoutEffect3 = isBrowser ? import_react87.useLayoutEffect : import_react87.useEffect;
+  function useCallbackRef2(fn2, deps = []) {
+    const ref = (0, import_react86.useRef)(fn2);
+    useSafeLayoutEffect3(() => {
+      ref.current = fn2;
     });
-    return (0, import_react72.useCallback)((...args) => {
+    return (0, import_react86.useCallback)((...args) => {
       var _a8;
       return (_a8 = ref.current) == null ? void 0 : _a8.call(ref, ...args);
     }, deps);
   }
   function useBoolean(initialState2 = false) {
-    const [value, setValue] = (0, import_react74.useState)(initialState2);
-    const callbacks = (0, import_react74.useMemo)(() => ({
+    const [value, setValue] = (0, import_react88.useState)(initialState2);
+    const callbacks = (0, import_react88.useMemo)(() => ({
       on: () => setValue(true),
       off: () => setValue(false),
       toggle: () => setValue((prev) => !prev)
@@ -42051,9 +43046,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const value = isControlled && typeof prop !== "undefined" ? prop : state2;
     return [isControlled, value];
   }
-  function useId4(idProp, prefix) {
-    const id3 = (0, import_react79.useId)();
-    return (0, import_react79.useMemo)(() => idProp || [prefix, id3].filter(Boolean).join("-"), [idProp, prefix, id3]);
+  function useId5(idProp, prefix) {
+    const id3 = (0, import_react93.useId)();
+    return (0, import_react93.useMemo)(() => idProp || [prefix, id3].filter(Boolean).join("-"), [idProp, prefix, id3]);
   }
   function useDisclosure(props = {}) {
     const {
@@ -42064,22 +43059,22 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     } = props;
     const onOpenPropCallbackRef = useCallbackRef2(onOpenProp);
     const onClosePropCallbackRef = useCallbackRef2(onCloseProp);
-    const [isOpenState, setIsOpen] = (0, import_react80.useState)(props.defaultIsOpen || false);
+    const [isOpenState, setIsOpen] = (0, import_react94.useState)(props.defaultIsOpen || false);
     const [isControlled, isOpen] = useControllableProp(isOpenProp, isOpenState);
-    const id3 = useId4(idProp, "disclosure");
-    const onClose = (0, import_react80.useCallback)(() => {
+    const id3 = useId5(idProp, "disclosure");
+    const onClose = (0, import_react94.useCallback)(() => {
       if (!isControlled) {
         setIsOpen(false);
       }
       onClosePropCallbackRef == null ? void 0 : onClosePropCallbackRef();
     }, [isControlled, onClosePropCallbackRef]);
-    const onOpen = (0, import_react80.useCallback)(() => {
+    const onOpen = (0, import_react94.useCallback)(() => {
       if (!isControlled) {
         setIsOpen(true);
       }
       onOpenPropCallbackRef == null ? void 0 : onOpenPropCallbackRef();
     }, [isControlled, onOpenPropCallbackRef]);
-    const onToggle = (0, import_react80.useCallback)(() => {
+    const onToggle = (0, import_react94.useCallback)(() => {
       const action = isOpen ? onClose : onOpen;
       action();
     }, [isOpen, onOpen, onClose]);
@@ -42103,10 +43098,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     };
   }
   function useInterval(callback, delay2) {
-    const fn = useCallbackRef2(callback);
-    (0, import_react86.useEffect)(() => {
+    const fn2 = useCallbackRef2(callback);
+    (0, import_react100.useEffect)(() => {
       let intervalId = null;
-      const tick = () => fn();
+      const tick = () => fn2();
       if (delay2 !== null) {
         intervalId = window.setInterval(tick, delay2);
       }
@@ -42115,7 +43110,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           window.clearInterval(intervalId);
         }
       };
-    }, [delay2, fn]);
+    }, [delay2, fn2]);
   }
 
   // node_modules/@chakra-ui/object-utils/dist/index.esm.js
@@ -42129,7 +43124,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/@chakra-ui/layout/dist/index.esm.js
-  var import_react96 = __toESM(require_react());
+  var import_react110 = __toESM(require_react());
 
   // node_modules/@chakra-ui/breakpoint-utils/dist/index.esm.js
   function isObject4(value) {
@@ -42161,15 +43156,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/@chakra-ui/layout/dist/index.esm.js
-  var import_react97 = __toESM(require_react());
-  var import_react98 = __toESM(require_react());
-  var import_react99 = __toESM(require_react());
-  var import_react100 = __toESM(require_react());
+  var import_react111 = __toESM(require_react());
+  var import_react112 = __toESM(require_react());
+  var import_react113 = __toESM(require_react());
+  var import_react114 = __toESM(require_react());
   var AspectRatio = forwardRef(function(props, ref) {
     const { ratio = 4 / 3, children, className, ...rest } = props;
-    const child = import_react97.Children.only(children);
+    const child = import_react111.Children.only(children);
     const _className = cx("chakra-aspect-ratio", className);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       position: "relative",
       className: _className,
@@ -42204,7 +43199,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Badge = forwardRef(function Badge2(props, ref) {
     const styles2 = useStyleConfig("Badge", props);
     const { className, ...rest } = omitThemingProps(props);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.span, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.span, {
       ref,
       className: cx("chakra-badge", props.className),
       ...rest,
@@ -42222,7 +43217,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Square = forwardRef(function Square2(props, ref) {
     const { size: size3, centerContent = true, ...rest } = props;
     const styles2 = centerContent ? { display: "flex", alignItems: "center", justifyContent: "center" } : {};
-    return /* @__PURE__ */ import_react96.default.createElement(Box, {
+    return /* @__PURE__ */ import_react110.default.createElement(Box, {
       ref,
       boxSize: size3,
       __css: {
@@ -42236,7 +43231,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   Square.displayName = "Square";
   var Circle = forwardRef(function Circle2(props, ref) {
     const { size: size3, ...rest } = props;
-    return /* @__PURE__ */ import_react96.default.createElement(Square, {
+    return /* @__PURE__ */ import_react110.default.createElement(Square, {
       size: size3,
       ref,
       borderRadius: "9999px",
@@ -42269,7 +43264,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
   var AbsoluteCenter = forwardRef(function AbsoluteCenter2(props, ref) {
     const { axis = "both", ...rest } = props;
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       __css: centerStyles[axis],
       ...rest,
@@ -42279,7 +43274,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Code = forwardRef(function Code2(props, ref) {
     const styles2 = useStyleConfig("Code", props);
     const { className, ...rest } = omitThemingProps(props);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.code, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.code, {
       ref,
       className: cx("chakra-code", props.className),
       ...rest,
@@ -42293,7 +43288,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Container = forwardRef(function Container2(props, ref) {
     const { className, centerContent, ...rest } = omitThemingProps(props);
     const styles2 = useStyleConfig("Container", props);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       className: cx("chakra-container", className),
       ...rest,
@@ -42335,7 +43330,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         width: "100%"
       }
     };
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.hr, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.hr, {
       ref,
       "aria-orientation": orientation,
       ...rest,
@@ -42363,7 +43358,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       flexGrow: grow,
       flexShrink: shrink
     };
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       __css: styles2,
       ...rest
@@ -42399,7 +43394,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       gridTemplateRows: templateRows,
       gridTemplateColumns: templateColumns
     };
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       __css: styles2,
       ...rest
@@ -42429,7 +43424,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       gridRowStart: rowStart,
       gridRowEnd: rowEnd
     });
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       __css: styles2,
       ...rest
@@ -42439,7 +43434,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Heading = forwardRef(function Heading2(props, ref) {
     const styles2 = useStyleConfig("Heading", props);
     const { className, ...rest } = omitThemingProps(props);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.h2, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.h2, {
       ref,
       className: cx("chakra-heading", props.className),
       ...rest,
@@ -42450,7 +43445,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Mark = forwardRef(function Mark2(props, ref) {
     const styles2 = useStyleConfig("Mark", props);
     const ownProps = omitThemingProps(props);
-    return /* @__PURE__ */ import_react96.default.createElement(Box, {
+    return /* @__PURE__ */ import_react110.default.createElement(Box, {
       ref,
       ...ownProps,
       as: "mark",
@@ -42460,7 +43455,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Kbd = forwardRef(function Kbd2(props, ref) {
     const styles2 = useStyleConfig("Kbd", props);
     const { className, ...rest } = omitThemingProps(props);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.kbd, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.kbd, {
       ref,
       className: cx("chakra-kbd", className),
       ...rest,
@@ -42474,7 +43469,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var Link = forwardRef(function Link2(props, ref) {
     const styles2 = useStyleConfig("Link", props);
     const { className, isExternal, ...rest } = omitThemingProps(props);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.a, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.a, {
       target: isExternal ? "_blank" : void 0,
       rel: isExternal ? "noopener" : void 0,
       ref,
@@ -42486,7 +43481,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   Link.displayName = "Link";
   var LinkOverlay = forwardRef(function LinkOverlay2(props, ref) {
     const { isExternal, target, rel, className, ...rest } = props;
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.a, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.a, {
       ...rest,
       ref,
       className: cx("chakra-linkbox__overlay", className),
@@ -42510,7 +43505,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var LinkBox = forwardRef(function LinkBox2(props, ref) {
     const { className, ...rest } = props;
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       position: "relative",
       ...rest,
@@ -42539,9 +43534,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const validChildren = getValidChildren(children);
     const selector2 = "& > *:not(style) ~ *:not(style)";
     const spacingStyle = spacing2 ? { [selector2]: { mt: spacing2 } } : {};
-    return /* @__PURE__ */ import_react96.default.createElement(ListStylesProvider, {
+    return /* @__PURE__ */ import_react110.default.createElement(ListStylesProvider, {
       value: styles2
-    }, /* @__PURE__ */ import_react96.default.createElement(chakra.ul, {
+    }, /* @__PURE__ */ import_react110.default.createElement(chakra.ul, {
       ref,
       listStyleType: styleType,
       listStylePosition: stylePosition,
@@ -42553,7 +43548,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   List.displayName = "List";
   var OrderedList = forwardRef((props, ref) => {
     const { as, ...rest } = props;
-    return /* @__PURE__ */ import_react96.default.createElement(List, {
+    return /* @__PURE__ */ import_react110.default.createElement(List, {
       ref,
       as: "ol",
       styleType: "decimal",
@@ -42564,7 +43559,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   OrderedList.displayName = "OrderedList";
   var UnorderedList = forwardRef(function UnorderedList2(props, ref) {
     const { as, ...rest } = props;
-    return /* @__PURE__ */ import_react96.default.createElement(List, {
+    return /* @__PURE__ */ import_react110.default.createElement(List, {
       ref,
       as: "ul",
       styleType: "initial",
@@ -42575,7 +43570,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   UnorderedList.displayName = "UnorderedList";
   var ListItem = forwardRef(function ListItem2(props, ref) {
     const styles2 = useListStyles();
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.li, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.li, {
       ref,
       ...props,
       __css: styles2.item
@@ -42584,7 +43579,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   ListItem.displayName = "ListItem";
   var ListIcon = forwardRef(function ListIcon2(props, ref) {
     const styles2 = useListStyles();
-    return /* @__PURE__ */ import_react96.default.createElement(Icon, {
+    return /* @__PURE__ */ import_react110.default.createElement(Icon, {
       ref,
       role: "presentation",
       ...props,
@@ -42596,7 +43591,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const { columns, spacingX, spacingY, spacing: spacing2, minChildWidth, ...rest } = props;
     const theme3 = useTheme();
     const templateColumns = minChildWidth ? widthToColumns(minChildWidth, theme3) : countToColumns(columns);
-    return /* @__PURE__ */ import_react96.default.createElement(Grid, {
+    return /* @__PURE__ */ import_react110.default.createElement(Grid, {
       ref,
       gap: spacing2,
       columnGap: spacingX,
@@ -42687,7 +43682,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       "&": mapResponsive(direction2, (value) => dividerStyles[value])
     };
   }
-  var StackItem = (props) => /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+  var StackItem = (props) => /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
     className: "chakra-stack__item",
     ...props,
     __css: {
@@ -42713,26 +43708,26 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       ...rest
     } = props;
     const direction2 = isInline ? "row" : directionProp ?? "column";
-    const styles2 = (0, import_react99.useMemo)(() => getStackStyles({ direction: direction2, spacing: spacing2 }), [direction2, spacing2]);
-    const dividerStyle = (0, import_react99.useMemo)(() => getDividerStyles({ spacing: spacing2, direction: direction2 }), [spacing2, direction2]);
+    const styles2 = (0, import_react113.useMemo)(() => getStackStyles({ direction: direction2, spacing: spacing2 }), [direction2, spacing2]);
+    const dividerStyle = (0, import_react113.useMemo)(() => getDividerStyles({ spacing: spacing2, direction: direction2 }), [spacing2, direction2]);
     const hasDivider = !!divider;
     const shouldUseChildren = !shouldWrapChildren && !hasDivider;
-    const clones = (0, import_react99.useMemo)(() => {
+    const clones = (0, import_react113.useMemo)(() => {
       const validChildren = getValidChildren(children);
       return shouldUseChildren ? validChildren : validChildren.map((child, index) => {
         const key = typeof child.key !== "undefined" ? child.key : index;
         const isLast = index + 1 === validChildren.length;
-        const wrappedChild = /* @__PURE__ */ import_react96.default.createElement(StackItem, {
+        const wrappedChild = /* @__PURE__ */ import_react110.default.createElement(StackItem, {
           key
         }, child);
         const _child = shouldWrapChildren ? wrappedChild : child;
         if (!hasDivider)
           return _child;
-        const clonedDivider = (0, import_react99.cloneElement)(divider, {
+        const clonedDivider = (0, import_react113.cloneElement)(divider, {
           __css: dividerStyle
         });
         const _divider = isLast ? null : clonedDivider;
-        return /* @__PURE__ */ import_react96.default.createElement(import_react99.Fragment, {
+        return /* @__PURE__ */ import_react110.default.createElement(import_react113.Fragment, {
           key
         }, _child, _divider);
       });
@@ -42745,7 +43740,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       children
     ]);
     const _className = cx("chakra-stack", className);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       display: "flex",
       alignItems: align,
@@ -42758,14 +43753,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }, clones);
   });
   Stack.displayName = "Stack";
-  var HStack = forwardRef((props, ref) => /* @__PURE__ */ import_react96.default.createElement(Stack, {
+  var HStack = forwardRef((props, ref) => /* @__PURE__ */ import_react110.default.createElement(Stack, {
     align: "center",
     ...props,
     direction: "row",
     ref
   }));
   HStack.displayName = "HStack";
-  var StackDivider = (props) => /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+  var StackDivider = (props) => /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
     className: "chakra-stack__divider",
     ...props,
     __css: {
@@ -42778,7 +43773,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
   });
   StackDivider.displayName = "StackDivider";
-  var VStack = forwardRef((props, ref) => /* @__PURE__ */ import_react96.default.createElement(Stack, {
+  var VStack = forwardRef((props, ref) => /* @__PURE__ */ import_react110.default.createElement(Stack, {
     align: "center",
     ...props,
     direction: "column",
@@ -42793,7 +43788,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       textDecoration: props.decoration,
       textTransform: props.casing
     });
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.p, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.p, {
       ref,
       className: cx("chakra-text", props.className),
       ...aliasedProps,
@@ -42818,7 +43813,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       shouldWrapChildren,
       ...rest
     } = props;
-    const styles2 = (0, import_react100.useMemo)(() => {
+    const styles2 = (0, import_react114.useMemo)(() => {
       const { spacingX: x = spacing2, spacingY: y = spacing2 } = {
         spacingX,
         spacingY
@@ -42841,15 +43836,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         }
       };
     }, [spacing2, spacingX, spacingY, justify, align, direction2]);
-    const childrenToRender = (0, import_react100.useMemo)(() => shouldWrapChildren ? import_react100.Children.map(children, (child, index) => /* @__PURE__ */ import_react96.default.createElement(WrapItem, {
+    const childrenToRender = (0, import_react114.useMemo)(() => shouldWrapChildren ? import_react114.Children.map(children, (child, index) => /* @__PURE__ */ import_react110.default.createElement(WrapItem, {
       key: index
     }, child)) : children, [children, shouldWrapChildren]);
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.div, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.div, {
       ref,
       className: cx("chakra-wrap", className),
       overflow: "hidden",
       ...rest
-    }, /* @__PURE__ */ import_react96.default.createElement(chakra.ul, {
+    }, /* @__PURE__ */ import_react110.default.createElement(chakra.ul, {
       className: "chakra-wrap__list",
       __css: styles2
     }, childrenToRender));
@@ -42857,7 +43852,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   Wrap.displayName = "Wrap";
   var WrapItem = forwardRef(function WrapItem2(props, ref) {
     const { className, ...rest } = props;
-    return /* @__PURE__ */ import_react96.default.createElement(chakra.li, {
+    return /* @__PURE__ */ import_react110.default.createElement(chakra.li, {
       ref,
       __css: { display: "flex", alignItems: "flex-start" },
       className: cx("chakra-wrap__listitem", className),
@@ -42867,8 +43862,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   WrapItem.displayName = "WrapItem";
 
   // node_modules/@chakra-ui/react-env/dist/index.esm.js
-  var import_react101 = __toESM(require_react());
-  var import_react102 = __toESM(require_react());
+  var import_react115 = __toESM(require_react());
+  var import_react116 = __toESM(require_react());
   var doc = {
     body: {
       classList: {
@@ -42965,14 +43960,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     document: ssrDocument
   };
   var defaultEnv = typeof window !== "undefined" ? { window, document } : mockEnv;
-  var EnvironmentContext = (0, import_react102.createContext)(defaultEnv);
+  var EnvironmentContext = (0, import_react116.createContext)(defaultEnv);
   EnvironmentContext.displayName = "EnvironmentContext";
   function EnvironmentProvider(props) {
     const { children, environment: environmentProp } = props;
-    const [node, setNode] = (0, import_react102.useState)(null);
-    const [mounted, setMounted] = (0, import_react102.useState)(false);
-    (0, import_react102.useEffect)(() => setMounted(true), []);
-    const context = (0, import_react102.useMemo)(() => {
+    const [node, setNode] = (0, import_react116.useState)(null);
+    const [mounted, setMounted] = (0, import_react116.useState)(false);
+    (0, import_react116.useEffect)(() => setMounted(true), []);
+    const context = (0, import_react116.useMemo)(() => {
       if (environmentProp) {
         return environmentProp;
       }
@@ -42981,13 +43976,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       const env2 = doc2 ? { document: doc2, window: win2 } : defaultEnv;
       return env2;
     }, [node, environmentProp]);
-    return /* @__PURE__ */ import_react101.default.createElement(EnvironmentContext.Provider, {
+    return /* @__PURE__ */ import_react115.default.createElement(EnvironmentContext.Provider, {
       value: context
-    }, children, !environmentProp && mounted && /* @__PURE__ */ import_react101.default.createElement("span", {
+    }, children, !environmentProp && mounted && /* @__PURE__ */ import_react115.default.createElement("span", {
       id: "__chakra_env",
       hidden: true,
       ref: (el) => {
-        (0, import_react102.startTransition)(() => {
+        (0, import_react116.startTransition)(() => {
           if (el)
             setNode(el);
         });
@@ -42996,17 +43991,2200 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   EnvironmentProvider.displayName = "EnvironmentProvider";
 
+  // node_modules/@chakra-ui/clickable/dist/index.esm.js
+  var import_react117 = __toESM(require_react());
+  var import_react118 = __toESM(require_react());
+  var dataAttr2 = (condition) => condition ? "" : void 0;
+  function useEventListeners() {
+    const listeners = (0, import_react117.useRef)(/* @__PURE__ */ new Map());
+    const currentListeners = listeners.current;
+    const add3 = (0, import_react117.useCallback)((el, type, listener, options) => {
+      listeners.current.set(listener, { type, el, options });
+      el.addEventListener(type, listener, options);
+    }, []);
+    const remove = (0, import_react117.useCallback)((el, type, listener, options) => {
+      el.removeEventListener(type, listener, options);
+      listeners.current.delete(listener);
+    }, []);
+    (0, import_react117.useEffect)(() => () => {
+      currentListeners.forEach((value, key) => {
+        remove(value.el, value.type, key, value.options);
+      });
+    }, [remove, currentListeners]);
+    return { add: add3, remove };
+  }
+  function isValidElement5(event) {
+    const element = event.target;
+    const { tagName, isContentEditable } = element;
+    return tagName !== "INPUT" && tagName !== "TEXTAREA" && isContentEditable !== true;
+  }
+  function useClickable(props = {}) {
+    const {
+      ref: htmlRef,
+      isDisabled,
+      isFocusable,
+      clickOnEnter = true,
+      clickOnSpace = true,
+      onMouseDown,
+      onMouseUp,
+      onClick,
+      onKeyDown,
+      onKeyUp,
+      tabIndex: tabIndexProp,
+      onMouseOver,
+      onMouseLeave,
+      ...htmlProps
+    } = props;
+    const [isButton, setIsButton] = (0, import_react118.useState)(true);
+    const [isPressed, setIsPressed] = (0, import_react118.useState)(false);
+    const listeners = useEventListeners();
+    const refCallback = (node) => {
+      if (!node)
+        return;
+      if (node.tagName !== "BUTTON") {
+        setIsButton(false);
+      }
+    };
+    const tabIndex = isButton ? tabIndexProp : tabIndexProp || 0;
+    const trulyDisabled = isDisabled && !isFocusable;
+    const handleClick = (0, import_react118.useCallback)((event) => {
+      if (isDisabled) {
+        event.stopPropagation();
+        event.preventDefault();
+        return;
+      }
+      const self2 = event.currentTarget;
+      self2.focus();
+      onClick == null ? void 0 : onClick(event);
+    }, [isDisabled, onClick]);
+    const onDocumentKeyUp = (0, import_react118.useCallback)((e) => {
+      if (isPressed && isValidElement5(e)) {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsPressed(false);
+        listeners.remove(document, "keyup", onDocumentKeyUp, false);
+      }
+    }, [isPressed, listeners]);
+    const handleKeyDown = (0, import_react118.useCallback)((event) => {
+      onKeyDown == null ? void 0 : onKeyDown(event);
+      if (isDisabled || event.defaultPrevented || event.metaKey) {
+        return;
+      }
+      if (!isValidElement5(event.nativeEvent) || isButton)
+        return;
+      const shouldClickOnEnter = clickOnEnter && event.key === "Enter";
+      const shouldClickOnSpace = clickOnSpace && event.key === " ";
+      if (shouldClickOnSpace) {
+        event.preventDefault();
+        setIsPressed(true);
+      }
+      if (shouldClickOnEnter) {
+        event.preventDefault();
+        const self2 = event.currentTarget;
+        self2.click();
+      }
+      listeners.add(document, "keyup", onDocumentKeyUp, false);
+    }, [
+      isDisabled,
+      isButton,
+      onKeyDown,
+      clickOnEnter,
+      clickOnSpace,
+      listeners,
+      onDocumentKeyUp
+    ]);
+    const handleKeyUp = (0, import_react118.useCallback)((event) => {
+      onKeyUp == null ? void 0 : onKeyUp(event);
+      if (isDisabled || event.defaultPrevented || event.metaKey)
+        return;
+      if (!isValidElement5(event.nativeEvent) || isButton)
+        return;
+      const shouldClickOnSpace = clickOnSpace && event.key === " ";
+      if (shouldClickOnSpace) {
+        event.preventDefault();
+        setIsPressed(false);
+        const self2 = event.currentTarget;
+        self2.click();
+      }
+    }, [clickOnSpace, isButton, isDisabled, onKeyUp]);
+    const onDocumentMouseUp = (0, import_react118.useCallback)((event) => {
+      if (event.button !== 0)
+        return;
+      setIsPressed(false);
+      listeners.remove(document, "mouseup", onDocumentMouseUp, false);
+    }, [listeners]);
+    const handleMouseDown = (0, import_react118.useCallback)((event) => {
+      if (event.button !== 0)
+        return;
+      if (isDisabled) {
+        event.stopPropagation();
+        event.preventDefault();
+        return;
+      }
+      if (!isButton) {
+        setIsPressed(true);
+      }
+      const target = event.currentTarget;
+      target.focus({ preventScroll: true });
+      listeners.add(document, "mouseup", onDocumentMouseUp, false);
+      onMouseDown == null ? void 0 : onMouseDown(event);
+    }, [isDisabled, isButton, onMouseDown, listeners, onDocumentMouseUp]);
+    const handleMouseUp = (0, import_react118.useCallback)((event) => {
+      if (event.button !== 0)
+        return;
+      if (!isButton) {
+        setIsPressed(false);
+      }
+      onMouseUp == null ? void 0 : onMouseUp(event);
+    }, [onMouseUp, isButton]);
+    const handleMouseOver = (0, import_react118.useCallback)((event) => {
+      if (isDisabled) {
+        event.preventDefault();
+        return;
+      }
+      onMouseOver == null ? void 0 : onMouseOver(event);
+    }, [isDisabled, onMouseOver]);
+    const handleMouseLeave = (0, import_react118.useCallback)((event) => {
+      if (isPressed) {
+        event.preventDefault();
+        setIsPressed(false);
+      }
+      onMouseLeave == null ? void 0 : onMouseLeave(event);
+    }, [isPressed, onMouseLeave]);
+    const ref = mergeRefs(htmlRef, refCallback);
+    if (isButton) {
+      return {
+        ...htmlProps,
+        ref,
+        type: "button",
+        "aria-disabled": trulyDisabled ? void 0 : isDisabled,
+        disabled: trulyDisabled,
+        onClick: handleClick,
+        onMouseDown,
+        onMouseUp,
+        onKeyUp,
+        onKeyDown,
+        onMouseOver,
+        onMouseLeave
+      };
+    }
+    return {
+      ...htmlProps,
+      ref,
+      role: "button",
+      "data-active": dataAttr2(isPressed),
+      "aria-disabled": isDisabled ? "true" : void 0,
+      tabIndex: trulyDisabled ? void 0 : tabIndex,
+      onClick: handleClick,
+      onMouseDown: handleMouseDown,
+      onMouseUp: handleMouseUp,
+      onKeyUp: handleKeyUp,
+      onKeyDown: handleKeyDown,
+      onMouseOver: handleMouseOver,
+      onMouseLeave: handleMouseLeave
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/enums.js
+  var top = "top";
+  var bottom = "bottom";
+  var right = "right";
+  var left = "left";
+  var auto2 = "auto";
+  var basePlacements = [top, bottom, right, left];
+  var start = "start";
+  var end = "end";
+  var clippingParents = "clippingParents";
+  var viewport = "viewport";
+  var popper = "popper";
+  var reference = "reference";
+  var variationPlacements = /* @__PURE__ */ basePlacements.reduce(function(acc, placement) {
+    return acc.concat([placement + "-" + start, placement + "-" + end]);
+  }, []);
+  var placements = /* @__PURE__ */ [].concat(basePlacements, [auto2]).reduce(function(acc, placement) {
+    return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
+  }, []);
+  var beforeRead = "beforeRead";
+  var read = "read";
+  var afterRead = "afterRead";
+  var beforeMain = "beforeMain";
+  var main = "main";
+  var afterMain = "afterMain";
+  var beforeWrite = "beforeWrite";
+  var write = "write";
+  var afterWrite = "afterWrite";
+  var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
+
+  // node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
+  function getNodeName(element) {
+    return element ? (element.nodeName || "").toLowerCase() : null;
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getWindow.js
+  function getWindow(node) {
+    if (node == null) {
+      return window;
+    }
+    if (node.toString() !== "[object Window]") {
+      var ownerDocument = node.ownerDocument;
+      return ownerDocument ? ownerDocument.defaultView || window : window;
+    }
+    return node;
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
+  function isElement2(node) {
+    var OwnElement = getWindow(node).Element;
+    return node instanceof OwnElement || node instanceof Element;
+  }
+  function isHTMLElement(node) {
+    var OwnElement = getWindow(node).HTMLElement;
+    return node instanceof OwnElement || node instanceof HTMLElement;
+  }
+  function isShadowRoot(node) {
+    if (typeof ShadowRoot === "undefined") {
+      return false;
+    }
+    var OwnElement = getWindow(node).ShadowRoot;
+    return node instanceof OwnElement || node instanceof ShadowRoot;
+  }
+
+  // node_modules/@popperjs/core/lib/modifiers/applyStyles.js
+  function applyStyles(_ref) {
+    var state2 = _ref.state;
+    Object.keys(state2.elements).forEach(function(name) {
+      var style = state2.styles[name] || {};
+      var attributes = state2.attributes[name] || {};
+      var element = state2.elements[name];
+      if (!isHTMLElement(element) || !getNodeName(element)) {
+        return;
+      }
+      Object.assign(element.style, style);
+      Object.keys(attributes).forEach(function(name2) {
+        var value = attributes[name2];
+        if (value === false) {
+          element.removeAttribute(name2);
+        } else {
+          element.setAttribute(name2, value === true ? "" : value);
+        }
+      });
+    });
+  }
+  function effect2(_ref2) {
+    var state2 = _ref2.state;
+    var initialStyles = {
+      popper: {
+        position: state2.options.strategy,
+        left: "0",
+        top: "0",
+        margin: "0"
+      },
+      arrow: {
+        position: "absolute"
+      },
+      reference: {}
+    };
+    Object.assign(state2.elements.popper.style, initialStyles.popper);
+    state2.styles = initialStyles;
+    if (state2.elements.arrow) {
+      Object.assign(state2.elements.arrow.style, initialStyles.arrow);
+    }
+    return function() {
+      Object.keys(state2.elements).forEach(function(name) {
+        var element = state2.elements[name];
+        var attributes = state2.attributes[name] || {};
+        var styleProperties = Object.keys(state2.styles.hasOwnProperty(name) ? state2.styles[name] : initialStyles[name]);
+        var style = styleProperties.reduce(function(style2, property) {
+          style2[property] = "";
+          return style2;
+        }, {});
+        if (!isHTMLElement(element) || !getNodeName(element)) {
+          return;
+        }
+        Object.assign(element.style, style);
+        Object.keys(attributes).forEach(function(attribute) {
+          element.removeAttribute(attribute);
+        });
+      });
+    };
+  }
+  var applyStyles_default = {
+    name: "applyStyles",
+    enabled: true,
+    phase: "write",
+    fn: applyStyles,
+    effect: effect2,
+    requires: ["computeStyles"]
+  };
+
+  // node_modules/@popperjs/core/lib/utils/getBasePlacement.js
+  function getBasePlacement(placement) {
+    return placement.split("-")[0];
+  }
+
+  // node_modules/@popperjs/core/lib/utils/math.js
+  var max = Math.max;
+  var min = Math.min;
+  var round = Math.round;
+
+  // node_modules/@popperjs/core/lib/utils/userAgent.js
+  function getUAString() {
+    var uaData = navigator.userAgentData;
+    if (uaData != null && uaData.brands) {
+      return uaData.brands.map(function(item) {
+        return item.brand + "/" + item.version;
+      }).join(" ");
+    }
+    return navigator.userAgent;
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js
+  function isLayoutViewport() {
+    return !/^((?!chrome|android).)*safari/i.test(getUAString());
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
+  function getBoundingClientRect(element, includeScale, isFixedStrategy) {
+    if (includeScale === void 0) {
+      includeScale = false;
+    }
+    if (isFixedStrategy === void 0) {
+      isFixedStrategy = false;
+    }
+    var clientRect = element.getBoundingClientRect();
+    var scaleX = 1;
+    var scaleY = 1;
+    if (includeScale && isHTMLElement(element)) {
+      scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
+      scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
+    }
+    var _ref = isElement2(element) ? getWindow(element) : window, visualViewport = _ref.visualViewport;
+    var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+    var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
+    var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
+    var width = clientRect.width / scaleX;
+    var height = clientRect.height / scaleY;
+    return {
+      width,
+      height,
+      top: y,
+      right: x + width,
+      bottom: y + height,
+      left: x,
+      x,
+      y
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
+  function getLayoutRect(element) {
+    var clientRect = getBoundingClientRect(element);
+    var width = element.offsetWidth;
+    var height = element.offsetHeight;
+    if (Math.abs(clientRect.width - width) <= 1) {
+      width = clientRect.width;
+    }
+    if (Math.abs(clientRect.height - height) <= 1) {
+      height = clientRect.height;
+    }
+    return {
+      x: element.offsetLeft,
+      y: element.offsetTop,
+      width,
+      height
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/contains.js
+  function contains(parent, child) {
+    var rootNode = child.getRootNode && child.getRootNode();
+    if (parent.contains(child)) {
+      return true;
+    } else if (rootNode && isShadowRoot(rootNode)) {
+      var next = child;
+      do {
+        if (next && parent.isSameNode(next)) {
+          return true;
+        }
+        next = next.parentNode || next.host;
+      } while (next);
+    }
+    return false;
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
+  function getComputedStyle3(element) {
+    return getWindow(element).getComputedStyle(element);
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
+  function isTableElement(element) {
+    return ["table", "td", "th"].indexOf(getNodeName(element)) >= 0;
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
+  function getDocumentElement(element) {
+    return ((isElement2(element) ? element.ownerDocument : element.document) || window.document).documentElement;
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
+  function getParentNode(element) {
+    if (getNodeName(element) === "html") {
+      return element;
+    }
+    return element.assignedSlot || element.parentNode || (isShadowRoot(element) ? element.host : null) || getDocumentElement(element);
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
+  function getTrueOffsetParent(element) {
+    if (!isHTMLElement(element) || getComputedStyle3(element).position === "fixed") {
+      return null;
+    }
+    return element.offsetParent;
+  }
+  function getContainingBlock(element) {
+    var isFirefox = /firefox/i.test(getUAString());
+    var isIE = /Trident/i.test(getUAString());
+    if (isIE && isHTMLElement(element)) {
+      var elementCss = getComputedStyle3(element);
+      if (elementCss.position === "fixed") {
+        return null;
+      }
+    }
+    var currentNode = getParentNode(element);
+    if (isShadowRoot(currentNode)) {
+      currentNode = currentNode.host;
+    }
+    while (isHTMLElement(currentNode) && ["html", "body"].indexOf(getNodeName(currentNode)) < 0) {
+      var css2 = getComputedStyle3(currentNode);
+      if (css2.transform !== "none" || css2.perspective !== "none" || css2.contain === "paint" || ["transform", "perspective"].indexOf(css2.willChange) !== -1 || isFirefox && css2.willChange === "filter" || isFirefox && css2.filter && css2.filter !== "none") {
+        return currentNode;
+      } else {
+        currentNode = currentNode.parentNode;
+      }
+    }
+    return null;
+  }
+  function getOffsetParent(element) {
+    var window2 = getWindow(element);
+    var offsetParent = getTrueOffsetParent(element);
+    while (offsetParent && isTableElement(offsetParent) && getComputedStyle3(offsetParent).position === "static") {
+      offsetParent = getTrueOffsetParent(offsetParent);
+    }
+    if (offsetParent && (getNodeName(offsetParent) === "html" || getNodeName(offsetParent) === "body" && getComputedStyle3(offsetParent).position === "static")) {
+      return window2;
+    }
+    return offsetParent || getContainingBlock(element) || window2;
+  }
+
+  // node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js
+  function getMainAxisFromPlacement(placement) {
+    return ["top", "bottom"].indexOf(placement) >= 0 ? "x" : "y";
+  }
+
+  // node_modules/@popperjs/core/lib/utils/within.js
+  function within(min2, value, max2) {
+    return max(min2, min(value, max2));
+  }
+  function withinMaxClamp(min2, value, max2) {
+    var v = within(min2, value, max2);
+    return v > max2 ? max2 : v;
+  }
+
+  // node_modules/@popperjs/core/lib/utils/getFreshSideObject.js
+  function getFreshSideObject() {
+    return {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/utils/mergePaddingObject.js
+  function mergePaddingObject(paddingObject) {
+    return Object.assign({}, getFreshSideObject(), paddingObject);
+  }
+
+  // node_modules/@popperjs/core/lib/utils/expandToHashMap.js
+  function expandToHashMap(value, keys2) {
+    return keys2.reduce(function(hashMap, key) {
+      hashMap[key] = value;
+      return hashMap;
+    }, {});
+  }
+
+  // node_modules/@popperjs/core/lib/modifiers/arrow.js
+  var toPaddingObject = function toPaddingObject2(padding, state2) {
+    padding = typeof padding === "function" ? padding(Object.assign({}, state2.rects, {
+      placement: state2.placement
+    })) : padding;
+    return mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
+  };
+  function arrow(_ref) {
+    var _state$modifiersData$;
+    var state2 = _ref.state, name = _ref.name, options = _ref.options;
+    var arrowElement = state2.elements.arrow;
+    var popperOffsets2 = state2.modifiersData.popperOffsets;
+    var basePlacement = getBasePlacement(state2.placement);
+    var axis = getMainAxisFromPlacement(basePlacement);
+    var isVertical = [left, right].indexOf(basePlacement) >= 0;
+    var len = isVertical ? "height" : "width";
+    if (!arrowElement || !popperOffsets2) {
+      return;
+    }
+    var paddingObject = toPaddingObject(options.padding, state2);
+    var arrowRect = getLayoutRect(arrowElement);
+    var minProp = axis === "y" ? top : left;
+    var maxProp = axis === "y" ? bottom : right;
+    var endDiff = state2.rects.reference[len] + state2.rects.reference[axis] - popperOffsets2[axis] - state2.rects.popper[len];
+    var startDiff = popperOffsets2[axis] - state2.rects.reference[axis];
+    var arrowOffsetParent = getOffsetParent(arrowElement);
+    var clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
+    var centerToReference = endDiff / 2 - startDiff / 2;
+    var min2 = paddingObject[minProp];
+    var max2 = clientSize - arrowRect[len] - paddingObject[maxProp];
+    var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
+    var offset2 = within(min2, center, max2);
+    var axisProp = axis;
+    state2.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset2, _state$modifiersData$.centerOffset = offset2 - center, _state$modifiersData$);
+  }
+  function effect3(_ref2) {
+    var state2 = _ref2.state, options = _ref2.options;
+    var _options$element = options.element, arrowElement = _options$element === void 0 ? "[data-popper-arrow]" : _options$element;
+    if (arrowElement == null) {
+      return;
+    }
+    if (typeof arrowElement === "string") {
+      arrowElement = state2.elements.popper.querySelector(arrowElement);
+      if (!arrowElement) {
+        return;
+      }
+    }
+    if (true) {
+      if (!isHTMLElement(arrowElement)) {
+        console.error(['Popper: "arrow" element must be an HTMLElement (not an SVGElement).', "To use an SVG arrow, wrap it in an HTMLElement that will be used as", "the arrow."].join(" "));
+      }
+    }
+    if (!contains(state2.elements.popper, arrowElement)) {
+      if (true) {
+        console.error(['Popper: "arrow" modifier\'s `element` must be a child of the popper', "element."].join(" "));
+      }
+      return;
+    }
+    state2.elements.arrow = arrowElement;
+  }
+  var arrow_default = {
+    name: "arrow",
+    enabled: true,
+    phase: "main",
+    fn: arrow,
+    effect: effect3,
+    requires: ["popperOffsets"],
+    requiresIfExists: ["preventOverflow"]
+  };
+
+  // node_modules/@popperjs/core/lib/utils/getVariation.js
+  function getVariation(placement) {
+    return placement.split("-")[1];
+  }
+
+  // node_modules/@popperjs/core/lib/modifiers/computeStyles.js
+  var unsetSides = {
+    top: "auto",
+    right: "auto",
+    bottom: "auto",
+    left: "auto"
+  };
+  function roundOffsetsByDPR(_ref) {
+    var x = _ref.x, y = _ref.y;
+    var win2 = window;
+    var dpr = win2.devicePixelRatio || 1;
+    return {
+      x: round(x * dpr) / dpr || 0,
+      y: round(y * dpr) / dpr || 0
+    };
+  }
+  function mapToStyles(_ref2) {
+    var _Object$assign2;
+    var popper2 = _ref2.popper, popperRect = _ref2.popperRect, placement = _ref2.placement, variation = _ref2.variation, offsets = _ref2.offsets, position2 = _ref2.position, gpuAcceleration = _ref2.gpuAcceleration, adaptive = _ref2.adaptive, roundOffsets = _ref2.roundOffsets, isFixed = _ref2.isFixed;
+    var _offsets$x = offsets.x, x = _offsets$x === void 0 ? 0 : _offsets$x, _offsets$y = offsets.y, y = _offsets$y === void 0 ? 0 : _offsets$y;
+    var _ref3 = typeof roundOffsets === "function" ? roundOffsets({
+      x,
+      y
+    }) : {
+      x,
+      y
+    };
+    x = _ref3.x;
+    y = _ref3.y;
+    var hasX = offsets.hasOwnProperty("x");
+    var hasY = offsets.hasOwnProperty("y");
+    var sideX = left;
+    var sideY = top;
+    var win2 = window;
+    if (adaptive) {
+      var offsetParent = getOffsetParent(popper2);
+      var heightProp = "clientHeight";
+      var widthProp = "clientWidth";
+      if (offsetParent === getWindow(popper2)) {
+        offsetParent = getDocumentElement(popper2);
+        if (getComputedStyle3(offsetParent).position !== "static" && position2 === "absolute") {
+          heightProp = "scrollHeight";
+          widthProp = "scrollWidth";
+        }
+      }
+      offsetParent = offsetParent;
+      if (placement === top || (placement === left || placement === right) && variation === end) {
+        sideY = bottom;
+        var offsetY = isFixed && offsetParent === win2 && win2.visualViewport ? win2.visualViewport.height : offsetParent[heightProp];
+        y -= offsetY - popperRect.height;
+        y *= gpuAcceleration ? 1 : -1;
+      }
+      if (placement === left || (placement === top || placement === bottom) && variation === end) {
+        sideX = right;
+        var offsetX = isFixed && offsetParent === win2 && win2.visualViewport ? win2.visualViewport.width : offsetParent[widthProp];
+        x -= offsetX - popperRect.width;
+        x *= gpuAcceleration ? 1 : -1;
+      }
+    }
+    var commonStyles = Object.assign({
+      position: position2
+    }, adaptive && unsetSides);
+    var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
+      x,
+      y
+    }) : {
+      x,
+      y
+    };
+    x = _ref4.x;
+    y = _ref4.y;
+    if (gpuAcceleration) {
+      var _Object$assign;
+      return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win2.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+    }
+    return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "", _Object$assign2[sideX] = hasX ? x + "px" : "", _Object$assign2.transform = "", _Object$assign2));
+  }
+  function computeStyles(_ref5) {
+    var state2 = _ref5.state, options = _ref5.options;
+    var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
+    if (true) {
+      var transitionProperty2 = getComputedStyle3(state2.elements.popper).transitionProperty || "";
+      if (adaptive && ["transform", "top", "right", "bottom", "left"].some(function(property) {
+        return transitionProperty2.indexOf(property) >= 0;
+      })) {
+        console.warn(["Popper: Detected CSS transitions on at least one of the following", 'CSS properties: "transform", "top", "right", "bottom", "left".', "\n\n", 'Disable the "computeStyles" modifier\'s `adaptive` option to allow', "for smooth transitions, or remove these properties from the CSS", "transition declaration on the popper element if only transitioning", "opacity or background-color for example.", "\n\n", "We recommend using the popper element as a wrapper around an inner", "element that can have any CSS property transitioned for animations."].join(" "));
+      }
+    }
+    var commonStyles = {
+      placement: getBasePlacement(state2.placement),
+      variation: getVariation(state2.placement),
+      popper: state2.elements.popper,
+      popperRect: state2.rects.popper,
+      gpuAcceleration,
+      isFixed: state2.options.strategy === "fixed"
+    };
+    if (state2.modifiersData.popperOffsets != null) {
+      state2.styles.popper = Object.assign({}, state2.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
+        offsets: state2.modifiersData.popperOffsets,
+        position: state2.options.strategy,
+        adaptive,
+        roundOffsets
+      })));
+    }
+    if (state2.modifiersData.arrow != null) {
+      state2.styles.arrow = Object.assign({}, state2.styles.arrow, mapToStyles(Object.assign({}, commonStyles, {
+        offsets: state2.modifiersData.arrow,
+        position: "absolute",
+        adaptive: false,
+        roundOffsets
+      })));
+    }
+    state2.attributes.popper = Object.assign({}, state2.attributes.popper, {
+      "data-popper-placement": state2.placement
+    });
+  }
+  var computeStyles_default = {
+    name: "computeStyles",
+    enabled: true,
+    phase: "beforeWrite",
+    fn: computeStyles,
+    data: {}
+  };
+
+  // node_modules/@popperjs/core/lib/modifiers/eventListeners.js
+  var passive = {
+    passive: true
+  };
+  function effect4(_ref) {
+    var state2 = _ref.state, instance = _ref.instance, options = _ref.options;
+    var _options$scroll = options.scroll, scroll2 = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
+    var window2 = getWindow(state2.elements.popper);
+    var scrollParents = [].concat(state2.scrollParents.reference, state2.scrollParents.popper);
+    if (scroll2) {
+      scrollParents.forEach(function(scrollParent) {
+        scrollParent.addEventListener("scroll", instance.update, passive);
+      });
+    }
+    if (resize) {
+      window2.addEventListener("resize", instance.update, passive);
+    }
+    return function() {
+      if (scroll2) {
+        scrollParents.forEach(function(scrollParent) {
+          scrollParent.removeEventListener("scroll", instance.update, passive);
+        });
+      }
+      if (resize) {
+        window2.removeEventListener("resize", instance.update, passive);
+      }
+    };
+  }
+  var eventListeners_default = {
+    name: "eventListeners",
+    enabled: true,
+    phase: "write",
+    fn: function fn() {
+    },
+    effect: effect4,
+    data: {}
+  };
+
+  // node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
+  var hash = {
+    left: "right",
+    right: "left",
+    bottom: "top",
+    top: "bottom"
+  };
+  function getOppositePlacement(placement) {
+    return placement.replace(/left|right|bottom|top/g, function(matched) {
+      return hash[matched];
+    });
+  }
+
+  // node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js
+  var hash2 = {
+    start: "end",
+    end: "start"
+  };
+  function getOppositeVariationPlacement(placement) {
+    return placement.replace(/start|end/g, function(matched) {
+      return hash2[matched];
+    });
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
+  function getWindowScroll(node) {
+    var win2 = getWindow(node);
+    var scrollLeft = win2.pageXOffset;
+    var scrollTop = win2.pageYOffset;
+    return {
+      scrollLeft,
+      scrollTop
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js
+  function getWindowScrollBarX(element) {
+    return getBoundingClientRect(getDocumentElement(element)).left + getWindowScroll(element).scrollLeft;
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
+  function getViewportRect(element, strategy) {
+    var win2 = getWindow(element);
+    var html = getDocumentElement(element);
+    var visualViewport = win2.visualViewport;
+    var width = html.clientWidth;
+    var height = html.clientHeight;
+    var x = 0;
+    var y = 0;
+    if (visualViewport) {
+      width = visualViewport.width;
+      height = visualViewport.height;
+      var layoutViewport = isLayoutViewport();
+      if (layoutViewport || !layoutViewport && strategy === "fixed") {
+        x = visualViewport.offsetLeft;
+        y = visualViewport.offsetTop;
+      }
+    }
+    return {
+      width,
+      height,
+      x: x + getWindowScrollBarX(element),
+      y
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js
+  function getDocumentRect(element) {
+    var _element$ownerDocumen;
+    var html = getDocumentElement(element);
+    var winScroll = getWindowScroll(element);
+    var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
+    var width = max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+    var height = max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+    var x = -winScroll.scrollLeft + getWindowScrollBarX(element);
+    var y = -winScroll.scrollTop;
+    if (getComputedStyle3(body || html).direction === "rtl") {
+      x += max(html.clientWidth, body ? body.clientWidth : 0) - width;
+    }
+    return {
+      width,
+      height,
+      x,
+      y
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js
+  function isScrollParent(element) {
+    var _getComputedStyle = getComputedStyle3(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
+    return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js
+  function getScrollParent(node) {
+    if (["html", "body", "#document"].indexOf(getNodeName(node)) >= 0) {
+      return node.ownerDocument.body;
+    }
+    if (isHTMLElement(node) && isScrollParent(node)) {
+      return node;
+    }
+    return getScrollParent(getParentNode(node));
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js
+  function listScrollParents(element, list2) {
+    var _element$ownerDocumen;
+    if (list2 === void 0) {
+      list2 = [];
+    }
+    var scrollParent = getScrollParent(element);
+    var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
+    var win2 = getWindow(scrollParent);
+    var target = isBody ? [win2].concat(win2.visualViewport || [], isScrollParent(scrollParent) ? scrollParent : []) : scrollParent;
+    var updatedList = list2.concat(target);
+    return isBody ? updatedList : updatedList.concat(listScrollParents(getParentNode(target)));
+  }
+
+  // node_modules/@popperjs/core/lib/utils/rectToClientRect.js
+  function rectToClientRect(rect) {
+    return Object.assign({}, rect, {
+      left: rect.x,
+      top: rect.y,
+      right: rect.x + rect.width,
+      bottom: rect.y + rect.height
+    });
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js
+  function getInnerBoundingClientRect(element, strategy) {
+    var rect = getBoundingClientRect(element, false, strategy === "fixed");
+    rect.top = rect.top + element.clientTop;
+    rect.left = rect.left + element.clientLeft;
+    rect.bottom = rect.top + element.clientHeight;
+    rect.right = rect.left + element.clientWidth;
+    rect.width = element.clientWidth;
+    rect.height = element.clientHeight;
+    rect.x = rect.left;
+    rect.y = rect.top;
+    return rect;
+  }
+  function getClientRectFromMixedType(element, clippingParent, strategy) {
+    return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement2(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+  }
+  function getClippingParents(element) {
+    var clippingParents2 = listScrollParents(getParentNode(element));
+    var canEscapeClipping = ["absolute", "fixed"].indexOf(getComputedStyle3(element).position) >= 0;
+    var clipperElement = canEscapeClipping && isHTMLElement(element) ? getOffsetParent(element) : element;
+    if (!isElement2(clipperElement)) {
+      return [];
+    }
+    return clippingParents2.filter(function(clippingParent) {
+      return isElement2(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== "body";
+    });
+  }
+  function getClippingRect(element, boundary, rootBoundary, strategy) {
+    var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
+    var clippingParents2 = [].concat(mainClippingParents, [rootBoundary]);
+    var firstClippingParent = clippingParents2[0];
+    var clippingRect = clippingParents2.reduce(function(accRect, clippingParent) {
+      var rect = getClientRectFromMixedType(element, clippingParent, strategy);
+      accRect.top = max(rect.top, accRect.top);
+      accRect.right = min(rect.right, accRect.right);
+      accRect.bottom = min(rect.bottom, accRect.bottom);
+      accRect.left = max(rect.left, accRect.left);
+      return accRect;
+    }, getClientRectFromMixedType(element, firstClippingParent, strategy));
+    clippingRect.width = clippingRect.right - clippingRect.left;
+    clippingRect.height = clippingRect.bottom - clippingRect.top;
+    clippingRect.x = clippingRect.left;
+    clippingRect.y = clippingRect.top;
+    return clippingRect;
+  }
+
+  // node_modules/@popperjs/core/lib/utils/computeOffsets.js
+  function computeOffsets(_ref) {
+    var reference2 = _ref.reference, element = _ref.element, placement = _ref.placement;
+    var basePlacement = placement ? getBasePlacement(placement) : null;
+    var variation = placement ? getVariation(placement) : null;
+    var commonX = reference2.x + reference2.width / 2 - element.width / 2;
+    var commonY = reference2.y + reference2.height / 2 - element.height / 2;
+    var offsets;
+    switch (basePlacement) {
+      case top:
+        offsets = {
+          x: commonX,
+          y: reference2.y - element.height
+        };
+        break;
+      case bottom:
+        offsets = {
+          x: commonX,
+          y: reference2.y + reference2.height
+        };
+        break;
+      case right:
+        offsets = {
+          x: reference2.x + reference2.width,
+          y: commonY
+        };
+        break;
+      case left:
+        offsets = {
+          x: reference2.x - element.width,
+          y: commonY
+        };
+        break;
+      default:
+        offsets = {
+          x: reference2.x,
+          y: reference2.y
+        };
+    }
+    var mainAxis = basePlacement ? getMainAxisFromPlacement(basePlacement) : null;
+    if (mainAxis != null) {
+      var len = mainAxis === "y" ? "height" : "width";
+      switch (variation) {
+        case start:
+          offsets[mainAxis] = offsets[mainAxis] - (reference2[len] / 2 - element[len] / 2);
+          break;
+        case end:
+          offsets[mainAxis] = offsets[mainAxis] + (reference2[len] / 2 - element[len] / 2);
+          break;
+        default:
+      }
+    }
+    return offsets;
+  }
+
+  // node_modules/@popperjs/core/lib/utils/detectOverflow.js
+  function detectOverflow(state2, options) {
+    if (options === void 0) {
+      options = {};
+    }
+    var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state2.placement : _options$placement, _options$strategy = _options.strategy, strategy = _options$strategy === void 0 ? state2.strategy : _options$strategy, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
+    var paddingObject = mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
+    var altContext = elementContext === popper ? reference : popper;
+    var popperRect = state2.rects.popper;
+    var element = state2.elements[altBoundary ? altContext : elementContext];
+    var clippingClientRect = getClippingRect(isElement2(element) ? element : element.contextElement || getDocumentElement(state2.elements.popper), boundary, rootBoundary, strategy);
+    var referenceClientRect = getBoundingClientRect(state2.elements.reference);
+    var popperOffsets2 = computeOffsets({
+      reference: referenceClientRect,
+      element: popperRect,
+      strategy: "absolute",
+      placement
+    });
+    var popperClientRect = rectToClientRect(Object.assign({}, popperRect, popperOffsets2));
+    var elementClientRect = elementContext === popper ? popperClientRect : referenceClientRect;
+    var overflowOffsets = {
+      top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
+      bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
+      left: clippingClientRect.left - elementClientRect.left + paddingObject.left,
+      right: elementClientRect.right - clippingClientRect.right + paddingObject.right
+    };
+    var offsetData = state2.modifiersData.offset;
+    if (elementContext === popper && offsetData) {
+      var offset2 = offsetData[placement];
+      Object.keys(overflowOffsets).forEach(function(key) {
+        var multiply3 = [right, bottom].indexOf(key) >= 0 ? 1 : -1;
+        var axis = [top, bottom].indexOf(key) >= 0 ? "y" : "x";
+        overflowOffsets[key] += offset2[axis] * multiply3;
+      });
+    }
+    return overflowOffsets;
+  }
+
+  // node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js
+  function computeAutoPlacement(state2, options) {
+    if (options === void 0) {
+      options = {};
+    }
+    var _options = options, placement = _options.placement, boundary = _options.boundary, rootBoundary = _options.rootBoundary, padding = _options.padding, flipVariations = _options.flipVariations, _options$allowedAutoP = _options.allowedAutoPlacements, allowedAutoPlacements = _options$allowedAutoP === void 0 ? placements : _options$allowedAutoP;
+    var variation = getVariation(placement);
+    var placements2 = variation ? flipVariations ? variationPlacements : variationPlacements.filter(function(placement2) {
+      return getVariation(placement2) === variation;
+    }) : basePlacements;
+    var allowedPlacements = placements2.filter(function(placement2) {
+      return allowedAutoPlacements.indexOf(placement2) >= 0;
+    });
+    if (allowedPlacements.length === 0) {
+      allowedPlacements = placements2;
+      if (true) {
+        console.error(["Popper: The `allowedAutoPlacements` option did not allow any", "placements. Ensure the `placement` option matches the variation", "of the allowed placements.", 'For example, "auto" cannot be used to allow "bottom-start".', 'Use "auto-start" instead.'].join(" "));
+      }
+    }
+    var overflows = allowedPlacements.reduce(function(acc, placement2) {
+      acc[placement2] = detectOverflow(state2, {
+        placement: placement2,
+        boundary,
+        rootBoundary,
+        padding
+      })[getBasePlacement(placement2)];
+      return acc;
+    }, {});
+    return Object.keys(overflows).sort(function(a2, b2) {
+      return overflows[a2] - overflows[b2];
+    });
+  }
+
+  // node_modules/@popperjs/core/lib/modifiers/flip.js
+  function getExpandedFallbackPlacements(placement) {
+    if (getBasePlacement(placement) === auto2) {
+      return [];
+    }
+    var oppositePlacement = getOppositePlacement(placement);
+    return [getOppositeVariationPlacement(placement), oppositePlacement, getOppositeVariationPlacement(oppositePlacement)];
+  }
+  function flip(_ref) {
+    var state2 = _ref.state, options = _ref.options, name = _ref.name;
+    if (state2.modifiersData[name]._skip) {
+      return;
+    }
+    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis, specifiedFallbackPlacements = options.fallbackPlacements, padding = options.padding, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, _options$flipVariatio = options.flipVariations, flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio, allowedAutoPlacements = options.allowedAutoPlacements;
+    var preferredPlacement = state2.options.placement;
+    var basePlacement = getBasePlacement(preferredPlacement);
+    var isBasePlacement = basePlacement === preferredPlacement;
+    var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [getOppositePlacement(preferredPlacement)] : getExpandedFallbackPlacements(preferredPlacement));
+    var placements2 = [preferredPlacement].concat(fallbackPlacements).reduce(function(acc, placement2) {
+      return acc.concat(getBasePlacement(placement2) === auto2 ? computeAutoPlacement(state2, {
+        placement: placement2,
+        boundary,
+        rootBoundary,
+        padding,
+        flipVariations,
+        allowedAutoPlacements
+      }) : placement2);
+    }, []);
+    var referenceRect = state2.rects.reference;
+    var popperRect = state2.rects.popper;
+    var checksMap = /* @__PURE__ */ new Map();
+    var makeFallbackChecks = true;
+    var firstFittingPlacement = placements2[0];
+    for (var i = 0; i < placements2.length; i++) {
+      var placement = placements2[i];
+      var _basePlacement = getBasePlacement(placement);
+      var isStartVariation = getVariation(placement) === start;
+      var isVertical = [top, bottom].indexOf(_basePlacement) >= 0;
+      var len = isVertical ? "width" : "height";
+      var overflow = detectOverflow(state2, {
+        placement,
+        boundary,
+        rootBoundary,
+        altBoundary,
+        padding
+      });
+      var mainVariationSide = isVertical ? isStartVariation ? right : left : isStartVariation ? bottom : top;
+      if (referenceRect[len] > popperRect[len]) {
+        mainVariationSide = getOppositePlacement(mainVariationSide);
+      }
+      var altVariationSide = getOppositePlacement(mainVariationSide);
+      var checks = [];
+      if (checkMainAxis) {
+        checks.push(overflow[_basePlacement] <= 0);
+      }
+      if (checkAltAxis) {
+        checks.push(overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0);
+      }
+      if (checks.every(function(check) {
+        return check;
+      })) {
+        firstFittingPlacement = placement;
+        makeFallbackChecks = false;
+        break;
+      }
+      checksMap.set(placement, checks);
+    }
+    if (makeFallbackChecks) {
+      var numberOfChecks = flipVariations ? 3 : 1;
+      var _loop = function _loop2(_i2) {
+        var fittingPlacement = placements2.find(function(placement2) {
+          var checks2 = checksMap.get(placement2);
+          if (checks2) {
+            return checks2.slice(0, _i2).every(function(check) {
+              return check;
+            });
+          }
+        });
+        if (fittingPlacement) {
+          firstFittingPlacement = fittingPlacement;
+          return "break";
+        }
+      };
+      for (var _i = numberOfChecks; _i > 0; _i--) {
+        var _ret = _loop(_i);
+        if (_ret === "break")
+          break;
+      }
+    }
+    if (state2.placement !== firstFittingPlacement) {
+      state2.modifiersData[name]._skip = true;
+      state2.placement = firstFittingPlacement;
+      state2.reset = true;
+    }
+  }
+  var flip_default = {
+    name: "flip",
+    enabled: true,
+    phase: "main",
+    fn: flip,
+    requiresIfExists: ["offset"],
+    data: {
+      _skip: false
+    }
+  };
+
+  // node_modules/@popperjs/core/lib/modifiers/hide.js
+  function getSideOffsets(overflow, rect, preventedOffsets) {
+    if (preventedOffsets === void 0) {
+      preventedOffsets = {
+        x: 0,
+        y: 0
+      };
+    }
+    return {
+      top: overflow.top - rect.height - preventedOffsets.y,
+      right: overflow.right - rect.width + preventedOffsets.x,
+      bottom: overflow.bottom - rect.height + preventedOffsets.y,
+      left: overflow.left - rect.width - preventedOffsets.x
+    };
+  }
+  function isAnySideFullyClipped(overflow) {
+    return [top, right, bottom, left].some(function(side) {
+      return overflow[side] >= 0;
+    });
+  }
+  function hide(_ref) {
+    var state2 = _ref.state, name = _ref.name;
+    var referenceRect = state2.rects.reference;
+    var popperRect = state2.rects.popper;
+    var preventedOffsets = state2.modifiersData.preventOverflow;
+    var referenceOverflow = detectOverflow(state2, {
+      elementContext: "reference"
+    });
+    var popperAltOverflow = detectOverflow(state2, {
+      altBoundary: true
+    });
+    var referenceClippingOffsets = getSideOffsets(referenceOverflow, referenceRect);
+    var popperEscapeOffsets = getSideOffsets(popperAltOverflow, popperRect, preventedOffsets);
+    var isReferenceHidden = isAnySideFullyClipped(referenceClippingOffsets);
+    var hasPopperEscaped = isAnySideFullyClipped(popperEscapeOffsets);
+    state2.modifiersData[name] = {
+      referenceClippingOffsets,
+      popperEscapeOffsets,
+      isReferenceHidden,
+      hasPopperEscaped
+    };
+    state2.attributes.popper = Object.assign({}, state2.attributes.popper, {
+      "data-popper-reference-hidden": isReferenceHidden,
+      "data-popper-escaped": hasPopperEscaped
+    });
+  }
+  var hide_default = {
+    name: "hide",
+    enabled: true,
+    phase: "main",
+    requiresIfExists: ["preventOverflow"],
+    fn: hide
+  };
+
+  // node_modules/@popperjs/core/lib/modifiers/offset.js
+  function distanceAndSkiddingToXY(placement, rects, offset2) {
+    var basePlacement = getBasePlacement(placement);
+    var invertDistance = [left, top].indexOf(basePlacement) >= 0 ? -1 : 1;
+    var _ref = typeof offset2 === "function" ? offset2(Object.assign({}, rects, {
+      placement
+    })) : offset2, skidding = _ref[0], distance2 = _ref[1];
+    skidding = skidding || 0;
+    distance2 = (distance2 || 0) * invertDistance;
+    return [left, right].indexOf(basePlacement) >= 0 ? {
+      x: distance2,
+      y: skidding
+    } : {
+      x: skidding,
+      y: distance2
+    };
+  }
+  function offset(_ref2) {
+    var state2 = _ref2.state, options = _ref2.options, name = _ref2.name;
+    var _options$offset = options.offset, offset2 = _options$offset === void 0 ? [0, 0] : _options$offset;
+    var data = placements.reduce(function(acc, placement) {
+      acc[placement] = distanceAndSkiddingToXY(placement, state2.rects, offset2);
+      return acc;
+    }, {});
+    var _data$state$placement = data[state2.placement], x = _data$state$placement.x, y = _data$state$placement.y;
+    if (state2.modifiersData.popperOffsets != null) {
+      state2.modifiersData.popperOffsets.x += x;
+      state2.modifiersData.popperOffsets.y += y;
+    }
+    state2.modifiersData[name] = data;
+  }
+  var offset_default = {
+    name: "offset",
+    enabled: true,
+    phase: "main",
+    requires: ["popperOffsets"],
+    fn: offset
+  };
+
+  // node_modules/@popperjs/core/lib/modifiers/popperOffsets.js
+  function popperOffsets(_ref) {
+    var state2 = _ref.state, name = _ref.name;
+    state2.modifiersData[name] = computeOffsets({
+      reference: state2.rects.reference,
+      element: state2.rects.popper,
+      strategy: "absolute",
+      placement: state2.placement
+    });
+  }
+  var popperOffsets_default = {
+    name: "popperOffsets",
+    enabled: true,
+    phase: "read",
+    fn: popperOffsets,
+    data: {}
+  };
+
+  // node_modules/@popperjs/core/lib/utils/getAltAxis.js
+  function getAltAxis(axis) {
+    return axis === "x" ? "y" : "x";
+  }
+
+  // node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
+  function preventOverflow(_ref) {
+    var state2 = _ref.state, options = _ref.options, name = _ref.name;
+    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, padding = options.padding, _options$tether = options.tether, tether = _options$tether === void 0 ? true : _options$tether, _options$tetherOffset = options.tetherOffset, tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
+    var overflow = detectOverflow(state2, {
+      boundary,
+      rootBoundary,
+      padding,
+      altBoundary
+    });
+    var basePlacement = getBasePlacement(state2.placement);
+    var variation = getVariation(state2.placement);
+    var isBasePlacement = !variation;
+    var mainAxis = getMainAxisFromPlacement(basePlacement);
+    var altAxis = getAltAxis(mainAxis);
+    var popperOffsets2 = state2.modifiersData.popperOffsets;
+    var referenceRect = state2.rects.reference;
+    var popperRect = state2.rects.popper;
+    var tetherOffsetValue = typeof tetherOffset === "function" ? tetherOffset(Object.assign({}, state2.rects, {
+      placement: state2.placement
+    })) : tetherOffset;
+    var normalizedTetherOffsetValue = typeof tetherOffsetValue === "number" ? {
+      mainAxis: tetherOffsetValue,
+      altAxis: tetherOffsetValue
+    } : Object.assign({
+      mainAxis: 0,
+      altAxis: 0
+    }, tetherOffsetValue);
+    var offsetModifierState = state2.modifiersData.offset ? state2.modifiersData.offset[state2.placement] : null;
+    var data = {
+      x: 0,
+      y: 0
+    };
+    if (!popperOffsets2) {
+      return;
+    }
+    if (checkMainAxis) {
+      var _offsetModifierState$;
+      var mainSide = mainAxis === "y" ? top : left;
+      var altSide = mainAxis === "y" ? bottom : right;
+      var len = mainAxis === "y" ? "height" : "width";
+      var offset2 = popperOffsets2[mainAxis];
+      var min2 = offset2 + overflow[mainSide];
+      var max2 = offset2 - overflow[altSide];
+      var additive = tether ? -popperRect[len] / 2 : 0;
+      var minLen = variation === start ? referenceRect[len] : popperRect[len];
+      var maxLen = variation === start ? -popperRect[len] : -referenceRect[len];
+      var arrowElement = state2.elements.arrow;
+      var arrowRect = tether && arrowElement ? getLayoutRect(arrowElement) : {
+        width: 0,
+        height: 0
+      };
+      var arrowPaddingObject = state2.modifiersData["arrow#persistent"] ? state2.modifiersData["arrow#persistent"].padding : getFreshSideObject();
+      var arrowPaddingMin = arrowPaddingObject[mainSide];
+      var arrowPaddingMax = arrowPaddingObject[altSide];
+      var arrowLen = within(0, referenceRect[len], arrowRect[len]);
+      var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
+      var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
+      var arrowOffsetParent = state2.elements.arrow && getOffsetParent(state2.elements.arrow);
+      var clientOffset = arrowOffsetParent ? mainAxis === "y" ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
+      var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
+      var tetherMin = offset2 + minOffset - offsetModifierValue - clientOffset;
+      var tetherMax = offset2 + maxOffset - offsetModifierValue;
+      var preventedOffset = within(tether ? min(min2, tetherMin) : min2, offset2, tether ? max(max2, tetherMax) : max2);
+      popperOffsets2[mainAxis] = preventedOffset;
+      data[mainAxis] = preventedOffset - offset2;
+    }
+    if (checkAltAxis) {
+      var _offsetModifierState$2;
+      var _mainSide = mainAxis === "x" ? top : left;
+      var _altSide = mainAxis === "x" ? bottom : right;
+      var _offset = popperOffsets2[altAxis];
+      var _len = altAxis === "y" ? "height" : "width";
+      var _min = _offset + overflow[_mainSide];
+      var _max = _offset - overflow[_altSide];
+      var isOriginSide = [top, left].indexOf(basePlacement) !== -1;
+      var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
+      var _tetherMin = isOriginSide ? _min : _offset - referenceRect[_len] - popperRect[_len] - _offsetModifierValue + normalizedTetherOffsetValue.altAxis;
+      var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
+      var _preventedOffset = tether && isOriginSide ? withinMaxClamp(_tetherMin, _offset, _tetherMax) : within(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
+      popperOffsets2[altAxis] = _preventedOffset;
+      data[altAxis] = _preventedOffset - _offset;
+    }
+    state2.modifiersData[name] = data;
+  }
+  var preventOverflow_default = {
+    name: "preventOverflow",
+    enabled: true,
+    phase: "main",
+    fn: preventOverflow,
+    requiresIfExists: ["offset"]
+  };
+
+  // node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
+  function getHTMLElementScroll(element) {
+    return {
+      scrollLeft: element.scrollLeft,
+      scrollTop: element.scrollTop
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js
+  function getNodeScroll(node) {
+    if (node === getWindow(node) || !isHTMLElement(node)) {
+      return getWindowScroll(node);
+    } else {
+      return getHTMLElementScroll(node);
+    }
+  }
+
+  // node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js
+  function isElementScaled(element) {
+    var rect = element.getBoundingClientRect();
+    var scaleX = round(rect.width) / element.offsetWidth || 1;
+    var scaleY = round(rect.height) / element.offsetHeight || 1;
+    return scaleX !== 1 || scaleY !== 1;
+  }
+  function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
+    if (isFixed === void 0) {
+      isFixed = false;
+    }
+    var isOffsetParentAnElement = isHTMLElement(offsetParent);
+    var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
+    var documentElement = getDocumentElement(offsetParent);
+    var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
+    var scroll2 = {
+      scrollLeft: 0,
+      scrollTop: 0
+    };
+    var offsets = {
+      x: 0,
+      y: 0
+    };
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+      if (getNodeName(offsetParent) !== "body" || isScrollParent(documentElement)) {
+        scroll2 = getNodeScroll(offsetParent);
+      }
+      if (isHTMLElement(offsetParent)) {
+        offsets = getBoundingClientRect(offsetParent, true);
+        offsets.x += offsetParent.clientLeft;
+        offsets.y += offsetParent.clientTop;
+      } else if (documentElement) {
+        offsets.x = getWindowScrollBarX(documentElement);
+      }
+    }
+    return {
+      x: rect.left + scroll2.scrollLeft - offsets.x,
+      y: rect.top + scroll2.scrollTop - offsets.y,
+      width: rect.width,
+      height: rect.height
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/utils/orderModifiers.js
+  function order(modifiers) {
+    var map = /* @__PURE__ */ new Map();
+    var visited = /* @__PURE__ */ new Set();
+    var result = [];
+    modifiers.forEach(function(modifier) {
+      map.set(modifier.name, modifier);
+    });
+    function sort(modifier) {
+      visited.add(modifier.name);
+      var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
+      requires.forEach(function(dep) {
+        if (!visited.has(dep)) {
+          var depModifier = map.get(dep);
+          if (depModifier) {
+            sort(depModifier);
+          }
+        }
+      });
+      result.push(modifier);
+    }
+    modifiers.forEach(function(modifier) {
+      if (!visited.has(modifier.name)) {
+        sort(modifier);
+      }
+    });
+    return result;
+  }
+  function orderModifiers(modifiers) {
+    var orderedModifiers = order(modifiers);
+    return modifierPhases.reduce(function(acc, phase) {
+      return acc.concat(orderedModifiers.filter(function(modifier) {
+        return modifier.phase === phase;
+      }));
+    }, []);
+  }
+
+  // node_modules/@popperjs/core/lib/utils/debounce.js
+  function debounce(fn2) {
+    var pending;
+    return function() {
+      if (!pending) {
+        pending = new Promise(function(resolve) {
+          Promise.resolve().then(function() {
+            pending = void 0;
+            resolve(fn2());
+          });
+        });
+      }
+      return pending;
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/utils/format.js
+  function format(str) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+    return [].concat(args).reduce(function(p, c2) {
+      return p.replace(/%s/, c2);
+    }, str);
+  }
+
+  // node_modules/@popperjs/core/lib/utils/validateModifiers.js
+  var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
+  var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
+  var VALID_PROPERTIES = ["name", "enabled", "phase", "fn", "effect", "requires", "options"];
+  function validateModifiers(modifiers) {
+    modifiers.forEach(function(modifier) {
+      [].concat(Object.keys(modifier), VALID_PROPERTIES).filter(function(value, index, self2) {
+        return self2.indexOf(value) === index;
+      }).forEach(function(key) {
+        switch (key) {
+          case "name":
+            if (typeof modifier.name !== "string") {
+              console.error(format(INVALID_MODIFIER_ERROR, String(modifier.name), '"name"', '"string"', '"' + String(modifier.name) + '"'));
+            }
+            break;
+          case "enabled":
+            if (typeof modifier.enabled !== "boolean") {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"enabled"', '"boolean"', '"' + String(modifier.enabled) + '"'));
+            }
+            break;
+          case "phase":
+            if (modifierPhases.indexOf(modifier.phase) < 0) {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"phase"', "either " + modifierPhases.join(", "), '"' + String(modifier.phase) + '"'));
+            }
+            break;
+          case "fn":
+            if (typeof modifier.fn !== "function") {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"fn"', '"function"', '"' + String(modifier.fn) + '"'));
+            }
+            break;
+          case "effect":
+            if (modifier.effect != null && typeof modifier.effect !== "function") {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"effect"', '"function"', '"' + String(modifier.fn) + '"'));
+            }
+            break;
+          case "requires":
+            if (modifier.requires != null && !Array.isArray(modifier.requires)) {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requires"', '"array"', '"' + String(modifier.requires) + '"'));
+            }
+            break;
+          case "requiresIfExists":
+            if (!Array.isArray(modifier.requiresIfExists)) {
+              console.error(format(INVALID_MODIFIER_ERROR, modifier.name, '"requiresIfExists"', '"array"', '"' + String(modifier.requiresIfExists) + '"'));
+            }
+            break;
+          case "options":
+          case "data":
+            break;
+          default:
+            console.error('PopperJS: an invalid property has been provided to the "' + modifier.name + '" modifier, valid properties are ' + VALID_PROPERTIES.map(function(s) {
+              return '"' + s + '"';
+            }).join(", ") + '; but "' + key + '" was provided.');
+        }
+        modifier.requires && modifier.requires.forEach(function(requirement) {
+          if (modifiers.find(function(mod) {
+            return mod.name === requirement;
+          }) == null) {
+            console.error(format(MISSING_DEPENDENCY_ERROR, String(modifier.name), requirement, requirement));
+          }
+        });
+      });
+    });
+  }
+
+  // node_modules/@popperjs/core/lib/utils/uniqueBy.js
+  function uniqueBy(arr, fn2) {
+    var identifiers = /* @__PURE__ */ new Set();
+    return arr.filter(function(item) {
+      var identifier = fn2(item);
+      if (!identifiers.has(identifier)) {
+        identifiers.add(identifier);
+        return true;
+      }
+    });
+  }
+
+  // node_modules/@popperjs/core/lib/utils/mergeByName.js
+  function mergeByName(modifiers) {
+    var merged = modifiers.reduce(function(merged2, current) {
+      var existing = merged2[current.name];
+      merged2[current.name] = existing ? Object.assign({}, existing, current, {
+        options: Object.assign({}, existing.options, current.options),
+        data: Object.assign({}, existing.data, current.data)
+      }) : current;
+      return merged2;
+    }, {});
+    return Object.keys(merged).map(function(key) {
+      return merged[key];
+    });
+  }
+
+  // node_modules/@popperjs/core/lib/createPopper.js
+  var INVALID_ELEMENT_ERROR = "Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.";
+  var INFINITE_LOOP_ERROR = "Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.";
+  var DEFAULT_OPTIONS = {
+    placement: "bottom",
+    modifiers: [],
+    strategy: "absolute"
+  };
+  function areValidElements() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    return !args.some(function(element) {
+      return !(element && typeof element.getBoundingClientRect === "function");
+    });
+  }
+  function popperGenerator(generatorOptions) {
+    if (generatorOptions === void 0) {
+      generatorOptions = {};
+    }
+    var _generatorOptions = generatorOptions, _generatorOptions$def = _generatorOptions.defaultModifiers, defaultModifiers2 = _generatorOptions$def === void 0 ? [] : _generatorOptions$def, _generatorOptions$def2 = _generatorOptions.defaultOptions, defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
+    return function createPopper2(reference2, popper2, options) {
+      if (options === void 0) {
+        options = defaultOptions;
+      }
+      var state2 = {
+        placement: "bottom",
+        orderedModifiers: [],
+        options: Object.assign({}, DEFAULT_OPTIONS, defaultOptions),
+        modifiersData: {},
+        elements: {
+          reference: reference2,
+          popper: popper2
+        },
+        attributes: {},
+        styles: {}
+      };
+      var effectCleanupFns = [];
+      var isDestroyed = false;
+      var instance = {
+        state: state2,
+        setOptions: function setOptions(setOptionsAction) {
+          var options2 = typeof setOptionsAction === "function" ? setOptionsAction(state2.options) : setOptionsAction;
+          cleanupModifierEffects();
+          state2.options = Object.assign({}, defaultOptions, state2.options, options2);
+          state2.scrollParents = {
+            reference: isElement2(reference2) ? listScrollParents(reference2) : reference2.contextElement ? listScrollParents(reference2.contextElement) : [],
+            popper: listScrollParents(popper2)
+          };
+          var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers2, state2.options.modifiers)));
+          state2.orderedModifiers = orderedModifiers.filter(function(m) {
+            return m.enabled;
+          });
+          if (true) {
+            var modifiers = uniqueBy([].concat(orderedModifiers, state2.options.modifiers), function(_ref) {
+              var name = _ref.name;
+              return name;
+            });
+            validateModifiers(modifiers);
+            if (getBasePlacement(state2.options.placement) === auto2) {
+              var flipModifier = state2.orderedModifiers.find(function(_ref2) {
+                var name = _ref2.name;
+                return name === "flip";
+              });
+              if (!flipModifier) {
+                console.error(['Popper: "auto" placements require the "flip" modifier be', "present and enabled to work."].join(" "));
+              }
+            }
+            var _getComputedStyle = getComputedStyle3(popper2), marginTop = _getComputedStyle.marginTop, marginRight = _getComputedStyle.marginRight, marginBottom = _getComputedStyle.marginBottom, marginLeft = _getComputedStyle.marginLeft;
+            if ([marginTop, marginRight, marginBottom, marginLeft].some(function(margin) {
+              return parseFloat(margin);
+            })) {
+              console.warn(['Popper: CSS "margin" styles cannot be used to apply padding', "between the popper and its reference element or boundary.", "To replicate margin, use the `offset` modifier, as well as", "the `padding` option in the `preventOverflow` and `flip`", "modifiers."].join(" "));
+            }
+          }
+          runModifierEffects();
+          return instance.update();
+        },
+        forceUpdate: function forceUpdate() {
+          if (isDestroyed) {
+            return;
+          }
+          var _state$elements = state2.elements, reference3 = _state$elements.reference, popper3 = _state$elements.popper;
+          if (!areValidElements(reference3, popper3)) {
+            if (true) {
+              console.error(INVALID_ELEMENT_ERROR);
+            }
+            return;
+          }
+          state2.rects = {
+            reference: getCompositeRect(reference3, getOffsetParent(popper3), state2.options.strategy === "fixed"),
+            popper: getLayoutRect(popper3)
+          };
+          state2.reset = false;
+          state2.placement = state2.options.placement;
+          state2.orderedModifiers.forEach(function(modifier) {
+            return state2.modifiersData[modifier.name] = Object.assign({}, modifier.data);
+          });
+          var __debug_loops__ = 0;
+          for (var index = 0; index < state2.orderedModifiers.length; index++) {
+            if (true) {
+              __debug_loops__ += 1;
+              if (__debug_loops__ > 100) {
+                console.error(INFINITE_LOOP_ERROR);
+                break;
+              }
+            }
+            if (state2.reset === true) {
+              state2.reset = false;
+              index = -1;
+              continue;
+            }
+            var _state$orderedModifie = state2.orderedModifiers[index], fn2 = _state$orderedModifie.fn, _state$orderedModifie2 = _state$orderedModifie.options, _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2, name = _state$orderedModifie.name;
+            if (typeof fn2 === "function") {
+              state2 = fn2({
+                state: state2,
+                options: _options,
+                name,
+                instance
+              }) || state2;
+            }
+          }
+        },
+        update: debounce(function() {
+          return new Promise(function(resolve) {
+            instance.forceUpdate();
+            resolve(state2);
+          });
+        }),
+        destroy: function destroy() {
+          cleanupModifierEffects();
+          isDestroyed = true;
+        }
+      };
+      if (!areValidElements(reference2, popper2)) {
+        if (true) {
+          console.error(INVALID_ELEMENT_ERROR);
+        }
+        return instance;
+      }
+      instance.setOptions(options).then(function(state3) {
+        if (!isDestroyed && options.onFirstUpdate) {
+          options.onFirstUpdate(state3);
+        }
+      });
+      function runModifierEffects() {
+        state2.orderedModifiers.forEach(function(_ref3) {
+          var name = _ref3.name, _ref3$options = _ref3.options, options2 = _ref3$options === void 0 ? {} : _ref3$options, effect5 = _ref3.effect;
+          if (typeof effect5 === "function") {
+            var cleanupFn = effect5({
+              state: state2,
+              name,
+              instance,
+              options: options2
+            });
+            var noopFn = function noopFn2() {
+            };
+            effectCleanupFns.push(cleanupFn || noopFn);
+          }
+        });
+      }
+      function cleanupModifierEffects() {
+        effectCleanupFns.forEach(function(fn2) {
+          return fn2();
+        });
+        effectCleanupFns = [];
+      }
+      return instance;
+    };
+  }
+
+  // node_modules/@popperjs/core/lib/popper.js
+  var defaultModifiers = [eventListeners_default, popperOffsets_default, computeStyles_default, applyStyles_default, offset_default, flip_default, preventOverflow_default, arrow_default, hide_default];
+  var createPopper = /* @__PURE__ */ popperGenerator({
+    defaultModifiers
+  });
+
+  // node_modules/@chakra-ui/popper/dist/index.esm.js
+  var import_react119 = __toESM(require_react());
+  var toVar2 = (value, fallback) => ({
+    var: value,
+    varRef: fallback ? `var(${value}, ${fallback})` : `var(${value})`
+  });
+  var cssVars = {
+    arrowShadowColor: toVar2("--popper-arrow-shadow-color"),
+    arrowSize: toVar2("--popper-arrow-size", "8px"),
+    arrowSizeHalf: toVar2("--popper-arrow-size-half"),
+    arrowBg: toVar2("--popper-arrow-bg"),
+    transformOrigin: toVar2("--popper-transform-origin"),
+    arrowOffset: toVar2("--popper-arrow-offset")
+  };
+  function getBoxShadow(placement) {
+    if (placement.includes("top"))
+      return `1px 1px 1px 0 var(--popper-arrow-shadow-color)`;
+    if (placement.includes("bottom"))
+      return `-1px -1px 1px 0 var(--popper-arrow-shadow-color)`;
+    if (placement.includes("right"))
+      return `-1px 1px 1px 0 var(--popper-arrow-shadow-color)`;
+    if (placement.includes("left"))
+      return `1px -1px 1px 0 var(--popper-arrow-shadow-color)`;
+  }
+  var transforms = {
+    top: "bottom center",
+    "top-start": "bottom left",
+    "top-end": "bottom right",
+    bottom: "top center",
+    "bottom-start": "top left",
+    "bottom-end": "top right",
+    left: "right center",
+    "left-start": "right top",
+    "left-end": "right bottom",
+    right: "left center",
+    "right-start": "left top",
+    "right-end": "left bottom"
+  };
+  var toTransformOrigin = (placement) => transforms[placement];
+  var defaultEventListeners = {
+    scroll: true,
+    resize: true
+  };
+  function getEventListenerOptions(value) {
+    let eventListeners;
+    if (typeof value === "object") {
+      eventListeners = {
+        enabled: true,
+        options: { ...defaultEventListeners, ...value }
+      };
+    } else {
+      eventListeners = {
+        enabled: value,
+        options: defaultEventListeners
+      };
+    }
+    return eventListeners;
+  }
+  var matchWidth = {
+    name: "matchWidth",
+    enabled: true,
+    phase: "beforeWrite",
+    requires: ["computeStyles"],
+    fn: ({ state: state2 }) => {
+      state2.styles.popper.width = `${state2.rects.reference.width}px`;
+    },
+    effect: ({ state: state2 }) => () => {
+      const reference2 = state2.elements.reference;
+      state2.elements.popper.style.width = `${reference2.offsetWidth}px`;
+    }
+  };
+  var transformOrigin = {
+    name: "transformOrigin",
+    enabled: true,
+    phase: "write",
+    fn: ({ state: state2 }) => {
+      setTransformOrigin(state2);
+    },
+    effect: ({ state: state2 }) => () => {
+      setTransformOrigin(state2);
+    }
+  };
+  var setTransformOrigin = (state2) => {
+    state2.elements.popper.style.setProperty(cssVars.transformOrigin.var, toTransformOrigin(state2.placement));
+  };
+  var positionArrow = {
+    name: "positionArrow",
+    enabled: true,
+    phase: "afterWrite",
+    fn: ({ state: state2 }) => {
+      setArrowStyles(state2);
+    }
+  };
+  var setArrowStyles = (state2) => {
+    var _a8;
+    if (!state2.placement)
+      return;
+    const overrides = getArrowStyle(state2.placement);
+    if (((_a8 = state2.elements) == null ? void 0 : _a8.arrow) && overrides) {
+      Object.assign(state2.elements.arrow.style, {
+        [overrides.property]: overrides.value,
+        width: cssVars.arrowSize.varRef,
+        height: cssVars.arrowSize.varRef,
+        zIndex: -1
+      });
+      const vars = {
+        [cssVars.arrowSizeHalf.var]: `calc(${cssVars.arrowSize.varRef} / 2)`,
+        [cssVars.arrowOffset.var]: `calc(${cssVars.arrowSizeHalf.varRef} * -1)`
+      };
+      for (const property in vars) {
+        state2.elements.arrow.style.setProperty(property, vars[property]);
+      }
+    }
+  };
+  var getArrowStyle = (placement) => {
+    if (placement.startsWith("top")) {
+      return { property: "bottom", value: cssVars.arrowOffset.varRef };
+    }
+    if (placement.startsWith("bottom")) {
+      return { property: "top", value: cssVars.arrowOffset.varRef };
+    }
+    if (placement.startsWith("left")) {
+      return { property: "right", value: cssVars.arrowOffset.varRef };
+    }
+    if (placement.startsWith("right")) {
+      return { property: "left", value: cssVars.arrowOffset.varRef };
+    }
+  };
+  var innerArrow = {
+    name: "innerArrow",
+    enabled: true,
+    phase: "main",
+    requires: ["arrow"],
+    fn: ({ state: state2 }) => {
+      setInnerArrowStyles(state2);
+    },
+    effect: ({ state: state2 }) => () => {
+      setInnerArrowStyles(state2);
+    }
+  };
+  var setInnerArrowStyles = (state2) => {
+    if (!state2.elements.arrow)
+      return;
+    const inner = state2.elements.arrow.querySelector("[data-popper-arrow-inner]");
+    if (!inner)
+      return;
+    Object.assign(inner.style, {
+      transform: "rotate(45deg)",
+      background: cssVars.arrowBg.varRef,
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      position: "absolute",
+      zIndex: "inherit",
+      boxShadow: getBoxShadow(state2.placement)
+    });
+  };
+  var logicals = {
+    "start-start": { ltr: "left-start", rtl: "right-start" },
+    "start-end": { ltr: "left-end", rtl: "right-end" },
+    "end-start": { ltr: "right-start", rtl: "left-start" },
+    "end-end": { ltr: "right-end", rtl: "left-end" },
+    start: { ltr: "left", rtl: "right" },
+    end: { ltr: "right", rtl: "left" }
+  };
+  var opposites = {
+    "auto-start": "auto-end",
+    "auto-end": "auto-start",
+    "top-start": "top-end",
+    "top-end": "top-start",
+    "bottom-start": "bottom-end",
+    "bottom-end": "bottom-start"
+  };
+  function getPopperPlacement(placement, dir = "ltr") {
+    var _a8;
+    const value = ((_a8 = logicals[placement]) == null ? void 0 : _a8[dir]) || placement;
+    if (dir === "ltr")
+      return value;
+    return opposites[placement] ?? value;
+  }
+  function usePopper(props = {}) {
+    const {
+      enabled = true,
+      modifiers,
+      placement: placementProp = "bottom",
+      strategy = "absolute",
+      arrowPadding = 8,
+      eventListeners = true,
+      offset: offset2,
+      gutter = 8,
+      flip: flip2 = true,
+      boundary = "clippingParents",
+      preventOverflow: preventOverflow2 = true,
+      matchWidth: matchWidth2,
+      direction: direction2 = "ltr"
+    } = props;
+    const reference2 = (0, import_react119.useRef)(null);
+    const popper2 = (0, import_react119.useRef)(null);
+    const instance = (0, import_react119.useRef)(null);
+    const placement = getPopperPlacement(placementProp, direction2);
+    const cleanup = (0, import_react119.useRef)(() => {
+    });
+    const setupPopper = (0, import_react119.useCallback)(() => {
+      var _a8;
+      if (!enabled || !reference2.current || !popper2.current)
+        return;
+      (_a8 = cleanup.current) == null ? void 0 : _a8.call(cleanup);
+      instance.current = createPopper(reference2.current, popper2.current, {
+        placement,
+        modifiers: [
+          innerArrow,
+          positionArrow,
+          transformOrigin,
+          {
+            ...matchWidth,
+            enabled: !!matchWidth2
+          },
+          {
+            name: "eventListeners",
+            ...getEventListenerOptions(eventListeners)
+          },
+          {
+            name: "arrow",
+            options: { padding: arrowPadding }
+          },
+          {
+            name: "offset",
+            options: {
+              offset: offset2 ?? [0, gutter]
+            }
+          },
+          {
+            name: "flip",
+            enabled: !!flip2,
+            options: { padding: 8 }
+          },
+          {
+            name: "preventOverflow",
+            enabled: !!preventOverflow2,
+            options: { boundary }
+          },
+          ...modifiers ?? []
+        ],
+        strategy
+      });
+      instance.current.forceUpdate();
+      cleanup.current = instance.current.destroy;
+    }, [
+      placement,
+      enabled,
+      modifiers,
+      matchWidth2,
+      eventListeners,
+      arrowPadding,
+      offset2,
+      gutter,
+      flip2,
+      preventOverflow2,
+      boundary,
+      strategy
+    ]);
+    (0, import_react119.useEffect)(() => {
+      return () => {
+        var _a8;
+        if (!reference2.current && !popper2.current) {
+          (_a8 = instance.current) == null ? void 0 : _a8.destroy();
+          instance.current = null;
+        }
+      };
+    }, []);
+    const referenceRef = (0, import_react119.useCallback)((node) => {
+      reference2.current = node;
+      setupPopper();
+    }, [setupPopper]);
+    const getReferenceProps = (0, import_react119.useCallback)((props2 = {}, ref = null) => ({
+      ...props2,
+      ref: mergeRefs(referenceRef, ref)
+    }), [referenceRef]);
+    const popperRef = (0, import_react119.useCallback)((node) => {
+      popper2.current = node;
+      setupPopper();
+    }, [setupPopper]);
+    const getPopperProps = (0, import_react119.useCallback)((props2 = {}, ref = null) => ({
+      ...props2,
+      ref: mergeRefs(popperRef, ref),
+      style: {
+        ...props2.style,
+        position: strategy,
+        minWidth: matchWidth2 ? void 0 : "max-content",
+        inset: "0 auto auto 0"
+      }
+    }), [strategy, popperRef, matchWidth2]);
+    const getArrowProps = (0, import_react119.useCallback)((props2 = {}, ref = null) => {
+      const { size: size3, shadowColor, bg, style, ...rest } = props2;
+      return {
+        ...rest,
+        ref,
+        "data-popper-arrow": "",
+        style: getArrowStyle2(props2)
+      };
+    }, []);
+    const getArrowInnerProps = (0, import_react119.useCallback)((props2 = {}, ref = null) => ({
+      ...props2,
+      ref,
+      "data-popper-arrow-inner": ""
+    }), []);
+    return {
+      update() {
+        var _a8;
+        (_a8 = instance.current) == null ? void 0 : _a8.update();
+      },
+      forceUpdate() {
+        var _a8;
+        (_a8 = instance.current) == null ? void 0 : _a8.forceUpdate();
+      },
+      transformOrigin: cssVars.transformOrigin.varRef,
+      referenceRef,
+      popperRef,
+      getPopperProps,
+      getArrowProps,
+      getArrowInnerProps,
+      getReferenceProps
+    };
+  }
+  function getArrowStyle2(props) {
+    const { size: size3, shadowColor, bg, style } = props;
+    const computedStyle = { ...style, position: "absolute" };
+    if (size3) {
+      computedStyle["--popper-arrow-size"] = size3;
+    }
+    if (shadowColor) {
+      computedStyle["--popper-arrow-shadow-color"] = shadowColor;
+    }
+    if (bg) {
+      computedStyle["--popper-arrow-bg"] = bg;
+    }
+    return computedStyle;
+  }
+
+  // node_modules/@chakra-ui/react-use-disclosure/dist/index.esm.js
+  var import_react120 = __toESM(require_react());
+  function useDisclosure2(props = {}) {
+    const {
+      onClose: onCloseProp,
+      onOpen: onOpenProp,
+      isOpen: isOpenProp,
+      id: idProp
+    } = props;
+    const handleOpen = useCallbackRef(onOpenProp);
+    const handleClose = useCallbackRef(onCloseProp);
+    const [isOpenState, setIsOpen] = (0, import_react120.useState)(props.defaultIsOpen || false);
+    const isOpen = isOpenProp !== void 0 ? isOpenProp : isOpenState;
+    const isControlled = isOpenProp !== void 0;
+    const uid = (0, import_react120.useId)();
+    const id3 = idProp ?? `disclosure-${uid}`;
+    const onClose = (0, import_react120.useCallback)(() => {
+      if (!isControlled) {
+        setIsOpen(false);
+      }
+      handleClose == null ? void 0 : handleClose();
+    }, [isControlled, handleClose]);
+    const onOpen = (0, import_react120.useCallback)(() => {
+      if (!isControlled) {
+        setIsOpen(true);
+      }
+      handleOpen == null ? void 0 : handleOpen();
+    }, [isControlled, handleOpen]);
+    const onToggle = (0, import_react120.useCallback)(() => {
+      if (isOpen) {
+        onClose();
+      } else {
+        onOpen();
+      }
+    }, [isOpen, onOpen, onClose]);
+    function getButtonProps(props2 = {}) {
+      return {
+        ...props2,
+        "aria-expanded": isOpen,
+        "aria-controls": id3,
+        onClick(event) {
+          var _a8;
+          (_a8 = props2.onClick) == null ? void 0 : _a8.call(props2, event);
+          onToggle();
+        }
+      };
+    }
+    function getDisclosureProps(props2 = {}) {
+      return {
+        ...props2,
+        hidden: !isOpen,
+        id: id3
+      };
+    }
+    return {
+      isOpen,
+      onOpen,
+      onClose,
+      onToggle,
+      isControlled,
+      getButtonProps,
+      getDisclosureProps
+    };
+  }
+
+  // node_modules/@chakra-ui/lazy-utils/dist/index.esm.js
+  function lazyDisclosure(options) {
+    const { wasSelected, enabled, isSelected, mode: mode2 = "unmount" } = options;
+    if (!enabled)
+      return true;
+    if (isSelected)
+      return true;
+    if (mode2 === "keepMounted" && wasSelected)
+      return true;
+    return false;
+  }
+
   // node_modules/@chakra-ui/portal/dist/index.esm.js
-  var import_react103 = __toESM(require_react());
+  var import_react121 = __toESM(require_react());
   var import_react_dom = __toESM(require_react_dom());
-  var import_react104 = __toESM(require_react());
+  var import_react122 = __toESM(require_react());
   var [PortalManagerContextProvider, usePortalManager] = createContext3({
     strict: false,
     name: "PortalManagerContext"
   });
   function PortalManager(props) {
     const { children, zIndex } = props;
-    return /* @__PURE__ */ import_react103.default.createElement(PortalManagerContextProvider, {
+    return /* @__PURE__ */ import_react121.default.createElement(PortalManagerContextProvider, {
       value: { zIndex }
     }, children);
   }
@@ -43017,7 +46195,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var PORTAL_CLASSNAME = "chakra-portal";
   var PORTAL_SELECTOR = `.chakra-portal`;
-  var Container3 = (props) => /* @__PURE__ */ import_react103.default.createElement("div", {
+  var Container3 = (props) => /* @__PURE__ */ import_react121.default.createElement("div", {
     className: "chakra-portal-zIndex",
     style: {
       position: "absolute",
@@ -43029,10 +46207,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }, props.children);
   var DefaultPortal = (props) => {
     const { appendToParentPortal, children } = props;
-    const [tempNode, setTempNode] = (0, import_react104.useState)(null);
-    const portal = (0, import_react104.useRef)(null);
-    const [, forceUpdate] = (0, import_react104.useState)({});
-    (0, import_react104.useEffect)(() => forceUpdate({}), []);
+    const [tempNode, setTempNode] = (0, import_react122.useState)(null);
+    const portal = (0, import_react122.useRef)(null);
+    const [, forceUpdate] = (0, import_react122.useState)({});
+    (0, import_react122.useEffect)(() => forceUpdate({}), []);
     const parentPortal = usePortalContext();
     const manager = usePortalManager();
     useSafeLayoutEffect(() => {
@@ -43053,12 +46231,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         }
       };
     }, [tempNode]);
-    const _children = (manager == null ? void 0 : manager.zIndex) ? /* @__PURE__ */ import_react103.default.createElement(Container3, {
+    const _children = (manager == null ? void 0 : manager.zIndex) ? /* @__PURE__ */ import_react121.default.createElement(Container3, {
       zIndex: manager == null ? void 0 : manager.zIndex
     }, children) : children;
-    return portal.current ? (0, import_react_dom.createPortal)(/* @__PURE__ */ import_react103.default.createElement(PortalContextProvider, {
+    return portal.current ? (0, import_react_dom.createPortal)(/* @__PURE__ */ import_react121.default.createElement(PortalContextProvider, {
       value: portal.current
-    }, _children), portal.current) : /* @__PURE__ */ import_react103.default.createElement("span", {
+    }, _children), portal.current) : /* @__PURE__ */ import_react121.default.createElement("span", {
       ref: (el) => {
         if (el)
           setTempNode(el);
@@ -43069,13 +46247,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const { children, containerRef, appendToParentPortal } = props;
     const containerEl = containerRef.current;
     const host = containerEl ?? (typeof window !== "undefined" ? document.body : void 0);
-    const portal = (0, import_react104.useMemo)(() => {
+    const portal = (0, import_react122.useMemo)(() => {
       const node = containerEl == null ? void 0 : containerEl.ownerDocument.createElement("div");
       if (node)
         node.className = PORTAL_CLASSNAME;
       return node;
     }, [containerEl]);
-    const [, forceUpdate] = (0, import_react104.useState)({});
+    const [, forceUpdate] = (0, import_react122.useState)({});
     useSafeLayoutEffect(() => forceUpdate({}), []);
     useSafeLayoutEffect(() => {
       if (!portal || !host)
@@ -43086,7 +46264,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       };
     }, [portal, host]);
     if (host && portal) {
-      return (0, import_react_dom.createPortal)(/* @__PURE__ */ import_react103.default.createElement(PortalContextProvider, {
+      return (0, import_react_dom.createPortal)(/* @__PURE__ */ import_react121.default.createElement(PortalContextProvider, {
         value: appendToParentPortal ? portal : null
       }, children), portal);
     }
@@ -43094,10 +46272,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   };
   function Portal(props) {
     const { containerRef, ...rest } = props;
-    return containerRef ? /* @__PURE__ */ import_react103.default.createElement(ContainerPortal, {
+    return containerRef ? /* @__PURE__ */ import_react121.default.createElement(ContainerPortal, {
       containerRef,
       ...rest
-    }) : /* @__PURE__ */ import_react103.default.createElement(DefaultPortal, {
+    }) : /* @__PURE__ */ import_react121.default.createElement(DefaultPortal, {
       ...rest
     });
   }
@@ -43170,8 +46348,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/@chakra-ui/react-use-size/dist/index.esm.js
-  var import_react105 = __toESM(require_react());
-  var useSafeLayoutEffect3 = Boolean(globalThis == null ? void 0 : globalThis.document) ? import_react105.useLayoutEffect : import_react105.useEffect;
+  var import_react123 = __toESM(require_react());
+  var useSafeLayoutEffect4 = Boolean(globalThis == null ? void 0 : globalThis.document) ? import_react123.useLayoutEffect : import_react123.useEffect;
   function trackMutation(el, cb2) {
     var _a8;
     if (!el || !el.parentElement)
@@ -43189,9 +46367,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     getNodes,
     observeMutation = true
   }) {
-    const [sizes24, setSizes] = (0, import_react105.useState)([]);
-    const [count, setCount] = (0, import_react105.useState)(0);
-    useSafeLayoutEffect3(() => {
+    const [sizes24, setSizes] = (0, import_react123.useState)([]);
+    const [count, setCount] = (0, import_react123.useState)(0);
+    useSafeLayoutEffect4(() => {
       const elements = getNodes();
       const cleanups = elements.map((element, index) => trackElementSize(element, (size3) => {
         setSizes((sizes25) => {
@@ -43230,32 +46408,451 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return size3;
   }
 
+  // node_modules/@chakra-ui/tabs/dist/index.esm.js
+  var import_react124 = __toESM(require_react());
+  var import_react125 = __toESM(require_react());
+  var import_react126 = __toESM(require_react());
+  var cx8 = (...classNames2) => classNames2.filter(Boolean).join(" ");
+  function callAllHandlers3(...fns) {
+    return function func(event) {
+      fns.some((fn2) => {
+        fn2 == null ? void 0 : fn2(event);
+        return event == null ? void 0 : event.defaultPrevented;
+      });
+    };
+  }
+  var [
+    TabsDescendantsProvider,
+    useTabsDescendantsContext,
+    useTabsDescendants,
+    useTabsDescendant
+  ] = createDescendantContext();
+  function useTabs(props) {
+    const {
+      defaultIndex,
+      onChange,
+      index,
+      isManual,
+      isLazy,
+      lazyBehavior = "unmount",
+      orientation = "horizontal",
+      direction: direction2 = "ltr",
+      ...htmlProps
+    } = props;
+    const [focusedIndex, setFocusedIndex] = (0, import_react126.useState)(defaultIndex ?? 0);
+    const [selectedIndex, setSelectedIndex] = useControllableState({
+      defaultValue: defaultIndex ?? 0,
+      value: index,
+      onChange
+    });
+    (0, import_react126.useEffect)(() => {
+      if (index != null) {
+        setFocusedIndex(index);
+      }
+    }, [index]);
+    const descendants = useTabsDescendants();
+    const uuid = (0, import_react126.useId)();
+    const uid = props.id ?? uuid;
+    const id3 = `tabs-${uid}`;
+    return {
+      id: id3,
+      selectedIndex,
+      focusedIndex,
+      setSelectedIndex,
+      setFocusedIndex,
+      isManual,
+      isLazy,
+      lazyBehavior,
+      orientation,
+      descendants,
+      direction: direction2,
+      htmlProps
+    };
+  }
+  var [TabsProvider, useTabsContext] = createContext3({
+    name: "TabsContext",
+    errorMessage: "useTabsContext: `context` is undefined. Seems you forgot to wrap all tabs components within <Tabs />"
+  });
+  function useTabList(props) {
+    const { focusedIndex, orientation, direction: direction2 } = useTabsContext();
+    const descendants = useTabsDescendantsContext();
+    const onKeyDown = (0, import_react126.useCallback)((event) => {
+      const nextTab = () => {
+        var _a8;
+        const next = descendants.nextEnabled(focusedIndex);
+        if (next)
+          (_a8 = next.node) == null ? void 0 : _a8.focus();
+      };
+      const prevTab = () => {
+        var _a8;
+        const prev = descendants.prevEnabled(focusedIndex);
+        if (prev)
+          (_a8 = prev.node) == null ? void 0 : _a8.focus();
+      };
+      const firstTab = () => {
+        var _a8;
+        const first = descendants.firstEnabled();
+        if (first)
+          (_a8 = first.node) == null ? void 0 : _a8.focus();
+      };
+      const lastTab = () => {
+        var _a8;
+        const last = descendants.lastEnabled();
+        if (last)
+          (_a8 = last.node) == null ? void 0 : _a8.focus();
+      };
+      const isHorizontal = orientation === "horizontal";
+      const isVertical = orientation === "vertical";
+      const eventKey = event.key;
+      const ArrowStart = direction2 === "ltr" ? "ArrowLeft" : "ArrowRight";
+      const ArrowEnd = direction2 === "ltr" ? "ArrowRight" : "ArrowLeft";
+      const keyMap = {
+        [ArrowStart]: () => isHorizontal && prevTab(),
+        [ArrowEnd]: () => isHorizontal && nextTab(),
+        ArrowDown: () => isVertical && nextTab(),
+        ArrowUp: () => isVertical && prevTab(),
+        Home: firstTab,
+        End: lastTab
+      };
+      const action = keyMap[eventKey];
+      if (action) {
+        event.preventDefault();
+        action(event);
+      }
+    }, [descendants, focusedIndex, orientation, direction2]);
+    return {
+      ...props,
+      role: "tablist",
+      "aria-orientation": orientation,
+      onKeyDown: callAllHandlers3(props.onKeyDown, onKeyDown)
+    };
+  }
+  function useTab(props) {
+    const { isDisabled, isFocusable, ...htmlProps } = props;
+    const { setSelectedIndex, isManual, id: id3, setFocusedIndex, selectedIndex } = useTabsContext();
+    const { index, register } = useTabsDescendant({
+      disabled: isDisabled && !isFocusable
+    });
+    const isSelected = index === selectedIndex;
+    const onClick = () => {
+      setSelectedIndex(index);
+    };
+    const onFocus = () => {
+      setFocusedIndex(index);
+      const isDisabledButFocusable = isDisabled && isFocusable;
+      const shouldSelect = !isManual && !isDisabledButFocusable;
+      if (shouldSelect) {
+        setSelectedIndex(index);
+      }
+    };
+    const clickableProps = useClickable({
+      ...htmlProps,
+      ref: mergeRefs(register, props.ref),
+      isDisabled,
+      isFocusable,
+      onClick: callAllHandlers3(props.onClick, onClick)
+    });
+    const type = "button";
+    return {
+      ...clickableProps,
+      id: makeTabId(id3, index),
+      role: "tab",
+      tabIndex: isSelected ? 0 : -1,
+      type,
+      "aria-selected": isSelected,
+      "aria-controls": makeTabPanelId(id3, index),
+      onFocus: isDisabled ? void 0 : callAllHandlers3(props.onFocus, onFocus)
+    };
+  }
+  var [TabPanelProvider, useTabPanelContext] = createContext3({});
+  function useTabPanels(props) {
+    const context = useTabsContext();
+    const { id: id3, selectedIndex } = context;
+    const validChildren = getValidChildren(props.children);
+    const children = validChildren.map((child, index) => (0, import_react126.createElement)(TabPanelProvider, {
+      key: index,
+      value: {
+        isSelected: index === selectedIndex,
+        id: makeTabPanelId(id3, index),
+        tabId: makeTabId(id3, index),
+        selectedIndex
+      }
+    }, child));
+    return { ...props, children };
+  }
+  function useTabPanel(props) {
+    const { children, ...htmlProps } = props;
+    const { isLazy, lazyBehavior } = useTabsContext();
+    const { isSelected, id: id3, tabId } = useTabPanelContext();
+    const hasBeenSelected = (0, import_react126.useRef)(false);
+    if (isSelected) {
+      hasBeenSelected.current = true;
+    }
+    const shouldRenderChildren = lazyDisclosure({
+      wasSelected: hasBeenSelected.current,
+      isSelected,
+      enabled: isLazy,
+      mode: lazyBehavior
+    });
+    return {
+      tabIndex: 0,
+      ...htmlProps,
+      children: shouldRenderChildren ? children : null,
+      role: "tabpanel",
+      "aria-labelledby": tabId,
+      hidden: !isSelected,
+      id: id3
+    };
+  }
+  function useTabIndicator() {
+    const context = useTabsContext();
+    const descendants = useTabsDescendantsContext();
+    const { selectedIndex, orientation } = context;
+    const isHorizontal = orientation === "horizontal";
+    const isVertical = orientation === "vertical";
+    const [rect, setRect] = (0, import_react126.useState)(() => {
+      if (isHorizontal)
+        return { left: 0, width: 0 };
+      if (isVertical)
+        return { top: 0, height: 0 };
+      return void 0;
+    });
+    const [hasMeasured, setHasMeasured] = (0, import_react126.useState)(false);
+    useSafeLayoutEffect(() => {
+      if (selectedIndex == null)
+        return;
+      const tab = descendants.item(selectedIndex);
+      if (tab == null)
+        return;
+      if (isHorizontal) {
+        setRect({ left: tab.node.offsetLeft, width: tab.node.offsetWidth });
+      }
+      if (isVertical) {
+        setRect({ top: tab.node.offsetTop, height: tab.node.offsetHeight });
+      }
+      const id3 = requestAnimationFrame(() => {
+        setHasMeasured(true);
+      });
+      return () => {
+        if (id3) {
+          cancelAnimationFrame(id3);
+        }
+      };
+    }, [selectedIndex, isHorizontal, isVertical, descendants]);
+    return {
+      position: "absolute",
+      transitionProperty: "left, right, top, bottom, height, width",
+      transitionDuration: hasMeasured ? "200ms" : "0ms",
+      transitionTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+      ...rect
+    };
+  }
+  function makeTabId(id3, index) {
+    return `${id3}--tab-${index}`;
+  }
+  function makeTabPanelId(id3, index) {
+    return `${id3}--tabpanel-${index}`;
+  }
+  var [TabsStylesProvider, useTabsStyles] = createContext3({
+    name: `TabsStylesContext`,
+    errorMessage: `useTabsStyles returned is 'undefined'. Seems you forgot to wrap the components in "<Tabs />" `
+  });
+  var Tabs = forwardRef(function Tabs2(props, ref) {
+    const styles2 = useMultiStyleConfig("Tabs", props);
+    const { children, className, ...rest } = omitThemingProps(props);
+    const { htmlProps, descendants, ...ctx } = useTabs(rest);
+    const context = (0, import_react125.useMemo)(() => ctx, [ctx]);
+    const { isFitted: _, ...rootProps } = htmlProps;
+    return /* @__PURE__ */ import_react124.default.createElement(TabsDescendantsProvider, {
+      value: descendants
+    }, /* @__PURE__ */ import_react124.default.createElement(TabsProvider, {
+      value: context
+    }, /* @__PURE__ */ import_react124.default.createElement(TabsStylesProvider, {
+      value: styles2
+    }, /* @__PURE__ */ import_react124.default.createElement(chakra.div, {
+      className: cx8("chakra-tabs", className),
+      ref,
+      ...rootProps,
+      __css: styles2.root
+    }, children))));
+  });
+  Tabs.displayName = "Tabs";
+  var TabIndicator = forwardRef(function TabIndicator2(props, ref) {
+    const indicatorStyle = useTabIndicator();
+    const style = {
+      ...props.style,
+      ...indicatorStyle
+    };
+    const styles2 = useTabsStyles();
+    return /* @__PURE__ */ import_react124.default.createElement(chakra.div, {
+      ref,
+      ...props,
+      className: cx8("chakra-tabs__tab-indicator", props.className),
+      style,
+      __css: styles2.indicator
+    });
+  });
+  TabIndicator.displayName = "TabIndicator";
+  var TabList = forwardRef(function TabList2(props, ref) {
+    const tablistProps = useTabList({ ...props, ref });
+    const styles2 = useTabsStyles();
+    const tablistStyles = {
+      display: "flex",
+      ...styles2.tablist
+    };
+    return /* @__PURE__ */ import_react124.default.createElement(chakra.div, {
+      ...tablistProps,
+      className: cx8("chakra-tabs__tablist", props.className),
+      __css: tablistStyles
+    });
+  });
+  TabList.displayName = "TabList";
+  var TabPanel = forwardRef(function TabPanel2(props, ref) {
+    const panelProps = useTabPanel({ ...props, ref });
+    const styles2 = useTabsStyles();
+    return /* @__PURE__ */ import_react124.default.createElement(chakra.div, {
+      outline: "0",
+      ...panelProps,
+      className: cx8("chakra-tabs__tab-panel", props.className),
+      __css: styles2.tabpanel
+    });
+  });
+  TabPanel.displayName = "TabPanel";
+  var TabPanels = forwardRef(function TabPanels2(props, ref) {
+    const panelsProps = useTabPanels(props);
+    const styles2 = useTabsStyles();
+    return /* @__PURE__ */ import_react124.default.createElement(chakra.div, {
+      ...panelsProps,
+      width: "100%",
+      ref,
+      className: cx8("chakra-tabs__tab-panels", props.className),
+      __css: styles2.tabpanels
+    });
+  });
+  TabPanels.displayName = "TabPanels";
+  var Tab = forwardRef(function Tab2(props, ref) {
+    const styles2 = useTabsStyles();
+    const tabProps = useTab({ ...props, ref });
+    const tabStyles = {
+      outline: "0",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      ...styles2.tab
+    };
+    return /* @__PURE__ */ import_react124.default.createElement(chakra.button, {
+      ...tabProps,
+      className: cx8("chakra-tabs__tab", props.className),
+      __css: tabStyles
+    });
+  });
+  Tab.displayName = "Tab";
+
+  // node_modules/@chakra-ui/tag/dist/index.esm.js
+  var import_react127 = __toESM(require_react());
+  var [TagStylesProvider, useTagStyles] = createContext3({
+    name: `TagStylesContext`,
+    errorMessage: `useTagStyles returned is 'undefined'. Seems you forgot to wrap the components in "<Tag />" `
+  });
+  var Tag = forwardRef((props, ref) => {
+    const styles2 = useMultiStyleConfig("Tag", props);
+    const ownProps = omitThemingProps(props);
+    const containerStyles = {
+      display: "inline-flex",
+      verticalAlign: "top",
+      alignItems: "center",
+      maxWidth: "100%",
+      ...styles2.container
+    };
+    return /* @__PURE__ */ import_react127.default.createElement(TagStylesProvider, {
+      value: styles2
+    }, /* @__PURE__ */ import_react127.default.createElement(chakra.span, {
+      ref,
+      ...ownProps,
+      __css: containerStyles
+    }));
+  });
+  Tag.displayName = "Tag";
+  var TagLabel = forwardRef((props, ref) => {
+    const styles2 = useTagStyles();
+    return /* @__PURE__ */ import_react127.default.createElement(chakra.span, {
+      ref,
+      noOfLines: 1,
+      ...props,
+      __css: styles2.label
+    });
+  });
+  TagLabel.displayName = "TagLabel";
+  var TagLeftIcon = forwardRef((props, ref) => /* @__PURE__ */ import_react127.default.createElement(Icon, {
+    ref,
+    verticalAlign: "top",
+    marginEnd: "0.5rem",
+    ...props
+  }));
+  TagLeftIcon.displayName = "TagLeftIcon";
+  var TagRightIcon = forwardRef((props, ref) => /* @__PURE__ */ import_react127.default.createElement(Icon, {
+    ref,
+    verticalAlign: "top",
+    marginStart: "0.5rem",
+    ...props
+  }));
+  TagRightIcon.displayName = "TagRightIcon";
+  var TagCloseIcon = (props) => /* @__PURE__ */ import_react127.default.createElement(Icon, {
+    verticalAlign: "inherit",
+    viewBox: "0 0 512 512",
+    ...props
+  }, /* @__PURE__ */ import_react127.default.createElement("path", {
+    fill: "currentColor",
+    d: "M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"
+  }));
+  TagCloseIcon.displayName = "TagCloseIcon";
+  var TagCloseButton = forwardRef((props, ref) => {
+    const { isDisabled, children, ...rest } = props;
+    const styles2 = useTagStyles();
+    const btnStyles = {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      outline: "0",
+      ...styles2.closeButton
+    };
+    return /* @__PURE__ */ import_react127.default.createElement(chakra.button, {
+      ref,
+      "aria-label": "close",
+      ...rest,
+      type: "button",
+      disabled: isDisabled,
+      __css: btnStyles
+    }, children || /* @__PURE__ */ import_react127.default.createElement(TagCloseIcon, null));
+  });
+  TagCloseButton.displayName = "TagCloseButton";
+
   // node_modules/@chakra-ui/toast/dist/index.esm.js
-  var import_react107 = __toESM(require_react());
-  var import_react108 = __toESM(require_react());
+  var import_react129 = __toESM(require_react());
+  var import_react130 = __toESM(require_react());
 
   // node_modules/@chakra-ui/react-use-timeout/dist/index.esm.js
-  var import_react106 = __toESM(require_react());
+  var import_react128 = __toESM(require_react());
   function useTimeout(callback, delay2) {
-    const fn = useCallbackRef(callback);
-    (0, import_react106.useEffect)(() => {
+    const fn2 = useCallbackRef(callback);
+    (0, import_react128.useEffect)(() => {
       if (delay2 == null)
         return void 0;
       let timeoutId = null;
       timeoutId = window.setTimeout(() => {
-        fn();
+        fn2();
       }, delay2);
       return () => {
         if (timeoutId) {
           window.clearTimeout(timeoutId);
         }
       };
-    }, [delay2, fn]);
+    }, [delay2, fn2]);
   }
 
   // node_modules/@chakra-ui/toast/dist/index.esm.js
-  var import_react109 = __toESM(require_react());
-  var import_react110 = __toESM(require_react());
+  var import_react131 = __toESM(require_react());
+  var import_react132 = __toESM(require_react());
   function runIfFn4(valueOrFn, ...args) {
     return isFunction5(valueOrFn) ? valueOrFn(...args) : valueOrFn;
   }
@@ -43293,10 +46890,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   function getToastListStyle(position2) {
     const isTopOrBottom = position2 === "top" || position2 === "bottom";
     const margin = isTopOrBottom ? "0 auto" : void 0;
-    const top = position2.includes("top") ? "env(safe-area-inset-top, 0px)" : void 0;
-    const bottom = position2.includes("bottom") ? "env(safe-area-inset-bottom, 0px)" : void 0;
-    const right = !position2.includes("left") ? "env(safe-area-inset-right, 0px)" : void 0;
-    const left = !position2.includes("right") ? "env(safe-area-inset-left, 0px)" : void 0;
+    const top2 = position2.includes("top") ? "env(safe-area-inset-top, 0px)" : void 0;
+    const bottom2 = position2.includes("bottom") ? "env(safe-area-inset-bottom, 0px)" : void 0;
+    const right2 = !position2.includes("left") ? "env(safe-area-inset-right, 0px)" : void 0;
+    const left2 = !position2.includes("right") ? "env(safe-area-inset-left, 0px)" : void 0;
     return {
       position: "fixed",
       zIndex: 5500,
@@ -43304,10 +46901,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       display: "flex",
       flexDirection: "column",
       margin,
-      top,
-      bottom,
-      right,
-      left
+      top: top2,
+      bottom: bottom2,
+      right: right2,
+      left: left2
     };
   }
   var initialState = {
@@ -43445,7 +47042,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       title: `toast-${id3}-title`,
       description: `toast-${id3}-description`
     } : void 0;
-    return /* @__PURE__ */ import_react107.default.createElement(Alert, {
+    return /* @__PURE__ */ import_react129.default.createElement(Alert, {
       addRole: false,
       status,
       variant,
@@ -43456,15 +47053,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       paddingEnd: 8,
       textAlign: "start",
       width: "auto"
-    }, /* @__PURE__ */ import_react107.default.createElement(AlertIcon, null, icon), /* @__PURE__ */ import_react107.default.createElement(chakra.div, {
+    }, /* @__PURE__ */ import_react129.default.createElement(AlertIcon, null, icon), /* @__PURE__ */ import_react129.default.createElement(chakra.div, {
       flex: "1",
       maxWidth: "100%"
-    }, title && /* @__PURE__ */ import_react107.default.createElement(AlertTitle, {
+    }, title && /* @__PURE__ */ import_react129.default.createElement(AlertTitle, {
       id: ids == null ? void 0 : ids.title
-    }, title), description && /* @__PURE__ */ import_react107.default.createElement(AlertDescription, {
+    }, title), description && /* @__PURE__ */ import_react129.default.createElement(AlertDescription, {
       id: ids == null ? void 0 : ids.description,
       display: "block"
-    }, description)), isClosable && /* @__PURE__ */ import_react107.default.createElement(CloseButton, {
+    }, description)), isClosable && /* @__PURE__ */ import_react129.default.createElement(CloseButton, {
       size: "sm",
       onClick: onClose,
       position: "absolute",
@@ -43478,7 +47075,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (typeof render === "function") {
         return render({ ...props, ...options });
       }
-      return /* @__PURE__ */ import_react107.default.createElement(ToastComponent2, {
+      return /* @__PURE__ */ import_react129.default.createElement(ToastComponent2, {
         ...props,
         ...options
       });
@@ -43516,7 +47113,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }
     }
   };
-  var ToastComponent = (0, import_react109.memo)((props) => {
+  var ToastComponent = (0, import_react131.memo)((props) => {
     const {
       id: id3,
       message,
@@ -43529,7 +47126,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       motionVariants = toastMotionVariants,
       toastSpacing = "0.5rem"
     } = props;
-    const [delay2, setDelay] = (0, import_react109.useState)(duration);
+    const [delay2, setDelay] = (0, import_react131.useState)(duration);
     const isPresent2 = useIsPresent();
     useUpdateEffect(() => {
       if (!isPresent2) {
@@ -43545,21 +47142,21 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       if (isPresent2)
         onRequestRemove();
     };
-    (0, import_react109.useEffect)(() => {
+    (0, import_react131.useEffect)(() => {
       if (isPresent2 && requestClose) {
         onRequestRemove();
       }
     }, [isPresent2, requestClose, onRequestRemove]);
     useTimeout(close, delay2);
-    const containerStyles = (0, import_react109.useMemo)(() => ({
+    const containerStyles = (0, import_react131.useMemo)(() => ({
       pointerEvents: "auto",
       maxWidth: 560,
       minWidth: 300,
       margin: toastSpacing,
       ...containerStyle
     }), [containerStyle, toastSpacing]);
-    const toastStyle = (0, import_react109.useMemo)(() => getToastStyle(position2), [position2]);
-    return /* @__PURE__ */ import_react107.default.createElement(motion.li, {
+    const toastStyle = (0, import_react131.useMemo)(() => getToastStyle(position2), [position2]);
+    return /* @__PURE__ */ import_react129.default.createElement(motion.li, {
       layout: true,
       className: "chakra-toast",
       variants: motionVariants,
@@ -43570,7 +47167,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       onHoverEnd: onMouseLeave,
       custom: { position: position2 },
       style: toastStyle
-    }, /* @__PURE__ */ import_react107.default.createElement(chakra.div, {
+    }, /* @__PURE__ */ import_react129.default.createElement(chakra.div, {
       role: "status",
       "aria-atomic": "true",
       className: "chakra-toast__inner",
@@ -43579,7 +47176,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   ToastComponent.displayName = "ToastComponent";
   var ToastProvider = (props) => {
-    const state2 = (0, import_react110.useSyncExternalStore)(toastStore.subscribe, toastStore.getState, toastStore.getState);
+    const state2 = (0, import_react132.useSyncExternalStore)(toastStore.subscribe, toastStore.getState, toastStore.getState);
     const {
       children,
       motionVariants,
@@ -43589,27 +47186,337 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     const stateKeys = Object.keys(state2);
     const toastList = stateKeys.map((position2) => {
       const toasts = state2[position2];
-      return /* @__PURE__ */ import_react107.default.createElement("ul", {
+      return /* @__PURE__ */ import_react129.default.createElement("ul", {
         role: "region",
         "aria-live": "polite",
         key: position2,
         id: `chakra-toast-manager-${position2}`,
         style: getToastListStyle(position2)
-      }, /* @__PURE__ */ import_react107.default.createElement(AnimatePresence, {
+      }, /* @__PURE__ */ import_react129.default.createElement(AnimatePresence, {
         initial: false
-      }, toasts.map((toast) => /* @__PURE__ */ import_react107.default.createElement(Component3, {
+      }, toasts.map((toast) => /* @__PURE__ */ import_react129.default.createElement(Component3, {
         key: toast.id,
         motionVariants,
         ...toast
       }))));
     });
-    return /* @__PURE__ */ import_react107.default.createElement(import_react107.default.Fragment, null, children, /* @__PURE__ */ import_react107.default.createElement(Portal, {
+    return /* @__PURE__ */ import_react129.default.createElement(import_react129.default.Fragment, null, children, /* @__PURE__ */ import_react129.default.createElement(Portal, {
       ...portalProps
     }, toastList));
   };
 
+  // node_modules/@chakra-ui/tooltip/dist/index.esm.js
+  var import_react133 = __toESM(require_react());
+  var import_react134 = __toESM(require_react());
+  var import_react135 = __toESM(require_react());
+  function omit4(object, keysToOmit = []) {
+    const clone = Object.assign({}, object);
+    for (const key of keysToOmit) {
+      if (key in clone)
+        delete clone[key];
+    }
+    return clone;
+  }
+  function pick2(object, keysToPick) {
+    const result = {};
+    for (const key of keysToPick) {
+      if (key in object) {
+        result[key] = object[key];
+      }
+    }
+    return result;
+  }
+  var scale2 = {
+    exit: {
+      scale: 0.85,
+      opacity: 0,
+      transition: {
+        opacity: { duration: 0.15, easings: "easeInOut" },
+        scale: { duration: 0.2, easings: "easeInOut" }
+      }
+    },
+    enter: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        opacity: { easings: "easeOut", duration: 0.2 },
+        scale: { duration: 0.2, ease: [0.175, 0.885, 0.4, 1.1] }
+      }
+    }
+  };
+  function callAllHandlers4(...fns) {
+    return function func(event) {
+      fns.some((fn2) => {
+        fn2 == null ? void 0 : fn2(event);
+        return event == null ? void 0 : event.defaultPrevented;
+      });
+    };
+  }
+  var getDoc = (ref) => {
+    var _a8;
+    return ((_a8 = ref.current) == null ? void 0 : _a8.ownerDocument) || document;
+  };
+  var getWin = (ref) => {
+    var _a8, _b3;
+    return ((_b3 = (_a8 = ref.current) == null ? void 0 : _a8.ownerDocument) == null ? void 0 : _b3.defaultView) || window;
+  };
+  function useTooltip(props = {}) {
+    const {
+      openDelay = 0,
+      closeDelay = 0,
+      closeOnClick = true,
+      closeOnMouseDown,
+      closeOnScroll,
+      closeOnPointerDown = closeOnMouseDown,
+      closeOnEsc = true,
+      onOpen: onOpenProp,
+      onClose: onCloseProp,
+      placement,
+      id: id3,
+      isOpen: isOpenProp,
+      defaultIsOpen,
+      arrowSize = 10,
+      arrowShadowColor,
+      arrowPadding,
+      modifiers,
+      isDisabled,
+      gutter,
+      offset: offset2,
+      direction: direction2,
+      ...htmlProps
+    } = props;
+    const { isOpen, onOpen, onClose } = useDisclosure2({
+      isOpen: isOpenProp,
+      defaultIsOpen,
+      onOpen: onOpenProp,
+      onClose: onCloseProp
+    });
+    const { referenceRef, getPopperProps, getArrowInnerProps, getArrowProps } = usePopper({
+      enabled: isOpen,
+      placement,
+      arrowPadding,
+      modifiers,
+      gutter,
+      offset: offset2,
+      direction: direction2
+    });
+    const uuid = (0, import_react135.useId)();
+    const uid = id3 ?? uuid;
+    const tooltipId = `tooltip-${uid}`;
+    const ref = (0, import_react135.useRef)(null);
+    const enterTimeout = (0, import_react135.useRef)();
+    const clearEnterTimeout = (0, import_react135.useCallback)(() => {
+      if (enterTimeout.current) {
+        clearTimeout(enterTimeout.current);
+        enterTimeout.current = void 0;
+      }
+    }, []);
+    const exitTimeout = (0, import_react135.useRef)();
+    const clearExitTimeout = (0, import_react135.useCallback)(() => {
+      if (exitTimeout.current) {
+        clearTimeout(exitTimeout.current);
+        exitTimeout.current = void 0;
+      }
+    }, []);
+    const closeNow = (0, import_react135.useCallback)(() => {
+      clearExitTimeout();
+      onClose();
+    }, [onClose, clearExitTimeout]);
+    const dispatchCloseEvent = useCloseEvent(ref, closeNow);
+    const openWithDelay = (0, import_react135.useCallback)(() => {
+      if (!isDisabled && !enterTimeout.current) {
+        dispatchCloseEvent();
+        const win2 = getWin(ref);
+        enterTimeout.current = win2.setTimeout(onOpen, openDelay);
+      }
+    }, [dispatchCloseEvent, isDisabled, onOpen, openDelay]);
+    const closeWithDelay = (0, import_react135.useCallback)(() => {
+      clearEnterTimeout();
+      const win2 = getWin(ref);
+      exitTimeout.current = win2.setTimeout(closeNow, closeDelay);
+    }, [closeDelay, closeNow, clearEnterTimeout]);
+    const onClick = (0, import_react135.useCallback)(() => {
+      if (isOpen && closeOnClick) {
+        closeWithDelay();
+      }
+    }, [closeOnClick, closeWithDelay, isOpen]);
+    const onPointerDown = (0, import_react135.useCallback)(() => {
+      if (isOpen && closeOnPointerDown) {
+        closeWithDelay();
+      }
+    }, [closeOnPointerDown, closeWithDelay, isOpen]);
+    const onKeyDown = (0, import_react135.useCallback)((event) => {
+      if (isOpen && event.key === "Escape") {
+        closeWithDelay();
+      }
+    }, [isOpen, closeWithDelay]);
+    useEventListener(() => getDoc(ref), "keydown", closeOnEsc ? onKeyDown : void 0);
+    useEventListener(() => getDoc(ref), "scroll", () => {
+      if (isOpen && closeOnScroll) {
+        closeNow();
+      }
+    });
+    (0, import_react135.useEffect)(() => {
+      if (!isDisabled)
+        return;
+      clearEnterTimeout();
+      if (isOpen)
+        onClose();
+    }, [isDisabled, isOpen, onClose, clearEnterTimeout]);
+    (0, import_react135.useEffect)(() => () => {
+      clearEnterTimeout();
+      clearExitTimeout();
+    }, [clearEnterTimeout, clearExitTimeout]);
+    useEventListener(() => ref.current, "pointerleave", closeWithDelay);
+    const getTriggerProps = (0, import_react135.useCallback)((props2 = {}, _ref = null) => {
+      const triggerProps = {
+        ...props2,
+        ref: mergeRefs(ref, _ref, referenceRef),
+        onPointerEnter: callAllHandlers4(props2.onPointerEnter, (e) => {
+          if (e.pointerType === "touch")
+            return;
+          openWithDelay();
+        }),
+        onClick: callAllHandlers4(props2.onClick, onClick),
+        onPointerDown: callAllHandlers4(props2.onPointerDown, onPointerDown),
+        onFocus: callAllHandlers4(props2.onFocus, openWithDelay),
+        onBlur: callAllHandlers4(props2.onBlur, closeWithDelay),
+        "aria-describedby": isOpen ? tooltipId : void 0
+      };
+      return triggerProps;
+    }, [
+      openWithDelay,
+      closeWithDelay,
+      onPointerDown,
+      isOpen,
+      tooltipId,
+      onClick,
+      referenceRef
+    ]);
+    const getTooltipPositionerProps = (0, import_react135.useCallback)((props2 = {}, forwardedRef = null) => getPopperProps({
+      ...props2,
+      style: {
+        ...props2.style,
+        [cssVars.arrowSize.var]: arrowSize ? `${arrowSize}px` : void 0,
+        [cssVars.arrowShadowColor.var]: arrowShadowColor
+      }
+    }, forwardedRef), [getPopperProps, arrowSize, arrowShadowColor]);
+    const getTooltipProps = (0, import_react135.useCallback)((props2 = {}, ref2 = null) => {
+      const styles2 = {
+        ...props2.style,
+        position: "relative",
+        transformOrigin: cssVars.transformOrigin.varRef
+      };
+      return {
+        ref: ref2,
+        ...htmlProps,
+        ...props2,
+        id: tooltipId,
+        role: "tooltip",
+        style: styles2
+      };
+    }, [htmlProps, tooltipId]);
+    return {
+      isOpen,
+      show: openWithDelay,
+      hide: closeWithDelay,
+      getTriggerProps,
+      getTooltipProps,
+      getTooltipPositionerProps,
+      getArrowProps,
+      getArrowInnerProps
+    };
+  }
+  var closeEventName = "chakra-ui:close-tooltip";
+  function useCloseEvent(ref, close) {
+    (0, import_react135.useEffect)(() => {
+      const doc2 = getDoc(ref);
+      doc2.addEventListener(closeEventName, close);
+      return () => doc2.removeEventListener(closeEventName, close);
+    }, [close, ref]);
+    return () => {
+      const doc2 = getDoc(ref);
+      const win2 = getWin(ref);
+      doc2.dispatchEvent(new win2.CustomEvent(closeEventName));
+    };
+  }
+  var MotionDiv = chakra(motion.div);
+  var Tooltip = forwardRef((props, ref) => {
+    const styles2 = useStyleConfig("Tooltip", props);
+    const ownProps = omitThemingProps(props);
+    const theme3 = useTheme();
+    const {
+      children,
+      label,
+      shouldWrapChildren,
+      "aria-label": ariaLabel,
+      hasArrow,
+      bg,
+      portalProps,
+      background: background2,
+      backgroundColor,
+      bgColor,
+      motionProps,
+      ...rest
+    } = ownProps;
+    const userDefinedBg = background2 ?? backgroundColor ?? bg ?? bgColor;
+    if (userDefinedBg) {
+      styles2.bg = userDefinedBg;
+      const bgVar = getCSSVar(theme3, "colors", userDefinedBg);
+      styles2[cssVars.arrowBg.var] = bgVar;
+    }
+    const tooltip = useTooltip({ ...rest, direction: theme3.direction });
+    const shouldWrap = typeof children === "string" || shouldWrapChildren;
+    let trigger;
+    if (shouldWrap) {
+      trigger = /* @__PURE__ */ import_react133.default.createElement(chakra.span, {
+        display: "inline-block",
+        tabIndex: 0,
+        ...tooltip.getTriggerProps()
+      }, children);
+    } else {
+      const child = import_react134.Children.only(children);
+      trigger = (0, import_react134.cloneElement)(child, tooltip.getTriggerProps(child.props, child.ref));
+    }
+    const hasAriaLabel = !!ariaLabel;
+    const _tooltipProps = tooltip.getTooltipProps({}, ref);
+    const tooltipProps = hasAriaLabel ? omit4(_tooltipProps, ["role", "id"]) : _tooltipProps;
+    const srOnlyProps = pick2(_tooltipProps, ["role", "id"]);
+    if (!label) {
+      return /* @__PURE__ */ import_react133.default.createElement(import_react133.default.Fragment, null, children);
+    }
+    return /* @__PURE__ */ import_react133.default.createElement(import_react133.default.Fragment, null, trigger, /* @__PURE__ */ import_react133.default.createElement(AnimatePresence, null, tooltip.isOpen && /* @__PURE__ */ import_react133.default.createElement(Portal, {
+      ...portalProps
+    }, /* @__PURE__ */ import_react133.default.createElement(chakra.div, {
+      ...tooltip.getTooltipPositionerProps(),
+      __css: {
+        zIndex: styles2.zIndex,
+        pointerEvents: "none"
+      }
+    }, /* @__PURE__ */ import_react133.default.createElement(MotionDiv, {
+      variants: scale2,
+      initial: "exit",
+      animate: "enter",
+      exit: "exit",
+      ...motionProps,
+      ...tooltipProps,
+      __css: styles2
+    }, label, hasAriaLabel && /* @__PURE__ */ import_react133.default.createElement(chakra.span, {
+      srOnly: true,
+      ...srOnlyProps
+    }, ariaLabel), hasArrow && /* @__PURE__ */ import_react133.default.createElement(chakra.div, {
+      "data-popper-arrow": true,
+      className: "chakra-tooltip__arrow-wrapper"
+    }, /* @__PURE__ */ import_react133.default.createElement(chakra.div, {
+      "data-popper-arrow-inner": true,
+      className: "chakra-tooltip__arrow",
+      __css: { bg: styles2.bg }
+    })))))));
+  });
+  Tooltip.displayName = "Tooltip";
+
   // node_modules/@chakra-ui/provider/dist/index.esm.js
-  var import_react111 = __toESM(require_react());
+  var import_react136 = __toESM(require_react());
   var ChakraProvider = (props) => {
     const {
       children,
@@ -43620,16 +47527,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       environment,
       cssVarsRoot
     } = props;
-    const _children = /* @__PURE__ */ import_react111.default.createElement(EnvironmentProvider, {
+    const _children = /* @__PURE__ */ import_react136.default.createElement(EnvironmentProvider, {
       environment
     }, children);
-    return /* @__PURE__ */ import_react111.default.createElement(ThemeProvider, {
+    return /* @__PURE__ */ import_react136.default.createElement(ThemeProvider, {
       theme: theme3,
       cssVarsRoot
-    }, /* @__PURE__ */ import_react111.default.createElement(ColorModeProvider, {
+    }, /* @__PURE__ */ import_react136.default.createElement(ColorModeProvider, {
       colorModeManager,
       options: theme3.config
-    }, resetCSS ? /* @__PURE__ */ import_react111.default.createElement(CSSReset, null) : /* @__PURE__ */ import_react111.default.createElement(CSSPolyfill, null), /* @__PURE__ */ import_react111.default.createElement(GlobalStyle, null), portalZIndex ? /* @__PURE__ */ import_react111.default.createElement(PortalManager, {
+    }, resetCSS ? /* @__PURE__ */ import_react136.default.createElement(CSSReset, null) : /* @__PURE__ */ import_react136.default.createElement(CSSPolyfill, null), /* @__PURE__ */ import_react136.default.createElement(GlobalStyle, null), portalZIndex ? /* @__PURE__ */ import_react136.default.createElement(PortalManager, {
       zIndex: portalZIndex
     }, _children) : _children));
   };
@@ -43641,16 +47548,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     toastOptions,
     ...restProps
   }) {
-    return /* @__PURE__ */ import_react112.default.createElement(ChakraProvider, {
+    return /* @__PURE__ */ import_react137.default.createElement(ChakraProvider, {
       theme: theme3,
       ...restProps
-    }, children, /* @__PURE__ */ import_react112.default.createElement(ToastProvider, {
+    }, children, /* @__PURE__ */ import_react137.default.createElement(ToastProvider, {
       ...toastOptions
     }));
   }
 
   // node_modules/react-router-dom/dist/index.js
-  var React23 = __toESM(require_react());
+  var React28 = __toESM(require_react());
 
   // node_modules/@remix-run/router/dist/router.js
   function _extends2() {
@@ -43682,14 +47589,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       let {
         pathname,
         search,
-        hash
+        hash: hash3
       } = window2.location;
       return createLocation(
         "",
         {
           pathname,
           search,
-          hash
+          hash: hash3
         },
         globalHistory.state && globalHistory.state.usr || null,
         globalHistory.state && globalHistory.state.key || "default"
@@ -43727,12 +47634,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let {
       pathname = "/",
       search = "",
-      hash = ""
+      hash: hash3 = ""
     } = _ref;
     if (search && search !== "?")
       pathname += search.charAt(0) === "?" ? search : "?" + search;
-    if (hash && hash !== "#")
-      pathname += hash.charAt(0) === "#" ? hash : "#" + hash;
+    if (hash3 && hash3 !== "#")
+      pathname += hash3.charAt(0) === "#" ? hash3 : "#" + hash3;
     return pathname;
   }
   function parsePath(path) {
@@ -43820,12 +47727,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       get location() {
         return getLocation(window2, globalHistory);
       },
-      listen(fn) {
+      listen(fn2) {
         if (listener) {
           throw new Error("A history only accepts one active listener");
         }
         window2.addEventListener(PopStateEventType, handlePop);
-        listener = fn;
+        listener = fn2;
         return () => {
           window2.removeEventListener(PopStateEventType, handlePop);
           listener = null;
@@ -43982,12 +47889,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let matches = [];
     for (let i = 0; i < routesMeta.length; ++i) {
       let meta = routesMeta[i];
-      let end = i === routesMeta.length - 1;
+      let end2 = i === routesMeta.length - 1;
       let remainingPathname = matchedPathname === "/" ? pathname : pathname.slice(matchedPathname.length) || "/";
       let match = matchPath({
         path: meta.relativePath,
         caseSensitive: meta.caseSensitive,
-        end
+        end: end2
       }, remainingPathname);
       if (!match)
         return null;
@@ -44035,12 +47942,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       pattern
     };
   }
-  function compilePath(path, caseSensitive, end) {
+  function compilePath(path, caseSensitive, end2) {
     if (caseSensitive === void 0) {
       caseSensitive = false;
     }
-    if (end === void 0) {
-      end = true;
+    if (end2 === void 0) {
+      end2 = true;
     }
     warning2(path === "*" || !path.endsWith("*") || path.endsWith("/*"), 'Route path "' + path + '" will be treated as if it were ' + ('"' + path.replace(/\*$/, "/*") + '" because the `*` character must ') + "always follow a `/` in the pattern. To get rid of this warning, " + ('please change the route path to "' + path.replace(/\*$/, "/*") + '".'));
     let paramNames = [];
@@ -44051,7 +47958,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     if (path.endsWith("*")) {
       paramNames.push("*");
       regexpSource += path === "*" || path === "/*" ? "(.*)$" : "(?:\\/(.+)|\\/*)$";
-    } else if (end) {
+    } else if (end2) {
       regexpSource += "\\/*$";
     } else if (path !== "" && path !== "/") {
       regexpSource += "(?:(?=\\/|$))";
@@ -44111,13 +48018,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let {
       pathname: toPathname,
       search = "",
-      hash = ""
+      hash: hash3 = ""
     } = typeof to === "string" ? parsePath(to) : to;
     let pathname = toPathname ? toPathname.startsWith("/") ? toPathname : resolvePathname(toPathname, fromPathname) : fromPathname;
     return {
       pathname,
       search: normalizeSearch(search),
-      hash: normalizeHash(hash)
+      hash: normalizeHash(hash3)
     };
   }
   function resolvePathname(relativePath, fromPathname) {
@@ -44180,7 +48087,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var joinPaths = (paths) => paths.join("/").replace(/\/\/+/g, "/");
   var normalizePathname = (pathname) => pathname.replace(/\/+$/, "").replace(/^\/*/, "/");
   var normalizeSearch = (search) => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search;
-  var normalizeHash = (hash) => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash;
+  var normalizeHash = (hash3) => !hash3 || hash3 === "#" ? "" : hash3.startsWith("#") ? hash3 : "#" + hash3;
   var AbortedDeferredError = class extends Error {
   };
   var DeferredData = class {
@@ -44240,8 +48147,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       subscriber && subscriber(false);
       return data;
     }
-    subscribe(fn) {
-      this.subscriber = fn;
+    subscribe(fn2) {
+      this.subscriber = fn2;
     }
     cancel() {
       this.controller.abort();
@@ -44391,9 +48298,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       pendingNavigationController && pendingNavigationController.abort();
       state2.fetchers.forEach((_, key) => deleteFetcher(key));
     }
-    function subscribe(fn) {
-      subscribers.add(fn);
-      return () => subscribers.delete(fn);
+    function subscribe(fn2) {
+      subscribers.add(fn2);
+      return () => subscribers.delete(fn2);
     }
     function updateState(newState) {
       state2 = _extends2({}, state2, newState);
@@ -45562,7 +49469,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // node_modules/react-router/dist/index.js
-  var React21 = __toESM(require_react());
+  var React27 = __toESM(require_react());
   function _extends3() {
     _extends3 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i = 1; i < arguments.length; i++) {
@@ -45582,17 +49489,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   var is = typeof Object.is === "function" ? Object.is : isPolyfill;
   var {
-    useState: useState15,
-    useEffect: useEffect24,
-    useLayoutEffect: useLayoutEffect6,
+    useState: useState18,
+    useEffect: useEffect33,
+    useLayoutEffect: useLayoutEffect7,
     useDebugValue
-  } = React21;
+  } = React27;
   var didWarnOld18Alpha = false;
   var didWarnUncachedGetSnapshot = false;
   function useSyncExternalStore$2(subscribe, getSnapshot, getServerSnapshot) {
     if (true) {
       if (!didWarnOld18Alpha) {
-        if ("startTransition" in React21) {
+        if ("startTransition" in React27) {
           didWarnOld18Alpha = true;
           console.error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release.");
         }
@@ -45610,13 +49517,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
     const [{
       inst
-    }, forceUpdate] = useState15({
+    }, forceUpdate] = useState18({
       inst: {
         value,
         getSnapshot
       }
     });
-    useLayoutEffect6(() => {
+    useLayoutEffect7(() => {
       inst.value = value;
       inst.getSnapshot = getSnapshot;
       if (checkIfSnapshotChanged(inst)) {
@@ -45625,7 +49532,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         });
       }
     }, [subscribe, value, getSnapshot]);
-    useEffect24(() => {
+    useEffect33(() => {
       if (checkIfSnapshotChanged(inst)) {
         forceUpdate({
           inst
@@ -45659,39 +49566,39 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var canUseDOM2 = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
   var isServerEnvironment = !canUseDOM2;
   var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore$2;
-  var useSyncExternalStore2 = "useSyncExternalStore" in React21 ? ((module) => module.useSyncExternalStore)(React21) : shim;
-  var DataStaticRouterContext = /* @__PURE__ */ React21.createContext(null);
+  var useSyncExternalStore2 = "useSyncExternalStore" in React27 ? ((module) => module.useSyncExternalStore)(React27) : shim;
+  var DataStaticRouterContext = /* @__PURE__ */ React27.createContext(null);
   if (true) {
     DataStaticRouterContext.displayName = "DataStaticRouterContext";
   }
-  var DataRouterContext = /* @__PURE__ */ React21.createContext(null);
+  var DataRouterContext = /* @__PURE__ */ React27.createContext(null);
   if (true) {
     DataRouterContext.displayName = "DataRouter";
   }
-  var DataRouterStateContext = /* @__PURE__ */ React21.createContext(null);
+  var DataRouterStateContext = /* @__PURE__ */ React27.createContext(null);
   if (true) {
     DataRouterStateContext.displayName = "DataRouterState";
   }
-  var AwaitContext = /* @__PURE__ */ React21.createContext(null);
+  var AwaitContext = /* @__PURE__ */ React27.createContext(null);
   if (true) {
     AwaitContext.displayName = "Await";
   }
-  var NavigationContext = /* @__PURE__ */ React21.createContext(null);
+  var NavigationContext = /* @__PURE__ */ React27.createContext(null);
   if (true) {
     NavigationContext.displayName = "Navigation";
   }
-  var LocationContext = /* @__PURE__ */ React21.createContext(null);
+  var LocationContext = /* @__PURE__ */ React27.createContext(null);
   if (true) {
     LocationContext.displayName = "Location";
   }
-  var RouteContext = /* @__PURE__ */ React21.createContext({
+  var RouteContext = /* @__PURE__ */ React27.createContext({
     outlet: null,
     matches: []
   });
   if (true) {
     RouteContext.displayName = "Route";
   }
-  var RouteErrorContext = /* @__PURE__ */ React21.createContext(null);
+  var RouteErrorContext = /* @__PURE__ */ React27.createContext(null);
   if (true) {
     RouteErrorContext.displayName = "RouteError";
   }
@@ -45706,9 +49613,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let {
       basename,
       navigator: navigator2
-    } = React21.useContext(NavigationContext);
+    } = React27.useContext(NavigationContext);
     let {
-      hash,
+      hash: hash3,
       pathname,
       search
     } = useResolvedPath(to, {
@@ -45721,18 +49628,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return navigator2.createHref({
       pathname: joinedPathname,
       search,
-      hash
+      hash: hash3
     });
   }
   function useInRouterContext() {
-    return React21.useContext(LocationContext) != null;
+    return React27.useContext(LocationContext) != null;
   }
   function useLocation() {
     !useInRouterContext() ? true ? invariant2(
       false,
       "useLocation() may be used only in the context of a <Router> component."
     ) : invariant2(false) : void 0;
-    return React21.useContext(LocationContext).location;
+    return React27.useContext(LocationContext).location;
   }
   function useNavigate() {
     !useInRouterContext() ? true ? invariant2(
@@ -45742,19 +49649,19 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let {
       basename,
       navigator: navigator2
-    } = React21.useContext(NavigationContext);
+    } = React27.useContext(NavigationContext);
     let {
       matches
-    } = React21.useContext(RouteContext);
+    } = React27.useContext(RouteContext);
     let {
       pathname: locationPathname
     } = useLocation();
     let routePathnamesJson = JSON.stringify(getPathContributingMatches(matches).map((match) => match.pathnameBase));
-    let activeRef = React21.useRef(false);
-    React21.useEffect(() => {
+    let activeRef = React27.useRef(false);
+    React27.useEffect(() => {
       activeRef.current = true;
     });
-    let navigate = React21.useCallback(function(to, options) {
+    let navigate = React27.useCallback(function(to, options) {
       if (options === void 0) {
         options = {};
       }
@@ -45773,11 +49680,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }, [basename, navigator2, routePathnamesJson, locationPathname]);
     return navigate;
   }
-  var OutletContext = /* @__PURE__ */ React21.createContext(null);
+  var OutletContext = /* @__PURE__ */ React27.createContext(null);
   function useOutlet(context) {
-    let outlet = React21.useContext(RouteContext).outlet;
+    let outlet = React27.useContext(RouteContext).outlet;
     if (outlet) {
-      return /* @__PURE__ */ React21.createElement(OutletContext.Provider, {
+      return /* @__PURE__ */ React27.createElement(OutletContext.Provider, {
         value: context
       }, outlet);
     }
@@ -45789,22 +49696,22 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     } = _temp2 === void 0 ? {} : _temp2;
     let {
       matches
-    } = React21.useContext(RouteContext);
+    } = React27.useContext(RouteContext);
     let {
       pathname: locationPathname
     } = useLocation();
     let routePathnamesJson = JSON.stringify(getPathContributingMatches(matches).map((match) => match.pathnameBase));
-    return React21.useMemo(() => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, relative === "path"), [to, routePathnamesJson, locationPathname, relative]);
+    return React27.useMemo(() => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, relative === "path"), [to, routePathnamesJson, locationPathname, relative]);
   }
   function useRoutes(routes, locationArg) {
     !useInRouterContext() ? true ? invariant2(
       false,
       "useRoutes() may be used only in the context of a <Router> component."
     ) : invariant2(false) : void 0;
-    let dataRouterStateContext = React21.useContext(DataRouterStateContext);
+    let dataRouterStateContext = React27.useContext(DataRouterStateContext);
     let {
       matches: parentMatches
-    } = React21.useContext(RouteContext);
+    } = React27.useContext(RouteContext);
     let routeMatch = parentMatches[parentMatches.length - 1];
     let parentParams = routeMatch ? routeMatch.params : {};
     let parentPathname = routeMatch ? routeMatch.pathname : "/";
@@ -45841,7 +49748,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : joinPaths([parentPathnameBase, match.pathnameBase])
     })), parentMatches, dataRouterStateContext || void 0);
     if (locationArg && renderedMatches) {
-      return /* @__PURE__ */ React21.createElement(LocationContext.Provider, {
+      return /* @__PURE__ */ React27.createElement(LocationContext.Provider, {
         value: {
           location: _extends3({
             pathname: "/",
@@ -45869,19 +49776,19 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       padding: "2px 4px",
       backgroundColor: lightgrey
     };
-    return /* @__PURE__ */ React21.createElement(React21.Fragment, null, /* @__PURE__ */ React21.createElement("h2", null, "Unhandled Thrown Error!"), /* @__PURE__ */ React21.createElement("h3", {
+    return /* @__PURE__ */ React27.createElement(React27.Fragment, null, /* @__PURE__ */ React27.createElement("h2", null, "Unhandled Thrown Error!"), /* @__PURE__ */ React27.createElement("h3", {
       style: {
         fontStyle: "italic"
       }
-    }, message), stack ? /* @__PURE__ */ React21.createElement("pre", {
+    }, message), stack ? /* @__PURE__ */ React27.createElement("pre", {
       style: preStyles
-    }, stack) : null, /* @__PURE__ */ React21.createElement("p", null, "\u{1F4BF} Hey developer \u{1F44B}"), /* @__PURE__ */ React21.createElement("p", null, "You can provide a way better UX than this when your app throws errors by providing your own\xA0", /* @__PURE__ */ React21.createElement("code", {
+    }, stack) : null, /* @__PURE__ */ React27.createElement("p", null, "\u{1F4BF} Hey developer \u{1F44B}"), /* @__PURE__ */ React27.createElement("p", null, "You can provide a way better UX than this when your app throws errors by providing your own\xA0", /* @__PURE__ */ React27.createElement("code", {
       style: codeStyles
-    }, "errorElement"), " props on\xA0", /* @__PURE__ */ React21.createElement("code", {
+    }, "errorElement"), " props on\xA0", /* @__PURE__ */ React27.createElement("code", {
       style: codeStyles
     }, "<Route>")));
   }
-  var RenderErrorBoundary = class extends React21.Component {
+  var RenderErrorBoundary = class extends React27.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -45910,7 +49817,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       console.error("React Router caught the following error during render", error, errorInfo);
     }
     render() {
-      return this.state.error ? /* @__PURE__ */ React21.createElement(RouteErrorContext.Provider, {
+      return this.state.error ? /* @__PURE__ */ React27.createElement(RouteErrorContext.Provider, {
         value: this.state.error,
         children: this.props.component
       }) : this.props.children;
@@ -45922,11 +49829,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       match,
       children
     } = _ref;
-    let dataStaticRouterContext = React21.useContext(DataStaticRouterContext);
+    let dataStaticRouterContext = React27.useContext(DataStaticRouterContext);
     if (dataStaticRouterContext && match.route.errorElement) {
       dataStaticRouterContext._deepestRenderedBoundaryId = match.route.id;
     }
-    return /* @__PURE__ */ React21.createElement(RouteContext.Provider, {
+    return /* @__PURE__ */ React27.createElement(RouteContext.Provider, {
       value: routeContext
     }, children);
   }
@@ -45950,15 +49857,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }
     return renderedMatches.reduceRight((outlet, match, index) => {
       let error = match.route.id ? errors == null ? void 0 : errors[match.route.id] : null;
-      let errorElement = dataRouterState ? match.route.errorElement || /* @__PURE__ */ React21.createElement(DefaultErrorElement, null) : null;
-      let getChildren = () => /* @__PURE__ */ React21.createElement(RenderedRoute, {
+      let errorElement = dataRouterState ? match.route.errorElement || /* @__PURE__ */ React27.createElement(DefaultErrorElement, null) : null;
+      let getChildren = () => /* @__PURE__ */ React27.createElement(RenderedRoute, {
         match,
         routeContext: {
           outlet,
           matches: parentMatches.concat(renderedMatches.slice(0, index + 1))
         }
       }, error ? errorElement : match.route.element !== void 0 ? match.route.element : outlet);
-      return dataRouterState && (match.route.errorElement || index === 0) ? /* @__PURE__ */ React21.createElement(RenderErrorBoundary, {
+      return dataRouterState && (match.route.errorElement || index === 0) ? /* @__PURE__ */ React27.createElement(RenderErrorBoundary, {
         location: dataRouterState.location,
         component: errorElement,
         error,
@@ -45984,7 +49891,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return hookName + " must be used within a data router.  See https://reactrouter.com/en/main/routers/picking-a-router.";
   }
   function useDataRouterState(hookName) {
-    let state2 = React21.useContext(DataRouterStateContext);
+    let state2 = React27.useContext(DataRouterStateContext);
     !state2 ? true ? invariant2(false, getDataRouterConsoleError(hookName)) : invariant2(false) : void 0;
     return state2;
   }
@@ -45997,7 +49904,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       matches,
       loaderData
     } = useDataRouterState(DataRouterStateHook.UseMatches);
-    return React21.useMemo(() => matches.map((match) => {
+    return React27.useMemo(() => matches.map((match) => {
       let {
         pathname,
         params
@@ -46013,7 +49920,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   function useLoaderData() {
     let state2 = useDataRouterState(DataRouterStateHook.UseLoaderData);
-    let route = React21.useContext(RouteContext);
+    let route = React27.useContext(RouteContext);
     !route ? true ? invariant2(false, "useLoaderData must be used inside a RouteContext") : invariant2(false) : void 0;
     let thisRoute = route.matches[route.matches.length - 1];
     !thisRoute.route.id ? true ? invariant2(false, 'useLoaderData can only be used on routes that contain a unique "id"') : invariant2(false) : void 0;
@@ -46021,9 +49928,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
   function useRouteError() {
     var _state$errors;
-    let error = React21.useContext(RouteErrorContext);
+    let error = React27.useContext(RouteErrorContext);
     let state2 = useDataRouterState(DataRouterStateHook.UseRouteError);
-    let route = React21.useContext(RouteContext);
+    let route = React27.useContext(RouteContext);
     let thisRoute = route.matches[route.matches.length - 1];
     if (error) {
       return error;
@@ -46049,7 +49956,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       () => router2.state,
       () => router2.state
     );
-    let navigator2 = React21.useMemo(() => {
+    let navigator2 = React27.useMemo(() => {
       return {
         createHref: router2.createHref,
         go: (n) => router2.navigate(n),
@@ -46065,21 +49972,21 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       };
     }, [router2]);
     let basename = router2.basename || "/";
-    return /* @__PURE__ */ React21.createElement(DataRouterContext.Provider, {
+    return /* @__PURE__ */ React27.createElement(DataRouterContext.Provider, {
       value: {
         router: router2,
         navigator: navigator2,
         static: false,
         basename
       }
-    }, /* @__PURE__ */ React21.createElement(DataRouterStateContext.Provider, {
+    }, /* @__PURE__ */ React27.createElement(DataRouterStateContext.Provider, {
       value: state2
-    }, /* @__PURE__ */ React21.createElement(Router, {
+    }, /* @__PURE__ */ React27.createElement(Router, {
       basename: router2.basename,
       location: router2.state.location,
       navigationType: router2.state.historyAction,
       navigator: navigator2
-    }, router2.state.initialized ? /* @__PURE__ */ React21.createElement(Routes, null) : fallbackElement)));
+    }, router2.state.initialized ? /* @__PURE__ */ React27.createElement(Routes, null) : fallbackElement)));
   }
   function Outlet(props) {
     return useOutlet(props.context);
@@ -46098,7 +50005,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     } = _ref4;
     !!useInRouterContext() ? true ? invariant2(false, "You cannot render a <Router> inside another <Router>. You should never have more than one in your app.") : invariant2(false) : void 0;
     let basename = basenameProp.replace(/^\/*/, "/");
-    let navigationContext = React21.useMemo(() => ({
+    let navigationContext = React27.useMemo(() => ({
       basename,
       navigator: navigator2,
       static: staticProp
@@ -46109,11 +50016,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let {
       pathname = "/",
       search = "",
-      hash = "",
+      hash: hash3 = "",
       state: state2 = null,
       key = "default"
     } = locationProp;
-    let location = React21.useMemo(() => {
+    let location = React27.useMemo(() => {
       let trailingPathname = stripBasename(pathname, basename);
       if (trailingPathname == null) {
         return null;
@@ -46121,18 +50028,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       return {
         pathname: trailingPathname,
         search,
-        hash,
+        hash: hash3,
         state: state2,
         key
       };
-    }, [basename, pathname, search, hash, state2, key]);
-    true ? warning2(location != null, '<Router basename="' + basename + '"> is not able to match the URL ' + ('"' + pathname + search + hash + '" because it does not start with the ') + "basename, so the <Router> won't render anything.") : void 0;
+    }, [basename, pathname, search, hash3, state2, key]);
+    true ? warning2(location != null, '<Router basename="' + basename + '"> is not able to match the URL ' + ('"' + pathname + search + hash3 + '" because it does not start with the ') + "basename, so the <Router> won't render anything.") : void 0;
     if (location == null) {
       return null;
     }
-    return /* @__PURE__ */ React21.createElement(NavigationContext.Provider, {
+    return /* @__PURE__ */ React27.createElement(NavigationContext.Provider, {
       value: navigationContext
-    }, /* @__PURE__ */ React21.createElement(LocationContext.Provider, {
+    }, /* @__PURE__ */ React27.createElement(LocationContext.Provider, {
       children,
       value: {
         location,
@@ -46145,7 +50052,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       children,
       location
     } = _ref5;
-    let dataRouterContext = React21.useContext(DataRouterContext);
+    let dataRouterContext = React27.useContext(DataRouterContext);
     let routes = dataRouterContext && !children ? dataRouterContext.router.routes : createRoutesFromChildren(children);
     return useRoutes(routes, location);
   }
@@ -46162,11 +50069,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       parentPath = [];
     }
     let routes = [];
-    React21.Children.forEach(children, (element, index) => {
-      if (!/* @__PURE__ */ React21.isValidElement(element)) {
+    React27.Children.forEach(children, (element, index) => {
+      if (!/* @__PURE__ */ React27.isValidElement(element)) {
         return;
       }
-      if (element.type === React21.Fragment) {
+      if (element.type === React27.Fragment) {
         routes.push.apply(routes, createRoutesFromChildren(element.props.children, parentPath));
         return;
       }
@@ -46334,12 +50241,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       children,
       history
     } = _ref3;
-    const [state2, setState] = React23.useState({
+    const [state2, setState] = React28.useState({
       action: history.action,
       location: history.location
     });
-    React23.useLayoutEffect(() => history.listen(setState), [history]);
-    return /* @__PURE__ */ React23.createElement(Router, {
+    React28.useLayoutEffect(() => history.listen(setState), [history]);
+    return /* @__PURE__ */ React28.createElement(Router, {
       basename,
       children,
       location: state2.location,
@@ -46350,7 +50257,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   if (true) {
     HistoryRouter.displayName = "unstable_HistoryRouter";
   }
-  var Link3 = /* @__PURE__ */ React23.forwardRef(function LinkWithRef(_ref4, ref) {
+  var Link3 = /* @__PURE__ */ React28.forwardRef(function LinkWithRef(_ref4, ref) {
     let {
       onClick,
       relative,
@@ -46378,7 +50285,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         internalOnClick(event);
       }
     }
-    return /* @__PURE__ */ React23.createElement("a", _extends4({}, rest, {
+    return /* @__PURE__ */ React28.createElement("a", _extends4({}, rest, {
       href,
       onClick: reloadDocument ? onClick : handleClick,
       ref,
@@ -46388,12 +50295,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   if (true) {
     Link3.displayName = "Link";
   }
-  var NavLink = /* @__PURE__ */ React23.forwardRef(function NavLinkWithRef(_ref5, ref) {
+  var NavLink = /* @__PURE__ */ React28.forwardRef(function NavLinkWithRef(_ref5, ref) {
     let {
       "aria-current": ariaCurrentProp = "page",
       caseSensitive = false,
       className: classNameProp = "",
-      end = false,
+      end: end2 = false,
       style: styleProp,
       to,
       children
@@ -46402,7 +50309,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       relative: rest.relative
     });
     let location = useLocation();
-    let routerState = React23.useContext(DataRouterStateContext);
+    let routerState = React28.useContext(DataRouterStateContext);
     let toPathname = path.pathname;
     let locationPathname = location.pathname;
     let nextLocationPathname = routerState && routerState.navigation && routerState.navigation.location ? routerState.navigation.location.pathname : null;
@@ -46411,8 +50318,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       nextLocationPathname = nextLocationPathname ? nextLocationPathname.toLowerCase() : null;
       toPathname = toPathname.toLowerCase();
     }
-    let isActive = locationPathname === toPathname || !end && locationPathname.startsWith(toPathname) && locationPathname.charAt(toPathname.length) === "/";
-    let isPending = nextLocationPathname != null && (nextLocationPathname === toPathname || !end && nextLocationPathname.startsWith(toPathname) && nextLocationPathname.charAt(toPathname.length) === "/");
+    let isActive = locationPathname === toPathname || !end2 && locationPathname.startsWith(toPathname) && locationPathname.charAt(toPathname.length) === "/";
+    let isPending = nextLocationPathname != null && (nextLocationPathname === toPathname || !end2 && nextLocationPathname.startsWith(toPathname) && nextLocationPathname.charAt(toPathname.length) === "/");
     let ariaCurrent = isActive ? ariaCurrentProp : void 0;
     let className;
     if (typeof classNameProp === "function") {
@@ -46427,7 +50334,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       isActive,
       isPending
     }) : styleProp;
-    return /* @__PURE__ */ React23.createElement(Link3, _extends4({}, rest, {
+    return /* @__PURE__ */ React28.createElement(Link3, _extends4({}, rest, {
       "aria-current": ariaCurrent,
       className,
       ref,
@@ -46441,15 +50348,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   if (true) {
     NavLink.displayName = "NavLink";
   }
-  var Form = /* @__PURE__ */ React23.forwardRef((props, ref) => {
-    return /* @__PURE__ */ React23.createElement(FormImpl, _extends4({}, props, {
+  var Form = /* @__PURE__ */ React28.forwardRef((props, ref) => {
+    return /* @__PURE__ */ React28.createElement(FormImpl, _extends4({}, props, {
       ref
     }));
   });
   if (true) {
     Form.displayName = "Form";
   }
-  var FormImpl = /* @__PURE__ */ React23.forwardRef((_ref6, forwardedRef) => {
+  var FormImpl = /* @__PURE__ */ React28.forwardRef((_ref6, forwardedRef) => {
     let {
       reloadDocument,
       replace,
@@ -46477,7 +50384,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         relative
       });
     };
-    return /* @__PURE__ */ React23.createElement("form", _extends4({
+    return /* @__PURE__ */ React28.createElement("form", _extends4({
       ref: forwardedRef,
       method: formMethod,
       action: formAction,
@@ -46516,12 +50423,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return hookName + " must be used within a data router.  See https://reactrouter.com/en/main/routers/picking-a-router.";
   }
   function useDataRouterContext(hookName) {
-    let ctx = React23.useContext(DataRouterContext);
+    let ctx = React28.useContext(DataRouterContext);
     !ctx ? true ? invariant2(false, getDataRouterConsoleError2(hookName)) : invariant2(false) : void 0;
     return ctx;
   }
   function useDataRouterState2(hookName) {
-    let state2 = React23.useContext(DataRouterStateContext);
+    let state2 = React28.useContext(DataRouterStateContext);
     !state2 ? true ? invariant2(false, getDataRouterConsoleError2(hookName)) : invariant2(false) : void 0;
     return state2;
   }
@@ -46538,7 +50445,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let path = useResolvedPath(to, {
       relative
     });
-    return React23.useCallback((event) => {
+    return React28.useCallback((event) => {
       if (shouldProcessLinkClick(event, target)) {
         event.preventDefault();
         let replace = replaceProp !== void 0 ? replaceProp : createPath(location) === createPath(path);
@@ -46556,7 +50463,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       router: router2
     } = useDataRouterContext(DataRouterHook2.UseSubmitImpl);
     let defaultAction = useFormAction();
-    return React23.useCallback(function(target, options) {
+    return React28.useCallback(function(target, options) {
       if (options === void 0) {
         options = {};
       }
@@ -46590,8 +50497,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     } = _temp2 === void 0 ? {} : _temp2;
     let {
       basename
-    } = React23.useContext(NavigationContext);
-    let routeContext = React23.useContext(RouteContext);
+    } = React28.useContext(NavigationContext);
+    let routeContext = React28.useContext(RouteContext);
     !routeContext ? true ? invariant2(false, "useFormAction must be used inside a RouteContext") : invariant2(false) : void 0;
     let [match] = routeContext.matches.slice(-1);
     let resolvedAction = action != null ? action : ".";
@@ -46633,13 +50540,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let location = useLocation();
     let matches = useMatches();
     let navigation = useNavigation();
-    React23.useEffect(() => {
+    React28.useEffect(() => {
       window.history.scrollRestoration = "manual";
       return () => {
         window.history.scrollRestoration = "auto";
       };
     }, []);
-    useBeforeUnload(React23.useCallback(() => {
+    useBeforeUnload(React28.useCallback(() => {
       if (navigation.state === "idle") {
         let key = (getKey ? getKey(location, matches) : null) || location.key;
         savedScrollPositions[key] = window.scrollY;
@@ -46647,7 +50554,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       sessionStorage.setItem(storageKey || SCROLL_RESTORATION_STORAGE_KEY, JSON.stringify(savedScrollPositions));
       window.history.scrollRestoration = "auto";
     }, [storageKey, getKey, navigation.state, location, matches]));
-    React23.useLayoutEffect(() => {
+    React28.useLayoutEffect(() => {
       try {
         let sessionPositions = sessionStorage.getItem(storageKey || SCROLL_RESTORATION_STORAGE_KEY);
         if (sessionPositions) {
@@ -46656,11 +50563,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       } catch (e) {
       }
     }, [storageKey]);
-    React23.useLayoutEffect(() => {
+    React28.useLayoutEffect(() => {
       let disableScrollRestoration = router2 == null ? void 0 : router2.enableScrollRestoration(savedScrollPositions, () => window.scrollY, getKey);
       return () => disableScrollRestoration && disableScrollRestoration();
     }, [router2, getKey]);
-    React23.useLayoutEffect(() => {
+    React28.useLayoutEffect(() => {
       if (restoreScrollPosition === false) {
         return;
       }
@@ -46682,7 +50589,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     }, [location, restoreScrollPosition, preventScrollReset]);
   }
   function useBeforeUnload(callback) {
-    React23.useEffect(() => {
+    React28.useEffect(() => {
       window.addEventListener("beforeunload", callback);
       return () => {
         window.removeEventListener("beforeunload", callback);
@@ -46691,16 +50598,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // app/routes/main-view.tsx
-  var import_react124 = __toESM(require_react());
+  var import_react149 = __toESM(require_react());
 
   // app/components/sidebar-view/sidebar.tsx
-  var import_react120 = __toESM(require_react());
+  var import_react145 = __toESM(require_react());
 
   // app/components/sidebar-view/sidebar-header.tsx
-  var import_react118 = __toESM(require_react());
+  var import_react143 = __toESM(require_react());
 
   // node_modules/@chakra-ui/icons/dist/index.esm.js
-  var import_react113 = __toESM(require_react());
+  var import_react138 = __toESM(require_react());
   var CopyIcon = createIcon({
     d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z",
     displayName: "CopyIcon"
@@ -46719,31 +50626,31 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var SunIcon = createIcon({
     displayName: "SunIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       strokeLinejoin: "round",
       strokeLinecap: "round",
       strokeWidth: "2",
       fill: "none",
       stroke: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("circle", {
+    }, /* @__PURE__ */ import_react138.default.createElement("circle", {
       cx: "12",
       cy: "12",
       r: "5"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M12 1v2"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M12 21v2"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M4.22 4.22l1.42 1.42"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M18.36 18.36l1.42 1.42"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M1 12h2"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M21 12h2"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M4.22 19.78l1.42-1.42"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M18.36 5.64l1.42-1.42"
     }))
   });
@@ -46754,7 +50661,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var SmallAddIcon = createIcon({
     displayName: "SmallAddIcon",
     viewBox: "0 0 20 20",
-    path: /* @__PURE__ */ import_react113.default.createElement("path", {
+    path: /* @__PURE__ */ import_react138.default.createElement("path", {
       fill: "currentColor",
       d: "M14 9h-3V6c0-.55-.45-1-1-1s-1 .45-1 1v3H6c-.55 0-1 .45-1 1s.45 1 1 1h3v3c0 .55.45 1 1 1s1-.45 1-1v-3h3c.55 0 1-.45 1-1s-.45-1-1-1z",
       fillRule: "evenodd"
@@ -46779,11 +50686,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var ViewIcon = createIcon({
     displayName: "ViewIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M23.432,10.524C20.787,7.614,16.4,4.538,12,4.6,7.6,4.537,3.213,7.615.568,10.524a2.211,2.211,0,0,0,0,2.948C3.182,16.351,7.507,19.4,11.839,19.4h.308c4.347,0,8.671-3.049,11.288-5.929A2.21,2.21,0,0,0,23.432,10.524ZM7.4,12A4.6,4.6,0,1,1,12,16.6,4.6,4.6,0,0,1,7.4,12Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("circle", {
+    }), /* @__PURE__ */ import_react138.default.createElement("circle", {
       cx: "12",
       cy: "12",
       r: "2"
@@ -46791,11 +50698,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var ViewOffIcon = createIcon({
     displayName: "ViewOffIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M23.2,10.549a20.954,20.954,0,0,0-4.3-3.6l4-3.995a1,1,0,1,0-1.414-1.414l-.018.018a.737.737,0,0,1-.173.291l-19.5,19.5c-.008.007-.018.009-.026.017a1,1,0,0,0,1.631,1.088l4.146-4.146a11.26,11.26,0,0,0,4.31.939h.3c4.256,0,8.489-2.984,11.051-5.8A2.171,2.171,0,0,0,23.2,10.549ZM16.313,13.27a4.581,4.581,0,0,1-3,3.028,4.3,4.3,0,0,1-3.1-.19.253.253,0,0,1-.068-.407l5.56-5.559a.252.252,0,0,1,.407.067A4.3,4.3,0,0,1,16.313,13.27Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M7.615,13.4a.244.244,0,0,0,.061-.24A4.315,4.315,0,0,1,7.5,12,4.5,4.5,0,0,1,12,7.5a4.276,4.276,0,0,1,1.16.173.244.244,0,0,0,.24-.062l1.941-1.942a.254.254,0,0,0-.1-.421A10.413,10.413,0,0,0,12,4.75C7.7,4.692,3.4,7.7.813,10.549a2.15,2.15,0,0,0-.007,2.9,21.209,21.209,0,0,0,3.438,3.03.256.256,0,0,0,.326-.029Z"
     }))
   });
@@ -46806,42 +50713,42 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var DeleteIcon = createIcon({
     displayName: "DeleteIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M19.452 7.5H4.547a.5.5 0 00-.5.545l1.287 14.136A2 2 0 007.326 24h9.347a2 2 0 001.992-1.819L19.95 8.045a.5.5 0 00-.129-.382.5.5 0 00-.369-.163zm-9.2 13a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zm5 0a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zM22 4h-4.75a.25.25 0 01-.25-.25V2.5A2.5 2.5 0 0014.5 0h-5A2.5 2.5 0 007 2.5v1.25a.25.25 0 01-.25.25H2a1 1 0 000 2h20a1 1 0 000-2zM9 3.75V2.5a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v1.25a.25.25 0 01-.25.25h-5.5A.25.25 0 019 3.75z"
     }))
   });
   var RepeatIcon = createIcon({
     displayName: "RepeatIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M10.319,4.936a7.239,7.239,0,0,1,7.1,2.252,1.25,1.25,0,1,0,1.872-1.657A9.737,9.737,0,0,0,9.743,2.5,10.269,10.269,0,0,0,2.378,9.61a.249.249,0,0,1-.271.178l-1.033-.13A.491.491,0,0,0,.6,9.877a.5.5,0,0,0-.019.526l2.476,4.342a.5.5,0,0,0,.373.248.43.43,0,0,0,.062,0,.5.5,0,0,0,.359-.152l3.477-3.593a.5.5,0,0,0-.3-.844L5.15,10.172a.25.25,0,0,1-.2-.333A7.7,7.7,0,0,1,10.319,4.936Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M23.406,14.1a.5.5,0,0,0,.015-.526l-2.5-4.329A.5.5,0,0,0,20.546,9a.489.489,0,0,0-.421.151l-3.456,3.614a.5.5,0,0,0,.3.842l1.848.221a.249.249,0,0,1,.183.117.253.253,0,0,1,.023.216,7.688,7.688,0,0,1-5.369,4.9,7.243,7.243,0,0,1-7.1-2.253,1.25,1.25,0,1,0-1.872,1.656,9.74,9.74,0,0,0,9.549,3.03,10.261,10.261,0,0,0,7.369-7.12.251.251,0,0,1,.27-.179l1.058.127a.422.422,0,0,0,.06,0A.5.5,0,0,0,23.406,14.1Z"
     }))
   });
   var RepeatClockIcon = createIcon({
     displayName: "RepeatClockIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M12.965,6a1,1,0,0,0-1,1v5.5a1,1,0,0,0,1,1h5a1,1,0,0,0,0-2h-3.75a.25.25,0,0,1-.25-.25V7A1,1,0,0,0,12.965,6Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M12.567,1.258A10.822,10.822,0,0,0,2.818,8.4a.25.25,0,0,1-.271.163L.858,8.309a.514.514,0,0,0-.485.213.5.5,0,0,0-.021.53l2.679,4.7a.5.5,0,0,0,.786.107l3.77-3.746a.5.5,0,0,0-.279-.85L5.593,9.007a.25.25,0,0,1-.192-.35,8.259,8.259,0,1,1,7.866,11.59,1.25,1.25,0,0,0,.045,2.5h.047a10.751,10.751,0,1,0-.792-21.487Z"
     }))
   });
   var EditIcon = createIcon({
     displayName: "EditIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "none",
       stroke: "currentColor",
       strokeLinecap: "round",
       strokeWidth: "2"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
     }))
   });
@@ -46884,46 +50791,46 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var ExternalLinkIcon = createIcon({
     displayName: "ExternalLinkIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "none",
       stroke: "currentColor",
       strokeLinecap: "round",
       strokeWidth: "2"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M15 3h6v6"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M10 14L21 3"
     }))
   });
   var LinkIcon = createIcon({
     displayName: "LinkIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M10.458,18.374,7.721,21.11a2.853,2.853,0,0,1-3.942,0l-.892-.891a2.787,2.787,0,0,1,0-3.941l5.8-5.8a2.789,2.789,0,0,1,3.942,0l.893.892A1,1,0,0,0,14.94,9.952l-.893-.892a4.791,4.791,0,0,0-6.771,0l-5.8,5.8a4.787,4.787,0,0,0,0,6.77l.892.891a4.785,4.785,0,0,0,6.771,0l2.736-2.735a1,1,0,1,0-1.414-1.415Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M22.526,2.363l-.892-.892a4.8,4.8,0,0,0-6.77,0l-2.905,2.9a1,1,0,0,0,1.414,1.414l2.9-2.9a2.79,2.79,0,0,1,3.941,0l.893.893a2.786,2.786,0,0,1,0,3.942l-5.8,5.8a2.769,2.769,0,0,1-1.971.817h0a2.766,2.766,0,0,1-1.969-.816,1,1,0,1,0-1.415,1.412,4.751,4.751,0,0,0,3.384,1.4h0a4.752,4.752,0,0,0,3.385-1.4l5.8-5.8a4.786,4.786,0,0,0,0-6.771Z"
     }))
   });
   var PlusSquareIcon = createIcon({
     displayName: "PlusSquareIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "none",
       stroke: "currentColor",
       strokeLinecap: "round",
       strokeWidth: "2"
-    }, /* @__PURE__ */ import_react113.default.createElement("rect", {
+    }, /* @__PURE__ */ import_react138.default.createElement("rect", {
       height: "18",
       width: "18",
       rx: "2",
       ry: "2",
       x: "3",
       y: "3"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M12 8v8"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M8 12h8"
     }))
   });
@@ -46939,31 +50846,31 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var TimeIcon = createIcon({
     displayName: "TimeIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M17.134,15.81,12.5,11.561V6.5a1,1,0,0,0-2,0V12a1,1,0,0,0,.324.738l4.959,4.545a1.01,1.01,0,0,0,1.413-.061A1,1,0,0,0,17.134,15.81Z"
     }))
   });
   var ArrowRightIcon = createIcon({
     displayName: "ArrowRightIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M13.584,12a2.643,2.643,0,0,1-.775,1.875L3.268,23.416a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L.768,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,13.584,12Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M23.75,12a2.643,2.643,0,0,1-.775,1.875l-9.541,9.541a1.768,1.768,0,0,1-2.5-2.5l8.739-8.739a.25.25,0,0,0,0-.354L10.934,3.084a1.768,1.768,0,0,1,2.5-2.5l9.541,9.541A2.643,2.643,0,0,1,23.75,12Z"
     }))
   });
   var ArrowLeftIcon = createIcon({
     displayName: "ArrowLeftIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M10.416,12a2.643,2.643,0,0,1,.775-1.875L20.732.584a1.768,1.768,0,0,1,2.5,2.5l-8.739,8.739a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5l-9.541-9.541A2.643,2.643,0,0,1,10.416,12Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M.25,12a2.643,2.643,0,0,1,.775-1.875L10.566.584a1.768,1.768,0,0,1,2.5,2.5L4.327,11.823a.25.25,0,0,0,0,.354l8.739,8.739a1.768,1.768,0,0,1-2.5,2.5L1.025,13.875A2.643,2.643,0,0,1,.25,12Z"
     }))
   });
@@ -46986,11 +50893,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var EmailIcon = createIcon({
     displayName: "EmailIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M11.114,14.556a1.252,1.252,0,0,0,1.768,0L22.568,4.87a.5.5,0,0,0-.281-.849A1.966,1.966,0,0,0,22,4H2a1.966,1.966,0,0,0-.289.021.5.5,0,0,0-.281.849Z"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M23.888,5.832a.182.182,0,0,0-.2.039l-6.2,6.2a.251.251,0,0,0,0,.354l5.043,5.043a.75.75,0,1,1-1.06,1.061l-5.043-5.043a.25.25,0,0,0-.354,0l-2.129,2.129a2.75,2.75,0,0,1-3.888,0L7.926,13.488a.251.251,0,0,0-.354,0L2.529,18.531a.75.75,0,0,1-1.06-1.061l5.043-5.043a.251.251,0,0,0,0-.354l-6.2-6.2a.18.18,0,0,0-.2-.039A.182.182,0,0,0,0,6V18a2,2,0,0,0,2,2H22a2,2,0,0,0,2-2V6A.181.181,0,0,0,23.888,5.832Z"
     }))
   });
@@ -47006,33 +50913,33 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var SpinnerIcon = createIcon({
     displayName: "SpinnerIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement(import_react113.default.Fragment, null, /* @__PURE__ */ import_react113.default.createElement("defs", null, /* @__PURE__ */ import_react113.default.createElement("linearGradient", {
+    path: /* @__PURE__ */ import_react138.default.createElement(import_react138.default.Fragment, null, /* @__PURE__ */ import_react138.default.createElement("defs", null, /* @__PURE__ */ import_react138.default.createElement("linearGradient", {
       x1: "28.154%",
       y1: "63.74%",
       x2: "74.629%",
       y2: "17.783%",
       id: "a"
-    }, /* @__PURE__ */ import_react113.default.createElement("stop", {
+    }, /* @__PURE__ */ import_react138.default.createElement("stop", {
       stopColor: "currentColor",
       offset: "0%"
-    }), /* @__PURE__ */ import_react113.default.createElement("stop", {
+    }), /* @__PURE__ */ import_react138.default.createElement("stop", {
       stopColor: "#fff",
       stopOpacity: "0",
       offset: "100%"
-    }))), /* @__PURE__ */ import_react113.default.createElement("g", {
+    }))), /* @__PURE__ */ import_react138.default.createElement("g", {
       transform: "translate(2)",
       fill: "none"
-    }, /* @__PURE__ */ import_react113.default.createElement("circle", {
+    }, /* @__PURE__ */ import_react138.default.createElement("circle", {
       stroke: "url(#a)",
       strokeWidth: "4",
       cx: "10",
       cy: "12",
       r: "10"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M10 2C4.477 2 0 6.477 0 12",
       stroke: "currentColor",
       strokeWidth: "4"
-    }), /* @__PURE__ */ import_react113.default.createElement("rect", {
+    }), /* @__PURE__ */ import_react138.default.createElement("rect", {
       fill: "currentColor",
       x: "8",
       width: "4",
@@ -47047,7 +50954,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var SmallCloseIcon = createIcon({
     displayName: "SmallCloseIcon",
     viewBox: "0 0 16 16",
-    path: /* @__PURE__ */ import_react113.default.createElement("path", {
+    path: /* @__PURE__ */ import_react138.default.createElement("path", {
       d: "M9.41 8l2.29-2.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71L8 6.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42L6.59 8 4.3 10.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71L8 9.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71L9.41 8z",
       fillRule: "evenodd",
       fill: "currentColor"
@@ -47067,24 +50974,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var InfoOutlineIcon = createIcon({
     displayName: "InfoOutlineIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor",
       stroke: "currentColor",
       strokeLinecap: "square",
       strokeWidth: "2"
-    }, /* @__PURE__ */ import_react113.default.createElement("circle", {
+    }, /* @__PURE__ */ import_react138.default.createElement("circle", {
       cx: "12",
       cy: "12",
       fill: "none",
       r: "11",
       stroke: "currentColor"
-    }), /* @__PURE__ */ import_react113.default.createElement("line", {
+    }), /* @__PURE__ */ import_react138.default.createElement("line", {
       fill: "none",
       x1: "11.959",
       x2: "11.959",
       y1: "11",
       y2: "17"
-    }), /* @__PURE__ */ import_react113.default.createElement("circle", {
+    }), /* @__PURE__ */ import_react138.default.createElement("circle", {
       cx: "11.959",
       cy: "7",
       r: "1",
@@ -47104,18 +51011,18 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var QuestionOutlineIcon = createIcon({
     displayName: "QuestionOutlineIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       stroke: "currentColor",
       strokeWidth: "1.5"
-    }, /* @__PURE__ */ import_react113.default.createElement("path", {
+    }, /* @__PURE__ */ import_react138.default.createElement("path", {
       strokeLinecap: "round",
       fill: "none",
       d: "M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
-    }), /* @__PURE__ */ import_react113.default.createElement("path", {
+    }), /* @__PURE__ */ import_react138.default.createElement("path", {
       fill: "none",
       strokeLinecap: "round",
       d: "M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
-    }), /* @__PURE__ */ import_react113.default.createElement("circle", {
+    }), /* @__PURE__ */ import_react138.default.createElement("circle", {
       fill: "none",
       strokeMiterlimit: "10",
       cx: "12",
@@ -47133,17 +51040,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
   var CheckIcon2 = createIcon({
     viewBox: "0 0 14 14",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("polygon", {
+    }, /* @__PURE__ */ import_react138.default.createElement("polygon", {
       points: "5.5 11.9993304 14 3.49933039 12.5 2 5.5 8.99933039 1.5 4.9968652 0 6.49933039"
     }))
   });
   var MinusIcon = createIcon({
     displayName: "MinusIcon",
-    path: /* @__PURE__ */ import_react113.default.createElement("g", {
+    path: /* @__PURE__ */ import_react138.default.createElement("g", {
       fill: "currentColor"
-    }, /* @__PURE__ */ import_react113.default.createElement("rect", {
+    }, /* @__PURE__ */ import_react138.default.createElement("rect", {
       height: "4",
       width: "20",
       x: "2",
@@ -47157,7 +51064,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
 
   // app/components/sidebar-view/telemetry-list.tsx
-  var import_react116 = __toESM(require_react());
+  var import_react141 = __toESM(require_react());
 
   // node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
   function _assertThisInitialized(self2) {
@@ -47218,7 +51125,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var memoize_one_esm_default = memoizeOne;
 
   // node_modules/react-window/dist/index.esm.js
-  var import_react114 = __toESM(require_react());
+  var import_react139 = __toESM(require_react());
   var hasNativePerformanceNow = typeof performance === "object" && typeof performance.now === "function";
   var now = hasNativePerformanceNow ? function() {
     return performance.now();
@@ -47229,9 +51136,9 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     cancelAnimationFrame(timeoutID.id);
   }
   function requestTimeout(callback, delay2) {
-    var start = now();
+    var start2 = now();
     function tick() {
-      if (now() - start >= delay2) {
+      if (now() - start2 >= delay2) {
         callback.call(null);
       } else {
         timeoutID.id = requestAnimationFrame(tick);
@@ -47535,7 +51442,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         var items = [];
         if (itemCount > 0) {
           for (var _index = startIndex; _index <= stopIndex; _index++) {
-            items.push((0, import_react114.createElement)(children, {
+            items.push((0, import_react139.createElement)(children, {
               data: itemData,
               key: itemKey(_index, itemData),
               index: _index,
@@ -47545,7 +51452,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           }
         }
         var estimatedTotalSize = getEstimatedTotalSize2(this.props, this._instanceProps);
-        return (0, import_react114.createElement)(outerElementType || outerTagName || "div", {
+        return (0, import_react139.createElement)(outerElementType || outerTagName || "div", {
           className,
           onScroll,
           ref: this._outerRefSetter,
@@ -47558,7 +51465,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             willChange: "transform",
             direction: direction2
           }, style)
-        }, (0, import_react114.createElement)(innerElementType || innerTagName || "div", {
+        }, (0, import_react139.createElement)(innerElementType || innerTagName || "div", {
           children: items,
           ref: innerRef,
           style: {
@@ -47594,7 +51501,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         return [Math.max(0, startIndex - overscanBackward), Math.max(0, Math.min(itemCount - 1, stopIndex + overscanForward)), startIndex, stopIndex];
       };
       return List3;
-    }(import_react114.PureComponent), _class.defaultProps = {
+    }(import_react139.PureComponent), _class.defaultProps = {
       direction: "ltr",
       itemData: void 0,
       layout: "vertical",
@@ -47697,16 +51604,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           }
       }
     },
-    getStartIndexForOffset: function getStartIndexForOffset(_ref5, offset) {
+    getStartIndexForOffset: function getStartIndexForOffset(_ref5, offset2) {
       var itemCount = _ref5.itemCount, itemSize = _ref5.itemSize;
-      return Math.max(0, Math.min(itemCount - 1, Math.floor(offset / itemSize)));
+      return Math.max(0, Math.min(itemCount - 1, Math.floor(offset2 / itemSize)));
     },
     getStopIndexForStartIndex: function getStopIndexForStartIndex(_ref6, startIndex, scrollOffset) {
       var direction2 = _ref6.direction, height = _ref6.height, itemCount = _ref6.itemCount, itemSize = _ref6.itemSize, layout2 = _ref6.layout, width = _ref6.width;
       var isHorizontal = direction2 === "horizontal" || layout2 === "horizontal";
-      var offset = startIndex * itemSize;
+      var offset2 = startIndex * itemSize;
       var size3 = isHorizontal ? width : height;
-      var numVisibleItems = Math.ceil((size3 + scrollOffset - offset) / itemSize);
+      var numVisibleItems = Math.ceil((size3 + scrollOffset - offset2) / itemSize);
       return Math.max(0, Math.min(
         itemCount - 1,
         startIndex + numVisibleItems - 1
@@ -47726,10 +51633,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
 
   // app/utils/use-key-press.ts
-  var import_react115 = __toESM(require_react());
+  var import_react140 = __toESM(require_react());
   var useKeyPress = (targetKeys) => {
-    let [keyPressed, setKeyPressed] = (0, import_react115.useState)(false);
-    (0, import_react115.useEffect)(
+    let [keyPressed, setKeyPressed] = (0, import_react140.useState)(false);
+    (0, import_react140.useEffect)(
       () => {
         const downHandler = (event) => {
           if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
@@ -47757,8 +51664,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     return keyPressed;
   };
   var useKeyCombo = (modifierKeys, targetKeys) => {
-    let [comboPressed, setComboPressed] = (0, import_react115.useState)(false);
-    (0, import_react115.useEffect)(() => {
+    let [comboPressed, setComboPressed] = (0, import_react140.useState)(false);
+    (0, import_react140.useEffect)(() => {
       const downHandler = (event) => {
         let modifiersPressed = modifierKeys.map((modKey) => {
           switch (modKey) {
@@ -47809,61 +51716,61 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     if (traceSummary.hasRootSpan) {
       let rootNameLabel = traceSummary.rootName.replaceAll("/", "/\u200B").replaceAll("-", "-\u200B").replaceAll(".", ".\u200B");
       let rootServiceNameLabel = traceSummary.rootServiceName.replaceAll("/", "/\u200B").replaceAll("-", "-\u200B").replaceAll(".", ".\u200B");
-      return /* @__PURE__ */ import_react116.default.createElement("div", {
+      return /* @__PURE__ */ import_react141.default.createElement("div", {
         style
-      }, /* @__PURE__ */ import_react116.default.createElement(Divider, {
+      }, /* @__PURE__ */ import_react141.default.createElement(Divider, {
         height: dividerHeight,
         borderColor: dividerColour
-      }), /* @__PURE__ */ import_react116.default.createElement(LinkBox, {
+      }), /* @__PURE__ */ import_react141.default.createElement(LinkBox, {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         bgColor: backgroundColour,
         height: `${sidebarSummaryHeight}px`,
         paddingX: "20px"
-      }, /* @__PURE__ */ import_react116.default.createElement(Text, {
+      }, /* @__PURE__ */ import_react141.default.createElement(Text, {
         fontSize: "xs",
         noOfLines: 1
-      }, "Root Service Name: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, rootServiceNameLabel)), /* @__PURE__ */ import_react116.default.createElement(Text, {
+      }, "Root Service Name: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, rootServiceNameLabel)), /* @__PURE__ */ import_react141.default.createElement(Text, {
         fontSize: "xs",
         noOfLines: 2
-      }, "Root Name: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, rootNameLabel)), /* @__PURE__ */ import_react116.default.createElement(Text, {
+      }, "Root Name: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, rootNameLabel)), /* @__PURE__ */ import_react141.default.createElement(Text, {
         fontSize: "xs"
-      }, "Root Duration: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, traceSummary.rootDurationString)), /* @__PURE__ */ import_react116.default.createElement(Text, {
+      }, "Root Duration: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, traceSummary.rootDurationString)), /* @__PURE__ */ import_react141.default.createElement(Text, {
         fontSize: "xs"
-      }, "Number of Spans: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, traceSummary.spanCount)), /* @__PURE__ */ import_react116.default.createElement(LinkOverlay, {
+      }, "Number of Spans: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, traceSummary.spanCount)), /* @__PURE__ */ import_react141.default.createElement(LinkOverlay, {
         as: NavLink,
         to: `telemetry/${traceSummary.traceID}`
-      }, /* @__PURE__ */ import_react116.default.createElement(Text, {
+      }, /* @__PURE__ */ import_react141.default.createElement(Text, {
         fontSize: "xs"
-      }, "Trace ID: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, traceSummary.traceID)))));
+      }, "Trace ID: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, traceSummary.traceID)))));
     }
-    return /* @__PURE__ */ import_react116.default.createElement("div", {
+    return /* @__PURE__ */ import_react141.default.createElement("div", {
       style
-    }, /* @__PURE__ */ import_react116.default.createElement(Divider, {
+    }, /* @__PURE__ */ import_react141.default.createElement(Divider, {
       height: dividerHeight,
       borderColor: dividerColour
-    }), /* @__PURE__ */ import_react116.default.createElement(LinkBox, {
+    }), /* @__PURE__ */ import_react141.default.createElement(LinkBox, {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       bgColor: backgroundColour,
       height: `${sidebarSummaryHeight}px`,
       paddingX: "20px"
-    }, /* @__PURE__ */ import_react116.default.createElement(Text, {
+    }, /* @__PURE__ */ import_react141.default.createElement(Text, {
       fontSize: "xs"
-    }, "Incomplete Trace: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, "missing a root span")), /* @__PURE__ */ import_react116.default.createElement(Text, {
+    }, "Incomplete Trace: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, "missing a root span")), /* @__PURE__ */ import_react141.default.createElement(Text, {
       fontSize: "xs"
-    }, "Number of Spans: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, traceSummary.spanCount)), /* @__PURE__ */ import_react116.default.createElement(LinkOverlay, {
+    }, "Number of Spans: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, traceSummary.spanCount)), /* @__PURE__ */ import_react141.default.createElement(LinkOverlay, {
       as: NavLink,
       to: `telemetry/${traceSummary.traceID}`
-    }, /* @__PURE__ */ import_react116.default.createElement(Text, {
+    }, /* @__PURE__ */ import_react141.default.createElement(Text, {
       fontSize: "xs"
-    }, "Trace ID: ", /* @__PURE__ */ import_react116.default.createElement("strong", null, traceSummary.traceID)))));
+    }, "Trace ID: ", /* @__PURE__ */ import_react141.default.createElement("strong", null, traceSummary.traceID)))));
   }
   function TelemetryList(props) {
-    let containerRef = (0, import_react116.useRef)(null);
-    let summaryListRef = import_react116.default.createRef();
+    let containerRef = (0, import_react141.useRef)(null);
+    let summaryListRef = import_react141.default.createRef();
     let size3 = useSize(containerRef);
     let location = useLocation();
     let navigate = useNavigate();
@@ -47871,7 +51778,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let selectedIndex = 0;
     let selectedTraceID = "";
     let { summaries } = props;
-    (0, import_react116.useEffect)(() => {
+    (0, import_react141.useEffect)(() => {
       summaryListRef.current?.scrollToItem(selectedIndex, "start");
     }, []);
     let prevTraceKeyPressed = useKeyPress(["ArrowLeft", "h"]);
@@ -47879,7 +51786,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let reloadKeyPressed = useKeyPress(["r"]);
     let navHelpComboPressed = useKeyCombo(["Shift"], ["?"]);
     let clearTracesComboPressed = useKeyCombo(["Control"], ["l"]);
-    (0, import_react116.useEffect)(() => {
+    (0, import_react141.useEffect)(() => {
       if (prevTraceKeyPressed) {
         selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : 0;
         summaryListRef.current?.scrollToItem(selectedIndex);
@@ -47887,7 +51794,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         navigate(`/telemetry/${selectedTraceID}`);
       }
     }, [prevTraceKeyPressed]);
-    (0, import_react116.useEffect)(() => {
+    (0, import_react141.useEffect)(() => {
       if (nextTraceKeyPressed) {
         selectedIndex = selectedIndex < summaries.length - 1 ? selectedIndex + 1 : summaries.length - 1;
         summaryListRef.current?.scrollToItem(selectedIndex);
@@ -47895,17 +51802,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         navigate(`/telemetry/${selectedTraceID}`);
       }
     }, [nextTraceKeyPressed]);
-    (0, import_react116.useEffect)(() => {
+    (0, import_react141.useEffect)(() => {
       if (reloadKeyPressed) {
         window.location.reload();
       }
     }, [reloadKeyPressed]);
-    (0, import_react116.useEffect)(() => {
+    (0, import_react141.useEffect)(() => {
       if (navHelpComboPressed) {
         onOpen();
       }
     }, [navHelpComboPressed]);
-    (0, import_react116.useEffect)(() => {
+    (0, import_react141.useEffect)(() => {
       if (clearTracesComboPressed) {
         clearTraceData();
       }
@@ -47915,10 +51822,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       summaries
     };
     let itemHeight = sidebarSummaryHeight + dividerHeight;
-    return /* @__PURE__ */ import_react116.default.createElement(Flex, {
+    return /* @__PURE__ */ import_react141.default.createElement(Flex, {
       ref: containerRef,
       height: "100%"
-    }, /* @__PURE__ */ import_react116.default.createElement(FixedSizeList, {
+    }, /* @__PURE__ */ import_react141.default.createElement(FixedSizeList, {
       height: size3 ? size3.height : 0,
       itemData,
       itemCount: props.summaries.length,
@@ -47939,31 +51846,31 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   // app/components/sidebar-view/sidebar-header.tsx
   function SidebarHeader(props) {
     let { toggleColorMode } = useColorMode();
-    let colourModeIcon = useColorModeValue(/* @__PURE__ */ import_react118.default.createElement(MoonIcon, null), /* @__PURE__ */ import_react118.default.createElement(SunIcon, null));
+    let colourModeIcon = useColorModeValue(/* @__PURE__ */ import_react143.default.createElement(MoonIcon, null), /* @__PURE__ */ import_react143.default.createElement(SunIcon, null));
     let { isFullWidth, isFullWidthDisabled, toggleSidebarWidth, numNewTraces } = props;
     if (isFullWidth) {
-      return /* @__PURE__ */ import_react118.default.createElement(Flex, {
+      return /* @__PURE__ */ import_react143.default.createElement(Flex, {
         direction: "column",
         height: "fit-content",
         justifyContent: "space-evenly"
-      }, /* @__PURE__ */ import_react118.default.createElement(Flex, {
+      }, /* @__PURE__ */ import_react143.default.createElement(Flex, {
         justifyContent: "flex-start",
         alignItems: "center",
         height: "50px"
-      }, /* @__PURE__ */ import_react118.default.createElement(Button, {
+      }, /* @__PURE__ */ import_react143.default.createElement(Button, {
         size: "md",
         "aria-label": "Clear Trace Data",
         variant: "ghost",
         colorScheme: "pink",
         fontWeight: "normal",
-        leftIcon: /* @__PURE__ */ import_react118.default.createElement(DeleteIcon, null),
+        leftIcon: /* @__PURE__ */ import_react143.default.createElement(DeleteIcon, null),
         marginStart: "10px",
         onClick: clearTraceData
-      }, /* @__PURE__ */ import_react118.default.createElement(Text, {
+      }, /* @__PURE__ */ import_react143.default.createElement(Text, {
         fontSize: "sm",
         fontWeight: "bold",
         color: "ButtonText"
-      }, "Clear Traces")), /* @__PURE__ */ import_react118.default.createElement(Spacer, null), /* @__PURE__ */ import_react118.default.createElement(IconButton, {
+      }, "Clear Traces")), /* @__PURE__ */ import_react143.default.createElement(Spacer, null), /* @__PURE__ */ import_react143.default.createElement(IconButton, {
         size: "md",
         "aria-label": "Toggle Colour Mode",
         variant: "ghost",
@@ -47971,48 +51878,48 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         icon: colourModeIcon,
         marginEnd: "2px",
         onClick: toggleColorMode
-      }), /* @__PURE__ */ import_react118.default.createElement(IconButton, {
+      }), /* @__PURE__ */ import_react143.default.createElement(IconButton, {
         size: "md",
         "aria-label": "Collapse Sidebar",
         variant: "ghost",
         colorScheme: "pink",
-        icon: /* @__PURE__ */ import_react118.default.createElement(ArrowLeftIcon, null),
+        icon: /* @__PURE__ */ import_react143.default.createElement(ArrowLeftIcon, null),
         marginEnd: "10px",
         onClick: toggleSidebarWidth
-      })), /* @__PURE__ */ import_react118.default.createElement(Flex, {
+      })), /* @__PURE__ */ import_react143.default.createElement(Flex, {
         justifyContent: "flex-start",
         alignItems: "center",
         transition: "height 0.2s ease-in-out",
         height: numNewTraces > 0 ? "50px" : 0,
         overflow: "hidden"
-      }, /* @__PURE__ */ import_react118.default.createElement(Button, {
+      }, /* @__PURE__ */ import_react143.default.createElement(Button, {
         size: "md",
         "aria-label": "Refresh",
         variant: "ghost",
         colorScheme: "pink",
         fontWeight: "normal",
-        leftIcon: /* @__PURE__ */ import_react118.default.createElement(RepeatIcon, null),
+        leftIcon: /* @__PURE__ */ import_react143.default.createElement(RepeatIcon, null),
         marginX: "10px",
         justifyContent: "flex-start",
         onClick: () => {
           window.location.reload();
         }
-      }, /* @__PURE__ */ import_react118.default.createElement(Text, {
+      }, /* @__PURE__ */ import_react143.default.createElement(Text, {
         fontSize: "sm",
         fontWeight: "bold",
         color: "ButtonText"
       }, numNewTraces, " New Trace", numNewTraces === 1 ? " " : "s"))));
     }
-    return /* @__PURE__ */ import_react118.default.createElement(import_react118.default.Fragment, null, /* @__PURE__ */ import_react118.default.createElement(IconButton, {
+    return /* @__PURE__ */ import_react143.default.createElement(import_react143.default.Fragment, null, /* @__PURE__ */ import_react143.default.createElement(IconButton, {
       size: "md",
       "aria-label": "Expand Sidebar",
       colorScheme: "pink",
       variant: "ghost",
-      icon: /* @__PURE__ */ import_react118.default.createElement(ArrowRightIcon, null),
+      icon: /* @__PURE__ */ import_react143.default.createElement(ArrowRightIcon, null),
       marginTop: "10px",
       onClick: toggleSidebarWidth,
       isDisabled: isFullWidthDisabled
-    }), /* @__PURE__ */ import_react118.default.createElement(IconButton, {
+    }), /* @__PURE__ */ import_react143.default.createElement(IconButton, {
       size: "md",
       "aria-label": "Toggle Colour Mode",
       colorScheme: "pink",
@@ -48031,29 +51938,29 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let { isFullWidth, toggleSidebarWidth, summaries, numNewTraces } = props;
     let isFullWidthDisabled = summaries.length === 0;
     if (isFullWidth) {
-      return /* @__PURE__ */ import_react120.default.createElement(Flex, {
+      return /* @__PURE__ */ import_react145.default.createElement(Flex, {
         backgroundColor: sidebarColour,
         flexShrink: "0",
         direction: "column",
         transition: "width 0.2s ease-in-out",
         width: sidebarFullWidth
-      }, /* @__PURE__ */ import_react120.default.createElement(SidebarHeader, {
+      }, /* @__PURE__ */ import_react145.default.createElement(SidebarHeader, {
         isFullWidth,
         toggleSidebarWidth,
         isFullWidthDisabled: false,
         numNewTraces
-      }), /* @__PURE__ */ import_react120.default.createElement(TelemetryList, {
+      }), /* @__PURE__ */ import_react145.default.createElement(TelemetryList, {
         summaries
       }));
     }
-    return /* @__PURE__ */ import_react120.default.createElement(Flex, {
+    return /* @__PURE__ */ import_react145.default.createElement(Flex, {
       alignItems: "center",
       backgroundColor: sidebarColour,
       flexShrink: "0",
       direction: "column",
       transition: "width 0.2s ease-in-out",
       width: sidebarCollapsedWidth
-    }, /* @__PURE__ */ import_react120.default.createElement(SidebarHeader, {
+    }, /* @__PURE__ */ import_react145.default.createElement(SidebarHeader, {
       isFullWidth,
       isFullWidthDisabled,
       toggleSidebarWidth,
@@ -48062,7 +51969,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   }
 
   // app/components/empty-state-view/empty-state-view.tsx
-  var import_react122 = __toESM(require_react());
+  var import_react147 = __toESM(require_react());
   async function loadSampleData() {
     let response = await fetch("/api/sampleData");
     await console.log(response);
@@ -48075,7 +51982,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   function SampleDataButton() {
     let [isLoading, setIsLoading] = useBoolean(false);
     if (isLoading) {
-      return /* @__PURE__ */ import_react122.default.createElement(Button, {
+      return /* @__PURE__ */ import_react147.default.createElement(Button, {
         isLoading: true,
         colorScheme: "pink",
         loadingText: "Loading",
@@ -48083,7 +51990,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         width: "fit-content"
       });
     }
-    return /* @__PURE__ */ import_react122.default.createElement(Button, {
+    return /* @__PURE__ */ import_react147.default.createElement(Button, {
       colorScheme: "pink",
       width: "fit-content",
       onClick: () => {
@@ -48112,13 +52019,13 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       "blackAlpha.500"
     );
     useInterval(pollTraceCount, 1e4);
-    return /* @__PURE__ */ import_react122.default.createElement(Flex, {
+    return /* @__PURE__ */ import_react147.default.createElement(Flex, {
       flexDirection: "column",
       align: "center",
       justifyItems: "center",
       width: "100%",
       overflowY: "scroll"
-    }, /* @__PURE__ */ import_react122.default.createElement(Card, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Card, {
       align: "center",
       backgroundColor: cardBackgroundColour,
       marginY: "64px",
@@ -48126,81 +52033,81 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       padding: "30px",
       variant: "filled",
       width: "60%"
-    }, /* @__PURE__ */ import_react122.default.createElement(CardHeader, {
+    }, /* @__PURE__ */ import_react147.default.createElement(CardHeader, {
       borderRadius: "lg",
       paddingY: "0"
-    }, /* @__PURE__ */ import_react122.default.createElement(Flex, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Flex, {
       width: "100%"
-    }, /* @__PURE__ */ import_react122.default.createElement(Image2, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Image2, {
       src: "assets/images/lulu.png",
       alt: "A pink axolotl is striking a heroic pose while gazing at a field of stars through a telescope. Her name is Lulu Axol'Otel the First, valiant adventurer and observability queen.",
       maxHeight: "400px",
       maxWidth: "400px",
       borderRadius: "lg"
-    }), /* @__PURE__ */ import_react122.default.createElement(Flex, {
+    }), /* @__PURE__ */ import_react147.default.createElement(Flex, {
       marginLeft: "24px",
       justifyContent: "flex-end",
       direction: "column"
-    }, /* @__PURE__ */ import_react122.default.createElement(Stack, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Stack, {
       spacing: 3
-    }, /* @__PURE__ */ import_react122.default.createElement(Heading, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Heading, {
       size: "lg"
-    }, "Welcome to the OpenTelemetry Desktop Viewer."), /* @__PURE__ */ import_react122.default.createElement(Divider, null), /* @__PURE__ */ import_react122.default.createElement(Text, null, "This CLI tool allows you to receive OpenTelemetry traces while working on your local machine, helping you visualize and explore your trace data without needing to send it on to a telemetry vendor.")), /* @__PURE__ */ import_react122.default.createElement(Stack, {
+    }, "Welcome to the OpenTelemetry Desktop Viewer."), /* @__PURE__ */ import_react147.default.createElement(Divider, null), /* @__PURE__ */ import_react147.default.createElement(Text, null, "This CLI tool allows you to receive OpenTelemetry traces while working on your local machine, helping you visualize and explore your trace data without needing to send it on to a telemetry vendor.")), /* @__PURE__ */ import_react147.default.createElement(Stack, {
       spacing: 3,
       marginTop: "24px"
-    }, /* @__PURE__ */ import_react122.default.createElement(Heading, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Heading, {
       size: "md"
-    }, "Explore with Sample Data"), /* @__PURE__ */ import_react122.default.createElement(Divider, null), /* @__PURE__ */ import_react122.default.createElement(Text, null, "If you would like to explore the application without sending it anything, you can do so by loading some sample data."), /* @__PURE__ */ import_react122.default.createElement(SampleDataButton, null))))), /* @__PURE__ */ import_react122.default.createElement(CardBody, null, /* @__PURE__ */ import_react122.default.createElement(Stack, {
+    }, "Explore with Sample Data"), /* @__PURE__ */ import_react147.default.createElement(Divider, null), /* @__PURE__ */ import_react147.default.createElement(Text, null, "If you would like to explore the application without sending it anything, you can do so by loading some sample data."), /* @__PURE__ */ import_react147.default.createElement(SampleDataButton, null))))), /* @__PURE__ */ import_react147.default.createElement(CardBody, null, /* @__PURE__ */ import_react147.default.createElement(Stack, {
       spacing: 3
-    }, /* @__PURE__ */ import_react122.default.createElement(Heading, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Heading, {
       size: "md"
-    }, "Configuring your OpenTelemetry SDK"), /* @__PURE__ */ import_react122.default.createElement(Divider, null), /* @__PURE__ */ import_react122.default.createElement(Text, null, "To send telemetry to OpenTelemetry Desktop Viewer from your application, you need to configure an OTLP exporter to send via grpc to", " ", /* @__PURE__ */ import_react122.default.createElement(Code, {
+    }, "Configuring your OpenTelemetry SDK"), /* @__PURE__ */ import_react147.default.createElement(Divider, null), /* @__PURE__ */ import_react147.default.createElement(Text, null, "To send telemetry to OpenTelemetry Desktop Viewer from your application, you need to configure an OTLP exporter to send via grpc to", " ", /* @__PURE__ */ import_react147.default.createElement(Code, {
       backgroundColor: codeBackgroundColour
-    }, "http://localhost:4317"), " ", "or via http to", " ", /* @__PURE__ */ import_react122.default.createElement(Code, {
+    }, "http://localhost:4317"), " ", "or via http to", " ", /* @__PURE__ */ import_react147.default.createElement(Code, {
       backgroundColor: codeBackgroundColour
-    }, "http://localhost:4318"), "."), /* @__PURE__ */ import_react122.default.createElement(Text, null, "If your OpenTelemetry SDK OTLP exporter supports", " ", /* @__PURE__ */ import_react122.default.createElement(Link, {
+    }, "http://localhost:4318"), "."), /* @__PURE__ */ import_react147.default.createElement(Text, null, "If your OpenTelemetry SDK OTLP exporter supports", " ", /* @__PURE__ */ import_react147.default.createElement(Link, {
       color: "teal.500",
       href: "https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/",
       isExternal: true
-    }, "configuration via environment variables", " "), " ", "then you should be able to send to", " ", /* @__PURE__ */ import_react122.default.createElement(Code, {
+    }, "configuration via environment variables", " "), " ", "then you should be able to send to", " ", /* @__PURE__ */ import_react147.default.createElement(Code, {
       backgroundColor: codeBackgroundColour
-    }, "otel-desktop-viewer"), " ", "with the following environment variables set."), /* @__PURE__ */ import_react122.default.createElement(Heading, {
+    }, "otel-desktop-viewer"), " ", "with the following environment variables set."), /* @__PURE__ */ import_react147.default.createElement(Heading, {
       size: "sm"
-    }, "For HTTP:"), /* @__PURE__ */ import_react122.default.createElement(Flex, {
+    }, "For HTTP:"), /* @__PURE__ */ import_react147.default.createElement(Flex, {
       backgroundColor: codeBackgroundColour,
       padding: 2
-    }, /* @__PURE__ */ import_react122.default.createElement(Code, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Code, {
       backgroundColor: "transparent",
       display: "block",
       whiteSpace: "pre",
       children: `export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 export OTEL_TRACES_EXPORTER="otlp"
 export OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"`
-    })), /* @__PURE__ */ import_react122.default.createElement(Heading, {
+    })), /* @__PURE__ */ import_react147.default.createElement(Heading, {
       size: "sm"
-    }, "For GRPC:"), /* @__PURE__ */ import_react122.default.createElement(Flex, {
+    }, "For GRPC:"), /* @__PURE__ */ import_react147.default.createElement(Flex, {
       backgroundColor: codeBackgroundColour,
       padding: 2
-    }, /* @__PURE__ */ import_react122.default.createElement(Code, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Code, {
       backgroundColor: "transparent",
       display: "block",
       whiteSpace: "pre",
       children: `export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4317"
 export OTEL_TRACES_EXPORTER="otlp"
 export OTEL_EXPORTER_OTLP_PROTOCOL="grpc"`
-    }))), /* @__PURE__ */ import_react122.default.createElement(Stack, {
+    }))), /* @__PURE__ */ import_react147.default.createElement(Stack, {
       spacing: 3,
       marginTop: "30px"
-    }, /* @__PURE__ */ import_react122.default.createElement(Heading, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Heading, {
       size: "md"
-    }, "Example with otel-cli"), /* @__PURE__ */ import_react122.default.createElement(Divider, null), /* @__PURE__ */ import_react122.default.createElement(Text, null, "If you have", " ", /* @__PURE__ */ import_react122.default.createElement(Link, {
+    }, "Example with otel-cli"), /* @__PURE__ */ import_react147.default.createElement(Divider, null), /* @__PURE__ */ import_react147.default.createElement(Text, null, "If you have", " ", /* @__PURE__ */ import_react147.default.createElement(Link, {
       color: "teal.400",
       href: "https://github.com/equinix-labs/otel-cli",
       isExternal: true
-    }, "otel-cli"), " ", "installed, you can send some example data with the following script."), /* @__PURE__ */ import_react122.default.createElement(Flex, {
+    }, "otel-cli"), " ", "installed, you can send some example data with the following script."), /* @__PURE__ */ import_react147.default.createElement(Flex, {
       backgroundColor: codeBackgroundColour,
       padding: 2
-    }, /* @__PURE__ */ import_react122.default.createElement(Code, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Code, {
       backgroundColor: "transparent",
       display: "block",
       whiteSpace: "pre",
@@ -48213,18 +52120,18 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 # use otel-cli to generate spans!
 otel-cli exec --service my-service --name "curl google" curl https://google.com
 `
-    })))), /* @__PURE__ */ import_react122.default.createElement(CardFooter, {
+    })))), /* @__PURE__ */ import_react147.default.createElement(CardFooter, {
       alignItems: "center"
-    }, /* @__PURE__ */ import_react122.default.createElement(Text, null, "Made with", " ", /* @__PURE__ */ import_react122.default.createElement(Image2, {
+    }, /* @__PURE__ */ import_react147.default.createElement(Text, null, "Made with", " ", /* @__PURE__ */ import_react147.default.createElement(Image2, {
       src: "assets/images/axolotl.svg",
       alt: "axolotl emoji",
       display: "inline",
       width: "30px"
-    }), " ", "by", " ", /* @__PURE__ */ import_react122.default.createElement(Link, {
+    }), " ", "by", " ", /* @__PURE__ */ import_react147.default.createElement(Link, {
       color: "teal.500",
       href: "https://github.com/CtrlSpice",
       isExternal: true
-    }, "Mila Ardath"), ", with Artwork by", " ", /* @__PURE__ */ import_react122.default.createElement(Link, {
+    }, "Mila Ardath"), ", with Artwork by", " ", /* @__PURE__ */ import_react147.default.createElement(Link, {
       color: "teal.500",
       href: "https://cbatesonart.artstation.com/",
       isExternal: true
@@ -48233,6 +52140,30 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
 
   // app/utils/duration.ts
   var import_timestamp_nano = __toESM(require_timestamp());
+  function calculateTraceTiming(spans) {
+    if (!spans.length) {
+      return {
+        traceStartTimeNS: 0,
+        traceDurationNS: 0
+      };
+    }
+    let earliestStartTime = getNsFromString(spans[0].startTime);
+    let latestEndTime = getNsFromString(spans[0].endTime);
+    spans.forEach((span) => {
+      let spanStart = getNsFromString(span.startTime);
+      if (spanStart < earliestStartTime) {
+        earliestStartTime = spanStart;
+      }
+      let spanEnd = getNsFromString(span.endTime);
+      if (spanEnd > latestEndTime) {
+        latestEndTime = spanEnd;
+      }
+    });
+    return {
+      traceStartTimeNS: earliestStartTime,
+      traceDurationNS: latestEndTime - earliestStartTime
+    };
+  }
   function getNsFromString(timestampString) {
     let milliseconds = Date.parse(timestampString.split(".")[0]);
     let nanoseconds = milliseconds * 1e6 + import_timestamp_nano.default.fromString(timestampString).getNano();
@@ -48268,8 +52199,8 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
   function MainView() {
     let { summaries } = useLoaderData();
     let [isFullWidth, setFullWidth] = useBoolean(summaries.length > 0);
-    let [sidebarData, setSidebarData] = (0, import_react124.useState)(initSidebarData(summaries));
-    (0, import_react124.useEffect)(() => {
+    let [sidebarData, setSidebarData] = (0, import_react149.useState)(initSidebarData(summaries));
+    (0, import_react149.useEffect)(() => {
       async function checkForNewData() {
         let response = await fetch("/api/telemetry");
         if (response.ok) {
@@ -48278,27 +52209,27 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
           setSidebarData(newSidebarData);
         }
       }
-      let interval = setInterval(checkForNewData, 1e3);
+      let interval = setInterval(checkForNewData, 1e4);
       return () => clearInterval(interval);
     }, []);
     if (!summaries.length) {
-      return /* @__PURE__ */ import_react124.default.createElement(Flex, {
+      return /* @__PURE__ */ import_react149.default.createElement(Flex, {
         height: "100vh"
-      }, /* @__PURE__ */ import_react124.default.createElement(Sidebar, {
+      }, /* @__PURE__ */ import_react149.default.createElement(Sidebar, {
         isFullWidth,
         toggleSidebarWidth: setFullWidth.toggle,
         summaries: [],
         numNewTraces: 0
-      }), /* @__PURE__ */ import_react124.default.createElement(EmptyStateView, null));
+      }), /* @__PURE__ */ import_react149.default.createElement(EmptyStateView, null));
     }
-    return /* @__PURE__ */ import_react124.default.createElement(Flex, {
+    return /* @__PURE__ */ import_react149.default.createElement(Flex, {
       height: "100vh"
-    }, /* @__PURE__ */ import_react124.default.createElement(Sidebar, {
+    }, /* @__PURE__ */ import_react149.default.createElement(Sidebar, {
       isFullWidth,
       toggleSidebarWidth: setFullWidth.toggle,
       summaries: sidebarData.summaries,
       numNewTraces: sidebarData.numNewTraces
-    }), /* @__PURE__ */ import_react124.default.createElement(Outlet, null));
+    }), /* @__PURE__ */ import_react149.default.createElement(Outlet, null));
   }
   function initSidebarData(summaries) {
     return {
@@ -48357,29 +52288,804 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
   }
 
   // app/error-page.tsx
-  var import_react126 = __toESM(require_react());
+  var import_react151 = __toESM(require_react());
   function ErrorPage() {
     const error = useRouteError();
     console.error(error);
-    return /* @__PURE__ */ import_react126.default.createElement("div", {
+    return /* @__PURE__ */ import_react151.default.createElement("div", {
       id: "error-page"
-    }, /* @__PURE__ */ import_react126.default.createElement("h1", null, "Oops!"), /* @__PURE__ */ import_react126.default.createElement("p", null, "Sorry, an unexpected error has occurred."), /* @__PURE__ */ import_react126.default.createElement("p", null, /* @__PURE__ */ import_react126.default.createElement("i", null, error.message)));
+    }, /* @__PURE__ */ import_react151.default.createElement("h1", null, "Oops!"), /* @__PURE__ */ import_react151.default.createElement("p", null, "Sorry, an unexpected error has occurred."), /* @__PURE__ */ import_react151.default.createElement("p", null, /* @__PURE__ */ import_react151.default.createElement("i", null, error.message)));
   }
 
   // app/routes/telemetry-view.tsx
-  var import_react129 = __toESM(require_react());
+  var import_react176 = __toESM(require_react());
 
   // app/components/header-view/header.tsx
-  var import_react127 = __toESM(require_react());
+  var import_react152 = __toESM(require_react());
   function Header(props) {
-    return /* @__PURE__ */ import_react127.default.createElement(Flex, {
+    return /* @__PURE__ */ import_react152.default.createElement(Flex, {
       align: "center",
       height: "100px",
       paddingX: "24px"
-    }, /* @__PURE__ */ import_react127.default.createElement(Text, {
+    }, /* @__PURE__ */ import_react152.default.createElement(Text, {
       fontSize: "lg",
       noOfLines: 1
-    }, "Trace ID: ", /* @__PURE__ */ import_react127.default.createElement("strong", null, props.traceID)));
+    }, "Trace ID: ", /* @__PURE__ */ import_react152.default.createElement("strong", null, props.traceID)));
+  }
+
+  // app/components/detail-view/detail-view.tsx
+  var import_react166 = __toESM(require_react());
+
+  // app/components/detail-view/fields-panel.tsx
+  var import_react156 = __toESM(require_react());
+
+  // app/components/detail-view/span-field.tsx
+  var import_react154 = __toESM(require_react());
+  function SpanField(props) {
+    let { fieldName, fieldValue, hidden } = props;
+    let fieldNameColour = useColorModeValue("gray.600", "gray.400");
+    if (hidden) {
+      return null;
+    }
+    let typeOfFieldValue = typeof fieldValue;
+    switch (fieldValue) {
+      case true:
+        fieldValue = "true";
+        break;
+      case false:
+        fieldValue = "false";
+        break;
+      case null:
+        fieldValue = "null";
+        break;
+      case void 0:
+        fieldValue = "undefined";
+        break;
+      case "":
+        fieldValue = '""';
+        break;
+    }
+    return /* @__PURE__ */ import_react154.default.createElement(Box, {
+      paddingTop: 2
+    }, /* @__PURE__ */ import_react154.default.createElement("dt", null, /* @__PURE__ */ import_react154.default.createElement(Flex, {
+      experimental_spaceX: 2
+    }, /* @__PURE__ */ import_react154.default.createElement(Tag, {
+      size: "sm",
+      variant: "outline",
+      colorScheme: "cyan"
+    }, /* @__PURE__ */ import_react154.default.createElement(TagLabel, {
+      fontSize: "xs"
+    }, typeOfFieldValue)), /* @__PURE__ */ import_react154.default.createElement(Text, {
+      textColor: fieldNameColour,
+      fontSize: "sm"
+    }, fieldName))), /* @__PURE__ */ import_react154.default.createElement("dd", null, /* @__PURE__ */ import_react154.default.createElement(Text, {
+      fontSize: "md",
+      paddingY: 2
+    }, fieldValue)));
+  }
+
+  // app/components/detail-view/fields-panel.tsx
+  function FieldsPanel(props) {
+    let { span } = props;
+    if (!span) {
+      return /* @__PURE__ */ import_react156.default.createElement(TabPanel, null, /* @__PURE__ */ import_react156.default.createElement("p", null, "Nothing here yet."));
+    }
+    let isRoot = span.parentSpanID.length ? false : true;
+    let rootTag = isRoot ? /* @__PURE__ */ import_react156.default.createElement(Tag, {
+      marginStart: 2,
+      colorScheme: "cyan",
+      variant: "subtle"
+    }, "root") : null;
+    let durationString = getDurationString(
+      getDurationNs(span.startTime, span.endTime)
+    );
+    let spanAttributes = Object.entries(span.attributes).map(([key, value]) => /* @__PURE__ */ import_react156.default.createElement("li", {
+      key
+    }, /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: key,
+      fieldValue: value
+    })));
+    let resourceAttributes = Object.entries(span.resource.attributes).map(
+      ([key, value]) => /* @__PURE__ */ import_react156.default.createElement("li", {
+        key
+      }, /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+        fieldName: key,
+        fieldValue: value
+      }))
+    );
+    let scopeAttributes = Object.entries(span.scope.attributes).map(
+      ([key, value]) => /* @__PURE__ */ import_react156.default.createElement("li", {
+        key
+      }, /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+        fieldName: key,
+        fieldValue: value
+      }))
+    );
+    return /* @__PURE__ */ import_react156.default.createElement(TabPanel, {
+      paddingX: "0px"
+    }, /* @__PURE__ */ import_react156.default.createElement(Accordion, {
+      defaultIndex: [0],
+      allowMultiple: true
+    }, /* @__PURE__ */ import_react156.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react156.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react156.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react156.default.createElement(Heading, {
+      lineHeight: "revert",
+      size: "sm"
+    }, "Span Data", rootTag)), /* @__PURE__ */ import_react156.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react156.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "name",
+      fieldValue: span.name
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "kind",
+      fieldValue: span.kind
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "start time",
+      fieldValue: span.startTime
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "end time",
+      fieldValue: span.endTime
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "duration",
+      fieldValue: durationString
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "status code",
+      fieldValue: span.statusCode
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "status message",
+      fieldValue: span.statusMessage,
+      hidden: span.statusCode === "Unset" || span.statusCode === "Ok"
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "trace id",
+      fieldValue: span.traceID
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "parent span id",
+      fieldValue: span.parentSpanID,
+      hidden: isRoot
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "span id",
+      fieldValue: span.spanID
+    }), /* @__PURE__ */ import_react156.default.createElement(List, null, spanAttributes), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "dropped attributes count",
+      fieldValue: span.droppedAttributesCount,
+      hidden: span.droppedAttributesCount === 0
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "dropped events count",
+      fieldValue: span.droppedEventsCount,
+      hidden: span.droppedEventsCount === 0
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "dropped links count",
+      fieldValue: span.droppedLinksCount,
+      hidden: span.droppedLinksCount === 0
+    }))), /* @__PURE__ */ import_react156.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react156.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react156.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react156.default.createElement(Heading, {
+      size: "sm"
+    }, "Resource Data")), /* @__PURE__ */ import_react156.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react156.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react156.default.createElement(List, null, resourceAttributes), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "dropped attributes count",
+      fieldValue: span.resource.droppedAttributesCount,
+      hidden: span.resource.droppedAttributesCount === 0
+    }))), /* @__PURE__ */ import_react156.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react156.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react156.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react156.default.createElement(Heading, {
+      size: "sm"
+    }, "Scope Data")), /* @__PURE__ */ import_react156.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react156.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "scope name",
+      fieldValue: span.scope.name
+    }), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "scope version",
+      fieldValue: span.scope.version
+    }), /* @__PURE__ */ import_react156.default.createElement(List, null, scopeAttributes), /* @__PURE__ */ import_react156.default.createElement(SpanField, {
+      fieldName: "dropped attributes count",
+      fieldValue: span.scope.droppedAttributesCount,
+      hidden: span.scope.droppedAttributesCount === 0
+    })))));
+  }
+
+  // app/components/detail-view/events-panel.tsx
+  var import_react158 = __toESM(require_react());
+  function EventItem(props) {
+    let { event, spanStartTime } = props;
+    let timeSinceSpanStart = getDurationNs(spanStartTime, event.timestamp);
+    let durationString = getDurationString(timeSinceSpanStart);
+    let eventAttributes = Object.entries(event.attributes).map(([key, value]) => /* @__PURE__ */ import_react158.default.createElement("li", {
+      key: key + value?.toString()
+    }, /* @__PURE__ */ import_react158.default.createElement(SpanField, {
+      fieldName: key,
+      fieldValue: value
+    })));
+    return /* @__PURE__ */ import_react158.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react158.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react158.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react158.default.createElement(Heading, {
+      size: "sm"
+    }, event.name), /* @__PURE__ */ import_react158.default.createElement(Text, {
+      fontSize: "xs"
+    }, durationString, " since span start")), /* @__PURE__ */ import_react158.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react158.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react158.default.createElement(SpanField, {
+      fieldName: "timestamp",
+      fieldValue: event.timestamp
+    }), /* @__PURE__ */ import_react158.default.createElement(List, null, eventAttributes), /* @__PURE__ */ import_react158.default.createElement(SpanField, {
+      fieldName: "dropped attributes count",
+      fieldValue: event.droppedAttributesCount,
+      hidden: !event.droppedAttributesCount
+    })));
+  }
+  function EventsPanel(props) {
+    let { events, spanStartTime } = props;
+    if (!events) {
+      return null;
+    }
+    let eventItemList = events.map((event) => /* @__PURE__ */ import_react158.default.createElement("li", {
+      key: event.name + event.timestamp
+    }, /* @__PURE__ */ import_react158.default.createElement(EventItem, {
+      event,
+      spanStartTime
+    })));
+    return /* @__PURE__ */ import_react158.default.createElement(TabPanel, {
+      paddingX: "0px"
+    }, /* @__PURE__ */ import_react158.default.createElement(Accordion, {
+      allowMultiple: true
+    }, /* @__PURE__ */ import_react158.default.createElement(List, null, eventItemList)));
+  }
+
+  // app/components/detail-view/links-panel.tsx
+  var import_react164 = __toESM(require_react());
+
+  // app/components/alerts/under-construction.tsx
+  var import_react162 = __toESM(require_react());
+
+  // node_modules/react-icons/lib/esm/iconBase.js
+  var import_react161 = __toESM(require_react());
+
+  // node_modules/react-icons/lib/esm/iconContext.js
+  var import_react160 = __toESM(require_react());
+  var DefaultContext = {
+    color: void 0,
+    size: void 0,
+    className: void 0,
+    style: void 0,
+    attr: void 0
+  };
+  var IconContext = import_react160.default.createContext && import_react160.default.createContext(DefaultContext);
+
+  // node_modules/react-icons/lib/esm/iconBase.js
+  var __assign2 = function() {
+    __assign2 = Object.assign || function(t2) {
+      for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s)
+          if (Object.prototype.hasOwnProperty.call(s, p))
+            t2[p] = s[p];
+      }
+      return t2;
+    };
+    return __assign2.apply(this, arguments);
+  };
+  var __rest2 = function(s, e) {
+    var t2 = {};
+    for (var p in s)
+      if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t2[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+      for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+          t2[p[i]] = s[p[i]];
+      }
+    return t2;
+  };
+  function Tree2Element(tree) {
+    return tree && tree.map(function(node, i) {
+      return import_react161.default.createElement(node.tag, __assign2({
+        key: i
+      }, node.attr), Tree2Element(node.child));
+    });
+  }
+  function GenIcon(data) {
+    return function(props) {
+      return import_react161.default.createElement(IconBase, __assign2({
+        attr: __assign2({}, data.attr)
+      }, props), Tree2Element(data.child));
+    };
+  }
+  function IconBase(props) {
+    var elem = function(conf) {
+      var attr = props.attr, size3 = props.size, title = props.title, svgProps = __rest2(props, ["attr", "size", "title"]);
+      var computedSize = size3 || conf.size || "1em";
+      var className;
+      if (conf.className)
+        className = conf.className;
+      if (props.className)
+        className = (className ? className + " " : "") + props.className;
+      return import_react161.default.createElement("svg", __assign2({
+        stroke: "currentColor",
+        fill: "currentColor",
+        strokeWidth: "0"
+      }, conf.attr, attr, svgProps, {
+        className,
+        style: __assign2(__assign2({
+          color: props.color || conf.color
+        }, conf.style), props.style),
+        height: computedSize,
+        width: computedSize,
+        xmlns: "http://www.w3.org/2000/svg"
+      }), title && import_react161.default.createElement("title", null, title), props.children);
+    };
+    return IconContext !== void 0 ? import_react161.default.createElement(IconContext.Consumer, null, function(conf) {
+      return elem(conf);
+    }) : elem(DefaultContext);
+  }
+
+  // node_modules/react-icons/md/index.esm.js
+  function MdConstruction(props) {
+    return GenIcon({ "tag": "svg", "attr": { "viewBox": "0 0 24 24" }, "child": [{ "tag": "path", "attr": { "fill": "none", "d": "M0 0h24v24H0z" } }, { "tag": "path", "attr": { "d": "M13.783 15.172l2.121-2.121 5.996 5.996-2.121 2.121zM17.5 10c1.93 0 3.5-1.57 3.5-3.5 0-.58-.16-1.12-.41-1.6l-2.7 2.7-1.49-1.49 2.7-2.7c-.48-.25-1.02-.41-1.6-.41C15.57 3 14 4.57 14 6.5c0 .41.08.8.21 1.16l-1.85 1.85-1.78-1.78.71-.71-1.41-1.41L12 3.49a3 3 0 00-4.24 0L4.22 7.03l1.41 1.41H2.81l-.71.71 3.54 3.54.71-.71V9.15l1.41 1.41.71-.71 1.78 1.78-7.41 7.41 2.12 2.12L16.34 9.79c.36.13.75.21 1.16.21z" } }] })(props);
+  }
+
+  // app/components/alerts/under-construction.tsx
+  function UnderConstructionAlert() {
+    return /* @__PURE__ */ import_react162.default.createElement(Alert, {
+      status: "warning",
+      variant: "subtle",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center"
+    }, /* @__PURE__ */ import_react162.default.createElement(AlertIcon, {
+      as: MdConstruction,
+      boxSize: "32px"
+    }), /* @__PURE__ */ import_react162.default.createElement(AlertTitle, null, "This section is under construction."), /* @__PURE__ */ import_react162.default.createElement(AlertDescription, null, "More features coming soon!"));
+  }
+
+  // app/components/detail-view/links-panel.tsx
+  function LinkItem(props) {
+    let { link } = props;
+    let linkAttributes = Object.entries(link.attributes).map(([key, value]) => /* @__PURE__ */ import_react164.default.createElement("li", {
+      key: key + value?.toString()
+    }, /* @__PURE__ */ import_react164.default.createElement(SpanField, {
+      fieldName: key,
+      fieldValue: value
+    })));
+    return /* @__PURE__ */ import_react164.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react164.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react164.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react164.default.createElement(Text, {
+      fontSize: "sm"
+    }, "Trace ID: ", /* @__PURE__ */ import_react164.default.createElement("strong", null, link.traceID)), /* @__PURE__ */ import_react164.default.createElement(Text, {
+      fontSize: "sm"
+    }, "Span ID: ", /* @__PURE__ */ import_react164.default.createElement("strong", null, link.spanID))), /* @__PURE__ */ import_react164.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react164.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react164.default.createElement(SpanField, {
+      fieldName: "trace state",
+      fieldValue: link.traceState
+    }), /* @__PURE__ */ import_react164.default.createElement(List, null, linkAttributes), /* @__PURE__ */ import_react164.default.createElement(SpanField, {
+      fieldName: "dropped attributes count",
+      fieldValue: link.droppedAttributesCount
+    })));
+  }
+  function LinksPanel(props) {
+    let { links } = props;
+    if (!links) {
+      return null;
+    }
+    let linkItemList = links.map((link) => /* @__PURE__ */ import_react164.default.createElement("li", {
+      key: link.spanID
+    }, /* @__PURE__ */ import_react164.default.createElement(LinkItem, {
+      link
+    })));
+    return /* @__PURE__ */ import_react164.default.createElement(TabPanel, {
+      paddingX: "0px"
+    }, /* @__PURE__ */ import_react164.default.createElement(UnderConstructionAlert, null), /* @__PURE__ */ import_react164.default.createElement(Accordion, {
+      allowMultiple: true
+    }, /* @__PURE__ */ import_react164.default.createElement(List, null, linkItemList)));
+  }
+
+  // app/components/detail-view/detail-view.tsx
+  function DetailView(props) {
+    let { span } = props;
+    if (!span) {
+      return /* @__PURE__ */ import_react166.default.createElement("div", null);
+    }
+    let numEvents = span.events.length;
+    let numLinks = span.links.length;
+    return /* @__PURE__ */ import_react166.default.createElement(Flex, {
+      grow: "0",
+      shrink: "1",
+      basis: "350px",
+      height: "100vh",
+      paddingTop: "30px",
+      overflowY: "scroll"
+    }, /* @__PURE__ */ import_react166.default.createElement(Tabs, {
+      colorScheme: "pink",
+      margin: 3,
+      size: "sm",
+      variant: "soft-rounded",
+      width: "100vw"
+    }, /* @__PURE__ */ import_react166.default.createElement(TabList, null, /* @__PURE__ */ import_react166.default.createElement(Tab, null, "Fields"), /* @__PURE__ */ import_react166.default.createElement(Tab, {
+      isDisabled: numEvents === 0
+    }, "Events(", numEvents, ")"), /* @__PURE__ */ import_react166.default.createElement(Tab, {
+      isDisabled: numLinks === 0
+    }, "Links(", numLinks, ")")), /* @__PURE__ */ import_react166.default.createElement(TabPanels, null, /* @__PURE__ */ import_react166.default.createElement(FieldsPanel, {
+      span
+    }), /* @__PURE__ */ import_react166.default.createElement(EventsPanel, {
+      events: span.events,
+      spanStartTime: span.startTime
+    }), /* @__PURE__ */ import_react166.default.createElement(LinksPanel, {
+      links: span.links
+    }))));
+  }
+
+  // app/components/waterfall-view/waterfall-view.tsx
+  var import_react174 = __toESM(require_react());
+
+  // app/components/waterfall-view/waterfall-row.tsx
+  var import_react170 = __toESM(require_react());
+
+  // app/components/waterfall-view/duration-bar.tsx
+  var import_react168 = __toESM(require_react());
+  function EventDotsList(props) {
+    let { events, spanStartTimeNs, spanEndTimeNs } = props;
+    let eventDotsList = events.map((eventData) => {
+      let eventName = eventData.name;
+      let eventTimeNs = getNsFromString(eventData.timestamp);
+      let spanDurationNS = spanEndTimeNs - spanStartTimeNs;
+      let eventOffsetPercent = Math.floor(
+        (eventTimeNs - spanStartTimeNs) / spanDurationNS * 100
+      );
+      return /* @__PURE__ */ import_react168.default.createElement("li", {
+        key: `${eventName}-${eventData.timestamp}`
+      }, /* @__PURE__ */ import_react168.default.createElement(Tooltip, {
+        hasArrow: true,
+        label: eventName,
+        placement: "top"
+      }, /* @__PURE__ */ import_react168.default.createElement(Circle, {
+        size: "18px",
+        bg: "whiteAlpha.400",
+        border: "solid 1px",
+        borderColor: "cyan.800",
+        position: "absolute",
+        left: `${eventOffsetPercent}%`,
+        transformOrigin: "center",
+        transform: "translate(-50%)"
+      })));
+    });
+    return /* @__PURE__ */ import_react168.default.createElement(List, null, eventDotsList);
+  }
+  function DurationBar(props) {
+    const ref = (0, import_react168.useRef)(null);
+    const size3 = useSize(ref);
+    const labelWidth = 80;
+    let durationBarColour = useColorModeValue("cyan.800", "cyan.700");
+    let labelTextColour = useColorModeValue("blackAlpha.800", "white");
+    let { traceStartTimeNS, traceDurationNS } = props.traceTimeAttributes;
+    let spanStartTimeNs = getNsFromString(props.spanStartTimestamp);
+    let spanEndTimeNs = getNsFromString(props.spanEndTimestamp);
+    let barOffsetPercent = Math.floor(
+      (spanStartTimeNs - traceStartTimeNS) / traceDurationNS * 100
+    );
+    let barWidthPercent = Math.round(
+      (spanEndTimeNs - spanStartTimeNs) / traceDurationNS * 100
+    );
+    let labelOffset;
+    if (size3 && size3.width >= labelWidth) {
+      labelOffset = "0px";
+      labelTextColour = "white";
+    } else if (size3 && barOffsetPercent < 50) {
+      labelOffset = `${Math.floor(size3.width)}px`;
+    } else {
+      labelOffset = `${Math.floor(-labelWidth)}px`;
+    }
+    let label = getDurationString(spanEndTimeNs - spanStartTimeNs);
+    return /* @__PURE__ */ import_react168.default.createElement(Flex, {
+      border: "0",
+      marginX: 2,
+      marginY: "16px",
+      width: "100%"
+    }, /* @__PURE__ */ import_react168.default.createElement(Box, {
+      bgColor: durationBarColour,
+      borderRadius: "md",
+      overflow: "visible",
+      position: "relative",
+      left: `${barOffsetPercent}%`,
+      width: `${barWidthPercent}%`,
+      minWidth: "2px",
+      ref
+    }, /* @__PURE__ */ import_react168.default.createElement(Flex, {
+      position: "absolute",
+      width: `${labelWidth}px`,
+      left: labelOffset,
+      justifyContent: "center"
+    }, /* @__PURE__ */ import_react168.default.createElement(Text, {
+      fontSize: "xs",
+      fontWeight: "700",
+      paddingLeft: 2,
+      color: labelTextColour,
+      whiteSpace: "nowrap"
+    }, label)), /* @__PURE__ */ import_react168.default.createElement(EventDotsList, {
+      events: props.spanData.events,
+      spanStartTimeNs,
+      spanEndTimeNs
+    })));
+  }
+
+  // app/components/waterfall-view/waterfall-row.tsx
+  function WaterfallRow({ index, style, data }) {
+    let selectedColour = useColorModeValue("pink.100", "pink.900");
+    let oddStripeColour = useColorModeValue("gray.50", "gray.700");
+    let backgroundColour = index % 2 ? "" : oddStripeColour;
+    let {
+      orderedSpans,
+      traceTimeAttributes,
+      spanNameColumnWidth,
+      serviceNameColumnWidth,
+      selectedSpanID,
+      setSelectedSpanID
+    } = data;
+    let span = orderedSpans[index];
+    let { spanID, depth } = span.metadata;
+    if (span.status === "present" /* present */) {
+      let { spanData } = span;
+      let paddingLeft = depth * 25;
+      if (!!selectedSpanID && selectedSpanID === spanID) {
+        backgroundColour = selectedColour;
+      }
+      let nameLabel = spanData.name.replaceAll("/", "/\u200B").replaceAll("-", "-\u200B").replaceAll(".", ".\u200B");
+      let resourceLabel = spanData.resource.attributes["service.name"];
+      return /* @__PURE__ */ import_react170.default.createElement(Flex, {
+        style,
+        bgColor: backgroundColour,
+        paddingLeft: `${paddingLeft}px`,
+        onClick: () => setSelectedSpanID(spanID)
+      }, /* @__PURE__ */ import_react170.default.createElement(Flex, {
+        width: spanNameColumnWidth - paddingLeft,
+        alignItems: "center",
+        flexGrow: "1",
+        flexShrink: "0"
+      }, /* @__PURE__ */ import_react170.default.createElement(Text, {
+        paddingX: 2,
+        noOfLines: 2,
+        fontSize: "sm"
+      }, nameLabel)), /* @__PURE__ */ import_react170.default.createElement(Flex, {
+        width: serviceNameColumnWidth,
+        alignItems: "center",
+        flexGrow: "1",
+        flexShrink: "0"
+      }, /* @__PURE__ */ import_react170.default.createElement(Text, {
+        paddingX: 2,
+        fontSize: "sm"
+      }, resourceLabel)), /* @__PURE__ */ import_react170.default.createElement(DurationBar, {
+        spanData,
+        traceTimeAttributes,
+        spanStartTimestamp: spanData.startTime,
+        spanEndTimestamp: spanData.endTime
+      }));
+    }
+    return /* @__PURE__ */ import_react170.default.createElement(Flex, {
+      style,
+      alignItems: "center",
+      bgColor: backgroundColour,
+      paddingStart: 2,
+      experimental_spaceX: 2
+    }, /* @__PURE__ */ import_react170.default.createElement(WarningTwoIcon, {
+      color: "orange.500"
+    }), /* @__PURE__ */ import_react170.default.createElement(Text, {
+      fontSize: "sm"
+    }, `Missing Span [Span ID:${spanID}]`));
+  }
+
+  // app/components/waterfall-view/header-row.tsx
+  var import_react172 = __toESM(require_react());
+  function DurationIndicator(props) {
+    let ref = (0, import_react172.useRef)(null);
+    let size3 = useSize(ref);
+    let availableWidth = size3 ? size3.width : 0;
+    let numSections = 1;
+    if (availableWidth >= 800) {
+      numSections = 8;
+    } else if (availableWidth >= 600) {
+      numSections = 6;
+    } else if (availableWidth >= 300) {
+      numSections = 4;
+    } else if (availableWidth >= 100) {
+      numSections = 2;
+    }
+    let { traceDuration } = props;
+    let timeUnit = "ns";
+    if (traceDuration >= 1e9) {
+      traceDuration = traceDuration / 1e9;
+      timeUnit = "s";
+    } else if (traceDuration >= 1e6) {
+      traceDuration = traceDuration / 1e6;
+      timeUnit = "ms";
+    } else if (traceDuration >= 1e3) {
+      traceDuration = traceDuration / 1e3;
+      timeUnit = "\u03BCs";
+    }
+    let sectionDuration = traceDuration / numSections;
+    let sectionWidth = availableWidth / numSections;
+    let durationSections = Array(numSections - 1).fill(null).map((_, i) => {
+      let sectionLabel = `${+(sectionDuration * i).toFixed(3)}${timeUnit}`;
+      return /* @__PURE__ */ import_react172.default.createElement(ListItem, {
+        key: i,
+        float: "left"
+      }, /* @__PURE__ */ import_react172.default.createElement(Text, {
+        fontSize: "x-small",
+        width: sectionWidth
+      }, sectionLabel));
+    });
+    let lastDurationLabel = /* @__PURE__ */ import_react172.default.createElement(Text, {
+      fontSize: "x-small"
+    }, `${+traceDuration.toFixed(3)}${timeUnit}`);
+    return /* @__PURE__ */ import_react172.default.createElement(Flex, {
+      alignItems: "center",
+      height: "100%",
+      "flex-direction": "row",
+      flex: "1 1 auto",
+      marginX: 2,
+      ref
+    }, /* @__PURE__ */ import_react172.default.createElement(List, null, durationSections), /* @__PURE__ */ import_react172.default.createElement(Spacer, null), lastDurationLabel);
+  }
+  function HeaderRow(props) {
+    let {
+      headerRowHeight,
+      spanNameColumnWidth,
+      serviceNameColumnWidth,
+      traceDuration
+    } = props;
+    return /* @__PURE__ */ import_react172.default.createElement(Flex, {
+      height: `${headerRowHeight}px`
+    }, /* @__PURE__ */ import_react172.default.createElement(Flex, {
+      width: spanNameColumnWidth,
+      alignItems: "center"
+    }, /* @__PURE__ */ import_react172.default.createElement(Heading, {
+      paddingX: 2,
+      size: "sm"
+    }, "name")), /* @__PURE__ */ import_react172.default.createElement(Flex, {
+      width: serviceNameColumnWidth,
+      alignItems: "center"
+    }, /* @__PURE__ */ import_react172.default.createElement(Heading, {
+      paddingX: 1,
+      size: "sm"
+    }, "service.name")), /* @__PURE__ */ import_react172.default.createElement(DurationIndicator, {
+      traceDuration
+    }));
+  }
+
+  // app/components/waterfall-view/waterfall-view.tsx
+  function WaterfallView(props) {
+    let containerRef = (0, import_react174.useRef)(null);
+    let spanListRef = import_react174.default.createRef();
+    const size3 = useSize(containerRef);
+    const waterfallItemHeight = 50;
+    const headerRowHeight = 30;
+    const spanNameColumnWidth = 300;
+    const serviceNameColumnWidth = 200;
+    let { orderedSpans, traceTimeAttributes, selectedSpanID, setSelectedSpanID } = props;
+    let prevSpanKeyPressed = useKeyPress(["ArrowUp", "k"]);
+    let nextSpanKeyPressed = useKeyPress(["ArrowDown", "j"]);
+    let selectedIndex = orderedSpans.findIndex(
+      (span) => span.metadata.spanID === selectedSpanID
+    );
+    let firstSelectableIndex = orderedSpans.findIndex(
+      (span) => span.status === "present" /* present */
+    );
+    (0, import_react174.useEffect)(() => {
+      if (prevSpanKeyPressed) {
+        if (selectedIndex > firstSelectableIndex) {
+          do {
+            selectedIndex--;
+          } while (orderedSpans[selectedIndex].status === "missing" /* missing */);
+          setSelectedSpanID(orderedSpans[selectedIndex].metadata.spanID);
+          spanListRef.current?.scrollToItem(selectedIndex);
+        }
+      }
+    }, [prevSpanKeyPressed]);
+    (0, import_react174.useEffect)(() => {
+      if (nextSpanKeyPressed) {
+        if (selectedIndex < orderedSpans.length - 1) {
+          do {
+            selectedIndex++;
+          } while (orderedSpans[selectedIndex].status === "missing" /* missing */);
+          setSelectedSpanID(orderedSpans[selectedIndex].metadata.spanID);
+          spanListRef.current?.scrollToItem(selectedIndex);
+        }
+      }
+    }, [nextSpanKeyPressed]);
+    let rowData = {
+      orderedSpans,
+      traceTimeAttributes,
+      spanNameColumnWidth,
+      serviceNameColumnWidth,
+      selectedSpanID,
+      setSelectedSpanID
+    };
+    return /* @__PURE__ */ import_react174.default.createElement(Flex, {
+      direction: "column",
+      ref: containerRef,
+      height: "100%",
+      onCopy: stripZeroWidthSpacesOnCopyCallback
+    }, /* @__PURE__ */ import_react174.default.createElement(HeaderRow, {
+      headerRowHeight,
+      spanNameColumnWidth,
+      serviceNameColumnWidth,
+      traceDuration: traceTimeAttributes.traceDurationNS
+    }), /* @__PURE__ */ import_react174.default.createElement(FixedSizeList, {
+      className: "List",
+      height: size3 ? size3.height - headerRowHeight : 0,
+      itemData: rowData,
+      itemCount: orderedSpans.length,
+      itemSize: waterfallItemHeight,
+      ref: spanListRef,
+      width: "100%"
+    }, WaterfallRow));
+  }
+  function stripZeroWidthSpacesOnCopyCallback(e) {
+    let selection = window.getSelection();
+    if (!selection) {
+      return;
+    }
+    let text = selection.toString().replaceAll("\u200B", "");
+    e.clipboardData?.setData("text/plain", text);
+    e.preventDefault();
+  }
+
+  // app/utils/array-to-tree.ts
+  function arrayToTree(spans) {
+    let rootItems = [];
+    let lookup = {};
+    let missingSpanIDs = /* @__PURE__ */ new Set();
+    for (let spanData of spans) {
+      let { spanID, parentSpanID } = spanData;
+      if (!lookup[spanID]) {
+        lookup[spanID] = {
+          status: "present" /* present */,
+          spanData,
+          children: []
+        };
+      }
+      let treeItem = lookup[spanID];
+      if (treeItem.status === "missing" /* missing */) {
+        treeItem = {
+          status: "present" /* present */,
+          spanData,
+          children: treeItem.children
+        };
+        lookup[spanID] = treeItem;
+        missingSpanIDs.delete(spanID);
+      }
+      if (!parentSpanID) {
+        rootItems.push(treeItem);
+      } else {
+        if (!lookup[parentSpanID]) {
+          lookup[parentSpanID] = {
+            status: "missing" /* missing */,
+            spanID: parentSpanID,
+            children: []
+          };
+          missingSpanIDs.add(parentSpanID);
+        }
+        lookup[parentSpanID].children.push(treeItem);
+      }
+    }
+    let missingIDsArray = Array.from(missingSpanIDs).sort(
+      (a2, b2) => {
+        let earliestStartTimeA = getEarliestStartTime(lookup[a2].children);
+        let earliestStartTimeB = getEarliestStartTime(lookup[b2].children);
+        return earliestStartTimeA - earliestStartTimeB;
+      }
+    );
+    for (let spanID of missingIDsArray) {
+      rootItems.push(lookup[spanID]);
+    }
+    return rootItems;
+  }
+  function getEarliestStartTime(children) {
+    if (children.length == 0) {
+      throw new Error(
+        "Unexpected type: A 'missing' parent span appears to have no children."
+      );
+    }
+    let startTimes = children.map((treeItem) => {
+      return getNsFromString(treeItem.spanData.startTime);
+    });
+    return Math.min(...startTimes);
   }
 
   // app/routes/telemetry-view.tsx
@@ -48389,8 +53095,48 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
     return traceData;
   }
   function TelemetryView() {
-    let traceData = useLoaderData();
-    return /* @__PURE__ */ import_react129.default.createElement(Grid, {
+    let telemetryData = useLoaderData();
+    let traceData = telemetryData.trace;
+    let logData = telemetryData.log;
+    let metricData = telemetryData.metric;
+    let isTrace = telemetryData.type === "trace" ? true : false;
+    let selectedSpan;
+    let spanTree = [];
+    let orderedSpans = [];
+    let traceTimeAttributes = {
+      traceStartTimeNS: 0,
+      traceDurationNS: 0
+    };
+    if (isTrace) {
+      traceTimeAttributes = calculateTraceTiming(traceData.spans);
+      spanTree = arrayToTree(traceData.spans);
+      orderedSpans = orderSpans(spanTree);
+    }
+    let [selectedSpanID, setSelectedSpanID] = import_react176.default.useState(() => {
+      if (!isTrace) {
+        return "";
+      }
+      if (!orderedSpans.length || orderedSpans[0].status === "missing" /* missing */ && orderedSpans.length < 2) {
+        throw new Error("Number of spans cannot be zero");
+      }
+      if (orderedSpans[0].status === "missing" /* missing */) {
+        return orderedSpans[1].metadata.spanID;
+      }
+      return orderedSpans[0].metadata.spanID;
+    });
+    import_react176.default.useEffect(() => {
+      if (isTrace) {
+        setSelectedSpanID(
+          orderedSpans[0].status === "present" /* present */ ? orderedSpans[0].metadata.spanID : orderedSpans[1].metadata.spanID
+        );
+      }
+    }, [traceData]);
+    if (isTrace) {
+      selectedSpan = traceData.spans.find(
+        (span) => span.spanID === selectedSpanID
+      );
+    }
+    return isTrace ? /* @__PURE__ */ import_react176.default.createElement(Grid, {
       templateAreas: `"header detail"
                        "main detail"`,
       gridTemplateColumns: "1fr 350px",
@@ -48398,16 +53144,82 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       gap: "0",
       height: "100vh",
       width: "100vw"
-    }, /* @__PURE__ */ import_react129.default.createElement(GridItem, {
+    }, /* @__PURE__ */ import_react176.default.createElement(GridItem, {
       area: "header"
-    }, /* @__PURE__ */ import_react129.default.createElement(Header, {
+    }, /* @__PURE__ */ import_react176.default.createElement(Header, {
       traceID: traceData.traceID
-    })), /* @__PURE__ */ import_react129.default.createElement(GridItem, {
+    })), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
       area: "main",
       marginLeft: "20px"
-    }), /* @__PURE__ */ import_react129.default.createElement(GridItem, {
+    }, /* @__PURE__ */ import_react176.default.createElement(WaterfallView, {
+      orderedSpans,
+      traceTimeAttributes,
+      selectedSpanID,
+      setSelectedSpanID
+    })), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
       area: "detail"
-    }));
+    }, /* @__PURE__ */ import_react176.default.createElement(DetailView, {
+      span: selectedSpan
+    }))) : /* @__PURE__ */ import_react176.default.createElement(Grid, {
+      templateAreas: `"header detail"
+                 "main detail"`,
+      gridTemplateColumns: "1fr 350px",
+      gridTemplateRows: "100px 1fr",
+      gap: "0",
+      height: "100vh",
+      width: "100vw"
+    }, /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+      area: "header"
+    }, /* @__PURE__ */ import_react176.default.createElement(Header, {
+      traceID: traceData.traceID
+    })), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+      area: "main",
+      marginLeft: "20px"
+    }), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+      area: "detail"
+    }, "i am log / metric"));
+  }
+  function orderSpans(spanTree) {
+    let orderedSpans = [];
+    for (let root of spanTree) {
+      let stack = [
+        {
+          treeItem: root,
+          depth: 0
+        }
+      ];
+      while (stack.length) {
+        let node = stack.pop();
+        if (!node) {
+          break;
+        }
+        let { treeItem, depth } = node;
+        if (treeItem.status === "present" /* present */) {
+          orderedSpans.push({
+            status: "present" /* present */,
+            spanData: treeItem.spanData,
+            metadata: { depth, spanID: treeItem.spanData.spanID }
+          });
+        } else {
+          orderedSpans.push({
+            status: "missing" /* missing */,
+            metadata: { depth, spanID: treeItem.spanID }
+          });
+        }
+        treeItem.children.sort((a2, b2) => {
+          if (a2.status === "present" /* present */ && b2.status === "present" /* present */) {
+            return getNsFromString(b2.spanData.startTime) - getNsFromString(a2.spanData.startTime);
+          }
+          return 0;
+        }).forEach(
+          (child) => stack.push({
+            treeItem: child,
+            depth: depth + 1
+          })
+        );
+      }
+    }
+    return orderedSpans;
   }
 
   // app/main.tsx
@@ -48419,13 +53231,13 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
   var router = createBrowserRouter([
     {
       path: "/",
-      element: /* @__PURE__ */ import_react131.default.createElement(MainView, null),
+      element: /* @__PURE__ */ import_react178.default.createElement(MainView, null),
       loader: mainLoader,
-      errorElement: /* @__PURE__ */ import_react131.default.createElement(ErrorPage, null),
+      errorElement: /* @__PURE__ */ import_react178.default.createElement(ErrorPage, null),
       children: [
         {
           path: "telemetry/:traceID",
-          element: /* @__PURE__ */ import_react131.default.createElement(TelemetryView, null),
+          element: /* @__PURE__ */ import_react178.default.createElement(TelemetryView, null),
           loader: telemetryLoader
         }
       ]
@@ -48435,9 +53247,9 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
   if (!!container2) {
     const root = (0, import_client.createRoot)(container2);
     root.render(
-      /* @__PURE__ */ import_react131.default.createElement(import_react131.default.StrictMode, null, /* @__PURE__ */ import_react131.default.createElement(ChakraProvider2, {
+      /* @__PURE__ */ import_react178.default.createElement(import_react178.default.StrictMode, null, /* @__PURE__ */ import_react178.default.createElement(ChakraProvider2, {
         theme: theme2
-      }, /* @__PURE__ */ import_react131.default.createElement(RouterProvider, {
+      }, /* @__PURE__ */ import_react178.default.createElement(RouterProvider, {
         router
       })))
     );

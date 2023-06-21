@@ -36,7 +36,7 @@ export default function MainView() {
       }
     }
 
-    let interval = setInterval(checkForNewData, 1000);
+    let interval = setInterval(checkForNewData, 10000);
 
     return () => clearInterval(interval);
   }, []);
