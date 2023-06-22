@@ -104,6 +104,43 @@ function SidebarRow({ index, style, data }: SidebarRowProps) {
     );
   }
 
+  if (traceSummary.type === "trace") {
+    return (
+      <div style={style}>
+        <Divider
+          height={dividerHeight}
+          borderColor={dividerColour}
+        />
+        <LinkBox
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          bgColor={backgroundColour}
+          height={`${sidebarSummaryHeight}px`}
+          paddingX="20px"
+        >
+          <Text fontSize="xs">
+            {"Incomplete Trace: "}
+            <strong>{"missing a root span"}</strong>
+          </Text>
+          <Text fontSize="xs">
+            {"Number of Spans: "}
+            <strong>{traceSummary.spanCount}</strong>
+          </Text>
+          <LinkOverlay
+            as={NavLink}
+            to={`telemetry/${traceSummary.traceID}`}
+          >
+            <Text fontSize="xs">
+              {"Trace ID: "}
+              <strong>{traceSummary.traceID}</strong>
+            </Text>
+          </LinkOverlay>
+        </LinkBox>
+      </div>
+    );
+  }
+
   return (
     <div style={style}>
       <Divider
@@ -118,18 +155,18 @@ function SidebarRow({ index, style, data }: SidebarRowProps) {
         height={`${sidebarSummaryHeight}px`}
         paddingX="20px"
       >
-        <Text fontSize="xs">
-          {"Incomplete Trace: "}
-          <strong>{"missing a root span"}</strong>
-        </Text>
-        <Text fontSize="xs">
-          {"Number of Spans: "}
-          <strong>{traceSummary.spanCount}</strong>
-        </Text>
         <LinkOverlay
           as={NavLink}
           to={`telemetry/${traceSummary.traceID}`}
         >
+          <Text fontSize="xs">
+            {"Service Name: "}
+            <strong>{"log service name"}</strong>
+          </Text>
+          <Text fontSize="xs">
+            {"Useful Log Data: "}
+            <strong>Severity or something</strong>
+          </Text>
           <Text fontSize="xs">
             {"Trace ID: "}
             <strong>{traceSummary.traceID}</strong>
@@ -249,10 +286,10 @@ export function TelemetryList(props: TelemetryListProps) {
       >
         {SidebarRow}
       </FixedSizeList>
-      {/* <KeyboardHelp
+      <KeyboardHelp
         isOpen={isOpen}
         onClose={onClose}
-      /> */}
+      />
     </Flex>
   );
 }
