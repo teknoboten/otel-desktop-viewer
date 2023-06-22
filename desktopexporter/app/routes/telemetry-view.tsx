@@ -120,7 +120,7 @@ export default function TelemetryView() {
       width={"100vw"}
     >
       <GridItem area={"header"}>
-        <Header traceID={traceData.traceID} />
+        <Header traceID={telemetryData.ID} />
       </GridItem>
       <GridItem
         area={"main"}
