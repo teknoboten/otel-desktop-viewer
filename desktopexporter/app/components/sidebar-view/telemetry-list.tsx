@@ -159,16 +159,15 @@ export function TelemetryList(props: TelemetryListProps) {
   let { summaries } = props;
 
   // // Default to the first trace in the list if none are selected
-  // if (location.pathname.includes("/telemetry/")) {
-  //   selectedTraceID = location.pathname.split("/")[2];
-  //   selectedIndex = summaries.findIndex(
-  //     (summary) => summary.traceID === selectedTraceID,
-  //   );
-  // } else {
-  //   selectedTraceID = summaries[selectedIndex].traceID;
-  //   // navigate(`/telemetry/${selectedTraceID}`);
-  //   // window.location.href = `/telemetry/${selectedTraceID}`;
-  // }
+  if (location.pathname.includes("/telemetry/")) {
+    selectedTraceID = location.pathname.split("/")[2];
+    selectedIndex = summaries.findIndex(
+      (summary) => summary.traceID === selectedTraceID,
+    );
+  } else {
+    selectedTraceID = summaries[selectedIndex].traceID;
+    window.location.href = `/telemetry/${selectedTraceID}`;
+  }
 
   // Scroll to the currently selected trace summary on load
   useEffect(() => {
