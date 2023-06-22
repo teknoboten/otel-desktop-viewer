@@ -70,6 +70,8 @@ export default function MainView() {
 }
 
 function initSidebarData(summaries: Summary[]): SidebarData {
+  summaries = summaries.filter((summary) => filterMetrics(summary)); //filter metrics for now
+
   return {
     summaries: summaries.map((summary) =>
       generateTraceSummaryWithUIData(summary),
@@ -143,4 +145,8 @@ function generateTraceSummaryWithUIData(summary: Summary): SummaryWithUIData {
     type: summary.type,
     serviceName: summary.serviceName,
   };
+}
+
+function filterMetrics(summary: Summary) {
+  return summary.type !== "metric";
 }

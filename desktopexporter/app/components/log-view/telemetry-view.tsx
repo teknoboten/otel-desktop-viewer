@@ -7,6 +7,7 @@ import {
   TelemetryData,
   LogData,
   MetricData,
+  SpanData,
 } from "../types/api-types";
 import { SpanDataStatus, SpanWithUIData } from "../types/ui-types";
 
