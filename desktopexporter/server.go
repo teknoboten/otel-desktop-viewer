@@ -164,6 +164,7 @@ func NewServer(traceStore *TraceStore, telemetryStore *telemetry.Store, endpoint
 	router.HandleFunc("/api/sampleData", sampleDataHandler(traceStore, telemetryStore))
 	router.HandleFunc("/api/clearData", clearDataHandler(traceStore, telemetryStore))
 	router.HandleFunc("/traces/{id}", indexHandler)
+	router.HandleFunc("/telemetry/{id}", indexHandler)
 	if os.Getenv("SERVE_FROM_FS") == "true" {
 		router.PathPrefix("/").Handler(http.FileServer(http.Dir("./desktopexporter/static/")))
 	} else {

@@ -51778,6 +51778,15 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     let selectedIndex = 0;
     let selectedTraceID = "";
     let { summaries } = props;
+    if (location.pathname.includes("/telemetry/")) {
+      selectedTraceID = location.pathname.split("/")[2];
+      selectedIndex = summaries.findIndex(
+        (summary) => summary.traceID === selectedTraceID
+      );
+    } else {
+      selectedTraceID = summaries[selectedIndex].traceID;
+      window.location.href = `/telemetry/${selectedTraceID}`;
+    }
     (0, import_react141.useEffect)(() => {
       summaryListRef.current?.scrollToItem(selectedIndex, "start");
     }, []);
@@ -53098,7 +53107,6 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
     let telemetryData = useLoaderData();
     let traceData = telemetryData.trace;
     let logData = telemetryData.log;
-    let metricData = telemetryData.metric;
     let isTrace = telemetryData.type === "trace" ? true : false;
     let selectedSpan;
     let spanTree = [];

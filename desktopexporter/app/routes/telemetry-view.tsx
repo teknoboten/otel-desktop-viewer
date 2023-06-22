@@ -27,9 +27,9 @@ export default function TelemetryView() {
   let telemetryData = useLoaderData() as TelemetryData;
   let traceData = telemetryData.trace as TraceData;
   let logData = telemetryData.log as LogData;
-  let metricData = telemetryData.metric as MetricData;
+  // let metricData = telemetryData.metric as MetricData;
   let isTrace = telemetryData.type === "trace" ? true : false;
-  let selectedSpan: SpanData;
+  let selectedSpan;
   let spanTree: RootTreeItem[] = [];
   let orderedSpans: SpanWithUIData[] = [];
 
