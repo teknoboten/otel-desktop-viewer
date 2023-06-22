@@ -1009,7 +1009,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef29(initialValue) {
+          function useRef30(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
@@ -1800,7 +1800,7 @@
           exports.useLayoutEffect = useLayoutEffect9;
           exports.useMemo = useMemo19;
           exports.useReducer = useReducer;
-          exports.useRef = useRef29;
+          exports.useRef = useRef30;
           exports.useState = useState24;
           exports.useSyncExternalStore = useSyncExternalStore3;
           exports.useTransition = useTransition;
@@ -2297,9 +2297,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React51 = require_react();
+          var React55 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React51.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React55.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3820,7 +3820,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React51.Children.forEach(props.children, function(child) {
+                  React55.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -11981,7 +11981,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React51.Component().refs;
+          var emptyRefsObject = new React55.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -25638,7 +25638,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     "node_modules/@emotion/use-insertion-effect-with-fallbacks/dist/emotion-use-insertion-effect-with-fallbacks.cjs.dev.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      var React51 = require_react();
+      var React55 = require_react();
       function _interopNamespace(e) {
         if (e && e.__esModule)
           return e;
@@ -25659,14 +25659,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         n["default"] = e;
         return Object.freeze(n);
       }
-      var React__namespace = /* @__PURE__ */ _interopNamespace(React51);
+      var React__namespace = /* @__PURE__ */ _interopNamespace(React55);
       var isBrowser4 = typeof document !== "undefined";
       var syncFallback = function syncFallback2(create) {
         return create();
       };
       var useInsertionEffect2 = React__namespace["useInsertionEffect"] ? React__namespace["useInsertionEffect"] : false;
       var useInsertionEffectAlwaysWithSyncFallback = !isBrowser4 ? syncFallback : useInsertionEffect2 || syncFallback;
-      var useInsertionEffectWithLayoutFallback = useInsertionEffect2 || React51.useLayoutEffect;
+      var useInsertionEffectWithLayoutFallback = useInsertionEffect2 || React55.useLayoutEffect;
       exports.useInsertionEffectAlwaysWithSyncFallback = useInsertionEffectAlwaysWithSyncFallback;
       exports.useInsertionEffectWithLayoutFallback = useInsertionEffectWithLayoutFallback;
     }
@@ -25688,7 +25688,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   var require_emotion_element_b63ca7c6_cjs_dev = __commonJS({
     "node_modules/@emotion/react/dist/emotion-element-b63ca7c6.cjs.dev.js"(exports) {
       "use strict";
-      var React51 = require_react();
+      var React55 = require_react();
       var createCache = require_emotion_cache_cjs();
       var _extends5 = require_extends();
       var weakMemoize = require_emotion_weak_memoize_cjs();
@@ -25703,7 +25703,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       var weakMemoize__default = /* @__PURE__ */ _interopDefault(weakMemoize);
       var isBrowser4 = typeof document !== "undefined";
       var hasOwnProperty = {}.hasOwnProperty;
-      var EmotionCacheContext = /* @__PURE__ */ React51.createContext(
+      var EmotionCacheContext = /* @__PURE__ */ React55.createContext(
         typeof HTMLElement !== "undefined" ? /* @__PURE__ */ createCache__default["default"]({
           key: "css"
         }) : null
@@ -25713,23 +25713,23 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       }
       var CacheProvider = EmotionCacheContext.Provider;
       var __unsafe_useEmotionCache = function useEmotionCache() {
-        return React51.useContext(EmotionCacheContext);
+        return React55.useContext(EmotionCacheContext);
       };
       exports.withEmotionCache = function withEmotionCache(func) {
-        return /* @__PURE__ */ React51.forwardRef(function(props, ref) {
-          var cache = React51.useContext(EmotionCacheContext);
+        return /* @__PURE__ */ React55.forwardRef(function(props, ref) {
+          var cache = React55.useContext(EmotionCacheContext);
           return func(props, cache, ref);
         });
       };
       if (!isBrowser4) {
         exports.withEmotionCache = function withEmotionCache(func) {
           return function(props) {
-            var cache = React51.useContext(EmotionCacheContext);
+            var cache = React55.useContext(EmotionCacheContext);
             if (cache === null) {
               cache = createCache__default["default"]({
                 key: "css"
               });
-              return /* @__PURE__ */ React51.createElement(EmotionCacheContext.Provider, {
+              return /* @__PURE__ */ React55.createElement(EmotionCacheContext.Provider, {
                 value: cache
               }, func(props, cache));
             } else {
@@ -25738,12 +25738,12 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           };
         };
       }
-      var ThemeContext2 = /* @__PURE__ */ React51.createContext({});
+      var ThemeContext2 = /* @__PURE__ */ React55.createContext({});
       if (true) {
         ThemeContext2.displayName = "EmotionThemeContext";
       }
       var useTheme2 = function useTheme3() {
-        return React51.useContext(ThemeContext2);
+        return React55.useContext(ThemeContext2);
       };
       var getTheme2 = function getTheme3(outerTheme, theme3) {
         if (typeof theme3 === "function") {
@@ -25764,24 +25764,24 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         });
       });
       var ThemeProvider2 = function ThemeProvider3(props) {
-        var theme3 = React51.useContext(ThemeContext2);
+        var theme3 = React55.useContext(ThemeContext2);
         if (props.theme !== theme3) {
           theme3 = createCacheWithTheme(theme3)(props.theme);
         }
-        return /* @__PURE__ */ React51.createElement(ThemeContext2.Provider, {
+        return /* @__PURE__ */ React55.createElement(ThemeContext2.Provider, {
           value: theme3
         }, props.children);
       };
       function withTheme(Component3) {
         var componentName = Component3.displayName || Component3.name || "Component";
         var render = function render2(props, ref) {
-          var theme3 = React51.useContext(ThemeContext2);
-          return /* @__PURE__ */ React51.createElement(Component3, _extends5({
+          var theme3 = React55.useContext(ThemeContext2);
+          return /* @__PURE__ */ React55.createElement(Component3, _extends5({
             theme: theme3,
             ref
           }, props));
         };
-        var WithTheme = /* @__PURE__ */ React51.forwardRef(render);
+        var WithTheme = /* @__PURE__ */ React55.forwardRef(render);
         WithTheme.displayName = "WithTheme(" + componentName + ")";
         return _isolatedHnrs_dist_emotionReact_isolatedHnrs["default"](WithTheme, Component3);
       }
@@ -25851,7 +25851,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             serializedNames += " " + next.name;
             next = next.next;
           }
-          return /* @__PURE__ */ React51.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
+          return /* @__PURE__ */ React55.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
             __html: rules
           }, _ref2.nonce = cache.sheet.nonce, _ref2));
         }
@@ -25870,7 +25870,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         } else if (props.className != null) {
           className = props.className + " ";
         }
-        var serialized = serialize.serializeStyles(registeredStyles, void 0, React51.useContext(ThemeContext2));
+        var serialized = serialize.serializeStyles(registeredStyles, void 0, React55.useContext(ThemeContext2));
         if (serialized.name.indexOf("-") === -1) {
           var labelFromStack = props[labelPropName];
           if (labelFromStack) {
@@ -25886,11 +25886,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         }
         newProps.ref = ref;
         newProps.className = className;
-        return /* @__PURE__ */ React51.createElement(React51.Fragment, null, /* @__PURE__ */ React51.createElement(Insertion, {
+        return /* @__PURE__ */ React55.createElement(React55.Fragment, null, /* @__PURE__ */ React55.createElement(Insertion, {
           cache,
           serialized,
           isStringTag: typeof WrappedComponent === "string"
-        }), /* @__PURE__ */ React51.createElement(WrappedComponent, newProps));
+        }), /* @__PURE__ */ React55.createElement(WrappedComponent, newProps));
       });
       if (true) {
         Emotion.displayName = "EmotionCssPropInternal";
@@ -25913,7 +25913,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
     "node_modules/@emotion/react/dist/emotion-react.cjs.dev.js"(exports) {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
-      var React51 = require_react();
+      var React55 = require_react();
       require_emotion_cache_cjs();
       var emotionElement = require_emotion_element_b63ca7c6_cjs_dev();
       require_extends();
@@ -26048,7 +26048,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       var jsx = function jsx2(type, props) {
         var args = arguments;
         if (props == null || !emotionElement.hasOwnProperty.call(props, "css")) {
-          return React51.createElement.apply(void 0, args);
+          return React55.createElement.apply(void 0, args);
         }
         var argsLength = args.length;
         var createElementArgArray = new Array(argsLength);
@@ -26057,7 +26057,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         for (var i = 2; i < argsLength; i++) {
           createElementArgArray[i] = args[i];
         }
-        return React51.createElement.apply(null, createElementArgArray);
+        return React55.createElement.apply(null, createElementArgArray);
       };
       var warnedAboutCssPropForGlobal = false;
       var Global3 = /* @__PURE__ */ emotionElement.withEmotionCache(function(props, cache) {
@@ -26066,7 +26066,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           warnedAboutCssPropForGlobal = true;
         }
         var styles2 = props.styles;
-        var serialized = serialize.serializeStyles([styles2], void 0, React51.useContext(emotionElement.ThemeContext));
+        var serialized = serialize.serializeStyles([styles2], void 0, React55.useContext(emotionElement.ThemeContext));
         if (!emotionElement.isBrowser) {
           var _ref;
           var serializedNames = serialized.name;
@@ -26085,11 +26085,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
           if (shouldCache) {
             return null;
           }
-          return /* @__PURE__ */ React51.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + "-global " + serializedNames, _ref.dangerouslySetInnerHTML = {
+          return /* @__PURE__ */ React55.createElement("style", (_ref = {}, _ref["data-emotion"] = cache.key + "-global " + serializedNames, _ref.dangerouslySetInnerHTML = {
             __html: rules
           }, _ref.nonce = cache.sheet.nonce, _ref));
         }
-        var sheetRef = React51.useRef();
+        var sheetRef = React55.useRef();
         useInsertionEffectWithFallbacks.useInsertionEffectWithLayoutFallback(function() {
           var key = cache.key + "-global";
           var sheet = new cache.sheet.constructor({
@@ -26217,7 +26217,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         });
         if (!emotionElement.isBrowser && rules.length !== 0) {
           var _ref2;
-          return /* @__PURE__ */ React51.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedArr.map(function(serialized) {
+          return /* @__PURE__ */ React55.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedArr.map(function(serialized) {
             return serialized.name;
           }).join(" "), _ref2.dangerouslySetInnerHTML = {
             __html: rules
@@ -26252,11 +26252,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
         var content = {
           css: css3,
           cx: cx9,
-          theme: React51.useContext(emotionElement.ThemeContext)
+          theme: React55.useContext(emotionElement.ThemeContext)
         };
         var ele = props.children(content);
         hasRendered = true;
-        return /* @__PURE__ */ React51.createElement(React51.Fragment, null, /* @__PURE__ */ React51.createElement(Insertion, {
+        return /* @__PURE__ */ React55.createElement(React55.Fragment, null, /* @__PURE__ */ React55.createElement(Insertion, {
           cache,
           serializedArr
         }), ele);
@@ -26351,7 +26351,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       var _extends5 = require_extends();
-      var React51 = require_react();
+      var React55 = require_react();
       var isPropValid = require_emotion_is_prop_valid_cjs();
       var react = require_emotion_react_cjs();
       var utils = require_emotion_utils_cjs();
@@ -26400,7 +26400,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             serializedNames += " " + next.name;
             next = next.next;
           }
-          return /* @__PURE__ */ React51.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
+          return /* @__PURE__ */ React55.createElement("style", (_ref2 = {}, _ref2["data-emotion"] = cache.key + " " + serializedNames, _ref2.dangerouslySetInnerHTML = {
             __html: rules
           }, _ref2.nonce = cache.sheet.nonce, _ref2));
         }
@@ -26455,7 +26455,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
               for (var key in props) {
                 mergedProps[key] = props[key];
               }
-              mergedProps.theme = React51.useContext(react.ThemeContext);
+              mergedProps.theme = React55.useContext(react.ThemeContext);
             }
             if (typeof props.className === "string") {
               className = utils.getRegisteredStyles(cache.registered, classInterpolations, props.className);
@@ -26478,11 +26478,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
             }
             newProps.className = className;
             newProps.ref = ref;
-            return /* @__PURE__ */ React51.createElement(React51.Fragment, null, /* @__PURE__ */ React51.createElement(Insertion, {
+            return /* @__PURE__ */ React55.createElement(React55.Fragment, null, /* @__PURE__ */ React55.createElement(Insertion, {
               cache,
               serialized,
               isStringTag: typeof FinalTag === "string"
-            }), /* @__PURE__ */ React51.createElement(FinalTag, newProps));
+            }), /* @__PURE__ */ React55.createElement(FinalTag, newProps));
           });
           Styled.displayName = identifierName !== void 0 ? identifierName : "Styled(" + (typeof baseTag === "string" ? baseTag : baseTag.displayName || baseTag.name || "Component") + ")";
           Styled.defaultProps = tag.defaultProps;
@@ -27716,7 +27716,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
   });
 
   // app/main.tsx
-  var import_react178 = __toESM(require_react());
+  var import_react186 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // node_modules/@chakra-ui/react/dist/index.esm.js
@@ -52241,6 +52241,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
     }), /* @__PURE__ */ import_react149.default.createElement(Outlet, null));
   }
   function initSidebarData(summaries) {
+    summaries = summaries.filter((summary) => filterMetrics(summary));
     return {
       summaries: summaries.map(
         (summary) => generateTraceSummaryWithUIData(summary)
@@ -52295,6 +52296,9 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       serviceName: summary.serviceName
     };
   }
+  function filterMetrics(summary) {
+    return summary.type !== "metric";
+  }
 
   // app/error-page.tsx
   var import_react151 = __toESM(require_react());
@@ -52307,7 +52311,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
   }
 
   // app/routes/telemetry-view.tsx
-  var import_react176 = __toESM(require_react());
+  var import_react184 = __toESM(require_react());
 
   // app/components/header-view/header.tsx
   var import_react152 = __toESM(require_react());
@@ -53035,6 +53039,229 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
     e.preventDefault();
   }
 
+  // app/components/log-view/log-waterfall-view.tsx
+  var import_react176 = __toESM(require_react());
+  function LogWaterfallView({ log }) {
+    let resource = { ...log.resource };
+    let attributes = { ...resource.attributes };
+    let {
+      traceID,
+      body,
+      severityText,
+      severityNumber,
+      droppedAttributeCount,
+      timestamp,
+      observedTimestamp
+    } = log;
+    const waterfallItemHeight = 20;
+    const nameColumnWidth = 300;
+    const bodyColumnWidth = 300;
+    const severityColumnWidth = 100;
+    const timestampColumnWidth = 300;
+    return /* @__PURE__ */ import_react176.default.createElement("div", null, /* @__PURE__ */ import_react176.default.createElement(LinkBox, {
+      justifyContent: "space-between",
+      display: "flex",
+      height: waterfallItemHeight,
+      paddingX: "10px",
+      paddingTop: "10px",
+      bgColor: useColorModeValue("pink.400", "pink.900"),
+      rounded: "md"
+    }, /* @__PURE__ */ import_react176.default.createElement(LinkOverlay, {
+      href: `/telemetry/${traceID}`
+    }, /* @__PURE__ */ import_react176.default.createElement(Flex, {
+      direction: "column",
+      width: nameColumnWidth
+    }, /* @__PURE__ */ import_react176.default.createElement(Heading, {
+      paddingX: 2,
+      size: "sm"
+    }, "name"), /* @__PURE__ */ import_react176.default.createElement(Text, {
+      paddingX: 2,
+      size: "sm"
+    }, attributes[`service.name`]))), /* @__PURE__ */ import_react176.default.createElement(Flex, {
+      width: bodyColumnWidth,
+      direction: "column"
+    }, /* @__PURE__ */ import_react176.default.createElement(Heading, {
+      paddingX: 1,
+      size: "sm"
+    }, "body"), /* @__PURE__ */ import_react176.default.createElement(Text, {
+      paddingX: 1,
+      size: "sm"
+    }, body)), /* @__PURE__ */ import_react176.default.createElement(Flex, {
+      direction: "column",
+      width: severityColumnWidth
+    }, /* @__PURE__ */ import_react176.default.createElement(Heading, {
+      paddingX: 1,
+      size: "sm"
+    }, "severity"), /* @__PURE__ */ import_react176.default.createElement(Text, {
+      paddingX: 1,
+      size: "sm"
+    }, severityText)), /* @__PURE__ */ import_react176.default.createElement(Flex, {
+      direction: "column",
+      width: timestampColumnWidth
+    }, /* @__PURE__ */ import_react176.default.createElement(Heading, {
+      paddingX: 1,
+      size: "sm"
+    }, "timestamp"), /* @__PURE__ */ import_react176.default.createElement(Text, {
+      paddingX: 1,
+      size: "sm"
+    }, timestamp))));
+  }
+
+  // app/components/log-view/log-detail-view.tsx
+  var import_react182 = __toESM(require_react());
+
+  // app/components/log-view/log-data-panel.tsx
+  var import_react180 = __toESM(require_react());
+
+  // app/components/log-view/log-field.tsx
+  var import_react178 = __toESM(require_react());
+  function LogField(props) {
+    let { fieldName, fieldValue, hidden } = props;
+    let fieldNameColour = useColorModeValue("gray.600", "gray.400");
+    if (hidden) {
+      return null;
+    }
+    let typeOfFieldValue = typeof fieldValue;
+    switch (fieldValue) {
+      case true:
+        fieldValue = "true";
+        break;
+      case false:
+        fieldValue = "false";
+        break;
+      case null:
+        fieldValue = "null";
+        break;
+      case void 0:
+        fieldValue = "undefined";
+        break;
+      case "":
+        fieldValue = '""';
+        break;
+    }
+    return /* @__PURE__ */ import_react178.default.createElement(Box, {
+      paddingTop: 2
+    }, /* @__PURE__ */ import_react178.default.createElement("dt", null, /* @__PURE__ */ import_react178.default.createElement(Flex, {
+      experimental_spaceX: 2
+    }, /* @__PURE__ */ import_react178.default.createElement(Tag, {
+      size: "sm",
+      variant: "outline",
+      colorScheme: "cyan"
+    }, /* @__PURE__ */ import_react178.default.createElement(TagLabel, {
+      fontSize: "xs"
+    }, typeOfFieldValue)), /* @__PURE__ */ import_react178.default.createElement(Text, {
+      textColor: fieldNameColour,
+      fontSize: "sm"
+    }, fieldName))), /* @__PURE__ */ import_react178.default.createElement("dd", null, /* @__PURE__ */ import_react178.default.createElement(Text, {
+      fontSize: "md",
+      paddingY: 2
+    }, fieldValue)));
+  }
+
+  // app/components/log-view/log-data-panel.tsx
+  function LogDataPanel(props) {
+    let { log } = props;
+    if (!log) {
+      return /* @__PURE__ */ import_react180.default.createElement("div", null, /* @__PURE__ */ import_react180.default.createElement("p", null, "Nothing here yet."));
+    }
+    let logAttributes = Object.entries(log.attributes).map(([key, value]) => /* @__PURE__ */ import_react180.default.createElement("li", {
+      key
+    }, /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: key,
+      fieldValue: value
+    })));
+    let resourceAttributes = Object.entries(log.resource.attributes).map(
+      ([key, value]) => /* @__PURE__ */ import_react180.default.createElement("li", {
+        key
+      }, /* @__PURE__ */ import_react180.default.createElement(LogField, {
+        fieldName: key,
+        fieldValue: value
+      }))
+    );
+    let scopeAttributes = Object.entries(log.scope.attributes).map(
+      ([key, value]) => /* @__PURE__ */ import_react180.default.createElement("li", {
+        key
+      }, /* @__PURE__ */ import_react180.default.createElement(LogField, {
+        fieldName: key,
+        fieldValue: value
+      }))
+    );
+    return /* @__PURE__ */ import_react180.default.createElement(Accordion, {
+      index: [0, 1, 2],
+      allowMultiple: true
+    }, /* @__PURE__ */ import_react180.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react180.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react180.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react180.default.createElement(Heading, {
+      lineHeight: "revert",
+      size: "sm"
+    }, "Log Data")), /* @__PURE__ */ import_react180.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react180.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "traceID",
+      fieldValue: log.traceID
+    }), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "span id",
+      fieldValue: log.spanID
+    }), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "timestamp",
+      fieldValue: log.timestamp
+    }), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "observed at",
+      fieldValue: log.observedTimestamp
+    }), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "severity number",
+      fieldValue: log.severityNumber
+    }), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "severity message",
+      fieldValue: log.severityText
+    }), /* @__PURE__ */ import_react180.default.createElement(List, null, logAttributes), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "dropped attributes count",
+      fieldValue: log.droppedAttributeCount,
+      hidden: log.droppedAttributeCount === 0
+    }))), /* @__PURE__ */ import_react180.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react180.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react180.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react180.default.createElement(Heading, {
+      size: "sm"
+    }, "Resource Data")), /* @__PURE__ */ import_react180.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react180.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react180.default.createElement(List, null, resourceAttributes), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "dropped attributes count",
+      fieldValue: log.resource.droppedAttributesCount,
+      hidden: log.resource.droppedAttributesCount === 0
+    }))), /* @__PURE__ */ import_react180.default.createElement(AccordionItem, null, /* @__PURE__ */ import_react180.default.createElement(AccordionButton, null, /* @__PURE__ */ import_react180.default.createElement(Box, {
+      flex: "1",
+      textAlign: "left"
+    }, /* @__PURE__ */ import_react180.default.createElement(Heading, {
+      size: "sm"
+    }, "Scope Data")), /* @__PURE__ */ import_react180.default.createElement(AccordionIcon, null)), /* @__PURE__ */ import_react180.default.createElement(AccordionPanel, null, /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "scope name",
+      fieldValue: log.scope.name
+    }), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "scope version",
+      fieldValue: log.scope.version
+    }), /* @__PURE__ */ import_react180.default.createElement(List, null, scopeAttributes), /* @__PURE__ */ import_react180.default.createElement(LogField, {
+      fieldName: "dropped attributes count",
+      fieldValue: log.scope.droppedAttributesCount,
+      hidden: log.scope.droppedAttributesCount === 0
+    }))));
+  }
+
+  // app/components/log-view/log-detail-view.tsx
+  function LogDetailView(props) {
+    let { log } = props;
+    if (!log) {
+      return /* @__PURE__ */ import_react182.default.createElement("div", null);
+    }
+    return /* @__PURE__ */ import_react182.default.createElement(Flex, {
+      grow: "0",
+      shrink: "1",
+      basis: "350px",
+      height: "100vh",
+      paddingTop: "30px",
+      overflowY: "scroll"
+    }, /* @__PURE__ */ import_react182.default.createElement(LogDataPanel, {
+      log
+    }));
+  }
+
   // app/utils/array-to-tree.ts
   function arrayToTree(spans) {
     let rootItems = [];
@@ -53120,7 +53347,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       spanTree = arrayToTree(traceData.spans);
       orderedSpans = orderSpans(spanTree);
     }
-    let [selectedSpanID, setSelectedSpanID] = import_react176.default.useState(() => {
+    let [selectedSpanID, setSelectedSpanID] = import_react184.default.useState(() => {
       if (!isTrace) {
         return "";
       }
@@ -53132,7 +53359,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       }
       return orderedSpans[0].metadata.spanID;
     });
-    import_react176.default.useEffect(() => {
+    import_react184.default.useEffect(() => {
       if (isTrace) {
         setSelectedSpanID(
           orderedSpans[0].status === "present" /* present */ ? orderedSpans[0].metadata.spanID : orderedSpans[1].metadata.spanID
@@ -53144,7 +53371,7 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
         (span) => span.spanID === selectedSpanID
       );
     }
-    return isTrace ? /* @__PURE__ */ import_react176.default.createElement(Grid, {
+    return isTrace ? /* @__PURE__ */ import_react184.default.createElement(Grid, {
       templateAreas: `"header detail"
                        "main detail"`,
       gridTemplateColumns: "1fr 350px",
@@ -53152,23 +53379,23 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       gap: "0",
       height: "100vh",
       width: "100vw"
-    }, /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+    }, /* @__PURE__ */ import_react184.default.createElement(GridItem, {
       area: "header"
-    }, /* @__PURE__ */ import_react176.default.createElement(Header, {
+    }, /* @__PURE__ */ import_react184.default.createElement(Header, {
       traceID: traceData.traceID
-    })), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+    })), /* @__PURE__ */ import_react184.default.createElement(GridItem, {
       area: "main",
       marginLeft: "20px"
-    }, /* @__PURE__ */ import_react176.default.createElement(WaterfallView, {
+    }, /* @__PURE__ */ import_react184.default.createElement(WaterfallView, {
       orderedSpans,
       traceTimeAttributes,
       selectedSpanID,
       setSelectedSpanID
-    })), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+    })), /* @__PURE__ */ import_react184.default.createElement(GridItem, {
       area: "detail"
-    }, /* @__PURE__ */ import_react176.default.createElement(DetailView, {
+    }, /* @__PURE__ */ import_react184.default.createElement(DetailView, {
       span: selectedSpan
-    }))) : /* @__PURE__ */ import_react176.default.createElement(Grid, {
+    }))) : /* @__PURE__ */ import_react184.default.createElement(Grid, {
       templateAreas: `"header detail"
                  "main detail"`,
       gridTemplateColumns: "1fr 350px",
@@ -53176,16 +53403,20 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
       gap: "0",
       height: "100vh",
       width: "100vw"
-    }, /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+    }, /* @__PURE__ */ import_react184.default.createElement(GridItem, {
       area: "header"
-    }, /* @__PURE__ */ import_react176.default.createElement(Header, {
+    }, /* @__PURE__ */ import_react184.default.createElement(Header, {
       traceID: traceData.traceID
-    })), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+    })), /* @__PURE__ */ import_react184.default.createElement(GridItem, {
       area: "main",
       marginLeft: "20px"
-    }), /* @__PURE__ */ import_react176.default.createElement(GridItem, {
+    }, /* @__PURE__ */ import_react184.default.createElement(LogWaterfallView, {
+      log: logData
+    })), /* @__PURE__ */ import_react184.default.createElement(GridItem, {
       area: "detail"
-    }, "i am log / metric"));
+    }, /* @__PURE__ */ import_react184.default.createElement(LogDetailView, {
+      log: logData
+    })));
   }
   function orderSpans(spanTree) {
     let orderedSpans = [];
@@ -53239,13 +53470,13 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
   var router = createBrowserRouter([
     {
       path: "/",
-      element: /* @__PURE__ */ import_react178.default.createElement(MainView, null),
+      element: /* @__PURE__ */ import_react186.default.createElement(MainView, null),
       loader: mainLoader,
-      errorElement: /* @__PURE__ */ import_react178.default.createElement(ErrorPage, null),
+      errorElement: /* @__PURE__ */ import_react186.default.createElement(ErrorPage, null),
       children: [
         {
           path: "telemetry/:traceID",
-          element: /* @__PURE__ */ import_react178.default.createElement(TelemetryView, null),
+          element: /* @__PURE__ */ import_react186.default.createElement(TelemetryView, null),
           loader: telemetryLoader
         }
       ]
@@ -53255,9 +53486,9 @@ otel-cli exec --service my-service --name "curl google" curl https://google.com
   if (!!container2) {
     const root = (0, import_client.createRoot)(container2);
     root.render(
-      /* @__PURE__ */ import_react178.default.createElement(import_react178.default.StrictMode, null, /* @__PURE__ */ import_react178.default.createElement(ChakraProvider2, {
+      /* @__PURE__ */ import_react186.default.createElement(import_react186.default.StrictMode, null, /* @__PURE__ */ import_react186.default.createElement(ChakraProvider2, {
         theme: theme2
-      }, /* @__PURE__ */ import_react178.default.createElement(RouterProvider, {
+      }, /* @__PURE__ */ import_react186.default.createElement(RouterProvider, {
         router
       })))
     );
