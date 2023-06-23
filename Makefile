@@ -40,10 +40,18 @@ test-go:
 .PHONY: run-go
 run-go:
 	SERVE_FROM_FS=true go run ./...
-
+	
+.PHONY: run-ui-flag
+run-ui-flag:
+	SERVE_FROM_FS=true go run ./... --ui-flag
+	
 .PHONY: build-js
 build-js:
 	cd desktopexporter; npx esbuild --bundle app/main.tsx app/main.css --outdir=static
+
+.PHONY: build-js-x-ui
+build-js-x-ui:
+	cd desktopexporter; npx esbuild --bundle app-x-ui/main.tsx app-x-ui/main.css --outdir=static
 
 .PHONY: watch-js
 watch-js:
